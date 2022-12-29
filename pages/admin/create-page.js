@@ -2,7 +2,7 @@ import { Checkbox, Col, Form, Input, Radio, Row, Select, Upload } from 'antd'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../components/Layouts/Admin/AdminLayout'
-import { ArrowUpOutlined, EnvironmentOutlined, InfoCircleFilled } from '@ant-design/icons'
+import { ArrowUpOutlined, DeleteFilled, EnvironmentOutlined, InfoCircleFilled } from '@ant-design/icons'
 import RightIcon from '../../icons/righticon'
 import PlusIcon from '../../icons/plusIcon'
 import SelectBoxWidthSearch from '../../components/Inputs/SelectBox'
@@ -21,6 +21,7 @@ const { Option } = Select;
 
 const CreatePage = () => {
     const [filesList, setFilesList] = useState([]);
+    const [file, setFile] = useState(false);
     const [loading, setLoading] = useState(false);
     const [gender, setGender] = useState("Male");
     const [owner, setOwner] = useState("Yes");
@@ -216,7 +217,7 @@ const CreatePage = () => {
                                 <span className="btn btn-primary btn-file">
                                     <button className='deleteBtn'>
                                         <span>Supprimer</span>
-                                        <input onChange={(e) => setFile(e.target.files[0])} accept="image/*" name='file' type="file" />
+                                        <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
                                     </button>
                                 </span>
                             </div>

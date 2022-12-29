@@ -274,7 +274,7 @@ const UpdatePage = () => {
                                 <span className="btn btn-primary btn-file">
                                     <button className='deleteBtn'>
                                         <span>Supprimer</span>
-                                        <input onChange={(e) => setFile(e.target.files[0])} accept="image/*" name='file' type="file" />
+                                        <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
                                     </button>
                                 </span>
                             </div>
