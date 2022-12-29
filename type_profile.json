@@ -1,0 +1,45 @@
+[
+  { "name": "مستخدم عادي", "name_fr": "Utilisateur", "type": "NormalUser" },
+  { "name": "عيادة طبية", "name_fr": "Cabinet médical", "type": "Doctor" },
+  {
+    "name": "مخبر تحاليل",
+    "name_fr": "Laboratoire d'analyse",
+    "type": "Laboratory"
+  },
+  {
+    "name": "مخبر تشريح",
+    "name_fr": "Laboratoire d'anapath",
+    "type": "Anapath"
+  },
+  { "name": "مركز تصوير", "name_fr": "Centre d'imagerie", "type": "Radiology" },
+  { "name": "مصحة (كلينيك)", "name_fr": "Clinique", "type": "Clinic" },
+  { "name": "مستشفى", "name_fr": "Hôpital", "type": "Hospital" },
+  { "name": "صيدلية", "name_fr": "Pharmacie", "type": "Pharmacy" },
+  {
+    "name": "مؤسسة رعاية صحية",
+    "name_fr": "Hospitalisation à domicile",
+    "type": "Nurse_Care"
+  },
+  {
+    "name": "إعادة تأهيل منزلي (kiné)",
+    "name_fr": "kinésithérapeute à domicile",
+    "type": "Kine"
+  },
+  {
+    "name": "تمريض منزلي (ممرض)",
+    "name_fr": "inférimier à domicile",
+    "type": "Nurse"
+  },
+  {
+    "name": "إستشفاء منزلي (طبيب)",
+    "name_fr": "médecin à domicile",
+    "type": "Care"
+  },
+  { "name": "نقل صحي", "name_fr": "Transport sanitaire", "type": "Transport" },
+  { "name": "جمعية صحية", "name_fr": "Association", "type": "Association" },
+  {
+    "name": "مركز العناية الجسدية",
+    "name_fr": "centre de soins corporels",
+    "type": "Body_Care"
+  }
+]

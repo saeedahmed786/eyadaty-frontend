@@ -1,0 +1,308 @@
+[
+  {
+    "ar": "طبيب عام",
+    "fr": "Généraliste",
+    "img_h": "/assets/spe/Generalist_HH.svg",
+    "img_f": "/assets/spe/Generalist_FF.svg"
+  },
+  {
+    "ar": "طب وجراحة الأسنان",
+    "fr": "Chirurgie Dentaire",
+    "img_h": "/assets/spe/Oral_HH.svg",
+    "img_f": "/assets/spe/Oral_FF.svg"
+  },
+  {
+    "ar": "أمراض وجراحة الأنف والأذن والحنجرة",
+    "fr": "ORL",
+    "img_h": "/assets/spe/ORL_HH.svg",
+    "img_f": "/assets/spe/ORL_FF.svg"
+  },
+  {
+    "ar": "طب وجراحة العيون",
+    "fr": "Ophtalmologie",
+    "img_h": "/assets/spe/Ophthal_HH.svg",
+    "img_f": "/assets/spe/Ophthal_FF.svg"
+  },
+  {
+    "ar": "الأمراض الجلدية والتناسلية",
+    "fr": "Dermato-Vénérologie",
+    "ar_2": "طب وجراحة تجميلية",
+    "fr_2": "Chirurgie Esthétique",
+    "img_h": "/assets/spe/DermatoVéné_HH.svg",
+    "img_f": "/assets/spe/DermatoVéné_FF.svg"
+  },
+  {
+    "ar": "طب وجراحة تجميلية",
+    "fr": "Chirurgie Esthétique",
+    "ar_1": "الأمراض الجلدية والتناسلية",
+    "fr_2": "Dermato-Vénérologie",
+    "img_h": "/assets/spe/FacialSurgery_HH.svg",
+    "img_f": "/assets/spe/FacialSurgery_FF.svg"
+  },
+  {
+    "ar": "أمراض الصدر والتنفس والحساسية",
+    "fr": "Pneumo-Phtisio-Allergologie",
+    "img_h": "/assets/spe/Pulmonology_HH.svg",
+    "img_f": "/assets/spe/Pulmonology_FF.svg"
+  },
+  {
+    "ar": "أمراض القلب والشرايين",
+    "fr": "Cardiologie",
+    "ar_2": "طب داخلي",
+    "fr_2": "Médecine Interne",
+    "img_h": "/assets/spe/Cardiology_HH.svg",
+    "img_f": "/assets/spe/Cardiology_FF.svg"
+  },
+  {
+    "ar": "طب السكري وأمراض الغدد الصماء",
+    "fr": "Diabéto-Endocrinologie",
+    "ar_2": "أمراض السكري",
+    "fr_2": "Diabétologie",
+    "img_h": "/assets/spe/Diabetes_HH.svg",
+    "img_f": "/assets/spe/Diabetes_FF.svg"
+  },
+  {
+    "ar": "أمراض الكبد والمعدة والجهاز الهضمي",
+    "fr": "Hépato-Gastro-Entérologie",
+    "ar_2": "طب داخلي",
+    "fr_2": "Médecine Interne",
+    "img_h": "/assets/spe/Gastro_HH.svg",
+    "img_f": "/assets/spe/Gastro_FF.svg"
+  },
+  {
+    "ar": "طب داخلي",
+    "fr": "Médecine Interne",
+    "ar_2": "أمراض الكبد والمعدة والجهاز الهضمي",
+    "fr_2": "Hépato-Gastro-Entérologie",
+    "img_h": "/assets/spe/MédInterne_HH.svg",
+    "img_f": "/assets/spe/MédInterne_FF.svg"
+  },
+  {
+    "ar": "أمراض النساء والتوليد",
+    "fr": "Gynéco-Obstétrique",
+    "img_h": "/assets/spe/Gynecology_HH.svg",
+    "img_f": "/assets/spe/Gynecology_FF.svg"
+  },
+  {
+    "ar": "طب الأطفال",
+    "fr": "Pédiatrie",
+    "ar_2": "جراحة الأطفال",
+    "fr_2": "Chirurgien Pédiatrique",
+    "img_h": "/assets/spe/pediatrics_HH.svg",
+    "img_f": "/assets/spe/pediatrics_FF.svg"
+  },
+  {
+    "ar": "جراحة الأطفال",
+    "fr": "Chirurgien Pédiatrique",
+    "ar_2": "طب الأطفال",
+    "fr_2": "Pédiatrie",
+    "img_h": "/assets/spe/ChirurgiePéd_HH.svg",
+    "img_f": "/assets/spe/ChirurgiePéd_FF.svg"
+  },
+  {
+    "ar": "جراحة عامة",
+    "fr": "Chirurgie Générale",
+    "ar_1": "جراحة الأطفال",
+    "fr_2": "Chirurgien Pédiatrique",
+    "img_h": "/assets/spe/ChiruGéné_HH.svg",
+    "img_f": "/assets/spe/ChiruGéné_FF.svg"
+  },
+  {
+    "ar": "أمراض العظام والمفاصل",
+    "fr": "Orthopédie-Traumatologie",
+    "ar_2": "أمراض الروماتيزم",
+    "fr_2": "Rhumatologie",
+    "img_h": "/assets/spe/Orthopedics_HH.svg",
+    "img_f": "/assets/spe/Orthopedics_FF.svg"
+  },
+  {
+    "ar": "أمراض الروماتيزم",
+    "fr": "Rhumatologie",
+    "ar_2": "أمراض العظام والمفاصل",
+    "fr_2": "Orthopédie-Traumatologie",
+    "img_h": "/assets/spe/Orthopedics_HH.svg",
+    "img_f": "/assets/spe/Orthopedics_FF.svg"
+  },
+  {
+    "ar": "إعادة التأهيل الحركي والوظيفي",
+    "fr": "Kinésithérapie et Rééducation Fonctionnelle",
+    "img_h": "/assets/spe/Physiotherapy_HH.svg",
+    "img_f": "/assets/spe/Physiotherapy_FF.svg"
+  },
+  {
+    "ar": "طب وجراحة المسالك البولية",
+    "fr": "Urologie",
+    "ar_2": "أمراض الكلى",
+    "fr_2": "Néphrologie",
+    "img_h": "/assets/spe/Urology_HH.svg",
+    "img_f": "/assets/spe/Urology_FF.svg"
+  },
+  {
+    "ar": "أمراض الكلى",
+    "fr": "Néphrologie",
+    "ar_2": "طب وجراحة المسالك البولية",
+    "fr_2": "Urologie",
+    "img_h": "/assets/spe/Néphrologie_HH.svg",
+    "img_f": "/assets/spe/Néphrologie_FF.svg"
+  },
+  {
+    "ar": "طب وجراحة الأعصاب",
+    "fr": "Neurologie",
+    "img_h": "/assets/spe/Neurology_HH.svg",
+    "img_f": "/assets/spe/Neurology_FF.svg"
+  },
+  {
+    "ar": "أمراض نفسية وعصبية",
+    "fr": "Neuropsychiatrie",
+    "ar_2": "أمراض نفسية",
+    "fr_2": "Psychiatrie",
+    "img_h": "/assets/spe/Psychiatry_HH.svg",
+    "img_f": "/assets/spe/Psychiatry_FF.svg"
+  },
+  {
+    "ar": "أمراض نفسية",
+    "fr": "Psychiatrie",
+    "ar_2": "أمراض نفسية وعصبية",
+    "fr_2": "Neuropsychiatrie",
+    "img_h": "/assets/spe/NeurologyPsy_HH.svg",
+    "img_f": "/assets/spe/NeurologyPsy_FF.svg"
+  },
+  {
+    "ar": "عيادة أرطفونية",
+    "fr": "Orthophoniste",
+    "ar_2": "عيادة نفسية",
+    "fr_2": "Psycologie",
+    "img_h": "/assets/spe/Psycologie_HH.svg",
+    "img_f": "/assets/spe/Psycologie_FF.svg"
+  },
+  {
+    "ar": "عيادة نفسية",
+    "fr": "Psycologie",
+    "ar_2": "عيادة أرطفونية",
+    "fr_2": "Orthophoniste",
+    "img_h": "/assets/spe/Orthophoniste_HH.svg",
+    "img_f": "/assets/spe/Orthophoniste_FF.svg"
+  },
+  {
+    "ar": "أخصائي أشعة",
+    "fr": "Radiologie",
+    "ar_2": "مركز التصوير الطبي",
+    "fr_2": "Centre d'Imagerie Médical",
+    "img_h": "/assets/spe/Radiology_HH.svg",
+    "img_f": "/assets/spe/Radiology_FF.svg"
+  },
+  {
+    "ar": "أخصائي أمراض الدم",
+    "fr": "Hématologie",
+    "img_h": "/assets/spe/Hématologie_HH.svg",
+    "img_f": "/assets/spe/Hématologie_FF.svg"
+  },
+  {
+    "ar": "أخصائي بيولوجيا",
+    "fr": "Biologie",
+    "ar_2": "أخصائي بيوكيمياء",
+    "fr_2": "Biochimie",
+    "img_h": "/assets/spe/Biologie_HH.svg",
+    "img_f": "/assets/spe/Biologie_FF.svg"
+  },
+  {
+    "ar": "أخصائي بيوكيمياء",
+    "fr": "Biochimie",
+    "ar_2": "أخصائي بيولوجيا",
+    "fr_2": "Biologie",
+    "img_h": "/assets/spe/Biochimie_HH.svg",
+    "img_f": "/assets/spe/Biochimie_FF.svg"
+  },
+  {
+    "ar": "عيادة بيطرية",
+    "fr": "Vétérinaire",
+    "img_h": "/assets/spe/Vétérinaire_HH.svg",
+    "img_f": "/assets/spe/Vétérinaire_FF.svg"
+  },
+  {
+    "ar": "أخصائي تغذية",
+    "fr": "Nutritionniste",
+    "img_h": "/assets/spe/Nutritionniste_HH.svg",
+    "img_f": "/assets/spe/Nutritionniste_FF.svg"
+  },
+  {
+    "ar": "مركز العناية الجسدية",
+    "fr": "Centre de Beauté et Médecine Alternative",
+    "img_h": "/assets/spe/Body_Care_HH.svg",
+    "img_f": "/assets/spe/Body_Care_FF.svg"
+  },
+  {
+    "ar": "مصحة (كلينيك)",
+    "fr": "Clinique",
+    "img_h": "/assets/spe/Clinique.svg",
+    "img_f": "/assets/spe/Clinique.svg"
+  },
+  {
+    "ar": "مستشفى",
+    "fr": "Hôpital",
+    "img_h": "/assets/spe/Hôpital.svg",
+    "img_f": "/assets/spe/Hôpital.svg"
+  },
+  {
+    "ar": "مخبر التحاليل الطبية",
+    "fr": "Laboratoire d'Analyse Médical",
+    "img_h": "/assets/spe/Laboratoire_HH.svg",
+    "img_f": "/assets/spe/Laboratoire_FF.svg"
+  },
+  {
+    "ar": "مخبر التشريح المرضي",
+    "fr": "Laboratoire d’Anatomie Pathologique",
+    "img_h": "/assets/spe/Anapath_HH.svg",
+    "img_f": "/assets/spe/Anapath_FF.svg"
+  },
+  {
+    "ar": "مركز التصوير الطبي",
+    "fr": "Centre d'Imagerie Médical",
+    "ar_2": "أخصائي أشعة",
+    "fr_2": "Radiologie",
+    "img_h": "/assets/spe/Imagerie_HH.svg",
+    "img_f": "/assets/spe/Imagerie_FF.svg"
+  },
+  {
+    "ar": "صيدلية",
+    "fr": "Pharmacie",
+    "img_h": "/assets/spe/Pharmacie.svg",
+    "img_f": "/assets/spe/Pharmacie.svg"
+  },
+  {
+    "ar": "مؤسسة رعاية صحية",
+    "fr": "Assistance Médicale",
+    "img_h": "/assets/spe/Nurse_Care.svg",
+    "img_f": "/assets/spe/Nurse_Care.svg"
+  },
+  {
+    "ar": "نقل صحي",
+    "fr": "Transport sanitaire",
+    "img_h": "/assets/spe/Transport.svg",
+    "img_f": "/assets/spe/Transport.svg"
+  },
+  {
+    "ar": "تمريض منزلي",
+    "fr": "Infirmier à domicile",
+    "img_h": "/assets/spe/Nurse_HH.svg",
+    "img_f": "/assets/spe/Nurse_FF.svg"
+  },
+  {
+    "ar": "إستشفاء منزلي",
+    "fr": "Médecin à domicile",
+    "img_h": "/assets/spe/Care_HH.svg",
+    "img_f": "/assets/spe/Care_FF.svg"
+  },
+  {
+    "ar": "إعادة تأهيل منزلي",
+    "fr": "Kinésithérapie à domicile",
+    "img_h": "/assets/spe/Kine_HH.svg",
+    "img_f": "/assets/spe/Kine_FF.svg"
+  },
+  {
+    "ar": "جمعية صحية",
+    "fr": "Association “ Santé – Solidarité “",
+    "img_h": "/assets/spe/Association.svg",
+    "img_f": "/assets/spe/Association.svg"
+  }
+]

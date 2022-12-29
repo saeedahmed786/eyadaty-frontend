@@ -1,0 +1,1481 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "react-quill/dist/quill.snow.css";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.custom-img {
+    background-image: url('/assets/downloadbanner.png');
+    height: 75%;
+    width: 100%;
+}
+
+body {
+    overflow-x: hidden !important;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+a {
+    /* color: inherit !important; */
+    text-decoration: inherit;
+}
+
+a:hover {
+    color: #0094DA;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    content: url("../assets/rightArrow.svg") !important;
+    display: block;
+    margin: 0px -23px;
+}
+
+.slick-prev:before {
+    transform: rotate(180deg) !important;
+}
+
+.qoutes-white span {
+    width: 56px !important;
+}
+
+.quill .ql-container.ql-snow {
+    background-color: white;
+    min-height: 300px;
+}
+
+.slick-cloned {
+    display: none !important;
+}
+
+.CommentCard .liked .anticon,
+.CommentCard .liked {
+    color: #29C773 !important;
+}
+
+.CommentCard .disliked .anticon,
+.CommentCard .disliked {
+    color: #FF6551 !important;
+}
+
+.ant-table-cell {
+    width: 100px !important;
+    border-bottom: 1px solid #C0C5CE !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #1C2126;
+}
+
+.textElipsisTwoLines {
+    max-width: 200px !important;
+    padding-right: 0px;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+}
+
+.categoryCard img {
+    display: inline !important;
+}
+
+@media screen and (min-width: 1399px) {
+    .container {
+        width: 1320px !important;
+    }
+}
+
+@media screen and (min-width: 1199px) and (max-width:1398px) {
+    .container {
+        width: 1140px !important;
+    }
+}
+
+@media screen and (min-width: 991px) and (max-width:990px) {
+    .container {
+        width: 960px !important;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width:574px) {
+    .container {
+        width: 720px !important;
+    }
+}
+
+@media screen and (min-width: 575px) and (max-width:776px) {
+    .container {
+        width: 540px !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .container {
+        width: 100% !important;
+    }
+}
+
+.ant-select .ant-select-selector {
+    background: #F5F8FB !important;
+    border-radius: 12px;
+    height: 48px !important;
+    display: flex;
+    align-items: center;
+    border: none !important;
+}
+
+.ant-select .ant-select-selector input {
+    height: 48px !important;
+}
+
+.ant-select-dropdown {
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.08)) !important;
+    border-radius: 12px;
+    background: #F5F8FB !important;
+}
+
+.ant-switch {
+    border: 1px solid #A7ADBA;
+    border-radius: 12px;
+    height: 23px;
+}
+
+:where(.css-dev-only-do-not-override-1s3dcof).ant-switch .ant-switch-handle::before {
+    background-color: #A7ADBA !important;
+    border-radius: 12px !important;
+    top: -0px !important;
+}
+
+.ant-input,
+.ant-input-affix-wrapper {
+    border: 1px solid #C0C5CE;
+    border-radius: 12px;
+    height: 48px;
+}
+
+.ant-input-affix-wrapper .ant-input {
+    height: auto !important;
+}
+
+.ant-form-item-feedback-icon .anticon-close-circle svg {
+    display: none !important;
+}
+
+.ant-switch-checked {
+    background-color: #0094DA !important;
+}
+
+.ant-form-item-feedback-icon .anticon-close-circle::after {
+    content: url("../assets/danger.svg");
+}
+
+.ant-form :where(.css-dev-only-do-not-override-1s3dcof).ant-row,
+:where(.css-1s3dcof).ant-form-item .ant-form-item-label>label {
+    display: block;
+}
+
+.ant-form :where(.css-dev-only-do-not-override-1s3dcof).ant-form-item .ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+    display: none !important;
+}
+
+.ant-form-item-feedback-icon-success .anticon {
+    vertical-align: 1px;
+}
+
+:where(.css-dev-only-do-not-override-1s3dcof).ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #0094DA;
+}
+
+.ant-form :where(.css-dev-only-do-not-override-1s3dcof).ant-form-item {
+    margin-bottom: 10px;
+}
+
+.ant-form .ant-form-item .ant-row {
+    display: block !important;
+}
+
+.bigTitle {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 72px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+    margin-bottom: 0px;
+}
+
+.subTitle {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+    margin-bottom: 0px;
+}
+
+.normalPara {
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    color: #333B42 !important;
+}
+
+.right-icon-ham {
+    font-size: 43px !important;
+    height: 12px !important;
+}
+
+.FAQ .ant-collapse-header {
+    background: #F5F8FB !important;
+    border-radius: 12px !important;
+    margin-top: 6px !important;
+    height: 68px !important;
+    align-items: center !important;
+}
+
+.FAQ .ant-collapse-header-text {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1C2126;
+}
+
+.FAQ .ant-collapse-content-box {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px !important;
+    display: flex;
+    align-items: center;
+    color: #333B42;
+    padding: 23px !important;
+}
+
+.FAQ .ant-collapse-ghost>.ant-collapse-item.ant-collapse-item-active .ant-collapse-header {
+    background: #0094DA !important;
+    border-radius: 12px !important;
+}
+
+.FAQ .ant-collapse-item-active .ant-collapse-header .ant-collapse-header-text {
+    color: white !important;
+}
+
+.FAQ .ant-collapse-header svg {
+    font-size: 17px !important;
+}
+
+.FAQ .ant-collapse-item-active svg {
+    color: white !important;
+}
+
+
+.ant-form-item-required::before,
+.ant-form-item-required::after {
+    display: none !important;
+}
+
+
+.searchBox input,
+.searchBox select {
+    border: 1px solid #C0C5CE;
+    border-radius: 12px;
+    height: 48px;
+    min-width: 28vw;
+    padding-left: 17px;
+}
+
+.SelectBox select {
+    border: 1px solid #C0C5CE;
+    border-radius: 12px;
+    height: 48px;
+    width: 100%;
+    padding-left: 17px;
+    background: url("../assets/DownArrow.svg") no-repeat;
+    background-position: calc(100% - 0.75rem) center !important;
+    -moz-appearance: none !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    padding-right: 2rem !important;
+}
+
+
+.SelectBoxSelect .ant-space-item .ant-input,
+.SelectBoxSelect .ant-space-item .ant-input-affix-wrapper {
+    background-color: transparent !important;
+    border: 0px !important;
+    height: 48px;
+    width: 100% !important;
+}
+
+.selectDropdown .ant-select-item-option {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    width: 100% !important;
+}
+
+
+/**************************** Home Page *************************/
+.homepage .slick-arrow {
+    display: none !important;
+}
+
+.homepage .slick-slide {
+    padding: 0px 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.categoriesComp .categoryCard {
+    text-align: center;
+}
+
+.homepage .searchForm .ant-select .ant-select-selector {
+    border-radius: 12px !important;
+    height: 48px !important;
+}
+
+.homepage .searchForm .ant-input,
+.homepage .searchForm .ant-input-affix-wrapper {
+    border-radius: 12px !important;
+    height: 48px !important;
+    border: none !important;
+}
+
+/**************************** Categories Page *************************/
+.CategoriesPage .categoryCard {
+    width: 20vw;
+    min-width: 200px;
+    text-align: center;
+}
+
+
+
+
+/**************************** Blog Page *************************/
+.blogsPage select {
+    padding-right: 17px !important;
+}
+
+.blogsPage .catCard .name {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #333B42;
+}
+
+.blogsPage .filterBtn button {
+    width: 48px;
+    height: 48px;
+    background: #C0C5CE;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blogsPage .filterBtn button:focus {
+    background: #0094DA;
+    color: white;
+}
+
+.blogsPage .catCard {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.blogsPage .catCard .name {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+
+    /* Colors / Gray / Gray-Dark */
+
+    color: #333B42;
+}
+
+.blogsPage .catCard .count {
+    background: #0094DA;
+    border-radius: 12px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    width: 36px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/**************************** Blog Card *************************/
+
+.BlogCard .mainImg span {
+    width: 100% !important;
+    /* object-fit: cover !important; */
+    max-width: 500px !important;
+    min-height: 280px;
+    min-width: 362px !important;
+    border-radius: 16px;
+}
+
+.BlogCard .inner img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.BlogCard .inner h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #0094DA;
+    margin: 15px 0px;
+    text-align: left;
+}
+
+.BlogCard .inner .dateCon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.BlogCard .inner .dateCon .anticon {
+    color: #0094DA;
+}
+
+.BlogCard .inner h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+    margin: 12px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-align: left;
+}
+
+.BlogCard .inner .nameAndPic {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 12px 0px;
+}
+
+.BlogCard .inner p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333B42;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-align: left;
+}
+
+
+.paginationCon .prevBtn {
+    background: #C0C5CE;
+    border-radius: 12px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #1C2126;
+    height: 48px;
+    padding: 0px 23px;
+    margin-top: -23px !important;
+}
+
+.paginationCon .nextBtn {
+    background: #0094DA;
+    border-radius: 12px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #1C2126;
+    height: 48px;
+    margin-top: -23px !important;
+    color: white !important;
+    padding: 0px 23px;
+}
+
+.paginationCon .ant-pagination .ant-pagination-item {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #65737E;
+}
+
+.paginationCon .ant-pagination .ant-pagination-item-active {
+    border: none !important;
+}
+
+
+
+/**************************** Blog Detail *************************/
+.Blog .mainImg img {
+    width: 100% !important;
+    height: 396px !important;
+    border-radius: 16px;
+}
+
+.Blog h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+    margin: 23px 0px;
+}
+
+.Blog .namAndPic span {
+    width: 87px !important;
+    height: 87px !important;
+}
+
+.Blog .detailsText h1 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 70px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+    margin-bottom: 0px;
+}
+
+.Blog .detailsText h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+    margin-bottom: 0px;
+}
+
+.Blog .detailsText h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+    margin-bottom: 0px;
+}
+
+.Blog .detailsText p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333B42;
+}
+
+.AddComment h3,
+.CommentCard h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+    margin: 23px 0px;
+}
+
+.AddComment textarea,
+.CommentCard textarea {
+    border: 1px solid #C0C5CE;
+    border-radius: 12px;
+    height: 140px;
+    width: 100%;
+    padding: 15px;
+}
+
+.AddComment button {
+    background: #0094DA;
+    border-radius: 12px;
+    height: 48px;
+    padding: 0px 23px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.Blog .keywords button {
+    border: 1px solid #333B42;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #333B42;
+}
+
+
+
+/**************************** Small Blog Card *************************/
+.SmallBlogCard {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+
+.SmallBlogCard .mainImg img {
+    object-fit: cover !important;
+    width: 105px !important;
+    height: 102px !important;
+    border-radius: 8px;
+}
+
+.SmallBlogCard .inner h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #0094DA;
+}
+
+.SmallBlogCard .inner .dateCon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0px;
+}
+
+.SmallBlogCard .inner .dateCon .anticon {
+    color: #0094DA;
+}
+
+.SmallBlogCard .inner h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1C2126;
+    margin: 6px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+
+/******** Comment Card *******/
+.CommentCard .commentImg span {
+    width: 31px !important;
+    height: 31px !important;
+}
+
+
+
+
+/**************************** Search Page *************************/
+.SearchPage select {
+    padding-right: 17px !important;
+    /* min-width: 20vw !important; */
+}
+
+.SearchPage .ant-select .ant-select-selector {
+    background: #fff !important;
+    border: 1px solid #0094DA !important;
+    border-radius: 12px !important;
+    height: 48px !important;
+    overflow: hidden;
+}
+
+.SearchPage .ant-select-selection-item .ant-checkbox {
+    display: none !important;
+}
+
+.SearchPage .ant-select .anticon-down {
+    color: black !important;
+}
+
+.SearchPage .filterBtn button {
+    width: 48px;
+    height: 48px;
+    background: #C0C5CE;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filterBtn button.focused {
+    background: #0094DA;
+    color: white;
+}
+
+.SearchPage .catCard {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.SearchCard .swiper-slide {
+    width: 100% !important;
+    height: 140px !important;
+    /* max-height: 240px !important; */
+}
+
+.SearchCard {
+    background: #FFFFFF;
+    border: 2px solid #0094DA;
+    border-radius: 24px;
+    padding: 10px;
+}
+
+.SearchCard .swiper-slide-active img {
+    width: 100% !important;
+    height: 140px !important;
+    object-fit: cover !important;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 61.48%, rgba(0, 0, 0, 0.6) 127.51%);
+    border-radius: 16px;
+}
+
+.SearchCard .swiper-slide-active img {
+    object-fit: cover !important;
+}
+
+.SearchCard .thumbImages>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+.SearchCard .thumbImages button img {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 8px;
+}
+
+.SearchCard p {
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    line-height: 16px;
+    letter-spacing: 0.02em !important;
+    color: #65737E;
+}
+
+.SearchCard .profileImg {
+    background: #FFFFFF;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+
+/******* Doctor Details page ******/
+.DoctorDetails .nameAndPic h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 64px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+}
+
+.DoctorDetails .profileImg {
+    background: #FFFFFF !important;
+    padding: 10px;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.DoctorDetails .iconsContainter {
+    display: flex;
+    gap: 10px;
+}
+
+.DoctorDetails .iconsContainter div {
+    border: 1px solid #0094DA;
+    border-radius: 12px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DoctorDetails .mainImg img {
+    border-radius: 24px;
+}
+
+.DoctorDetails .imagesContainer span {
+    object-fit: cover !important;
+    border-radius: 24px;
+}
+
+.DoctorDetails .imagesContainer .smallImages>div img {
+    width: 264px !important;
+    height: 264px !important;
+    border-radius: 24px;
+}
+
+.DoctorDetails .imagesContainer .smallImages>div img {
+    width: 264px !important;
+    height: 264px !important;
+}
+
+.DoctorDetails .likeContantainer {
+    text-align: center;
+    margin-top: 43px;
+    background: #FFFFFF;
+    border: 1px solid #C0C5CE;
+    border-radius: 24px;
+    padding: 23px;
+}
+
+.DoctorDetails .likeContantainer button {
+    background: #FF6551;
+    border-radius: 12px;
+    width: 20%;
+    height: 48px;
+    justify-content: center;
+    gap: 6px;
+    color: white;
+}
+
+.DoctorDetails .likeContantainer button:last-of-type {
+    background: #29C773;
+}
+
+.DoctorDetails section .header {
+    background: #F5F8FB;
+    height: 72px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 0px 10px;
+    margin-bottom: 28px;
+}
+
+.DoctorDetails section .header h4 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+}
+
+.DoctorDetails section .count {
+    background: #0094DA;
+    border-radius: 32px;
+    padding: 4px 12px;
+    color: white;
+}
+
+.DoctorDetails section ul {
+    /* list-style: outside; */
+    color: #1C2126;
+}
+
+.DoctorDetails section ul li {
+    margin-top: 23px;
+}
+
+.DoctorDetails section ul li::before {
+    content: "\2022";
+    color: #93C01F;
+    font-size: 23px;
+    vertical-align: middle;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+}
+
+.DoctorDetails section .calendar h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333B42;
+}
+
+
+
+/**************************** Favourites *************************/
+.Favourites .searchBox select,
+.Favourites .searchBox input {
+    min-width: fit-content !important;
+}
+
+.Favourites select {
+    padding-right: 17px !important;
+}
+
+.Favourites .catCard .name {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #333B42;
+}
+
+.Favourites .catCard {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.Favourites .catCard .name {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #333B42;
+}
+
+.Favourites .catCard .count {
+    background: #0094DA;
+    border-radius: 12px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    width: 36px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.deleteModal {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    max-width: 430px;
+}
+
+.deleteModal .ant-modal-content {
+    padding: 43px;
+    padding-top: 20px;
+    padding-bottom: 32px;
+    background: #FFFFFF;
+    border-radius: 24px;
+}
+
+.deleteModal h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+}
+
+.deleteModal button {
+    background: #0094DA;
+    border-radius: 12px;
+    height: 48px;
+    width: 50%;
+    color: white;
+}
+
+.deleteModal .ant-modal-content button:last-of-type {
+    background: #C0C5CE;
+    color: black;
+}
+
+.deleteModal .ant-modal-close {
+    display: none;
+}
+
+.deleteModal .ant-modal-content .closeIcon button {
+    background: transparent !important;
+    padding: 0px !important;
+    width: fit-content !important;
+}
+
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+    width: 210px;
+}
+
+
+
+/********* Profile *********/
+.ProfileLayout .Profile {
+    position: relative;
+}
+
+.uploadBtn {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #0094DA;
+}
+
+.uploadBtn {
+    border: 1px solid #0094DA;
+    border-radius: 12px;
+    height: 48px;
+    padding: 0px 21px;
+}
+
+.ProfileLayout .uploadBtn .arrowUp {
+    border: 1px solid #0094DA;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteBtn {
+    background: #FF6551;
+    border-radius: 12px;
+    height: 48px;
+    padding: 0px 23px;
+    color: white;
+}
+
+.ProfileLayout .ant-select .ant-select-selector,
+.ProfileLayout .ant-picker {
+    background-color: white !important;
+    border: 1px solid #C0C5CE !important;
+    border-radius: 12px !important;
+    height: 48px !important;
+}
+
+.ProfileLayout .ant-input-affix-wrapper input {
+    padding-left: 10px;
+}
+
+.ProfileLayout .ant-row {
+    display: flex !important;
+}
+
+.ant-upload-drag {
+    background-color: white !important;
+    border: 1px solid #C0C5CE !important;
+    border-radius: 12px !important;
+}
+
+.Invite .iconsContainer span,
+.Invite .iconsContainer img {
+    width: 48px !important;
+    height: 48px !important;
+    max-height: 100% !important;
+}
+
+
+
+
+
+/********** Admin ********/
+.AdminLayout .AdminNavbar .searchBox input {
+    background: #F5F8FB;
+    border-radius: 12px;
+}
+
+.AdminLayout .adminPagination .rc-pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #F5F8FB;
+    border-radius: 16px;
+    padding: 0px 6px;
+}
+
+.AdminLayout .adminPagination .rc-pagination .rc-pagination-item {
+    border-radius: 29px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AdminLayout .adminPagination .rc-pagination .rc-pagination-item-active {
+    background: #0094DA;
+    border-radius: 29px;
+    color: white;
+}
+
+.AdminLayout .adminPagination .rc-pagination .rc-pagination-jump-next::after,
+.AdminLayout .adminPagination .rc-pagination .rc-pagination-jump-prev::after {
+    content: ".....";
+}
+
+.ant-table-thead tr .ant-table-cell {
+    background: #93C01F !important;
+    color: white !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+    color: #FFFFFF;
+}
+
+.ant-table-thead tr .ant-table-cell:first-of-type {
+    border-top-left-radius: 16px !important;
+}
+
+.ant-table-thead tr .ant-table-cell:last-of-type {
+    border-top-right-radius: 16px !important;
+}
+
+.ant-table-cell::before {
+    display: none;
+}
+
+.AdminLayout .profileImg {
+    background: #FFFFFF;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.ant-table-column-sorter-inner .anticon svg {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.ant-table-column-sorter-inner .anticon.active svg {
+    color: white;
+}
+
+.AdminLayout .tag.Active {
+    background: rgba(41, 199, 115, 0.25);
+    border-radius: 17px;
+    padding: 4px, 8px, 4px, 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #29C773;
+    text-transform: capitalize;
+}
+
+.AdminLayout .tag.Pending {
+    background: rgba(250, 215, 35, 0.25);
+    border-radius: 17px;
+    padding: 4px, 8px, 4px, 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FAD723;
+    text-transform: capitalize;
+}
+
+.AdminLayout .Pages .ant-select .ant-select-selector {
+    background-color: white !important;
+    border: 1px solid #C0C5CE !important;
+    border-radius: 12px;
+}
+
+.AdminLayout .Pages .ant-space .ant-space-item {
+    width: 100%;
+}
+
+.AdminLayout .Pages .SelectBoxSelect .ant-space-item .ant-input-affix-wrapper {
+    max-width: 400px !important;
+}
+
+.AdminLayout .ant-form .ant-row {
+    display: flex;
+}
+
+.notesModal .ant-modal-content {
+    margin: 60px 0px;
+}
+
+.notesModal .ant-modal-close-x {
+    display: none;
+}
+
+.tooltip::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #0094DA;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 12px;
+    background-color: #0094DA;
+}
+
+.tooltip .tooltip-top::before {
+    top: 100%;
+    bottom: auto;
+    border-top: none;
+    border-bottom: 5px solid #0094DA;
+}
+
+.tooltip .tooltip-top::after {
+    top: 100%;
+    bottom: auto;
+}
+
+.DoctorDetails .map-container {
+    height: 400px;
+    position: relative !important;
+    border-radius: 16px;
+}
+
+.SearchPage .map-container {
+    height: 140vh;
+    position: relative !important;
+    border-radius: 16px;
+}
+
+.map-container .marker {
+    margin: 0;
+}
+
+.mapboxgl-control-container {
+    display: none !important;
+}
+
+.ant-select-selection-overflow {
+    flex-wrap: nowrap !important;
+}
+
+.selectDropdown .ant-input-affix-wrapper,
+.selectDropdown .ant-input {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+
+
+
+
+/* 
+@media (max-width: 600px) {
+    .homepage 
+} */
+
+.social-logins {
+    display: flex;
+    gap: 10px;
+}
+
+.social-logins button.googleBtn {
+    width: 72px;
+    height: 72px;
+    border-radius: 50% !important;
+    text-align: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    box-shadow: none !important;
+    border: 1px solid #C0C5CE !important;
+}
+
+.social-logins button.my-facebook-button-class {
+    width: 72px;
+    height: 72px;
+    border-radius: 50% !important;
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border: 1px solid #C0C5CE !important;
+}
+
+.social-logins button.googleBtn>div {
+    padding: 0px !important;
+    margin-right: 0px !important;
+}
+
+.social-logins button.googleBtn span {
+    display: none !important;
+}
+
+.social-logins button.googleBtn>div svg {
+    display: none;
+}
+
+.social-logins button.googleBtn>div {
+    content: url("../assets/google.svg") !important;
+}
+
+.social-logins button.my-facebook-button-class::before {
+    content: url("../assets/facebook.svg") !important;
+    padding-top: 4px;
+}
+
+.customAlertMessage {
+    max-width: 400px !important;
+}
+
+.customAlertMessage>div {
+    background: #29C773 !important;
+    padding: 0px 17px !important;
+    color: white;
+    /* Colors / State / Success / Success-100 */
+
+    border: 1px solid #29C773;
+    border-radius: 8px;
+    height: 56px;
+}
+
+.customAlertMessage.error>div {
+    background: #FF6551 !important;
+    padding: 0px 17px;
+    color: white;
+    border: 1px solid #FF6551;
+    border-radius: 8px;
+    height: 56px;
+}
+
+.AboutUsPage .slick-prev:before, .slick-next:before {
+    margin: 0px !important;
+    display: unset!important;
+}
+
+.AboutUsPage .slick-prev {
+    left: -20px !important;
+}
+.AboutUsPage .slick-next {
+    right: -10px !important;
+}
