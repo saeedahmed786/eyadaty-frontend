@@ -5,7 +5,7 @@ import DownloadApp from '../components/Home/downloadApp'
 import MainLayout from '../components/Layouts/MainLayout'
 import { ErrorMessage } from '../components/Messages/messages';
 import axios from 'axios';
-import specialitiesArray from "../assets/specialities.jsonn"
+import specialitiesArray from "../components/assets/specialities.jsonn"
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
