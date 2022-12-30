@@ -11,6 +11,7 @@ import { Cookies } from 'react-cookie';
 import { Loading } from '../../components/Loading/Loading';
 import statesArray from "../../assets/town_city/wilaya.json"
 import citiesArray from "../../assets/town_city/communes.json"
+import { useForm } from 'antd/lib/form/Form';
 
 
 const { Option } = Select;
@@ -20,7 +21,7 @@ const Profile = () => {
     const [file, setFile] = useState();
     const [image, setImage] = useState("");
     const [gender, setGender] = useState("Male");
-    const [getFormData] = Form.useForm();
+    const [getFormData] = useForm();
     const [loading, setLoading] = useState(false);
     const [userAuth, setUserAuth] = useState({});
     // State to store selected state and city
