@@ -77,7 +77,6 @@ const Profile = () => {
                 "authorization": "Bearer " + auth.token
             }
         }).then(res => {
-            setLoading(false);
             if (res.statusText === "OK") {
                 getFormData.setFieldsValue({
                     email: res.data?.email,
@@ -95,6 +94,7 @@ const Profile = () => {
             else {
                 ErrorMessage(res.data.errorMessage);
             }
+            setLoading(false);
         }).catch(err => {
             console.log(err)
             setLoading(false);
