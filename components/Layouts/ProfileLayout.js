@@ -1,25 +1,14 @@
 import { Col, Row } from 'antd'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { lazy, Suspense, useEffect, useState } from 'react'
-import { Cookies } from 'react-cookie'
+import React, { useEffect, useState } from 'react'
 import RightIcon from '../../components/icons/righticon'
 import { Loading } from '../../components/Loading/Loading'
-import { isAuthenticated } from '../Auth/auth'
-// import { isAuthenticated } from '../Auth/auth'
 import Footer from '../footer/footer'
 import DownloadApp from '../Home/downloadApp'
-// import Navbar from '../navbar'
-// import TopNavbar from '../topNavbar'
-
-const TopNavbar = dynamic(() => import('../topNavbar'), {
-    suspense: true,
-});
-const Navbar = dynamic(() => import('../navbar'), {
-    suspense: true,
-});
-
+import TopNavbar from '../topNavbar'
+import Navbar from '../navbar'
+import { isAuthenticated } from '../Auth/auth'
 const ProfileLayout = (props) => {
     const router = useRouter();
     const [loading, setLoading] = useState(true);

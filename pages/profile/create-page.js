@@ -388,7 +388,7 @@ const CreatePage = () => {
                                         },
                                     ]}
                                 >
-                                    <Input.TextArea placeholder='Bio' rows={6} showCount maxLength={100} />
+                                    <Input.TextArea placeholder='Bio' rows={6} showCount />
                                 </Form.Item>
                                 <Form.Item
                                     name="specialisation"
