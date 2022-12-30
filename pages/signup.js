@@ -57,7 +57,7 @@ const Signup = () => {
                 </div>
                 <Row className='py-10 block sm:flex' align="middle">
                     <Col md={12}>
-                        <h1 className='text-[64px] leading-[72px] font-[700]'>Créer un<br /> compte</h1>
+                        <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>Créer un<br /> compte</h1>
                         <div className='flex gap-2 py-6'>
                             <div>{"Vous n'avez pas de compte ?"}</div>
                             <a href='/login' className='text-[#0094DA]'>Connexion</a>

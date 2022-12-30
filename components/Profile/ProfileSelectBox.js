@@ -23,7 +23,7 @@ const ProfileSelectBox = ({ label, saveItem }) => {
                 checked &&
                 <Col xs={24}>
                     <Row gutter={[16, 16]} align="middle">
-                        <Col md={11}>
+                        <Col xs={12} md={11}>
                             <Select className='w-full' placeholder="Ouverture" onChange={(value) => setOpening(value)}>
                                 <Option value="24/24">24/24</Option>
                                 <Option value="00:00">00:00</Option>
@@ -41,7 +41,7 @@ const ProfileSelectBox = ({ label, saveItem }) => {
                                 <Option value="12:00">12:00</Option>
                             </Select>
                         </Col>
-                        <Col md={11}>
+                        <Col xs={12} md={11}>
                             <Select className='w-full' placeholder="Fermeture" onChange={(value) => setClosing(value)} suffixIcon={<Image src={DownArrow} alt="Arrow" />}>
                                 <Option value="24/24">24/24</Option>
                                 <Option value="00:00">00:00</Option>
@@ -59,8 +59,8 @@ const ProfileSelectBox = ({ label, saveItem }) => {
                                 <Option value="12:00">12:00</Option>
                             </Select>
                         </Col>
-                        <Col md={2}>
-                            <button className='btn bg-black text-white p-2 px-2 rounded-md h-[100%]' type='button' onClick={() => { saveItem(opening, closing, label); setChecked(false) }}>Save</button>
+                        <Col xs={24} md={2}>
+                            <button className='btn bg-[#0094DA] w-full text-white p-2 px-2 rounded-md h-[100%]' type='button' onClick={() => { saveItem(opening, closing, label); setChecked(false) }}>Save</button>
                         </Col>
                     </Row>
                 </Col>

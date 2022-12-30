@@ -49,7 +49,7 @@ const ForgotPassword = () => {
                         <div className='flex gap-2 items-center py-4'>
                             <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/forgot-password">Oublié le mot de passe</Link>
                         </div>
-                        <h1 className='text-[64px] leading-[72px] font-[700]'>Mot de passe oublié?</h1>
+                        <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>Mot de passe oublié?</h1>
                         <p className='my-4'>Des instructions sur la façon de réinitialiser votre mot de passe seront envoyées à votre adresse e-mail.</p>
                         <Form
                             form={form}

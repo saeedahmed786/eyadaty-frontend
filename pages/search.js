@@ -10,16 +10,14 @@ import LocationComp from '../components/Location'
 import RightIcon from '../components/icons/righticon'
 import { ErrorMessage } from '../components/Messages/messages'
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { useRouter } from 'next/router'
 import SearchWithCheckBox from '../components/Inputs/SearchWithCheckBox'
 
 
-const Search = ({ query }) => {
+const Search = () => {
     const [gridCol, setGridCol] = useState(24);
     const [current, setCurrent] = useState(1);
     const [userAuth, setUserAuth] = useState();
     const [clinics, setClinics] = useState([]);
-    const [results, setResults] = useState([]);
     const [speciality, setSpeciality] = useState('');
     const [clinicName, setClinicName] = useState('');
     const [selectedState, setSelectedState] = useState('');
@@ -28,9 +26,15 @@ const Search = ({ query }) => {
     const [service, setService] = useState('');
     const [options, setOptions] = useState('');
     const [avaialble, setAvailable] = useState('');
-    const [show, setShow] = useState(false);
     const [gender, setGender] = useState("Male");
     const [totalClinics, setTotalClinics] = useState([]);
+    const [lngLat, setLngLat] = useState(null);
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLngLat([position.coords.longitude, position.coords.latitude]);
+        });
+    }, []);
 
     const getClinics = async (curr) => {
         await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/limited/${curr - 1}`).then(res => {
@@ -45,10 +49,9 @@ const Search = ({ query }) => {
     };
 
     const search = () => {
-        return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/search?specialisation=${speciality}&state=${selectedState}&city=${city}&available=${avaialble}&gender=${gender}&service=${service}&sortBy=${sortBy}&option=${options}&clinicName=${clinicName}`);
+        return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/search?specialisation=${speciality}&state=${selectedState}&city=${city}&available=${avaialble}&gender=${gender}&service=${service}&sortBy=${sortBy}&options=${options}&clinicName=${clinicName}`);
     }
 
-    console.log(speciality, selectedState, city, avaialble, gender, service, sortBy, options)
     const handleSearch = () => {
         search().then((response) => {
             setClinics(response.data);
@@ -122,7 +125,7 @@ const Search = ({ query }) => {
                             <SearchWithCheckBox handleUpdate={(value) => setService(value)} data={services} label="Services" placeholder="Services" />
                         </div>
                         <div className='w-[100%] sm:w-[15vw]'>
-                            <SearchWithCheckBox handleUpdate={(value) => setSortBy(value)} data={["Plus de recommandation", "Le plus regardé", "La plus proche"]} label="Trier par" placeholder="Trier par" />
+                            <SearchWithCheckBox handleUpdate={(value) => value === "Plus de recommandation" ? setSortBy("recommendations") : value === "Le plus regardé" ? setSortBy("views") : setSortBy("closest")} data={["Plus de recommandation", "Le plus regardé", "La plus proche"]} label="Trier par" placeholder="Trier par" />
                         </div>
                         <div className='w-[100%] sm:w-[15vw]'>
                             <SearchWithCheckBox handleUpdate={(value) => setGender(value)} prevValue={gender} data={["Male", "Female"]} label="Le genre" placeholder="Le genre" />
@@ -132,10 +135,10 @@ const Search = ({ query }) => {
                         </div>
                     </div>
                 </div>
-                <button onClick={handleSearch}>Search</button>
+                <button onClick={handleSearch} className="mt-6 bg-[#0094DA] text-white w-full h-[48px] rounded-[16px]">Search</button>
                 <Row gutter={[23, 23]}>
                     <Col md={14}>
-                        <h2 className='text-[16px] sm:subTitle my-12'>Recherche de <span className='text-[#0094DA]'>{`" Cardiologie "`}</span></h2>
+                        <h2 className='text-[16px] subTitle my-12'>Recherche de <span className='text-[#0094DA]'>{clinicName}</span></h2>
                         <div className='flex justify-between items-center my-8'>
                             <div>Nous avons trouvé <span className='text-[#0094DA]'>1 - 55</span> résultats</div>
                             <div className='hidden md:flex gap-2 items-center filterBtn'>
@@ -195,7 +198,7 @@ const Search = ({ query }) => {
                     </Col>
                     <Col md={10} className="pl-0 pt-8 relative">
                         <div style={{ height: "100%", marginLeft: "100px", marginRight: "-21vw" }}>
-                            <LocationComp />
+                            <LocationComp coords={lngLat} />
                         </div>
                     </Col>
                 </Row>

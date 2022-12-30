@@ -111,21 +111,23 @@ export default function SearchForm() {
                                             </svg>
                                         </span>
                                         </button>
-                                        <div className='flex justify-between items-center mt-6 w-[40vw]'>
+                                        <div className='flex justify-between flex-wrap items-center mt-6 w-[40vw]'>
                                             <div>
                                                 <Input onChange={(e) => setName(e.target.value)} className='min-w-[280px] bg-[#F5F8FB] rounded-[12px] border-0' placeholder='Nom de médecin' />
                                             </div>
-                                            <div>
-                                                <h5>Le genre</h5>
-                                                <div className='flex justify-between mt-3'>
-                                                    <Checkbox value="Male" onChange={(e) => e.target.checked && setGender(e.target.value)}>Male</Checkbox>
-                                                    <Checkbox value="Female" onChange={(e) => e.target.checked && setGender(e.target.value)}>Female</Checkbox>
+                                            <div className='flex justify-between gap-10 sm:gap-8 items-center mt-6 sm:mt-0'>
+                                                <div className=''>
+                                                    <h5 className=''>Le genre</h5>
+                                                    <div className='flex justify-between mt-2 sm:mt-3'>
+                                                        <Checkbox value="Male" onChange={(e) => e.target.checked && setGender(e.target.value)}>Male</Checkbox>
+                                                        <Checkbox value="Female" onChange={(e) => e.target.checked && setGender(e.target.value)}>Female</Checkbox>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div>
-                                                <h5>Disponible</h5>
-                                                <div className='flex justify-between mt-3'>
-                                                    <Checkbox value="Avaialble" onChange={(e) => e.target.checked && setAvailable(e.target.value)}>Ouvert</Checkbox>
+                                                <div>
+                                                    <h5>Disponible</h5>
+                                                    <div className='flex justify-between mt-2 sm:mt-3'>
+                                                        <Checkbox value="Avaialble" onChange={(e) => e.target.checked && setAvailable(e.target.value)}>Ouvert</Checkbox>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

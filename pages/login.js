@@ -97,7 +97,7 @@ const Login = () => {
                 </div>
                 <Row className='py-10'>
                     <Col md={12}>
-                        <h1 className='text-[64px] leading-[72px] font-[700]'>Connectez-vous à votre compte</h1>
+                        <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>Connectez-vous à votre compte</h1>
                         <div className='flex gap-2 py-6'>
                             <div>{"Vous n'avez pas de compte ?"}</div>
                             <button className='text-[#0094DA] border-0' onClick={() => router.push("/signup")}>Créer un compte</button>

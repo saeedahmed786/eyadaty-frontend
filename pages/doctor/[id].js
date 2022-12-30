@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd'
-import React, { useEffect, useState } from 'react'
+import React, { Children, useEffect, useState } from 'react'
 import RightIcon from '../../components/icons/righticon'
 import Check from "../../assets/Checkmark.svg"
 import Image from 'next/image'
@@ -14,7 +14,6 @@ import Twitter from "../../assets/Twitter_blue.svg"
 import Instagram from "../../assets/Instagram_blue.svg"
 import Messenger from "../../assets/Messenger_blue.svg"
 import Doc from "../../assets/doc.jpg"
-import Map from "../../assets/Map-Sp.svg"
 import Boomark from "../../assets/Bookmark.svg"
 import Link from "../../assets/link.svg"
 import Send from "../../assets/Send.svg"
@@ -25,7 +24,6 @@ import { DislikeFilled, DislikeOutlined, EnvironmentTwoTone, EyeTwoTone, HeartTw
 import Phone from '../../components/icons/Phone'
 import MainLayout from '../../components/Layouts/MainLayout'
 import axios from 'axios'
-import { useRouter } from 'next/router'
 import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages'
 import { isAuthenticated } from '../../components/Auth/auth'
 import formatStringNumbers from '../../components/FormatNumbers'
@@ -43,12 +41,14 @@ const IndDoctor = () => {
     const [favourites, setFavourites] = useState([]);
     const [recommended, setRecommended] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [gpsDataLoading, setgpsDataLoading] = useState(true);
     const [notRecommended, setNotRecommended] = useState(false);
 
     const getClinic = async (id) => {
         await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/get/${id}`).then(res => {
             if (res.statusText === "OK") {
                 setClinic(res.data);
+                // setGpsData(clinic?.gpsData?.replace(/\s+/g, '').split(",")[0], clinic?.gpsData?.replace(/\s+/g, '').split(",")[1])
             }
             else {
                 ErrorMessage(res.data.errorMessage);
@@ -225,6 +225,16 @@ const IndDoctor = () => {
             ErrorMessage("Please login first");
         }
     }
+
+    useEffect(() => {
+        setTimeout(() => {
+            setgpsDataLoading(false);
+        }, 2000);
+
+        return () => {
+
+        }
+    }, [])
 
 
 
@@ -418,8 +428,12 @@ const IndDoctor = () => {
                                                 </div>
                                             </Col>
                                             <Col md={12} className="relative">
-                                                <LocationComp />
-                                                {/* <Image src={Map} alt="Map" className='text-red' style={{ color: "red" }} /> */}
+                                                {
+                                                    gpsDataLoading ?
+                                                        <Loading />
+                                                        :
+                                                        <LocationComp coords={[clinic?.gpsData?.replace(/\s+/g, '').split(",")[0], clinic?.gpsData?.replace(/\s+/g, '').split(",")[1]]} />
+                                                }
                                             </Col>
                                         </Row>
                                     </section>

@@ -4,19 +4,35 @@ import linkedin from "../assets/smallLinkedin.svg"
 import instagram from "../assets/smallInstagram.svg"
 import facebook from "../assets/smallFacebook.svg"
 import twitter from "../assets/smallTwitter.svg"
-import React from 'react'
+import React, { useState } from 'react'
 import RightIcon from '../components/icons/righticon'
 import illustration from "../assets/contact.svg"
 import DownloadApp from '../components/Home/downloadApp'
 import Link from 'next/link'
 import MainLayout from '../components/Layouts/MainLayout'
+import axios from 'axios'
+import { SuccessMessage } from '../components/Messages/messages'
+import { Loading } from '../components/Loading/Loading'
 
 const { TextArea } = Input;
 
 const ContactUs = () => {
     const [form] = Form.useForm();
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const [loading, setLoading] = useState(false);
+
+
+    const onFinish = async (values) => {
+        const { fullName, email, message } = values;
+        setLoading(true);
+        await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/contactUs`, { fullName, email, message }).then(res => {
+            setLoading(false);
+            if (res.statusText === "OK") {
+                SuccessMessage(res.data.successMessage);
+            }
+            else {
+                setError(true);
+            }
+        })
     };
 
     return (
@@ -28,61 +44,66 @@ const ContactUs = () => {
                             <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/contact-us">Contactez-nous</Link>
                         </div>
                         <h1 className='text-[64px] leading-[72px] font-[700] pb-6'>Contactez-nous</h1>
-                        <Form
-                            form={form}
-                            name="ContactUs"
-                            onFinish={onFinish}
-                            scrollToFirstError
-                        >
-                            <Form.Item
-                                name="fullName"
-                                label="Nom et prénom"
-                                hasFeedback
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input your Nom et prénom',
-                                    },
-                                ]}
-                            >
-                                <Input placeholder='Nom et prénom' />
-                            </Form.Item>
-                            <Form.Item
-                                name="email"
-                                label="E-mail"
-                                hasFeedback
-                                rules={[
-                                    {
-                                        type: 'email',
-                                        message: "Format d'e-mail incorrect",
-                                    },
-                                    {
-                                        required: true,
-                                        message: 'Please input your E-mail!',
-                                    },
-                                ]}
-                            >
-                                <Input placeholder='E-mail' />
-                            </Form.Item>
-                            <Form.Item
-                                name="message"
-                                label="Méssage"
-                                hasFeedback
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input your Méssage',
-                                    },
-                                ]}
-                            >
-                                <TextArea rows={6} placeholder='Méssage' />
-                            </Form.Item>
-                            <Form.Item className='my-5'>
-                                <button type="submit" className='btn w-full bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
-                                    Envoyez
-                                </button>
-                            </Form.Item>
-                        </Form>
+                        {
+                            loading ?
+                                <Loading />
+                                :
+                                <Form
+                                    form={form}
+                                    name="ContactUs"
+                                    onFinish={onFinish}
+                                    scrollToFirstError
+                                >
+                                    <Form.Item
+                                        name="fullName"
+                                        label="Nom et prénom"
+                                        hasFeedback
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please input your Nom et prénom',
+                                            },
+                                        ]}
+                                    >
+                                        <Input placeholder='Nom et prénom' />
+                                    </Form.Item>
+                                    <Form.Item
+                                        name="email"
+                                        label="E-mail"
+                                        hasFeedback
+                                        rules={[
+                                            {
+                                                type: 'email',
+                                                message: "Format d'e-mail incorrect",
+                                            },
+                                            {
+                                                required: true,
+                                                message: 'Please input your E-mail!',
+                                            },
+                                        ]}
+                                    >
+                                        <Input placeholder='E-mail' />
+                                    </Form.Item>
+                                    <Form.Item
+                                        name="message"
+                                        label="Méssage"
+                                        hasFeedback
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please input your Méssage',
+                                            },
+                                        ]}
+                                    >
+                                        <TextArea rows={6} placeholder='Méssage' />
+                                    </Form.Item>
+                                    <Form.Item className='my-5'>
+                                        <button type="submit" className='btn w-full bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
+                                            Envoyez
+                                        </button>
+                                    </Form.Item>
+                                </Form>
+                        }
                         <div className='text-center pt-8'>
                             <p className='pb-2'>Suivez-nous sur</p>
                             <div className='flex justify-center gap-1'>

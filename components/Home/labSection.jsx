@@ -45,7 +45,7 @@ export default function LabSection({ clinics }) {
 
   return (
     <div>
-      <section className="text-gray-600 body-font mb-24">
+      <section className="text-gray-600 body-font mt-24 mb-24">
         <div className="container px-5 sm:py-24 mx-auto">
           <div className="flex flex-wrap justify-between  w-full sm:mb-20">
             <div className="lg:w-1/2 w-full mb-6 lg:mb-0">

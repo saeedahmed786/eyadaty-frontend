@@ -20,13 +20,13 @@ import Link from 'next/link'
 const Pages = () => {
     const router = useRouter();
     const [pages, setPages] = useState([]);
-    const [originalPages, setOriginalPages] = useState([]);
     const [userAuth, setUserAuth] = useState({});
     const [categoryId, setCategoryId] = useState("");
     const [status, setStatus] = useState("Pending");
     const [paidStatus, setPaidStatus] = useState("Free");
     const [current, setCurrent] = useState(1);
     const [totalPages, setTotalPages] = useState();
+    const [clinicName, setClinicName] = useState("");
 
 
     const getAllPages = async (curr) => {
@@ -148,14 +148,14 @@ const Pages = () => {
         },
     ];
 
-
-
-    const search = () => {
-        return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/admin/finding?specialisation=${categoryId}&paidStatus=${paidStatus}&status=${status}`);
+    const handleSearch = async () => {
+        return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/admin/finding?specialisation=${categoryId}&paidStatus=${paidStatus}&status=${status}`).then((response) => {
+            setPages(response.data);
+        });
     }
 
-    const handleSearch = () => {
-        search().then((response) => {
+    const handleNameOnlySearch = async () => {
+        return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/admin/finding?clinicName=${clinicName}`).then((response) => {
             setPages(response.data);
         });
     }
@@ -168,58 +168,108 @@ const Pages = () => {
     return (
         <AdminLayout sidebar>
             <div className='Pages pt-6'>
-                <div className='flex justify-between items-center'>
-                    <div className='flex gap-2 justify-center items-center py-4'>
-                        <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Les pages</button>
-                    </div>
+                <div className='md:flex justify-between items-start flex-wrap'>
                     <div>
-                        <button onClick={() => router.push("/admin/create-page")} className='flex items-center gap-2 bg-[#0094DA] rounded-[12px] text-white h-[48px] px-6'>
+                        <div className='flex gap-2 justify-start items-center pb-4'>
+                            <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Les pages</button>
+                        </div>
+                        <div>
+                            <h1 className='bigTitle'>Les pages</h1>
+                            <div className='md:max-w-[40vw]'>
+                                <div className='flex gap-3 mt-12'>
+                                    <div className='w-[100%]'>
+                                        <SearchInputs handleUpdate={(val) => setClinicName(val)} />
+                                    </div>
+                                    <button onClick={handleNameOnlySearch} className='flex items-center md:w-full justify-center gap-2 bg-[#fff] border border-[#0094DA] rounded-[12px] text-[#0094DA] h-[48px] px-6'>
+                                        <FilterOutlined />
+                                        <span className='text-[16px] font-[500]'>Filter</span>
+                                    </button>
+                                </div>
+                                <div className='mt-12'>
+                                    <SelectBoxWidthSearch data={specialitiesArray} prevValue={specialitiesArray[0].fr} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
+                                </div>
+                                <div className='flex justify-between flex-wrap gap-6 mt-6'>
+                                    <div>
+                                        <h5>Type de page</h5>
+                                        <div className='flex justify-between gap-6 sm:gap-0 mt-3'>
+                                            <Checkbox value="Free" checked={paidStatus === "Free"} onChange={(e) => setPaidStatus(e.target.value)}>Freemium</Checkbox>
+                                            <Checkbox value="Premium" checked={paidStatus === "Premium"} onChange={(e) => setPaidStatus(e.target.value)}>Premium</Checkbox>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5>Actif</h5>
+                                        <div className='flex justify-between gap-6 sm:gap-0 w-full mt-3'>
+                                            <Checkbox value="Active" checked={status === "Active"} onChange={(e) => setStatus(e.target.value)}>Activé</Checkbox>
+                                            <Checkbox value="Pending" checked={status === "Pending"} onChange={(e) => setStatus(e.target.value)}>En attente</Checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onClick={handleFilter} className='bg-[#0094DA] mt-6 rounded-[12px] text-white h-[48px] w-full md:w-[auto] px-12 text-[16px] font-[500]'>
+                                Filtrez
+                            </button>
+                        </div>
+                    </div>
+                    <div className='mt-8 sm:mt-0'>
+                        <button onClick={() => router.push("/admin/create-page")} className='flex items-center justify-center gap-2 bg-[#0094DA] w-full rounded-[12px] text-white h-[48px] px-6'>
                             <PlusIcon />
                             <span className='text-[16px] font-[500]'>Ajouter un page</span>
                         </button>
                     </div>
                 </div>
-                <h1 className='bigTitle'>Les pages</h1>
-                <div className='max-w-[40vw]'>
-                    <div className='flex gap-3 mt-12'>
-                        <SearchInputs />
-                        <button className='flex w-full items-center justify-center gap-2 bg-[#fff] border border-[#0094DA] rounded-[12px] text-[#0094DA] h-[48px] px-6'>
-                            <FilterOutlined />
-                            <span className='text-[16px] font-[500]'>Filter</span>
-                        </button>
+                <div className='mt-10'>
+                    <div className='hidden md:block bg-white'>
+                        <Table showSorterTooltip columns={columns} pagination={false} dataSource={pages} />
                     </div>
-                    <div className='mt-12'>
-                        <SelectBoxWidthSearch data={specialitiesArray} prevValue={specialitiesArray[0].fr} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
+                    <div className='block md:hidden'>
+                        {
+                            pages && pages.length > 0 && pages.map(page => {
+                                return (
+                                    <div className='flex justify-between p-3 bg-white mt-1 rounded-[16px]'>
+                                        <div>
+                                            <div className='text-[#0094DA] text-[12px] font-[500]'>{page._id}</div>
+                                            <div className='min-w-[130px] mt-3'>
+                                                <div className='nameAndPic w-full flex justify-between'>
+                                                    <div className='flex items-center gap-2'>
+                                                        <div className='profileImg'>
+                                                            <img src={page?.picture?.url} alt="Doctor" width={32} height={32} className="rounded-[50%]" />
+                                                        </div>
+                                                        <div className='w-full'>
+                                                            <div className='flex gap-2'>
+                                                                <h6>{page?.firstName} {page?.lastName}</h6>
+                                                                <Image src={Check} alt="Checkmark" className='w-[32px] h-[32px]' />
+                                                            </div>
+                                                            <p className='mt-0 text-left text-[#65737E] text-[12px]'>{page?.specialisation}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className='mt-5'>{page?.specialisation}</div>
+                                            <div className='mt-5'>{page?.paidStatus}</div>
+                                            <div className='mt-5'>{page?.owner}</div>
+                                        </div>
+                                        <div className='flex justify-end text-end'>
+                                            <div>
+                                                <div className={`tag ${page?.status} rounded-[12px] text-[12px] font-[500] mb-4`}>{page?.status}</div>
+                                                <div className='flex items-center gap-4 mt-3'>
+                                                    <Link href={"/doctor/" + page?._id}><EyeOutlined /></Link>
+                                                    <EditOutlined onClick={() => router.push(`/admin/update-page/${page?._id}`)} />
+                                                    <DeleteModal deleteFun={deleteHandler} id={page._id} deleteBtn={<DeleteOutlined style={{ verticalAlign: "middle" }} />} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
-                    <div className='flex justify-between mt-6'>
-                        <div>
-                            <h5>Type de page</h5>
-                            <div className='flex justify-between mt-3'>
-                                <Checkbox value="Free" checked={paidStatus === "Free"} onChange={(e) => setPaidStatus(e.target.value)}>Freemium</Checkbox>
-                                <Checkbox value="Premium" checked={paidStatus === "Premium"} onChange={(e) => setPaidStatus(e.target.value)}>Premium</Checkbox>
-                            </div>
-                        </div>
-                        <div>
-                            <h5>Actif</h5>
-                            <div className='flex justify-between mt-3'>
-                                <Checkbox value="Active" checked={status === "Active"} onChange={(e) => setStatus(e.target.value)}>Activé</Checkbox>
-                                <Checkbox value="Pending" checked={status === "Pending"} onChange={(e) => setStatus(e.target.value)}>En attente</Checkbox>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button onClick={handleFilter} className='bg-[#0094DA] mt-6 rounded-[12px] text-white h-[48px] px-12 text-[16px] font-[500]'>
-                    Filtrez
-                </button>
-                <div className='mt-10 bg-white'>
-                    <Table showSorterTooltip columns={columns} pagination={false} dataSource={pages} />
-                    <div className='adminPagination p-4 flex items-center justify-between my-12'>
+                    <div className='adminPagination bg-white p-4 flex items-center justify-between flex-wrap rounded-[16px] md:rounded-none my-1 md:my-12'>
                         <p className='text-[#65737E] text-[12px]'>Affichage de {current * 10} sur {totalPages}  entrées</p>
                         <AdminPagination totalLength={totalPages} handlePagination={(curr) => { setCurrent(curr); getAllPages(curr) }} />
                     </div>
                 </div>
-            </div>
-        </AdminLayout>
+            </div >
+        </AdminLayout >
     )
 }
 

@@ -327,12 +327,8 @@ const CreatePage = () => {
                                     name="phoneTwo"
                                     label="Numéro de Téléphone 02 ( Optional )"
                                     hasFeedback
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your Numéro de Téléphone 02 ( Optional )!',
-                                        }
-                                    ]}
+                                    required={false}
+                                    requiredMark={false}
                                 >
                                     <Input placeholder='Numéro de Téléphone 02 ( Optional )' prefix={"+213"} />
                                 </Form.Item>
@@ -342,7 +338,7 @@ const CreatePage = () => {
                                     hasFeedback
                                     rules={[
                                         {
-                                            required: true,
+                                            required: false,
                                             message: 'Please input your Numéro de Téléphone Fixe ( Optional )!',
                                         }
                                     ]}
@@ -373,7 +369,7 @@ const CreatePage = () => {
                                     hasFeedback
                                     rules={[
                                         {
-                                            required: true,
+                                            required: false,
                                             message: 'Please input your Lien de Facebook  ( Optional )!',
                                         },
                                     ]}
@@ -385,7 +381,7 @@ const CreatePage = () => {
                                     label="Bio ( Optional )"
                                     rules={[
                                         {
-                                            required: true,
+                                            required: false,
                                             message: 'Please input Bio ( Optional )',
                                         },
                                     ]}
@@ -570,7 +566,7 @@ const CreatePage = () => {
                                             </p>
                                         </Upload.Dragger>
                                     </Form.Item>
-                                    <p className='text-center text-[#65737E] leading-[12px] mt-2'>{"Essayez de télécharger l'image dans ces formats ( PNG, JPEG )"}</p>
+                                    <p className='text-center text-[#65737E] leading-[17px] mt-2'>{"Essayez de télécharger l'image dans ces formats ( PNG, JPEG )"}</p>
                                 </Form.Item>
                                 <div className='my-4'>
                                     <div className='flex flex-wrap gap-6 mt-8'>

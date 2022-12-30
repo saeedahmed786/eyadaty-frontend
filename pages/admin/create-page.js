@@ -172,33 +172,35 @@ const CreatePage = () => {
     return (
         <AdminLayout sidebar>
             <div className='Pages pt-6'>
-                <div className='flex justify-between items-center'>
-                    <div className='flex gap-2 justify-center items-center py-4'>
-                        <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Modifier la page</button>
-                    </div>
+                <div className='md:flex justify-between items-center'>
                     <div>
-                        <button className='flex items-center gap-2 bg-[#0094DA] rounded-[12px] text-white h-[48px] px-6'>
+                        <div className='flex gap-2 justify-start items-center py-4'>
+                            <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Créer un page</button>
+                        </div>
+                        <h1 className='bigTitle'>Créer un page</h1>
+                    </div>
+                    <div className='mt-6 md:mt-0'>
+                        <button className='flex items-center justify-center w-full gap-2 bg-[#0094DA] rounded-[12px] text-white h-[48px] px-6'>
                             <PlusIcon />
                             <span className='text-[16px] font-[500]'>Ajouter un page</span>
                         </button>
                     </div>
                 </div>
-                <h1 className='bigTitle'>Modifier la page</h1>
-                <div className='max-w-[40vw]'>
+                <div className='md:max-w-[40vw]'>
                     <div className='mt-12'>
                         <SelectBoxWidthSearch prevValue={categoryId} data={categories} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
                     </div>
-                    <div className='flex justify-between mt-6'>
+                    <div className='flex justify-between flex-wrap gap-6 mt-6'>
                         <div>
                             <h5>Type de page</h5>
-                            <div className='flex justify-between mt-3'>
+                            <div className='flex justify-between gap-6 mt-3'>
                                 <Checkbox value="Free" checked={paidStatus === "Free"} onChange={(e) => setPaidStatus(e.target.value)}>Freemium</Checkbox>
                                 <Checkbox value="Premium" checked={paidStatus === "Premium"} onChange={(e) => setPaidStatus(e.target.value)}>Premium</Checkbox>
                             </div>
                         </div>
                         <div>
                             <h5>Actif</h5>
-                            <div className='flex justify-between mt-3'>
+                            <div className='flex justify-between gap-6 mt-3'>
                                 <Checkbox value="Active" checked={status === "Active"} onChange={(e) => setStatus(e.target.value)}>Activé</Checkbox>
                                 <Checkbox value="Pending" checked={status === "Pending"} onChange={(e) => setStatus(e.target.value)}>En attente</Checkbox>
                             </div>
@@ -208,30 +210,32 @@ const CreatePage = () => {
                 <div className='CreatePage'>
                     <div className='mt-8'>
                         <div className='pictureUploadContainer'>Image de profile</div>
-                        <div className='flex gap-4 items-center mt-4'>
+                        <div className='flex flex-wrap gap-4 items-center mt-4'>
                             {
                                 profileFile && profileFile?.url ?
-                                    <img src={profileFile?.url} className="rounded-[50%]" width={80} alt="Profile" />
+                                    <img src={profileFile?.url} className="rounded-[50%] h-[80px]" width={80} alt="Profile" />
                                     :
                                     <Image src={ProfileIcon} width={80} alt="Profile" />
                             }
                             {/* <Image src={ProfileIcon} width={80} alt="Profile" /> */}
-                            <div className='relative'>
-                                <span className="btn btn-primary btn-file">
-                                    <button className='uploadBtn flex items-center gap-2'>
-                                        <span>Ajouter un image</span>
-                                        <span className='arrowUp'><ArrowUpOutlined /></span>
-                                        <input type="file" name='file' onChange={(e) => handleProfileFileUpload(e.target.files[0])} />
-                                    </button>
-                                </span>
-                            </div>
-                            <div>
-                                <span className="btn btn-primary btn-file">
-                                    <button className='deleteBtn'>
-                                        <span>Supprimer</span>
-                                        <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
-                                    </button>
-                                </span>
+                            <div className='w-full sm:w-auto flex gap-4'>
+                                <div className='relative'>
+                                    <span className="btn btn-primary btn-file">
+                                        <button className='uploadBtn flex items-center gap-2'>
+                                            <span>Ajouter un image</span>
+                                            <span className='arrowUp'><ArrowUpOutlined /></span>
+                                            <input type="file" name='file' onChange={(e) => handleProfileFileUpload(e.target.files[0])} />
+                                        </button>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span className="btn btn-primary btn-file">
+                                        <button className='deleteBtn'>
+                                            <span>Supprimer</span>
+                                            <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
+                                        </button>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         {
@@ -268,7 +272,7 @@ const CreatePage = () => {
                                         </Select>
                                     </Form.Item>
                                     <Row gutter={[16, 16]}>
-                                        <Col md={12}>
+                                        <Col xs={24} md={12}>
                                             <Form.Item
                                                 name="lastName"
                                                 label="Nom"
@@ -283,7 +287,7 @@ const CreatePage = () => {
                                                 <Input placeholder='Nom' />
                                             </Form.Item>
                                         </Col>
-                                        <Col md={12}>
+                                        <Col xs={24} md={12}>
                                             <Form.Item
                                                 name="firstName"
                                                 label="Prénom"
@@ -324,7 +328,7 @@ const CreatePage = () => {
                                         hasFeedback
                                         rules={[
                                             {
-                                                required: true,
+                                                required: false,
                                                 message: 'Please input your Numéro de Téléphone 02 ( Optional )!',
                                             }
                                         ]}
@@ -337,7 +341,7 @@ const CreatePage = () => {
                                         hasFeedback
                                         rules={[
                                             {
-                                                required: true,
+                                                required: false,
                                                 message: 'Please input your Numéro de Téléphone Fixe ( Optional )!',
                                             }
                                         ]}
@@ -368,7 +372,7 @@ const CreatePage = () => {
                                         hasFeedback
                                         rules={[
                                             {
-                                                required: true,
+                                                required: false,
                                                 message: 'Please input your Lien de Facebook  ( Optional )!',
                                             },
                                         ]}
@@ -380,7 +384,7 @@ const CreatePage = () => {
                                         label="Bio ( Optional )"
                                         rules={[
                                             {
-                                                required: true,
+                                                required: false,
                                                 message: 'Please input Bio ( Optional )',
                                             },
                                         ]}
@@ -417,7 +421,7 @@ const CreatePage = () => {
                                     >
                                         <Input placeholder='Experience' />
                                     </Form.Item>
-                                    <div className='my-4' style={{ maxWidth: "60%" }}>
+                                    <div className='my-4 md:max-w-[60%]'>
                                         {
                                             schedule.length > 0 &&
                                             <table className='w-full text-center my-5 border'>
@@ -504,6 +508,7 @@ const CreatePage = () => {
                                                     name="gpsData"
                                                     required
                                                     hasFeedback
+                                                    requiredMark
                                                     rules={[
                                                         {
                                                             required: true,
@@ -563,7 +568,8 @@ const CreatePage = () => {
                                                 </p>
                                             </Upload.Dragger>
                                         </Form.Item>
-                                        <p className='text-center text-[#65737E] leading-[12px] mt-2'>{"Essayez de télécharger l'image dans ces formats ( PNG, JPEG )"}</p>
+                                        {/* <p className='text-center text-[#65737E] leading-[17px] mt-2'>{"Essayez de télécharger l'image dans ces formats ( PNG, JPEG )"}</p> */}
+                                        <p className='text-center text-[#65737E] leading-[17px] mt-2'>{"Essayez de télécharger l'image dans ces formats ( PNG, JPEG )"}</p>
                                     </Form.Item>
                                     <div className='my-4'>
                                         <div className='flex flex-wrap gap-6 mt-8'>
@@ -619,7 +625,7 @@ const CreatePage = () => {
                                             <button type="submit" className='btn px-12 bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
                                                 Sauvegarder
                                             </button>
-                                            <button className='btn px-12 bg-[#C0C5CE] rounded-[12px] text-black font-[500] leading-[16px] h-[56px]'>
+                                            <button type='button' className='btn px-12 bg-[#C0C5CE] rounded-[12px] text-black font-[500] leading-[16px] h-[56px]'>
                                                 Annuler
                                             </button>
                                         </div>

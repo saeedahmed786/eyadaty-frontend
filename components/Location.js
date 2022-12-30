@@ -9,7 +9,7 @@ function MyMap(props) {
     );
 }
 
-export default function LocationComp() {
+export default function LocationComp({ coords }) {
     const [lngLat, setLngLat] = useState(null);
     const mapContainer = React.useRef(null);
 
@@ -17,6 +17,7 @@ export default function LocationComp() {
         navigator.geolocation.getCurrentPosition((position) => {
             setLngLat([position.coords.longitude, position.coords.latitude]);
         });
+        // setLngLat(coords)
     }, []);
 
     console.log(lngLat)
@@ -30,7 +31,7 @@ export default function LocationComp() {
         const map = new mapboxgl.Map({
             container: mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [lngLat[0], lngLat[1]],
+            center: [parseInt(coords[0]), parseInt(coords[1])],
             zoom: 14,
         });
 
@@ -39,9 +40,9 @@ export default function LocationComp() {
         });
 
         new mapboxgl.Marker()
-            .setLngLat([lngLat[0], lngLat[1]])
+            .setLngLat([parseInt(coords[0]), parseInt(coords[1])])
             .addTo(map);
-    }, [lngLat]);
+    }, [coords]);
 
     return <MyMap mapContainer={mapContainer} />;
 }

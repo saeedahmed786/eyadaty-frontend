@@ -162,7 +162,7 @@ const Admin = () => {
         <AdminLayout sidebar>
             <div className='Admin pt-6'>
                 <Row gutter={[0, 0]}>
-                    <Col md={14} className="pr-6">
+                    <Col md={14} className="hidden md:block pr-6">
                         <div className="bg-white p-6 py-10 shadow-[0px 2px 4px rgba(0, 0, 0, 0.08)] rounded-[16px]">
                             <div className='flex items-center justify-between gap-6'>
                                 <div>
@@ -177,7 +177,7 @@ const Admin = () => {
                     </Col>
                     <Col md={10}>
                         <Row>
-                            <Col md={12} className="pr-6">
+                            <Col xs={24} md={12} className="pr-6">
                                 <div className="bg-white p-6 py-10 pt-6 shadow-[0px 2px 4px rgba(0, 0, 0, 0.08)] rounded-[16px]">
                                     <div className=''>
                                         <div className='bg-[#C9E681] w-[48px] h-[48px] rounded-[50%] flex justify-center items-center'>
@@ -190,7 +190,7 @@ const Admin = () => {
                                     </div>
                                 </div>
                             </Col>
-                            <Col md={12} className="pr-6">
+                            <Col xs={24} md={12} className="pr-6 mt-4 sm:mt-0">
                                 <div className="bg-white p-6 py-10 pt-6 shadow-[0px 2px 4px rgba(0, 0, 0, 0.08)] rounded-[16px]">
                                     <div className=''>
                                         <div className='bg-[#4DC5FF] w-[48px] h-[48px] rounded-[50%] flex justify-center items-center'>
@@ -206,9 +206,53 @@ const Admin = () => {
                         </Row>
                     </Col>
                 </Row>
-                <div className='mt-10 bg-white'>
-                    <Table showSorterTooltip columns={columns} pagination={false} dataSource={pages} />
-                    <div className='adminPagination p-4 flex items-center justify-between my-12'>
+                <div className='mt-10'>
+                    <div className='hidden md:block bg-white'>
+                        <Table showSorterTooltip columns={columns} pagination={false} dataSource={pages} />
+                    </div>
+                    <div className='block md:hidden'>
+                        {
+                            pages && pages.length > 0 && pages.map(page => {
+                                return (
+                                    <div className='flex justify-between p-3 bg-white mt-1 rounded-[16px]'>
+                                        <div>
+                                            <div className='text-[#0094DA] text-[12px] font-[500]'>{page._id}</div>
+                                            <div className='min-w-[130px] mt-3'>
+                                                <div className='nameAndPic w-full flex justify-between'>
+                                                    <div className='flex items-center gap-2'>
+                                                        <div className='profileImg'>
+                                                            <img src={page?.picture?.url} alt="Doctor" width={32} height={32} className="rounded-[50%]" />
+                                                        </div>
+                                                        <div className='w-full'>
+                                                            <div className='flex gap-2'>
+                                                                <h6>{page?.firstName} {page?.lastName}</h6>
+                                                                <Image src={Check} alt="Checkmark" className='w-[32px] h-[32px]' />
+                                                            </div>
+                                                            <p className='mt-0 text-left text-[#65737E] text-[12px]'>{page?.specialisation}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className='mt-5'>{page?.specialisation}</div>
+                                            <div className='mt-5'>{page?.paidStatus}</div>
+                                            <div className='mt-5'>{page?.owner}</div>
+                                        </div>
+                                        <div className='flex justify-end text-end'>
+                                            <div>
+                                                <div className={`tag ${page?.status} rounded-[12px] text-[12px] font-[500] mb-4`}>{page?.status}</div>
+                                                <div className='flex items-center gap-4 mt-3'>
+                                                    <Link href={"/doctor/" + page?._id}><EyeOutlined /></Link>
+                                                    <EditOutlined onClick={() => router.push(`/admin/update-page/${page?._id}`)} />
+                                                    <DeleteModal deleteFun={deleteHandler} id={page._id} deleteBtn={<DeleteOutlined style={{ verticalAlign: "middle" }} />} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className='adminPagination bg-white p-4 flex items-center justify-between flex-wrap rounded-[16px] md:rounded-none my-1 md:my-12'>
                         <p className='text-[#65737E] text-[12px]'>Affichage de {current * 10} sur {totalPages}  entrées</p>
                         <AdminPagination totalLength={totalPages} handlePagination={(curr) => { setCurrent(curr); getAllPages(curr) }} />
                     </div>
