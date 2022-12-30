@@ -70,7 +70,7 @@ const CreatePage = () => {
             gender
         } = values;
 
-        // setLoading(true);
+        setLoading(true);
         await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/admin/add`, {
             email,
             firstName,
