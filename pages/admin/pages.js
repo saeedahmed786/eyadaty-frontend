@@ -22,7 +22,6 @@ const Pages = () => {
     const [pages, setPages] = useState([]);
     const [originalPages, setOriginalPages] = useState([]);
     const [userAuth, setUserAuth] = useState({});
-    const [categories, setCategories] = useState([]);
     const [categoryId, setCategoryId] = useState("");
     const [status, setStatus] = useState("Pending");
     const [paidStatus, setPaidStatus] = useState("Free");
@@ -104,10 +103,10 @@ const Pages = () => {
             title: 'Catégorie',
             dataIndex: 'category',
             key: 'category',
-            sorter: (a, b) => a?.category?.localeCompare(b?.category),
-            render: (_, { category }) => (
+            sorter: (a, b) => a?.specialisation?.localeCompare(b?.specialisation),
+            render: (_, { specialisation }) => (
                 <>
-                    <div className='text-[#0094DA] text-[12px] font-[500]'>{category}</div>
+                    <div className='text-[#0094DA] text-[12px] font-[500]'>{specialisation}</div>
                 </>
             ),
         },
@@ -155,7 +154,7 @@ const Pages = () => {
             return (
                 page?.status.includes(status) &&
                 page?.paidStatus.includes(paidStatus) &&
-                page?.category?._id === categoryId
+                page?.specialisation === categoryId
             );
         });
         setPages(filteredItems);
