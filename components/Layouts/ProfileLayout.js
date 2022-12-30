@@ -22,15 +22,15 @@ const Navbar = dynamic(() => import('../navbar'), {
 
 const ProfileLayout = (props) => {
     const router = useRouter();
-    const [loading, setLoading] = useState(false);
-    const [userAuth, setUserAuth] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (isAuthenticated()) {
-            setUserAuth(isAuthenticated());
-        } else (
-            router.push("/login")
-        )
+            setLoading(false);
+        } else {
+            router.push("/login");
+            setLoading(false);
+        }
 
         return () => {
 
@@ -41,7 +41,7 @@ const ProfileLayout = (props) => {
         loading ?
             <Loading />
             :
-            <Suspense fallback={<div>Loading...</div>}>
+            <>
                 <TopNavbar />
                 <Navbar />
                 <div className='ProfileLayout container px-5 mx-auto pb-24 pt-6'>
@@ -58,17 +58,17 @@ const ProfileLayout = (props) => {
                                     <h1 className='bigTitle'>Mon compte</h1>
                                     <div className='mt-8'>
                                         <Link href="/profile">
-                                            <button className={`${router.pathname === "/profile" ? "hyperlink text-[#0094DA]" : ""}`}>Information personel</button>
+                                            <button className={`${router?.pathname === "/profile" ? "hyperlink text-[#0094DA]" : ""}`}>Information personel</button>
                                         </Link>
                                     </div>
                                     <div className='mt-5'>
                                         <Link href="/profile/create-page">
-                                            <button className={`${router.pathname === "/profile/create-page" ? "hyperlink text-[#0094DA]" : ""}`}>Créer un page</button>
+                                            <button className={`${router?.pathname === "/profile/create-page" ? "hyperlink text-[#0094DA]" : ""}`}>Créer un page</button>
                                         </Link>
                                     </div>
                                     <div className='mt-5'>
                                         <Link href="/profile/invite">
-                                            <button className={`${router.pathname === "/profile/invite" ? "hyperlink text-[#0094DA]" : ""}`}>Inviter des amis</button>
+                                            <button className={`${router?.pathname === "/profile/invite" ? "hyperlink text-[#0094DA]" : ""}`}>Inviter des amis</button>
                                         </Link>
                                     </div>
                                 </Col>
@@ -82,7 +82,7 @@ const ProfileLayout = (props) => {
                 </div>
                 <DownloadApp noMargin />
                 <Footer />
-            </Suspense>
+            </>
     )
 }
 
