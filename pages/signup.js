@@ -2,7 +2,7 @@ import { Checkbox, Col, Divider, Form, Input, Row } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import RightIcon from '../icons/righticon'
+import RightIcon from '../components/icons/righticon'
 import google from "../assets/google.svg"
 import facebook from "../assets/facebook.svg"
 import twitter from "../assets/twitter.svg"
@@ -11,8 +11,8 @@ import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../components/Home/downloadApp'
 import MainLayout from '../components/Layouts/MainLayout'
 import { useRouter } from 'next/router'
-import { CustomErrorMessage, CustomSuccessMessage, ErrorMessage, SuccessMessage } from '../Messages/messages'
-import { Loading } from '../Loading/Loading'
+import { CustomErrorMessage, CustomSuccessMessage, ErrorMessage, SuccessMessage } from '../components/Messages/messages'
+import { Loading } from '../components/Loading/Loading'
 import axios from "axios"
 import GoogleLogin from 'react-google-login'
 import SocialLogin from '../components/SocialLogin'

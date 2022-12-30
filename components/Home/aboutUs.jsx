@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import aboutimg from '/assets/aboutusimage.svg'
-import RightIcon from '../../icons/righticon'
+import RightIcon from '../../components/icons/righticon'
 
 export default function AboutUs() {
     return (

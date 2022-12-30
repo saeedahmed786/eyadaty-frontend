@@ -1,6 +1,6 @@
 import { Col, Row } from 'antd'
 import React, { useEffect, useState } from 'react'
-import RightIcon from '../../icons/righticon'
+import RightIcon from '../../components/icons/righticon'
 import facebook from "../../assets/Facebook_icon.svg"
 import twitter from "../../assets/Twitter_icon.svg"
 import instagram from "../../assets/Instagram_icon.svg"
@@ -16,7 +16,7 @@ import DownloadApp from '../../components/Home/downloadApp'
 import Subscribe from '../../components/Home/subscribe'
 import MainLayout from '../../components/Layouts/MainLayout'
 import axios from 'axios'
-import { ErrorMessage } from '../../Messages/messages'
+import { ErrorMessage } from '../../components/Messages/messages'
 import { useRouter } from 'next/router'
 import { isAuthenticated } from '../../components/Auth/auth'
 import ReplyCommentCard from '../../components/Cards/ReplyCommentCard'

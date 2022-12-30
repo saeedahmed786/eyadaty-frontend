@@ -5,7 +5,7 @@ import instagram from "../assets/smallInstagram.svg"
 import facebook from "../assets/smallFacebook.svg"
 import twitter from "../assets/smallTwitter.svg"
 import React from 'react'
-import RightIcon from '../icons/righticon'
+import RightIcon from '../components/icons/righticon'
 import illustration from "../assets/contact.svg"
 import DownloadApp from '../components/Home/downloadApp'
 import Link from 'next/link'

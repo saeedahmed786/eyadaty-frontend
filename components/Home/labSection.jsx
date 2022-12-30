@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import ClinicCard from './clinicCard'
 import clinicimage from '/assets/clinicimage.png'
-import LeftIcon from '../../icons/lefticon'
-import RightIcon from '../../icons/righticon'
+import LeftIcon from '../../components/icons/lefticon'
+import RightIcon from '../../components/icons/righticon'
 import Slider from 'react-slick'
 
 export default function LabSection({ clinics }) {

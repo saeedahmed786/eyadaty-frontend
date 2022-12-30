@@ -1,7 +1,7 @@
 import { Col, Form, Input, Row } from 'antd'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import RightIcon from '../../icons/righticon'
+import RightIcon from '../../components/icons/righticon'
 import illustration from "../../assets/reset.svg"
 import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../../components/Home/downloadApp'
@@ -9,7 +9,7 @@ import Link from 'next/link'
 import MainLayout from '../../components/Layouts/MainLayout'
 import { useRouter } from 'next/router'
 import axios from 'axios'
-import { CustomErrorMessage, CustomSuccessMessage } from '../../Messages/messages'
+import { CustomErrorMessage, CustomSuccessMessage } from '../../components/Messages/messages'
 
 const ResetPassword = () => {
     const [form] = Form.useForm();

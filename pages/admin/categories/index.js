@@ -6,7 +6,7 @@ import { CreateMainCategories } from '../../../components/Admin/Categories/Creat
 import { UpdateCategories } from '../../../components/Admin/Categories/UpdateCategories';
 import { isAuthenticated } from '../../../components/Auth/auth';
 import AdminLayout from '../../../components/Layouts/Admin/AdminLayout';
-import { ErrorMessage, SuccessMessage } from '../../../Messages/messages';
+import { ErrorMessage, SuccessMessage } from '../../../components/Messages/messages';
 
 const GetCategories = () => {
   const [categories, setCategories] = useState([]);

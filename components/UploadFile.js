@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ErrorMessage } from "../Messages/messages";
+import { ErrorMessage } from "../components/Messages/messages";
 
 export const uploadFilesFun = async (file, token) => {
     let uploadedFile;

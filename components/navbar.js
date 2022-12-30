@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import EyedatyLogo from './Home/eyedatyLogo'
-import BurgerMenuIcon from '../icons/burgermenuicon'
+import BurgerMenuIcon from '../components/icons/burgermenuicon'
 import SearchIcon from "/assets/search.svg"
 import DownArrow from "../assets/DownArrow.svg"
 import Doc from "../assets/doc.jpg"

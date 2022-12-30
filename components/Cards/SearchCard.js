@@ -10,7 +10,7 @@ import { EnvironmentTwoTone, EyeTwoTone, HeartTwoTone, StarTwoTone } from '@ant-
 import DeleteModal from '../DeleteModal'
 import formatStringNumbers from '../FormatNumbers'
 import axios from 'axios'
-import { ErrorMessage } from '../../Messages/messages'
+import { ErrorMessage } from '../../components/Messages/messages'
 import { isAuthenticated } from '../Auth/auth'
 import { useRouter } from 'next/router';
 

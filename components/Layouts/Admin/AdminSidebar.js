@@ -5,11 +5,11 @@ import TwoCircle from "../../../assets/TwoCircle.svg"
 import Logout from "../../../assets/Logout.svg"
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import HomeIcon from '../../../icons/homeIcons'
-import DocumentIcon from '../../../icons/documentIcon'
-import UserIcon from '../../../icons/userIcon'
-import EditIcon from '../../../icons/editIcon'
-import PlusIcon from '../../../icons/plusIcon'
+import HomeIcon from '../../../components/icons/homeIcons'
+import DocumentIcon from '../../../components/icons/documentIcon'
+import UserIcon from '../../../components/icons/userIcon'
+import EditIcon from '../../../components/icons/editIcon'
+import PlusIcon from '../../../components/icons/plusIcon'
 import { FiList } from 'react-icons/fi'
 
 const AdminSidebar = () => {

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import CategoryCard from '../components/Home/categoryCard';
-import RightIcon from '../icons/righticon';
+import RightIcon from '../components/icons/righticon';
 import DownloadApp from '../components/Home/downloadApp'
 import MainLayout from '../components/Layouts/MainLayout'
-import { ErrorMessage } from '../Messages/messages';
+import { ErrorMessage } from '../components/Messages/messages';
 import axios from 'axios';
-import specialitiesArray from "../specialities.json"
+import specialitiesArray from "../assets/specialities.jsonn"
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);

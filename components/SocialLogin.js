@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react'
 import GoogleLogin from 'react-google-login';
-import { ErrorMessage, SuccessMessage } from '../Messages/messages';
+import { ErrorMessage, SuccessMessage } from '../components/Messages/messages';
 import FacebookLogin from 'react-facebook-login';
 import { Cookies } from 'react-cookie'
 import Image from 'next/image';

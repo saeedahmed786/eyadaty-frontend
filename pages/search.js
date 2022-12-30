@@ -1,27 +1,20 @@
 import { AppstoreOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { Col, Pagination, Row } from 'antd'
 import axios from 'axios'
-import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import Map from "../assets/Map.svg"
 import { isAuthenticated } from '../components/Auth/auth'
 import SearchCard from '../components/Cards/SearchCard'
 import SearchInputs from '../components/Inputs/SearchInputs'
-import SelectBox from '../components/Inputs/SelectBox'
 import MainLayout from '../components/Layouts/MainLayout'
 import LocationComp from '../components/Location'
-import LocationIcon from '../icons/locationicon'
-import RightIcon from '../icons/righticon'
-import { ErrorMessage } from '../Messages/messages'
+import RightIcon from '../components/icons/righticon'
+import { ErrorMessage } from '../components/Messages/messages'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useRouter } from 'next/router'
-import citiesArray from "../town_city/communes.json"
 import SearchWithCheckBox from '../components/Inputs/SearchWithCheckBox'
-import Link from 'next/link'
 
 
 const Search = ({ query }) => {
-    const router = useRouter();
     const [gridCol, setGridCol] = useState(24);
     const [current, setCurrent] = useState(1);
     const [userAuth, setUserAuth] = useState();

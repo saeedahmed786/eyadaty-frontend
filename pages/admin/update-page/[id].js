@@ -3,23 +3,23 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../../components/Layouts/Admin/AdminLayout'
 import { ArrowUpOutlined, DeleteFilled, EnvironmentOutlined, InfoCircleFilled } from '@ant-design/icons'
-import RightIcon from '../../../icons/righticon'
-import PlusIcon from '../../../icons/plusIcon'
+import RightIcon from '../../../components/icons/righticon'
+import PlusIcon from '../../../components/icons/plusIcon'
 import SelectBoxWidthSearch from '../../../components/Inputs/SelectBox'
 import ProfileSelectBox from '../../../components/Profile/ProfileSelectBox'
 import ProfileIcon from '../../../assets/gallery.svg';
 import UploadIcon from '../../../assets/upload.svg'
 import galleryIcon from '../../../assets/galleryIcon.svg';
 import { isAuthenticated } from '../../../components/Auth/auth'
-import { ErrorMessage, SuccessMessage } from '../../../Messages/messages'
+import { ErrorMessage, SuccessMessage } from '../../../components/Messages/messages'
 import axios from 'axios'
 import NotesModal from '../../../components/Admin/NotesModal'
 import ServicesModal from '../../../components/Admin/ServicesModel'
-import { Loading } from '../../../Loading/Loading'
+import { Loading } from '../../../components/Loading/Loading'
 import closeIcon from '../../../assets/closeIcon.svg'
 import { deleteFilesFun, uploadFilesFun } from '../../../components/UploadFile'
-import specialitiesArray from "../../../specialities.json"
-import typeArray from "../../../type_profile.json"
+import specialitiesArray from "../../../assets/specialities.json"
+import typeArray from "../../../assets/type_profile.json"
 
 
 const { Option } = Select;

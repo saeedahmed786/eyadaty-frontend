@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import moment from 'moment';
 import { isAuthenticated } from '../Auth/auth';
 import axios from 'axios';
-import { ErrorMessage, SuccessMessage } from '../../Messages/messages';
+import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages';
 
 const AddComment = ({ pageId, handleUpdate }) => {
     const [text, setText] = useState("");

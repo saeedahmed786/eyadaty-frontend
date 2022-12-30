@@ -10,13 +10,13 @@ import { Checkbox, Col, Form, Input, Radio, Row, Select, Upload } from 'antd';
 import ProfileSelectBox from '../../components/Profile/ProfileSelectBox';
 import NotesModal from '../../components/Admin/NotesModal';
 import axios from 'axios';
-import { ErrorMessage, SuccessMessage } from '../../Messages/messages';
+import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages';
 import ServicesModal from '../../components/Admin/ServicesModel';
 import { isAuthenticated } from '../../components/Auth/auth';
 import { deleteFilesFun, uploadFilesFun } from '../../components/UploadFile';
-import { Loading } from '../../Loading/Loading';
-import specialitiesArray from "../../specialities.json"
-import typeArray from "../../type_profile.json"
+import { Loading } from '../../components/Loading/Loading';
+import specialitiesArray from "../../assets/specialities.json"
+import typeArray from "../../assets/type_profile.json"
 
 const { Option } = Select;
 

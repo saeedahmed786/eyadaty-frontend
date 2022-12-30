@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import illustration from "../assets/terms.svg"
 import MainLayout from '../components/Layouts/MainLayout'
-import RightIcon from '../icons/righticon'
+import RightIcon from '../components/icons/righticon'
 
 
 const PrivacyPolicy = () => {

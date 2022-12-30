@@ -1,14 +1,14 @@
 import { Col, Divider, Form, Input, Row, Switch } from 'antd'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import RightIcon from '../icons/righticon'
+import RightIcon from '../components/icons/righticon'
 import illustration from "../assets/Illustration.svg"
 import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../components/Home/downloadApp'
 import { useRouter } from 'next/router'
 import MainLayout from '../components/Layouts/MainLayout'
-import { CustomErrorMessage, CustomSuccessMessage } from '../Messages/messages'
-import { Loading } from '../Loading/Loading'
+import { CustomErrorMessage, CustomSuccessMessage } from '../components/Messages/messages'
+import { Loading } from '../components/Loading/Loading'
 import axios from "axios"
 import { Cookies } from 'react-cookie'
 import SocialLogin from '../components/SocialLogin'

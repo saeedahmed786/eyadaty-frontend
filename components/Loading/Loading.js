@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react'
-import loading from "../assets/loading.gif";
+import loading from "../../assets/loading.gif";
 
 export const Loading = () => {
     return (

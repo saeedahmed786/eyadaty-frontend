@@ -3,8 +3,8 @@ import axios from "axios";
 import { EditOutlined } from "@ant-design/icons";
 import Modal from "antd/lib/modal/Modal";
 import { Input, Select } from 'antd';
-import { ErrorMessage, SuccessMessage } from "../../../Messages/messages";
-import { Loading } from "../../../Loading/Loading";
+import { ErrorMessage, SuccessMessage } from "../../../components/Messages/messages";
+import { Loading } from "../../../components/Loading/Loading";
 
 
 export const UpdateCategories = ({ updateFunction, userAuth, cat }) => {

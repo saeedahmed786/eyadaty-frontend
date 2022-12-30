@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
-import LeftIcon from '../../icons/lefticon'
-import RightIcon from '../../icons/righticon'
+import LeftIcon from '../../components/icons/lefticon'
+import RightIcon from '../../components/icons/righticon'
 import { AiOutlineCalendar } from "react-icons/ai";
 import Slider from 'react-slick'
 import moment from 'moment'

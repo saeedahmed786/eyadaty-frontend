@@ -1,6 +1,6 @@
 import Pagination from 'rc-pagination'
 import React, { useState } from 'react'
-import RightIcon from '../../icons/righticon';
+import RightIcon from '../../components/icons/righticon';
 
 const AdminPagination = ({ totalLength, handlePagination }) => {
     const [size, setSize] = useState(10);

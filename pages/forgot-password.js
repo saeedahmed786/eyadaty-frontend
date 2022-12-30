@@ -2,13 +2,13 @@ import { Col, Form, Input, Row, Switch } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import RightIcon from '../icons/righticon'
+import RightIcon from '../components/icons/righticon'
 import illustration from "../assets/forgot.svg"
 import DownloadApp from '../components/Home/downloadApp'
 import Footer from '../components/footer/footer'
 import MainLayout from '../components/Layouts/MainLayout'
 import axios from 'axios'
-import { CustomErrorMessage, CustomSuccessMessage } from '../Messages/messages'
+import { CustomErrorMessage, CustomSuccessMessage } from '../components/Messages/messages'
 
 const ForgotPassword = () => {
     const [form] = Form.useForm();

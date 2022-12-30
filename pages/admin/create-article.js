@@ -2,16 +2,16 @@ import { Input } from 'antd'
 import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../components/Layouts/Admin/AdminLayout'
 import { ArrowUpOutlined } from '@ant-design/icons'
-import RightIcon from '../../icons/righticon'
-import PlusIcon from '../../icons/plusIcon'
+import RightIcon from '../../components/icons/righticon'
+import PlusIcon from '../../components/icons/plusIcon'
 import SelectBoxWidthSearch from '../../components/Inputs/SelectBox'
 import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css';
 import { uploadFilesFun } from '../../components/UploadFile'
 import { isAuthenticated } from '../../components/Auth/auth'
-import { ErrorMessage, SuccessMessage } from '../../Messages/messages'
+import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages'
 import axios from 'axios'
-import specialitiesArray from "../../specialities.json"
+import specialitiesArray from "../../assets/specialities.json"
 const ReactQuill = dynamic(import('react-quill'), { ssr: false })
 const QuillToolbar = dynamic(import('../../components/QuillEditor'), { ssr: false })
 

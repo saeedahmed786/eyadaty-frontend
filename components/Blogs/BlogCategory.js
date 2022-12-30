@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { ErrorMessage } from '../../Messages/messages';
+import { ErrorMessage } from '../../components/Messages/messages';
 
 const BlogCategory = ({ category }) => {
     const [blogs, setBlogs] = useState("");

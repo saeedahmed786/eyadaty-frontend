@@ -9,8 +9,8 @@ import DownloadApp from '../components/Home/downloadApp'
 import Subscribe from '../components/Home/subscribe'
 import SearchInputs from '../components/Inputs/SearchInputs'
 import MainLayout from '../components/Layouts/MainLayout'
-import RightIcon from '../icons/righticon'
-import { ErrorMessage, SuccessMessage } from '../Messages/messages'
+import RightIcon from '../components/icons/righticon'
+import { ErrorMessage, SuccessMessage } from '../components/Messages/messages'
 
 const Favourites = () => {
     const router = useRouter();

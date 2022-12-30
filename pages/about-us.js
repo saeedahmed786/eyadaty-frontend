@@ -1,6 +1,6 @@
 import icon1 from '/assets/CapitalLogo.svg'
 import React from 'react'
-import RightIcon from '../icons/righticon';
+import RightIcon from '../components/icons/righticon';
 import DownloadApp from '../components/Home/downloadApp'
 import AboutUs from '../components/Home/aboutUs'
 import Image from 'next/image'

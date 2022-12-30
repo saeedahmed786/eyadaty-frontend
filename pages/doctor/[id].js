@@ -1,6 +1,6 @@
 import { Col, Row } from 'antd'
 import React, { useEffect, useState } from 'react'
-import RightIcon from '../../icons/righticon'
+import RightIcon from '../../components/icons/righticon'
 import Check from "../../assets/Checkmark.svg"
 import Image from 'next/image'
 import cap from "../../assets/graduationcap.svg"
@@ -22,15 +22,15 @@ import Message from "../../assets/Message.svg"
 import CommentCard from '../../components/Cards/CommentCard'
 import AddComment from '../../components/Cards/AddComment'
 import { DislikeFilled, DislikeOutlined, EnvironmentTwoTone, EyeTwoTone, HeartTwoTone, LikeFilled, LikeOutlined, MessageTwoTone, StarTwoTone } from '@ant-design/icons'
-import Phone from '../../icons/Phone'
+import Phone from '../../components/icons/Phone'
 import MainLayout from '../../components/Layouts/MainLayout'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import { ErrorMessage, SuccessMessage } from '../../Messages/messages'
+import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages'
 import { isAuthenticated } from '../../components/Auth/auth'
 import formatStringNumbers from '../../components/FormatNumbers'
 import ReplyCommentCard from '../../components/Cards/ReplyCommentCard'
-import { Loading } from '../../Loading/Loading'
+import { Loading } from '../../components/Loading/Loading'
 import LocationComp from '../../components/Location'
 
 

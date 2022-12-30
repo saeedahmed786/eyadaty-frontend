@@ -1,9 +1,9 @@
 import { Checkbox, Input, Select } from 'antd'
 import React, { useState } from 'react'
 import SearchChips from './searchChips'
-import specialitiesArray from "../../specialities.json"
-import statesArray from "../../town_city/wilaya.json"
-import citiesArray from "../../town_city/communes.json"
+import specialitiesArray from "../../assets/specialities.json"
+import statesArray from "../../assets/town_city/wilaya.json"
+import citiesArray from "../../assets/town_city/communes.json"
 import Image from 'next/image'
 import DownArrow from "../../assets/DownArrow.svg"
 import { useRouter } from 'next/router'

@@ -6,11 +6,11 @@ import { DatePicker, Form, Input, Radio, Select } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import { isAuthenticated } from '../../components/Auth/auth';
-import { ErrorMessage, SuccessMessage } from '../../Messages/messages';
+import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages';
 import { Cookies } from 'react-cookie';
-import { Loading } from '../../Loading/Loading';
-import statesArray from "../../town_city/wilaya.json"
-import citiesArray from "../../town_city/communes.json"
+import { Loading } from '../../components/Loading/Loading';
+import statesArray from "../../assets/town_city/wilaya.json"
+import citiesArray from "../../assets/town_city/communes.json"
 
 
 const { Option } = Select;

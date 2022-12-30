@@ -9,9 +9,9 @@ import BlogCard from '../components/Cards/BlogCard'
 import DownloadApp from '../components/Home/downloadApp'
 import Subscribe from '../components/Home/subscribe'
 import MainLayout from '../components/Layouts/MainLayout'
-import RightIcon from '../icons/righticon'
-import { ErrorMessage } from '../Messages/messages'
-import specialitiesArray from "../specialities.json"
+import RightIcon from '../components/icons/righticon'
+import { ErrorMessage } from '../components/Messages/messages'
+import specialitiesArray from "../assets/specialities.json"
 
 
 const Blogs = () => {

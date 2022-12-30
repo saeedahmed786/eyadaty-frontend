@@ -2,7 +2,7 @@ import { DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined, MessageOutlin
 import axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react'
-import { ErrorMessage, SuccessMessage } from '../../Messages/messages';
+import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages';
 import { isAuthenticated } from '../Auth/auth';
 
 const CommentCard = ({ comment, pageId, handleUpdate }) => {
