@@ -13,6 +13,7 @@ import SelectBoxWidthSearch from '../../components/Inputs/SelectBox'
 import DeleteModal from '../../components/DeleteModal'
 import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages'
 import { isAuthenticated } from '../../components/Auth/auth'
+import specialitiesArray from "../../assets/specialities.json"
 import axios from 'axios'
 import Link from 'next/link'
 
@@ -184,7 +185,7 @@ const Pages = () => {
                         </button>
                     </div>
                     <div className='mt-12'>
-                        <SelectBoxWidthSearch data={categories} prevValue={categories[0]?._id} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
+                        <SelectBoxWidthSearch data={specialitiesArray} prevValue={specialitiesArray[0].fr} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
                     </div>
                     <div className='flex justify-between mt-6'>
                         <div>
