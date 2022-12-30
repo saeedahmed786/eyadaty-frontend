@@ -45,8 +45,8 @@ const ProfileLayout = (props) => {
                     </div>
                     {
                         props.sidebar ?
-                            <Row className='mt-12'>
-                                <Col md={8}>
+                            <Row className='md:flex mt-12'>
+                                <Col xs={24} md={8}>
                                     <h1 className='bigTitle'>Mon compte</h1>
                                     <div className='mt-8'>
                                         <Link href="/profile">
@@ -64,7 +64,7 @@ const ProfileLayout = (props) => {
                                         </Link>
                                     </div>
                                 </Col>
-                                <Col md={15}>
+                                <Col xs={24} md={15}>
                                     {props.children}
                                 </Col>
                             </Row>

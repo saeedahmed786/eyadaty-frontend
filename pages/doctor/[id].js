@@ -417,7 +417,7 @@ const IndDoctor = () => {
                                                         <span>{clinic?.email}</span>
                                                     </button>
                                                 </div>
-                                                <div className='my-6 sm:my-0 mt-8'>
+                                                <div className='my-6 sm:my-4 mt-8'>
                                                     <p>Réseaux sociaux</p>
                                                     <div className='flex gap-3 mt-4 items-center' >
                                                         <Image src={Facebook} alt="Facebook" className='text-red' style={{ color: "red" }} />
