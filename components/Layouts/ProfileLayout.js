@@ -9,9 +9,12 @@ import DownloadApp from '../Home/downloadApp'
 import TopNavbar from '../topNavbar'
 import Navbar from '../navbar'
 import { isAuthenticated } from '../Auth/auth'
+
+
 const ProfileLayout = (props) => {
     const router = useRouter();
     const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         if (isAuthenticated()) {

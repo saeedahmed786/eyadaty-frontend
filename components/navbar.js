@@ -25,7 +25,7 @@ export default function Navbar() {
   const menu = (
     <Menu>
       <Menu.Item>
-        <button onClick={() => router.push("/profile")}>Profile</button>
+        <a href="/profile">Profile</a>
       </Menu.Item>
       <Menu.Item>
         <button onClick={handleLogout}>Logout</button>
