@@ -120,8 +120,8 @@ const Profile = () => {
                             <div className='pictureUploadContainer'>Image de profile</div>
                             <div className='flex gap-4 items-center mt-4'>
                                 {
-                                    profileFile ?
-                                        <img src={profileFile?.url} objectFit="cover" width={80} height={80} className="rounded-[50%]" alt="Profile" />
+                                    profileFile && profileFile?.url ?
+                                        <img src={profileFile?.url} objectFit="cover" width={80} className="rounded-[50%] h-[80px]" alt="Profile" />
                                         :
                                         <Image src={profileIcon} objectFit="cover" width={80} height={80} className="rounded-[50%]" alt="Profile" />
                                 }
