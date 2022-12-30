@@ -86,7 +86,7 @@ const AdminNavbar = () => {
                     <Dropdown
                         trigger={['click']}
                         overlay={menu}>
-                        <Badge color='#0094DA' count={notifications?.filter(n => n.readStatus === "false")?.length}>
+                        <Badge color='#0094DA' count={notifications && notifications?.length > 0 && notifications?.filter(n => n.readStatus === "false")?.length}>
                             <BellOutlined onClick={() => markRead(isAuthenticated())} style={{ fontSize: "21px" }} />
                         </Badge>
                     </Dropdown>

@@ -43,6 +43,7 @@ const Pages = () => {
     useEffect(() => {
         setUserAuth(isAuthenticated());
         getAllPages(current);
+        setCategoryId(specialitiesArray[0].fr)
         return () => {
         }
     }, []);
@@ -148,16 +149,20 @@ const Pages = () => {
     ];
 
 
-    const handleFilter = () => {
-        // setPages(...pages, pages.filter(p => p?.category?._id === categoryId || p?.status?.includes() === status || p?.paidStatus === paidStatus))
-        const filteredItems = originalPages.slice().filter(page => {
-            return (
-                page?.status.includes(status) &&
-                page?.paidStatus.includes(paidStatus) &&
-                page?.specialisation === categoryId
-            );
+
+    const search = () => {
+        return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/admin/finding?specialisation=${categoryId}&paidStatus=${paidStatus}&status=${status}`);
+    }
+
+    const handleSearch = () => {
+        search().then((response) => {
+            setPages(response.data);
         });
-        setPages(filteredItems);
+    }
+
+
+    const handleFilter = () => {
+        handleSearch();
     }
 
     return (
