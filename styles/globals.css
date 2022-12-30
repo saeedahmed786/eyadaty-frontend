@@ -1572,3 +1572,15 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.5) !important;
     z-index: -1000 !important;
 }
+
+
+
+body {
+    width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+#__next {
+    width: 100% !important;
+    overflow-x: hidden !important;
+}
