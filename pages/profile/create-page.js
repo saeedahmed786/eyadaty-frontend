@@ -217,7 +217,7 @@ const CreatePage = () => {
                             <div className='pictureUploadContainer'>Image de profile</div>
                             <div className='flex gap-4 items-center mt-4'>
                                 {
-                                    profileFile ?
+                                    profileFile && profileFile?.url ?
                                         <img src={profileFile?.url} className="rounded-[50%] h-[80px]" width={80} alt="Profile" />
                                         :
                                         <Image src={ProfileIcon} width={80} alt="Profile" />
