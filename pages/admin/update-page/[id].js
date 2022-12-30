@@ -213,6 +213,14 @@ const UpdatePage = () => {
         })
     }
 
+    const handleSchedule = (opening, closing, label) => {
+        if (schedule.length === 0) {
+            setSchedule(schedule.concat({ day: label, open: opening, close: closing }))
+        } else {
+            setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }]);
+        }
+    }
+
 
     return (
         <AdminLayout sidebar>
@@ -493,12 +501,12 @@ const UpdatePage = () => {
                                             <span className='text-[#FF6551]'>*</span>
                                             <InfoCircleFilled className="text-[#0094DA]" />
                                         </label>
-                                        <ProfileSelectBox label="Samedi" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
-                                        <ProfileSelectBox label="Dimanche" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
-                                        <ProfileSelectBox label="Lundi" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
-                                        <ProfileSelectBox label="Mardi" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
-                                        <ProfileSelectBox label="Mercredi" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
-                                        <ProfileSelectBox label="Jeudi" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
+                                        <ProfileSelectBox label="Samedi" saveItem={handleSchedule} />
+                                        <ProfileSelectBox label="Dimanche" saveItem={handleSchedule} />
+                                        <ProfileSelectBox label="Lundi" saveItem={handleSchedule} />
+                                        <ProfileSelectBox label="Mardi" saveItem={handleSchedule} />
+                                        <ProfileSelectBox label="Mercredi" saveItem={handleSchedule} />
+                                        <ProfileSelectBox label="Jeudi" saveItem={handleSchedule} />
                                     </div>
                                     <Form.Item
                                         name="notes"

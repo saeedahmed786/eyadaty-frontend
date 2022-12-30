@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import ProfileLayout from '../../components/Layouts/ProfileLayout'
-import Image from 'next/image';
 import { ArrowUpOutlined } from '@ant-design/icons';
 import { DatePicker, Input, Form, Radio, Select } from 'antd';
 import axios from 'axios';
@@ -18,11 +17,10 @@ const { Option } = Select;
 
 const Profile = () => {
     const cookies = new Cookies;
-    const [file, setFile] = useState();
-    const [image, setImage] = useState("");
     const [gender, setGender] = useState("Male");
     const [getFormData] = useForm();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [profileFile, setProfileFile] = useState({});
     const [userAuth, setUserAuth] = useState({});
     // State to store selected state and city
     const [selectedState, setSelectedState] = useState('');
@@ -37,18 +35,9 @@ const Profile = () => {
     const onFinish = async (values) => {
         const { email, name, phone, dob, city, gender } = values;
         setLoading(true);
-        let data = new FormData();
-        data.append("name", name);
-        data.append("email", email);
-        data.append("phone", phone);
-        data.append("city", city);
-        data.append("state", selectedState);
-        data.append("gender", gender);
-        data.append("dob", dob);
-        if (file) {
-            data.append("file", file);
-        }
-        await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/update-profile`, data, {
+        await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/update-profile`, {
+            name, email, phone, city, state: selectedState, gender, dob, profileFile
+        }, {
             headers: {
                 "authorization": "Bearer " + userAuth?.token
             }
@@ -88,7 +77,7 @@ const Profile = () => {
                     dob: moment(res.data?.dob),
                     city: res.data?.city,
                 });
-                setImage(res.data?.picture?.url);
+                setProfileFile(res.data?.picture);
                 setSelectedState(res.data?.state);
             }
             else {
@@ -112,6 +101,12 @@ const Profile = () => {
         }
     }, [])
 
+    const handleProfileFileUpload = (f) => {
+        uploadFilesFun(f, userAuth?.token).then(res => {
+            setProfileFile(res)
+        })
+    }
+
     return (
         <ProfileLayout sidebar>
             {
@@ -123,17 +118,15 @@ const Profile = () => {
                             <div className='pictureUploadContainer'>Image de profile</div>
                             <div className='flex gap-4 items-center mt-4'>
                                 {
-                                    file ?
-                                        <Image src={URL.createObjectURL(file)} objectFit="cover" width={80} height={80} className="rounded-[50%]" alt="Profile" />
-                                        :
-                                        <img src={image} width="80px" style={{ height: "80px" }} alt="Profile" className="rounded-[50%] object-cover" />
+                                    profileFile &&
+                                    <img src={profileFile?.url} objectFit="cover" width={80} height={80} className="rounded-[50%]" alt="Profile" />
                                 }
                                 <div className='relative'>
                                     <span className="btn btn-primary btn-file">
                                         <button className='uploadBtn flex items-center gap-2'>
                                             <span>Ajouter un image</span>
                                             <span className='arrowUp'><ArrowUpOutlined /></span>
-                                            <input onChange={(e) => setFile(e.target.files[0])} accept="image/*" name='file' type="file" />
+                                            <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
                                         </button>
                                     </span>
                                 </div>
@@ -141,7 +134,7 @@ const Profile = () => {
                                     <span className="btn btn-primary btn-file">
                                         <button className='deleteBtn'>
                                             <span>Supprimer</span>
-                                            <input onChange={(e) => setFile(e.target.files[0])} accept="image/*" name='file' type="file" />
+                                            <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
                                         </button>
                                     </span>
                                 </div>

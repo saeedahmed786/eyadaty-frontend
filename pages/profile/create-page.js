@@ -22,7 +22,7 @@ const { Option } = Select;
 
 const CreatePage = () => {
     const [filesList, setFilesList] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [gender, setGender] = useState("Male");
     const [owner, setOwner] = useState("Yes");
     const [uploadedFilesList, setUploadedFilesList] = useState([]);
@@ -33,7 +33,6 @@ const CreatePage = () => {
     const [selectedServices, setSelectedServices] = useState([]);
     const [getFormData] = Form.useForm();
     const [userAuth, setUserAuth] = useState({});
-
 
     useEffect(() => {
         setTimeout(() => {
@@ -198,41 +197,50 @@ const CreatePage = () => {
         })
     }
 
+
+    const handleSchedule = (opening, closing, label) => {
+        if (schedule.length === 0) {
+            setSchedule(schedule.concat({ day: label, open: opening, close: closing }))
+        } else {
+            setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }]);
+        }
+    }
+
     return (
         <ProfileLayout sidebar>
-            <div className='CreatePage'>
-                <div className='mt-0'>
-                    <div className='pictureUploadContainer'>Image de profile</div>
-                    <div className='flex gap-4 items-center mt-4'>
-                        {
-                            profileFile ?
-                                <img src={profileFile?.url} className="rounded-[50%]" width={80} alt="Profile" />
-                                :
-                                <Image src={ProfileIcon} width={80} alt="Profile" />
-                        }
-                        {/* <Image src={ProfileIcon} width={80} alt="Profile" /> */}
-                        <div className='relative'>
-                            <span className="btn btn-primary btn-file">
-                                <button className='uploadBtn flex items-center gap-2'>
-                                    <span>Ajouter un image</span>
-                                    <span className='arrowUp'><ArrowUpOutlined /></span>
-                                    <input type="file" name='file' onChange={(e) => handleProfileFileUpload(e.target.files[0])} />
-                                </button>
-                            </span>
-                        </div>
-                        <div>
-                            <span className="btn btn-primary btn-file">
-                                <button className='deleteBtn'>
-                                    <span>Supprimer</span>
-                                    <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                    {
-                        loading ?
-                            <Loading />
-                            :
+            {
+                loading ?
+                    <Loading />
+                    :
+                    <div className='CreatePage'>
+                        <div className='mt-0'>
+                            <div className='pictureUploadContainer'>Image de profile</div>
+                            <div className='flex gap-4 items-center mt-4'>
+                                {
+                                    profileFile ?
+                                        <img src={profileFile?.url} className="rounded-[50%]" width={80} alt="Profile" />
+                                        :
+                                        <Image src={ProfileIcon} width={80} alt="Profile" />
+                                }
+                                {/* <Image src={ProfileIcon} width={80} alt="Profile" /> */}
+                                <div className='relative'>
+                                    <span className="btn btn-primary btn-file">
+                                        <button className='uploadBtn flex items-center gap-2'>
+                                            <span>Ajouter un image</span>
+                                            <span className='arrowUp'><ArrowUpOutlined /></span>
+                                            <input type="file" name='file' onChange={(e) => handleProfileFileUpload(e.target.files[0])} />
+                                        </button>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span className="btn btn-primary btn-file">
+                                        <button className='deleteBtn'>
+                                            <span>Supprimer</span>
+                                            <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
                             <Form
                                 form={getFormData}
                                 name="register"
@@ -416,7 +424,7 @@ const CreatePage = () => {
                                 </Form.Item>
                                 <div className='my-4' style={{ maxWidth: "60%" }}>
                                     {
-                                        schedule?.length > 0 &&
+                                        schedule && schedule.length > 0 &&
                                         <table className='w-full text-center my-5 border'>
                                             <thead className='py-4'>
                                                 <th>Day</th>
@@ -426,7 +434,7 @@ const CreatePage = () => {
                                             </thead>
                                             <tbody>
                                                 {
-                                                    schedule.map(sch => {
+                                                    schedule && schedule.length > 0 && schedule.map(sch => {
                                                         return (
                                                             <tr>
                                                                 <td>{sch?.day}</td>
@@ -445,12 +453,12 @@ const CreatePage = () => {
                                         <span className='text-[#FF6551]'>*</span>
                                         <InfoCircleFilled className="text-[#0094DA]" />
                                     </label>
-                                    <ProfileSelectBox label="Samedi" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
-                                    <ProfileSelectBox label="Dimanche" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
-                                    <ProfileSelectBox label="Lundi" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
-                                    <ProfileSelectBox label="Mardi" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
-                                    <ProfileSelectBox label="Mercredi" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
-                                    <ProfileSelectBox label="Jeudi" saveItem={(opening, closing, label) => setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }])} />
+                                    <ProfileSelectBox label="Samedi" saveItem={handleSchedule} />
+                                    <ProfileSelectBox label="Dimanche" saveItem={handleSchedule} />
+                                    <ProfileSelectBox label="Lundi" saveItem={handleSchedule} />
+                                    <ProfileSelectBox label="Mardi" saveItem={handleSchedule} />
+                                    <ProfileSelectBox label="Mercredi" saveItem={handleSchedule} />
+                                    <ProfileSelectBox label="Jeudi" saveItem={handleSchedule} />
                                 </div>
                                 <Form.Item
                                     name="notes"
@@ -622,10 +630,10 @@ const CreatePage = () => {
                                     </div>
                                 </Form.Item>
                             </Form>
-                    }
-                </div>
-            </div >
-        </ProfileLayout >
+                        </div>
+                    </div>
+            }
+        </ProfileLayout>
     )
 }
 
