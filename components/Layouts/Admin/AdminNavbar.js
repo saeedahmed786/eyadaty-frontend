@@ -30,6 +30,20 @@ const AdminNavbar = () => {
         })
     }
 
+    const markRead = async (auth) => {
+        await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/mark-read`, {
+            headers: {
+                "authorization": "Bearer " + auth?.token
+            }
+        }).then(res => {
+            if (res.statusText === "OK") {
+                // SuccessMessage(res.data.successMessage);
+            } else {
+                ErrorMessage(res.data.errorMessage);
+            }
+        })
+    }
+
 
     useEffect(() => {
         setUserAuth(isAuthenticated());
@@ -40,7 +54,7 @@ const AdminNavbar = () => {
 
 
     const menu = (
-        <div className='notificationPanel p-4 bg-white w-[200px] shadow-lg'>
+        <div className='notificationPanel p-4 bg-white w-[200px] shadow-lg min-w-[220px]'>
             {
                 notifications && notifications?.length > 0 ? notifications?.map(not => {
                     return (
@@ -70,9 +84,10 @@ const AdminNavbar = () => {
                 </div>
                 <div className='flex gap-10 items-center'>
                     <Dropdown
+                        trigger={['click']}
                         overlay={menu}>
-                        <Badge color='#0094DA' count={notifications.length}>
-                            <BellOutlined style={{ fontSize: "21px" }} />
+                        <Badge color='#0094DA' count={notifications?.filter(n => n.readStatus === "false")?.length}>
+                            <BellOutlined onClick={() => markRead(isAuthenticated())} style={{ fontSize: "21px" }} />
                         </Badge>
                     </Dropdown>
                     <div className='flex items-center gap-2'>
