@@ -7,7 +7,6 @@ import Doc from "../assets/doc.jpg"
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { Cookies } from 'react-cookie'
 import { Dropdown, Menu } from 'antd'
 import { isAuthenticated, logout } from './Auth/auth'
 

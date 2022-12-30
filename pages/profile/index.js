@@ -10,7 +10,9 @@ import { Cookies } from 'react-cookie';
 import { Loading } from '../../components/Loading/Loading';
 import statesArray from "../../assets/town_city/wilaya.json"
 import citiesArray from "../../assets/town_city/communes.json"
+import profileIcon from "../../assets/profile.svg"
 import { useForm } from 'antd/lib/form/Form';
+import Image from 'next/image';
 
 
 const { Option } = Select;
@@ -118,8 +120,10 @@ const Profile = () => {
                             <div className='pictureUploadContainer'>Image de profile</div>
                             <div className='flex gap-4 items-center mt-4'>
                                 {
-                                    profileFile &&
-                                    <img src={profileFile?.url} objectFit="cover" width={80} height={80} className="rounded-[50%]" alt="Profile" />
+                                    profileFile ?
+                                        <img src={profileFile?.url} objectFit="cover" width={80} height={80} className="rounded-[50%]" alt="Profile" />
+                                        :
+                                        <Image src={profileIcon} objectFit="cover" width={80} height={80} className="rounded-[50%]" alt="Profile" />
                                 }
                                 <div className='relative'>
                                     <span className="btn btn-primary btn-file">

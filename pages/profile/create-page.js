@@ -22,6 +22,7 @@ const { Option } = Select;
 
 const CreatePage = () => {
     const [filesList, setFilesList] = useState([]);
+    const [schedule, setSchedule] = useState([]);
     const [loading, setLoading] = useState(true);
     const [gender, setGender] = useState("Male");
     const [owner, setOwner] = useState("Yes");
@@ -29,7 +30,6 @@ const CreatePage = () => {
     const [profileFile, setProfileFile] = useState({});
     const [categories, setCategories] = useState([]);
     const [selectedNotes, setSelectedNotes] = useState([]);
-    const [schedule, setSchedule] = useState([]);
     const [selectedServices, setSelectedServices] = useState([]);
     const [getFormData] = Form.useForm();
     const [userAuth, setUserAuth] = useState({});
@@ -199,7 +199,7 @@ const CreatePage = () => {
 
 
     const handleSchedule = (opening, closing, label) => {
-        if (schedule.length === 0) {
+        if (schedule && schedule?.length === 0) {
             setSchedule(schedule.concat({ day: label, open: opening, close: closing }))
         } else {
             setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }]);
@@ -218,7 +218,7 @@ const CreatePage = () => {
                             <div className='flex gap-4 items-center mt-4'>
                                 {
                                     profileFile ?
-                                        <img src={profileFile?.url} className="rounded-[50%]" width={80} alt="Profile" />
+                                        <img src={profileFile?.url} className="rounded-[50%] h-[80px]" width={80} alt="Profile" />
                                         :
                                         <Image src={ProfileIcon} width={80} alt="Profile" />
                                 }
