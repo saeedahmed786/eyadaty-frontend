@@ -147,7 +147,7 @@ const CreatePage = () => {
             }
         }).then(res => {
             setLoading(false);
-            if (res.statusText === "OK") {
+            if (res.data && res.data?.pictures) {
                 getFormData.setFieldsValue({
                     type: res.data?.type,
                     email: res.data?.email,
