@@ -31,7 +31,7 @@ const CreatePage = () => {
     const [selectedNotes, setSelectedNotes] = useState([]);
     const [schedule, setSchedule] = useState([]);
     const [selectedServices, setSelectedServices] = useState([]);
-    const [form] = Form.useForm();
+    const [getFormData] = Form.useForm();
     const [userAuth, setUserAuth] = useState({});
 
 
@@ -149,7 +149,7 @@ const CreatePage = () => {
         }).then(res => {
             setLoading(false);
             if (res.statusText === "OK") {
-                form.setFieldsValue({
+                getFormData.setFieldsValue({
                     type: res.data?.type,
                     email: res.data?.email,
                     firstName: res.data?.firstName,
@@ -234,7 +234,7 @@ const CreatePage = () => {
                             <Loading />
                             :
                             <Form
-                                form={form}
+                                form={getFormData}
                                 name="register"
                                 onFinish={onFinish}
                                 scrollToFirstError

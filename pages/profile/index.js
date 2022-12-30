@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ProfileLayout from '../../components/Layouts/ProfileLayout'
 import Image from 'next/image';
 import { ArrowUpOutlined } from '@ant-design/icons';
-import { DatePicker, Form, Input, Radio, Select } from 'antd';
+import { DatePicker, Input, Form, Radio, Select } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import { isAuthenticated } from '../../components/Auth/auth';
@@ -20,10 +20,9 @@ const Profile = () => {
     const [file, setFile] = useState();
     const [image, setImage] = useState("");
     const [gender, setGender] = useState("Male");
-    const [form] = Form.useForm();
+    const [getFormData] = Form.useForm();
     const [loading, setLoading] = useState(false);
     const [userAuth, setUserAuth] = useState({});
-
     // State to store selected state and city
     const [selectedState, setSelectedState] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
@@ -52,10 +51,10 @@ const Profile = () => {
             headers: {
                 "authorization": "Bearer " + userAuth?.token
             }
-        }).then(async (res) => {
+        }).then(res => {
             setLoading(false);
             if (res.statusText === "OK") {
-                await cookies.set('user', res.data.user, { path: '/' });
+                cookies.set('user', res.data.user, { path: '/' });
                 document.location.reload();
                 SuccessMessage(res.data.successMessage);
             }
@@ -70,7 +69,6 @@ const Profile = () => {
         return current && current > moment().endOf('day');
     };
 
-
     const getUserById = async (auth) => {
         setLoading(true);
         await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/get/${auth._id}`, {
@@ -80,7 +78,7 @@ const Profile = () => {
         }).then(res => {
             setLoading(false);
             if (res.statusText === "OK") {
-                form.setFieldsValue({
+                getFormData.setFieldsValue({
                     email: res.data?.email,
                     name: res.data?.fullName,
                     phone: res.data?.phone,
@@ -148,7 +146,7 @@ const Profile = () => {
                                 </div>
                             </div>
                             <Form
-                                form={form}
+                                form={getFormData}
                                 name="register"
                                 onFinish={onFinish}
                                 scrollToFirstError
@@ -225,7 +223,7 @@ const Profile = () => {
                                     ]}
                                 >
                                     <Select onChange={handleStateSelection} placeholder="Wilaya">
-                                        {statesArray?.length > 0 && statesArray?.map((state) => (
+                                        {statesArray && statesArray?.length > 0 && statesArray?.map((state) => (
                                             <Option key={state.nom.fr} value={state.nom.fr}>{state.nom.fr}</Option>
                                         ))}
                                     </Select>
@@ -244,7 +242,7 @@ const Profile = () => {
                                         {
                                             selectedState &&
                                             (
-                                                citiesArray?.length > 0 && citiesArray?.filter(c => c.wilaya_id === selectedState)?.map((city) => (
+                                                citiesArray && citiesArray?.length > 0 && citiesArray?.filter(c => c.wilaya_id === selectedState)?.map((city) => (
                                                     <Option key={city.nom.fr} value={city.nom.fr}>{city.nom.fr}</Option>
                                                 ))
                                             )
