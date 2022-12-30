@@ -104,7 +104,7 @@ const Search = ({ query }) => {
 
     return (
         <MainLayout navbar>
-            <div className='SearchPage px-0 sm:px-24 py-8'>
+            <div className='SearchPage px-4 sm:px-24 py-8'>
                 <div className='flex gap-2 justify-start items-center py-4'>
                     <span>Accueil</span>
                     <RightIcon />
@@ -115,19 +115,19 @@ const Search = ({ query }) => {
                 <SearchInputs handleUpdate={(val) => setClinicName(val)} />
                 <div className='flex flex-wrap justify-between items-center gap-8 mt-8'>
                     <div className='flex flex-wrap gap-8'>
-                        <div className='w-[15vw] overflow-x-auto'>
+                        <div className='w-[100%] sm:w-[15vw] overflow-x-auto'>
                             <SearchWithCheckBox handleUpdate={(value) => setCity(value)} prevValue={city} data={["Tous", "Médea", "Ouzera", "Ouled Maaref", "Ain Boucif", "Aissaouia", "Ouled Deide"]} label="Commune" placeholder="Commune" />
                         </div>
-                        <div className='w-[15vw]'>
+                        <div className='w-[100%] sm:w-[15vw]'>
                             <SearchWithCheckBox handleUpdate={(value) => setService(value)} data={services} label="Services" placeholder="Services" />
                         </div>
-                        <div className='w-[15vw]'>
+                        <div className='w-[100%] sm:w-[15vw]'>
                             <SearchWithCheckBox handleUpdate={(value) => setSortBy(value)} data={["Plus de recommandation", "Le plus regardé", "La plus proche"]} label="Trier par" placeholder="Trier par" />
                         </div>
-                        <div className='w-[15vw]'>
+                        <div className='w-[100%] sm:w-[15vw]'>
                             <SearchWithCheckBox handleUpdate={(value) => setGender(value)} prevValue={gender} data={["Male", "Female"]} label="Le genre" placeholder="Le genre" />
                         </div>
-                        <div className='w-[15vw]'>
+                        <div className='w-[100%] sm:w-[15vw]'>
                             <SearchWithCheckBox handleUpdate={(value) => setOptions(value)} data={["GPS", "Email", "Facebook", "Instagram", "+5 Recommandations", "Ouvert"]} label="Options" placeholder="Options" />
                         </div>
                     </div>
@@ -135,10 +135,10 @@ const Search = ({ query }) => {
                 <button onClick={handleSearch}>Search</button>
                 <Row gutter={[23, 23]}>
                     <Col md={14}>
-                        <h2 className='subTitle my-12'>Recherche de <span className='text-[#0094DA]'>{`" Cardiologie "`}</span></h2>
+                        <h2 className='text-[16px] sm:subTitle my-12'>Recherche de <span className='text-[#0094DA]'>{`" Cardiologie "`}</span></h2>
                         <div className='flex justify-between items-center my-8'>
                             <div>Nous avons trouvé <span className='text-[#0094DA]'>1 - 55</span> résultats</div>
-                            <div className='flex gap-2 items-center filterBtn'>
+                            <div className='hidden md:flex gap-2 items-center filterBtn'>
                                 <span>Affichage</span>
                                 <div>
                                     <button className={`btn ${gridCol === 12 && "focused"}`} onClick={() => setGridCol(12)}>

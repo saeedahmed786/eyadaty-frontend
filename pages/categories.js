@@ -31,14 +31,14 @@ const Categories = () => {
 
     return (
         <MainLayout navbar>
-            <div className='CategoriesPage container px-5 mx-auto pb-24 pt-6'>
+            <div className='CategoriesPage container px-4 mx-auto pb-24 pt-6'>
                 <div className='text-center'>
                     <div className='flex gap-2 justify-center items-center py-4'>
                         <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Catégories</button>
                     </div>
                     <h1 className='bigTitle'>Catégories</h1>
                 </div>
-                <div className='flex flex-wrap gap-6 mt-12'>
+                <div className='flex flex-wrap gap-2 sm:gap-6 mt-12'>
                     {
                         specialitiesArray && specialitiesArray?.map(cat => {
                             return (

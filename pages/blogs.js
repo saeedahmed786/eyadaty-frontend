@@ -76,15 +76,15 @@ const Blogs = () => {
 
     return (
         <MainLayout navbar>
-            <div className='blogsPage px-0 sm:px-24 py-8'>
+            <div className='blogsPage px-4 sm:px-24 py-8'>
                 <div className='flex gap-2 justify-center items-center py-4'>
                     <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]' href="/faq">Blog</button>
                 </div>
                 <h1 className='bigTitle text-center py-3'>Voir notre  < br />dernier blog</h1>
                 <div className='flex flex-wrap justify-between items-center gap-8 mt-8'>
-                    <div className='flex gap-8'>
+                    <div className='flex flex-wrap gap-8'>
                         <BlogsSearch changeBlogId={(val) => console.log(val)} />
-                        <div className='searchBox relative'>
+                        <div className='searchBox relative min-w-[200px] w-full'>
                             <label>Trier par</label>
                             <br />
                             <select placeholder='Plus recent'>
@@ -95,7 +95,7 @@ const Blogs = () => {
                             </select>
                         </div>
                     </div>
-                    <div className='flex gap-2 items-center filterBtn'>
+                    <div className='hidden  sm:flex gap-2 items-center filterBtn'>
                         <span>Affichage</span>
                         <div>
                             <button className={`btn ${gridCol === 12 && "focused"}`} onClick={() => setGridCol(12)}>
@@ -127,7 +127,7 @@ const Blogs = () => {
                             }
                         </div>
                     </Col>
-                    <Col md={18} className="pl-12 pt-8">
+                    <Col md={18} className="sm:pl-12 pt-8">
                         <Row gutter={[23, 32]}>
                             {
                                 blogs && blogs?.length > 0 && blogs.map(blog => {

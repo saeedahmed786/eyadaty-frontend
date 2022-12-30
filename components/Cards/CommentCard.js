@@ -1,4 +1,5 @@
 import { DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined, MessageOutlined } from '@ant-design/icons'
+import { Col, Row } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react'
@@ -108,11 +109,11 @@ const CommentCard = ({ comment, pageId, handleUpdate }) => {
 
     return (
         <div className='CommentCard'>
-            <div className='flex gap-4'>
-                <div className='commentImg'> 
+            <Row>
+                <Col xs={4} sm={1} className='commentImg'> 
                     <img src={comment?.commentor?.picture?.url} alt='name' className='rounded-[50%] object-cover w-[48px] h-[48px]' />
-                </div>
-                <div className='w-[90%]'>
+                </Col>
+                <Col xs={20} sm = {23} className="px-3">
                     <strong>{comment?.commentor?.fullName}</strong>
                     <p className='normalPara my-2'>{comment?.text}</p>
                     <div className='reactionCont flex gap-8'>
@@ -154,8 +155,8 @@ const CommentCard = ({ comment, pageId, handleUpdate }) => {
                             </div>
                         </div>
                     }
-                </div>
-            </div>
+                </Col>
+            </Row>
         </div>
     )
 }

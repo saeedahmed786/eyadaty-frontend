@@ -6,7 +6,7 @@ const BlogCard = ({ blog }) => {
     return (
         <div className='BlogCard'>
             <div className='mainImg border rounded-[16px]'>
-                <img src={blog?.picture?.url} alt='doc' className='max-h-[300px] min-w-[30vw] w-full' />
+                <img src={blog?.picture?.url} alt='doc' className='max-h-[300px] min-w-[30vw] w-full rounded-[16px]' />
             </div>
             <div className='inner'>
                 <h6>{blog?.category?.name}</h6>

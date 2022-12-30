@@ -114,7 +114,7 @@ const SearchCard = ({ gridCol, favourite, page, removeFavourite }) => {
                         {
                             favourite &&
                             <div>
-                                <DeleteModal deleteFun={removeFavourite} id={page._id} deleteBtn={<Image src={Delete} alt="Delete" />} />
+                                <DeleteModal deleteFun={removeFavourite} id={page?._id} deleteBtn={<Image src={Delete} alt="Delete" />} />
                             </div>
                         }
                     </div>

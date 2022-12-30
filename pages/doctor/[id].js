@@ -230,7 +230,7 @@ const IndDoctor = () => {
 
     return (
         <MainLayout navbar>
-            <div className='DoctorDetails px-0 py-12 sm:px-24'>
+            <div className='DoctorDetails px-4 py-12 sm:px-24'>
                 <div>
                     <div>
                         <div className='flex gap-2 justify-start items-center py-4'>
@@ -247,7 +247,7 @@ const IndDoctor = () => {
                                 <Loading />
                                 :
                                 <>
-                                    <div className='flex justify-between'>
+                                    <div className='flex justify-between flex-wrap'>
                                         <div>
                                             <div className='nameAndPic w-full flex items-center gap-2'>
                                                 <div className='profileImg'>
@@ -255,37 +255,13 @@ const IndDoctor = () => {
                                                 </div>
                                                 <div className='w-full'>
                                                     <div className='flex gap-3'>
-                                                        <h2>{clinic?.firstName} {clinic?.lastName}</h2>
+                                                        <h1 className='bigTitle'>{clinic?.firstName} {clinic?.lastName}</h1>
                                                         <Image src={Check} width="40px" alt="Checkmark" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='flex gap-6 mt-4 items-end'>
-                                                <button className='flex gap-1 items-center'>
-                                                    <EyeTwoTone />
-                                                    <span>{formatStringNumbers(clinic?.views?.length)}</span>
-                                                </button>
-                                                <button className='flex gap-1 items-center'>
-                                                    <HeartTwoTone />
-                                                    <span>{favourites?.length}</span>
-                                                </button>
-                                                <button className='flex gap-1 items-center'>
-                                                    <StarTwoTone />
-                                                    <span>{
-                                                        clinic?.recommendations?.length > 0 ? clinic?.recommendations?.length * 5 : 5 / clinic?.notrecommendations?.length > 0 ? clinic?.notrecommendations?.length : 1
-                                                    }
-                                                    </span>
-                                                </button>
-                                                <button className='flex gap-1 items-center text-[#0094DA]'>
-                                                    ({clinic?.recommendations?.length + clinic?.notrecommendations?.length} Avis)
-                                                </button>
-                                                <a href='#commentSection' className='flex gap-1 items-center'>
-                                                    <MessageTwoTone />
-                                                    <span>{comments.length} Commantaires</span>
-                                                </a>
-                                            </div>
                                         </div>
-                                        <div className='iconsContainter'>
+                                        <div className='iconsContainter my-4 sm:my-0'>
                                             <div className={` ${favouriteAdded ? "bg-[#0094DA] text-[white]" : "text-[#0094DA]"}`}>
                                                 <button onClick={handleFavourites}>
                                                     {/* <Image src={Heart} width="20px" alt="Heart" /> */}
@@ -302,6 +278,30 @@ const IndDoctor = () => {
                                             </div>
                                         </div>
                                     </div>
+                                    <div className='flex flex-wrap gap-6 mt-4 items-end'>
+                                        <button className='flex gap-1 items-center'>
+                                            <EyeTwoTone />
+                                            <span>{formatStringNumbers(clinic?.views?.length)}</span>
+                                        </button>
+                                        <button className='flex gap-1 items-center'>
+                                            <HeartTwoTone />
+                                            <span>{favourites?.length}</span>
+                                        </button>
+                                        <button className='flex gap-1 items-center'>
+                                            <StarTwoTone />
+                                            <span>{
+                                                clinic?.recommendations?.length > 0 ? clinic?.recommendations?.length * 5 : 5 / clinic?.notrecommendations?.length > 0 ? clinic?.notrecommendations?.length : 1
+                                            }
+                                            </span>
+                                        </button>
+                                        <button className='flex gap-1 items-center text-[#0094DA]'>
+                                            ({clinic?.recommendations?.length + clinic?.notrecommendations?.length} Avis)
+                                        </button>
+                                        <a href='#commentSection' className='flex gap-1 items-center w-full sm:w-auto'>
+                                            <MessageTwoTone />
+                                            <span>{comments.length} Commantaires</span>
+                                        </a>
+                                    </div>
                                     <Row gutter={[15, 15]} className='imagesContainer mt-12'>
                                         <Col md={10} className='mainImg'>
                                             <img src={clinic?.pictures && clinic?.pictures[0]?.url} alt="Doctor" />
@@ -313,7 +313,7 @@ const IndDoctor = () => {
                                                         return (
                                                             index > 0 &&
                                                             <Col>
-                                                                <img src={pic?.url} alt="Doctor" />
+                                                                <img src={pic?.url} alt="Doctor" className='w-full' />
                                                             </Col>
                                                         )
                                                     })
@@ -333,7 +333,7 @@ const IndDoctor = () => {
                                     <div className='likeContantainer'>
                                         <div>
                                             <p className='normalPara'>{"D'après votre expérience, recommandez-vous de visiter la clinique ?"}</p>
-                                            <div className='flex justify-center mt-4 gap-6'>
+                                            <div className='flex sm:justify-center flex-wrap mt-4 gap-6 w-full'>
                                                 {
                                                     notRecommended ?
                                                         <button className='flex gap-1 items-center' onClick={removeNotRecommendation}>
@@ -375,7 +375,7 @@ const IndDoctor = () => {
                                             <Image src={building} alt="coo" />
                                             <h4>Coordonnées</h4>
                                         </div>
-                                        <Row className='px-4' gutter={[20, 20]}>
+                                        <Row className='sm:px-4 block sm:flex' gutter={[20, 20]}>
                                             <Col md={12}>
                                                 <div className='mt-8'>
                                                     <button className='flex justify-between items-center w-full'>
@@ -407,7 +407,7 @@ const IndDoctor = () => {
                                                         <span>{clinic?.email}</span>
                                                     </button>
                                                 </div>
-                                                <div className='mt-8'>
+                                                <div className='my-6 sm:my-0 mt-8'>
                                                     <p>Réseaux sociaux</p>
                                                     <div className='flex gap-3 mt-4 items-center' >
                                                         <Image src={Facebook} alt="Facebook" className='text-red' style={{ color: "red" }} />
@@ -441,7 +441,7 @@ const IndDoctor = () => {
                                         </ul>
                                     </section>
                                     <section className='mt-8'>
-                                        <div className='header flex justify-between items-center'>
+                                        <div className='header flex justify-between flex-wrap items-center'>
                                             <div className='flex gap-2'>
                                                 <Image src={timeClock} alt="timeClock" />
                                                 <h4>Horaire de travail</h4>
@@ -452,7 +452,7 @@ const IndDoctor = () => {
                                             {
                                                 clinic?.schedule && clinic.schedule?.map((sch) => {
                                                     return (
-                                                        <div>
+                                                        <div className='min-w-[100px]'>
                                                             <Image src={calendar} alt="calendar" />
                                                             <h5>{sch.day}</h5>
                                                             <div className='flex flex-wrap items-center'>
@@ -487,7 +487,7 @@ const IndDoctor = () => {
                                             <h4>Commantaires</h4>
                                             <div className='count'>{comments.length}</div>
                                         </div>
-                                        <div className='px-4' id='commentSection'>
+                                        <div className='sm:px-4' id='commentSection'>
                                             {
                                                 comments?.length > 0 && comments.map(comment => {
                                                     return (

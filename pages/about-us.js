@@ -82,7 +82,7 @@ const AboutUsPage = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="hidden sm:block lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                        <div className="hidden md:block lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
                             <Image src={aboutimg} alt="Image of doctor" width={420} height={428.03} />
                         </div>
                     </div>

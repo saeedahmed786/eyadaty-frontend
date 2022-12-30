@@ -92,13 +92,13 @@ const Favourites = () => {
     };
     return (
         <MainLayout navbar>
-            <div className='Favourites px-0 sm:px-24 py-8'>
+            <div className='Favourites px-4 sm:px-24 py-8'>
                 <div className='flex gap-2 justify-center items-center py-4'>
                     <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Favoris </button>
                 </div>
                 <h1 className='bigTitle text-center py-3'>Favoris</h1>
                 <Row>
-                    <Col md={6}>
+                    <Col xs={24} md={6}>
                         <div>
                             <label>Chercher</label>
                             <SearchInputs />
@@ -139,7 +139,7 @@ const Favourites = () => {
                             </button>
                         </div>
                     </Col>
-                    <Col md={18} className="pl-12 pt-8">
+                    <Col xs={24} md={18} className="sm:pl-12 pt-8">
                         <Row gutter={[23, 32]}>
                             {
                                 favourites?.length > 0 && favourites.map(fav => {

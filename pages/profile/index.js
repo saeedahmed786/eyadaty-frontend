@@ -115,32 +115,34 @@ const Profile = () => {
                 loading ?
                     <Loading />
                     :
-                    <div className='Profile px-10'>
+                    <div className='Profile sm:px-10 mt-12 sm:mt-0'>
                         <div className='mt-0'>
                             <div className='pictureUploadContainer'>Image de profile</div>
-                            <div className='flex gap-4 items-center mt-4'>
+                            <div className='flex flex-wrap gap-4 items-center mt-4'>
                                 {
                                     profileFile && profileFile?.url ?
                                         <img src={profileFile?.url} objectFit="cover" width={80} className="rounded-[50%] h-[80px]" alt="Profile" />
                                         :
                                         <Image src={profileIcon} objectFit="cover" width={80} height={80} className="rounded-[50%]" alt="Profile" />
                                 }
-                                <div className='relative'>
-                                    <span className="btn btn-primary btn-file">
-                                        <button className='uploadBtn flex items-center gap-2'>
-                                            <span>Ajouter un image</span>
-                                            <span className='arrowUp'><ArrowUpOutlined /></span>
-                                            <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
-                                        </button>
-                                    </span>
-                                </div>
-                                <div>
-                                    <span className="btn btn-primary btn-file">
-                                        <button className='deleteBtn'>
-                                            <span>Supprimer</span>
-                                            <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
-                                        </button>
-                                    </span>
+                                <div className='w-full sm:w-auto flex gap-4'>
+                                    <div className='relative'>
+                                        <span className="btn btn-primary btn-file">
+                                            <button className='uploadBtn flex items-center gap-2'>
+                                                <span>Ajouter un image</span>
+                                                <span className='arrowUp'><ArrowUpOutlined /></span>
+                                                <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span className="btn btn-primary btn-file">
+                                            <button className='deleteBtn'>
+                                                <span>Supprimer</span>
+                                                <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
+                                            </button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <Form

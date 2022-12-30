@@ -86,7 +86,7 @@ const Blog = () => {
 
     return (
         <MainLayout navbar>
-            <div className='Blog px-0 py-12 sm:px-24'>
+            <div className='Blog px-4 py-12 sm:px-24'>
                 <Row gutter={[23, 23]}>
                     <Col md={16}>
                         <div className='flex gap-2 justify-start items-center py-4'>
@@ -188,8 +188,8 @@ const Blog = () => {
                             </div>
                         </div> */}
                         <BlogsSearch changeBlogId={(value) => setBlogId(value)} />
+                        <div className='my-12 sm:my-8'>
                         <h3>Nos articles les plus lus</h3>
-                        <div className='my-8'>
                             {
                                 blogs && blogs?.length > 0 && blogs.filter(b => b._id !== blogId).slice(0, 6).map(blog => {
                                     return (

@@ -19,6 +19,7 @@ import typeArray from "../../assets/type_profile.json"
 import { deleteFilesFun, uploadFilesFun } from '../../components/UploadFile'
 import closeIcon from "../../assets/closeIcon.svg"
 import { Loading } from '../../components/Loading/Loading'
+import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages'
 
 const { Option } = Select;
 
@@ -104,7 +105,7 @@ const CreatePage = () => {
         }).then(async (res) => {
             setLoading(false);
             if (res.statusText === "OK") {
-                getUserPageById(userAuth);
+                // getUserPageById(userAuth);
                 SuccessMessage(res.data.successMessage);
             }
             else {

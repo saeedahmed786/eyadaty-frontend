@@ -213,9 +213,9 @@ const CreatePage = () => {
                     <Loading />
                     :
                     <div className='CreatePage'>
-                        <div className='mt-0'>
+                        <div className='mt-12 sm:mt-0'>
                             <div className='pictureUploadContainer'>Image de profile</div>
-                            <div className='flex gap-4 items-center mt-4'>
+                            <div className='flex flex-wrap gap-4 items-center mt-4'>
                                 {
                                     profileFile && profileFile?.url ?
                                         <img src={profileFile?.url} className="rounded-[50%] h-[80px]" width={80} alt="Profile" />
@@ -223,22 +223,24 @@ const CreatePage = () => {
                                         <Image src={ProfileIcon} width={80} alt="Profile" />
                                 }
                                 {/* <Image src={ProfileIcon} width={80} alt="Profile" /> */}
-                                <div className='relative'>
-                                    <span className="btn btn-primary btn-file">
-                                        <button className='uploadBtn flex items-center gap-2'>
-                                            <span>Ajouter un image</span>
-                                            <span className='arrowUp'><ArrowUpOutlined /></span>
-                                            <input type="file" name='file' onChange={(e) => handleProfileFileUpload(e.target.files[0])} />
-                                        </button>
-                                    </span>
-                                </div>
-                                <div>
-                                    <span className="btn btn-primary btn-file">
-                                        <button className='deleteBtn'>
-                                            <span>Supprimer</span>
-                                            <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
-                                        </button>
-                                    </span>
+                                <div className='w-full sm:w-auto flex gap-4'>
+                                    <div className='relative'>
+                                        <span className="btn btn-primary btn-file">
+                                            <button className='uploadBtn flex items-center gap-2'>
+                                                <span>Ajouter un image</span>
+                                                <span className='arrowUp'><ArrowUpOutlined /></span>
+                                                <input type="file" name='file' onChange={(e) => handleProfileFileUpload(e.target.files[0])} />
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span className="btn btn-primary btn-file">
+                                            <button className='deleteBtn'>
+                                                <span>Supprimer</span>
+                                                <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
+                                            </button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <Form
@@ -271,7 +273,7 @@ const CreatePage = () => {
                                     </Select>
                                 </Form.Item>
                                 <Row gutter={[16, 16]}>
-                                    <Col md={12}>
+                                    <Col xs={24} md={12}>
                                         <Form.Item
                                             name="lastName"
                                             label="Nom"
@@ -286,7 +288,7 @@ const CreatePage = () => {
                                             <Input placeholder='Nom' />
                                         </Form.Item>
                                     </Col>
-                                    <Col md={12}>
+                                    <Col xs={24} md={12}>
                                         <Form.Item
                                             name="firstName"
                                             label="Prénom"
@@ -422,7 +424,7 @@ const CreatePage = () => {
                                 >
                                     <Input placeholder='Experience' />
                                 </Form.Item>
-                                <div className='my-4' style={{ maxWidth: "60%" }}>
+                                <div className='my-4 sm:max-w-[60%]'>
                                     {
                                         schedule && schedule.length > 0 &&
                                         <table className='w-full text-center my-5 border'>
@@ -575,7 +577,7 @@ const CreatePage = () => {
                                         {
                                             uploadedFilesList?.length > 0 ? uploadedFilesList.map(file => {
                                                 return (
-                                                    <div className='imageBox relative w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                    <div className='imageBox relative sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                         <img src={file?.url} className="rounded-[12px] border h-[132px] w-[148px]" alt="Gallery Icon" />
                                                         <DeleteFilled className='absolute top-[-8px] right-0' onClick={() => handleFileRemove(file)} />
                                                     </div>

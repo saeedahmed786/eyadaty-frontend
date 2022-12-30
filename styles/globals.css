@@ -1468,14 +1468,80 @@ a:hover {
     height: 56px;
 }
 
-.AboutUsPage .slick-prev:before, .slick-next:before {
+.AboutUsPage .slick-prev:before,
+.slick-next:before {
     margin: 0px !important;
-    display: unset!important;
+    display: unset !important;
 }
 
 .AboutUsPage .slick-prev {
     left: -20px !important;
 }
+
 .AboutUsPage .slick-next {
     right: -10px !important;
+}
+
+
+@media (max-width:600px) {
+    .bigTitle {
+        font-size: 32px !important;
+        line-height: 32px !important;
+    }
+
+    .DoctorDetails .likeContantainer button {
+        width: 100%;
+    }
+
+    .AddComment h3,
+    .CommentCard h3 {
+        font-size: 32px;
+        line-height: 34px !important;
+    }
+
+    .DoctorDetails .imagesContainer .smallImages>div img {
+        width: 100vw !important;
+    }
+
+    .SearchCard>.flex>div {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .SearchCard .swiper-slide-active img {
+        height: 186px !important;
+    }
+
+    .SearchCard .thumbImages button img {
+        width: 66px !important;
+        height: 58px !important;
+    }
+
+    .deleteModal {
+        width: auto !important;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .searchBox {
+        width: 100% !important;
+    }
+
+    .searchBox input,
+    .searchBox select {
+        width: 100% !important;
+    }
+
+    .SearchPage .map-container {
+        height: auto !important;
+    }
+
+    .CategoriesPage .categoryCard {
+        min-width: auto !important;
+        width: 44vw !important;
+    }
+}
+
+.normalPara {
+    word-wrap: break-word !important;
 }

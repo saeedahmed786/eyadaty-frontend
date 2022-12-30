@@ -58,7 +58,7 @@ const AdminNavbar = () => {
             {
                 notifications && notifications?.length > 0 ? notifications?.map(not => {
                     return (
-                        <button onClick={() => router.push(not?.link)} className='flex gap-2 items-center'>
+                        <button onClick={() => router.push(not?.link)} className='flex gap-2 items-center mb-4'>
                             {
                                 not?.user ?
                                     <img src={not?.user?.picture?.url} width={43} className="rounded-[50%] object-cover h-[43px]" alt="Profile" />
