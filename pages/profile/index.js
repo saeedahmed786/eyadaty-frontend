@@ -13,6 +13,7 @@ import citiesArray from "../../assets/town_city/communes.json"
 import profileIcon from "../../assets/profile.svg"
 import { useForm } from 'antd/lib/form/Form';
 import Image from 'next/image';
+import { uploadFilesFun } from '../../components/UploadFile';
 
 
 const { Option } = Select;
