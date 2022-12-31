@@ -11,6 +11,7 @@ import formatStringNumbers from '../FormatNumbers'
 import axios from 'axios'
 import { ErrorMessage } from '../../components/Messages/messages'
 import { isAuthenticated } from '../Auth/auth'
+import Link from 'next/link'
 
 export default function LabCard({ clinic }) {
     const router = useRouter();
@@ -43,11 +44,10 @@ export default function LabCard({ clinic }) {
         <div className="xl:w-1/4 md:w-1/2 p-4">
             <div className="flex justify-center">
                 <div className="rounded-lg shadow-lg bg-white max-w-sm">
-                    <a className='flex justify-center ' href="components/labcards#!">
-                        <img src={clinic?.picture?.url} alt="clinic image" />
-
+                    <Link className='' href={"/doctor/" + clinic._id}>
+                        <img src={clinic?.picture?.url} alt="clinic image" className='object-cover' />
                         {/* <img className="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt=""/> */}
-                    </a>
+                    </Link>
                     <div className="p-6">
                         <div className='flex flex-row space-x-2'>
                             <div>

@@ -1,5 +1,5 @@
 import { AppstoreOutlined, UnorderedListOutlined } from '@ant-design/icons'
-import { Col, Pagination, Row } from 'antd'
+import { Checkbox, Col, Input, Pagination, Row, Select } from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { isAuthenticated } from '../components/Auth/auth'
@@ -11,6 +11,13 @@ import RightIcon from '../components/icons/righticon'
 import { ErrorMessage } from '../components/Messages/messages'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import SearchWithCheckBox from '../components/Inputs/SearchWithCheckBox'
+import DistanceCalculator from '../components/DistanceCalculator'
+import citiesArray from "../assets/town_city/communes.json"
+import SearchIcon from "../assets/search.svg"
+import Image from 'next/image'
+
+const { Option } = Select;
+
 
 
 const Search = () => {
@@ -29,6 +36,7 @@ const Search = () => {
     const [gender, setGender] = useState("Male");
     const [totalClinics, setTotalClinics] = useState([]);
     const [lngLat, setLngLat] = useState(null);
+    const [name, setName] = useState("");
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -49,7 +57,7 @@ const Search = () => {
     };
 
     const search = () => {
-        return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/search?specialisation=${speciality}&state=${selectedState}&city=${city}&available=${avaialble}&gender=${gender}&service=${service}&sortBy=${sortBy}&options=${options}&clinicName=${clinicName}`);
+        return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/search/${current - 1}?specialisation=${speciality}&state=${selectedState}&city=${city}&available=${avaialble}&gender=${gender}&service=${service}&sortBy=${sortBy}&options=${options}&clinicName=${clinicName}`);
     }
 
     const handleSearch = () => {
@@ -105,6 +113,10 @@ const Search = () => {
         return originalElement;
     };
 
+    const onNameChange = (event) => {
+        setName(event.target.value);
+    };
+
     return (
         <MainLayout navbar>
             <div className='SearchPage px-4 sm:px-24 py-8'>
@@ -119,10 +131,43 @@ const Search = () => {
                 <div className='flex flex-wrap justify-between items-center gap-8 mt-8'>
                     <div className='flex flex-wrap gap-8'>
                         <div className='w-[100%] sm:w-[15vw] overflow-x-auto'>
-                            <SearchWithCheckBox handleUpdate={(value) => setCity(value)} prevValue={city} data={["Tous", "Médea", "Ouzera", "Ouled Maaref", "Ain Boucif", "Aissaouia", "Ouled Deide"]} label="Commune" placeholder="Commune" />
+                            <div className='SelectBox relative bg-transparent'>
+                                <label>Commune</label>
+                                <br />
+                                <Select
+                                    className='w-full'
+                                    onChange={(value) => { setCity(value) }}
+                                    placeholder={"Commune"}
+                                    dropdownRender={(menu) => (
+                                        <div className='selectDropdown w-full p-4'>
+                                            <Input
+                                                suffix={<Image src={SearchIcon} alt="Search" />}
+                                                placeholder="Recherche...."
+                                                className='w-full'
+                                                // ref={inputRef}
+                                                value={name}
+                                                onChange={onNameChange}
+                                            />
+                                            {menu}
+                                        </div>
+                                    )}
+                                >
+                                    {citiesArray?.filter(f => f?.nom?.fr?.toLowerCase().includes(name?.toLowerCase())).map((option) => (
+                                        <Option key={option} value={option.nom.fr}>
+                                            <Checkbox>{option.nom.fr}</Checkbox>
+                                        </Option>
+                                    ))}
+                                </Select>
+                            </div>
+                            {/* <SearchWithCheckBox handleUpdate={(value) => setCity(value)} prevValue={city} data={citiesArray} label="Commune" placeholder="Commune" /> */}
                         </div>
                         <div className='w-[100%] sm:w-[15vw]'>
                             <SearchWithCheckBox handleUpdate={(value) => setService(value)} data={services} label="Services" placeholder="Services" />
+                            {
+                                sortBy === "closest"
+                                &&
+                                <DistanceCalculator coords={[33.57577149030277, 72.99894209711883]} updateData={(val) => setClinics(val)} data={clinics} />
+                            }
                         </div>
                         <div className='w-[100%] sm:w-[15vw]'>
                             <SearchWithCheckBox handleUpdate={(value) => value === "Plus de recommandation" ? setSortBy("recommendations") : value === "Le plus regardé" ? setSortBy("views") : setSortBy("closest")} data={["Plus de recommandation", "Le plus regardé", "La plus proche"]} label="Trier par" placeholder="Trier par" />
@@ -140,7 +185,7 @@ const Search = () => {
                     <Col md={14}>
                         <h2 className='text-[16px] subTitle my-12'>Recherche de <span className='text-[#0094DA]'>{clinicName}</span></h2>
                         <div className='flex justify-between items-center my-8'>
-                            <div>Nous avons trouvé <span className='text-[#0094DA]'>1 - 55</span> résultats</div>
+                            <div>Nous avons trouvé <span className='text-[#0094DA]'>{clinics.length} - {totalClinics}</span> résultats</div>
                             <div className='hidden md:flex gap-2 items-center filterBtn'>
                                 <span>Affichage</span>
                                 <div>

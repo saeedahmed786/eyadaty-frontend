@@ -106,8 +106,8 @@ export default function Home() {
                     <Categories categories={specialitiesArray} />
                     <DownloadApp />
                     <ClinicsSection clinics={clinics.filter(c => c.type === "Clinique")} />
-                    <LabSection clinics={clinics.filter(c => c.type === "Laboratory")} />
-                    <Doctor clinics={clinics.filter(c => c.type === "Clinique")} />
+                    <LabSection clinics={clinics.filter(c => c.type?.includes("Laboratoire"))} />
+                    <Doctor clinics={clinics.filter(c => c.type?.includes("Laboratoire"))} />
                     <BlogList blogs={blogs} />
                     <Subscribe />
                 </div>

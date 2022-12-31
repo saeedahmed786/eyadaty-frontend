@@ -55,6 +55,9 @@ const CreatePage = () => {
             phoneTwo,
             fax,
             facebookLink,
+            instagram,
+            twitter,
+            messenger,
             bio,
             specialisation,
             experience,
@@ -73,6 +76,9 @@ const CreatePage = () => {
             phoneTwo,
             fax,
             facebookLink,
+            instagram,
+            twitter,
+            messenger,
             bio,
             specialisation,
             experience,
@@ -375,6 +381,45 @@ const CreatePage = () => {
                                     ]}
                                 >
                                     <Input placeholder='Lien de Facebook  ( Optional )' />
+                                </Form.Item>
+                                <Form.Item
+                                    name="instagram"
+                                    label="Lien de Instagram  ( Optional )"
+                                    hasFeedback
+                                    rules={[
+                                        {
+                                            required: false,
+                                            message: 'Please input your Lien de Instagram  ( Optional )!',
+                                        },
+                                    ]}
+                                >
+                                    <Input placeholder='Lien de Instagram  ( Optional )' />
+                                </Form.Item>
+                                <Form.Item
+                                    name="twitter"
+                                    label="Lien de Twitter  ( Optional )"
+                                    hasFeedback
+                                    rules={[
+                                        {
+                                            required: false,
+                                            message: 'Please input your Lien de Twitter  ( Optional )!',
+                                        },
+                                    ]}
+                                >
+                                    <Input placeholder='Lien de Twitter  ( Optional )' />
+                                </Form.Item>
+                                <Form.Item
+                                    name="messenger"
+                                    label="Lien de Messenger  ( Optional )"
+                                    hasFeedback
+                                    rules={[
+                                        {
+                                            required: false,
+                                            message: 'Please input your Lien de Messenger  ( Optional )!',
+                                        },
+                                    ]}
+                                >
+                                    <Input placeholder='Lien de Messenger  ( Optional )' />
                                 </Form.Item>
                                 <Form.Item
                                     name="bio"

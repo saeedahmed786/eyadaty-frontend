@@ -37,6 +37,7 @@ const Profile = () => {
 
     const onFinish = async (values) => {
         const { email, name, phone, dob, city, gender } = values;
+        console.log(values)
         setLoading(true);
         await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/update-profile`, {
             name, email, phone, city, state: selectedState, gender, dob, profileFile

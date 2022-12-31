@@ -237,6 +237,7 @@ const IndDoctor = () => {
     }, [])
 
 
+    console.log(clinic.facebookLink)
 
     return (
         <MainLayout navbar>
@@ -417,13 +418,33 @@ const IndDoctor = () => {
                                                         <span>{clinic?.email}</span>
                                                     </button>
                                                 </div>
-                                                <div className='my-6 sm:my-4 mt-8'>
+                                                <div className='mt-8'>
                                                     <p>Réseaux sociaux</p>
-                                                    <div className='flex gap-3 mt-4 items-center' >
-                                                        <Image src={Facebook} alt="Facebook" className='text-red' style={{ color: "red" }} />
-                                                        <Image src={Twitter} alt="Twitter" />
-                                                        <Image src={Instagram} alt="Instagram" />
-                                                        <Image src={Messenger} alt="Messenger" />
+                                                    <div className='flex gap-3 mt-4 items-center'>
+                                                        {
+                                                            clinic?.facebookLink &&
+                                                            <a href={clinic?.facebookLink} target="_blank">
+                                                                <Image src={Facebook} alt="Facebook" className='text-red' style={{ color: "red" }} />
+                                                            </a>
+                                                        }
+                                                        {
+                                                            clinic?.twitter &&
+                                                            <a href={clinic?.twitter} target="_blank">
+                                                                <Image src={Twitter} alt="Twitter" />
+                                                            </a>
+                                                        }
+                                                        {
+                                                            clinic?.instagram &&
+                                                            <a href={clinic?.instagram} target="_blank">
+                                                                <Image src={Instagram} alt="Instagram" />
+                                                            </a>
+                                                        }
+                                                        {
+                                                            clinic?.messenger &&
+                                                            <a href={clinic?.messenger} target="_blank">
+                                                                <Image src={Messenger} alt="Messenger" />
+                                                            </a>
+                                                        }
                                                     </div>
                                                 </div>
                                             </Col>

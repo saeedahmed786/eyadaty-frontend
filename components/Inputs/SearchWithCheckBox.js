@@ -8,7 +8,7 @@ const Option = Select;
 
 
 const SearchWithCheckBox = ({ data, label, placeholder, handleUpdate }) => {
-    const [selectedValue, setSelectedValue] = useState([]);
+    const [selectedValue, setSelectedValue] = useState("");
     const inputRef = useRef(null);
     const [name, setName] = useState('');
 
@@ -26,10 +26,10 @@ const SearchWithCheckBox = ({ data, label, placeholder, handleUpdate }) => {
             <br />
             <Select
                 className='w-full'
-                onChange={(value) => { handleUpdate(value) }}
+                onChange={(value) => { handleUpdate(value); handleChange(value) }}
                 placeholder={placeholder}
                 dropdownRender={(menu) => (
-                    <div className='selectDropdown w-full p-4'>
+                    <div className='selectDropdown w-full p-4' style={{ zIndex: "1000" }}>
                         <Input
                             suffix={<Image src={SearchIcon} alt="Search" />}
                             placeholder="Recherche...."

@@ -60,7 +60,7 @@ const ProfileSelectBox = ({ label, saveItem }) => {
                             </Select>
                         </Col>
                         <Col xs={24} md={2}>
-                            <button className='btn bg-[#0094DA] w-full text-white p-2 px-2 rounded-md h-[100%]' type='button' onClick={() => { saveItem(opening, closing, label); setChecked(false) }}>Save</button>
+                            <button className='btn bg-[#0094DA] w-full text-white p-2 px-12 flex justify-center rounded-md h-[100%]' type='button' onClick={() => { saveItem(opening, closing, label); setChecked(false) }}>Save</button>
                         </Col>
                     </Row>
                 </Col>
