@@ -18,12 +18,14 @@ import UserIcon from '../../icons/userIcon'
 import SearchInputs from '../../Inputs/SearchInputs'
 import doctor from '/assets/doc.jpg'
 import Logout from "../../../assets/Logout.svg"
+import { useTranslation } from 'react-i18next'
 
 const MobileNav = ({ handleMask }) => {
     const [show, setShow] = useState(false);
     const router = useRouter();
     const [userAuth, setUserAuth] = useState();
     const [notifications, setNotifications] = useState([]);
+    const { t } = useTranslation();
 
 
     const getAllNotifications = async (auth) => {
@@ -107,7 +109,7 @@ const MobileNav = ({ handleMask }) => {
                                     <Link href="/admin">
                                         <button className={`${router.pathname === "/admin" ? "hyperlink text-[#0094DA] flex gap-3 items-center" : "flex gap-3 items-center text-[#65737E]"}`}>
                                             <HomeIcon />
-                                            <span>Panneau de contrôle</span>
+                                            <span>{t("Panneau de contrôle")}</span>
                                         </button>
                                     </Link>
                                 </div>
@@ -115,7 +117,7 @@ const MobileNav = ({ handleMask }) => {
                                     <Link href="/admin/pages">
                                         <button className={`${router.pathname === "/admin/pages" ? "hyperlink text-[#0094DA] flex gap-3 items-center" : "flex gap-3 items-center text-[#65737E]"}`}>
                                             <DocumentIcon />
-                                            <span>Les pages</span>
+                                            <span>{t("Les pages")}</span>
                                         </button>
                                     </Link>
                                 </div>
@@ -123,7 +125,7 @@ const MobileNav = ({ handleMask }) => {
                                     <Link href="/admin/users">
                                         <button className={`${router.pathname === "/admin/users" ? "hyperlink text-[#0094DA] flex gap-3 items-center" : "flex gap-3 items-center text-[#65737E]"}`}>
                                             <UserIcon />
-                                            <span>Utilisateurs</span>
+                                            <span>{t("Utilisateurs")}</span>
                                         </button>
                                     </Link>
                                 </div>
@@ -131,7 +133,7 @@ const MobileNav = ({ handleMask }) => {
                                     <Link href="/admin/articles">
                                         <button className={`${router.pathname === "/admin/articles" ? "hyperlink text-[#0094DA] flex gap-3 items-center" : "flex gap-3 items-center text-[#65737E]"}`}>
                                             <EditIcon />
-                                            <span>Articles</span>
+                                            <span>{t("Articles")}</span>
                                         </button>
                                     </Link>
                                 </div>
@@ -139,7 +141,7 @@ const MobileNav = ({ handleMask }) => {
                                     <Link href="/admin/categories">
                                         <button className={`${router.pathname === "/admin/categories" ? "hyperlink text-[#0094DA] flex gap-3 items-center" : "flex gap-3 items-center text-[#65737E]"}`}>
                                             <FiList className='text-[23px]' />
-                                            <span>Categories</span>
+                                            <span>{t("Categories")}</span>
                                         </button>
                                     </Link>
                                 </div>
@@ -147,13 +149,13 @@ const MobileNav = ({ handleMask }) => {
                                     <Link href="/admin/create-page">
                                         <button className={`${router.pathname === "/admin/create-page" ? "hyperlink text-[#0094DA] flex gap-3 items-center" : "flex gap-3 items-center text-[#65737E]"}`}>
                                             <PlusIcon />
-                                            <span>Créer un page</span>
+                                            <span>{t("Créer un page")}</span>
                                         </button>
                                     </Link>
                                 </div>
                                 <div className='w-full left-0 px-2'>
                                     <button className='gap-4 rounded-[12px] border border-[#FF6551] h-[48px] w-full flex justify-center items-center text-[#FF6551] text-[16px] font-[500]'>
-                                        <span className='text-[#FF6551] '>Déconnexion</span>
+                                        <span className='text-[#FF6551] '>{("Déconnexion")}</span>
                                         <Image src={Logout} alt="Logout" />
                                     </button>
                                 </div>

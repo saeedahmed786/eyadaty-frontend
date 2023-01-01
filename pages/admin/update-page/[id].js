@@ -20,11 +20,13 @@ import closeIcon from '../../../assets/closeIcon.svg'
 import { deleteFilesFun, uploadFilesFun } from '../../../components/UploadFile'
 import specialitiesArray from "../../../assets/specialities.json"
 import typeArray from "../../../assets/type_profile.json"
+import { useTranslation } from 'react-i18next'
 
 
 const { Option } = Select;
 
 const UpdatePage = () => {
+    const { t } = useTranslation();
     const [filesList, setFilesList] = useState([]);
     const [pageId, setPageId] = useState("");
     const [loading, setLoading] = useState(false);
@@ -234,14 +236,14 @@ const UpdatePage = () => {
                 <div className='md:flex justify-between flex-wrap gap-4'>
                     <div>
                         <div className='flex gap-2 justify-start items-center pb-4'>
-                            <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Modifier la page</button>
+                            <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("Modifier la page")}</button>
                         </div>
-                        <h1 className='bigTitle'>Modifier la page</h1>
+                        <h1 className='bigTitle'>{t("Modifier la page")}</h1>
                     </div>
                     <div className='mt-8 md:mt-0'>
                         <button className='flex justify-center items-center w-full gap-2 bg-[#0094DA] rounded-[12px] text-white h-[48px] px-6'>
                             <PlusIcon />
-                            <span className='text-[16px] font-[500]'>Ajouter un page</span>
+                            <span className='text-[16px] font-[500]'>{t("Ajouter un page")}</span>
                         </button>
                     </div>
                 </div>
@@ -251,49 +253,24 @@ const UpdatePage = () => {
                     </div>
                     <div className='flex justify-between flex-wrap gap-6 mt-6'>
                         <div>
-                            <h5>Type de page</h5>
+                            <h5>{t("Type de page")}</h5>
                             <div className='flex justify-between gap-6 sm:gap-0 mt-3'>
-                                <Checkbox value="Free" checked={paidStatus === "Free"} onChange={(e) => setPaidStatus(e.target.value)}>Freemium</Checkbox>
-                                <Checkbox value="Premium" checked={paidStatus === "Premium"} onChange={(e) => setPaidStatus(e.target.value)}>Premium</Checkbox>
+                                <Checkbox value="Free" checked={paidStatus === "Free"} onChange={(e) => setPaidStatus(e.target.value)}>{t("Freemium")}</Checkbox>
+                                <Checkbox value="Premium" checked={paidStatus === "Premium"} onChange={(e) => setPaidStatus(e.target.value)}>{t("Premium")}</Checkbox>
                             </div>
                         </div>
                         <div>
-                            <h5>Actif</h5>
+                            <h5>{t("Actif")}</h5>
                             <div className='flex justify-between gap-6 sm:gap-0 w-full mt-3'>
-                                <Checkbox value="Active" checked={status === "Active"} onChange={(e) => setStatus(e.target.value)}>Activé</Checkbox>
-                                <Checkbox value="Pending" checked={status === "Pending"} onChange={(e) => setStatus(e.target.value)}>En attente</Checkbox>
+                                <Checkbox value="Active" checked={status === "Active"} onChange={(e) => setStatus(e.target.value)}>{t("Activé")}</Checkbox>
+                                <Checkbox value="Pending" checked={status === "Pending"} onChange={(e) => setStatus(e.target.value)}>{t("En attente")}</Checkbox>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className='CreatePage'>
                     <div className='mt-8'>
-                        <div className='pictureUploadContainer'>Image de profile</div>
-                        {/* <div className='flex gap-4 items-center mt-4'>
-                            {
-                                profileFile && profileFile?.url ?
-                                    <img src={profileFile?.url} className="rounded-[50%]" width={80} alt="Profile" />
-                                    :
-                                    <Image src={ProfileIcon} width={80} alt="Profile" />
-                            }
-                            <div className='relative'>
-                                <span className="btn btn-primary btn-file">
-                                    <button className='uploadBtn flex items-center gap-2'>
-                                        <span>Ajouter un image</span>
-                                        <span className='arrowUp'><ArrowUpOutlined /></span>
-                                        <input type="file" name='file' onChange={(e) => handleProfileFileUpload(e.target.files[0])} />
-                                    </button>
-                                </span>
-                            </div>
-                            <div>
-                                <span className="btn btn-primary btn-file">
-                                    <button className='deleteBtn'>
-                                        <span>Supprimer</span>
-                                        <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
-                                    </button>
-                                </span>
-                            </div>
-                        </div> */}
+                        <div className='pictureUploadContainer'>{t("Image de profile")}</div>
                         <div className='flex flex-wrap gap-4 items-center mt-4'>
                             {
                                 profileFile && profileFile?.url ?
@@ -301,12 +278,11 @@ const UpdatePage = () => {
                                     :
                                     <Image src={ProfileIcon} width={80} alt="Profile" />
                             }
-                            {/* <Image src={ProfileIcon} width={80} alt="Profile" /> */}
                             <div className='w-full sm:w-auto flex gap-4'>
                                 <div className='relative'>
                                     <span className="btn btn-primary btn-file">
                                         <button className='uploadBtn flex items-center gap-2'>
-                                            <span>Ajouter un image</span>
+                                            <span>{t("Ajouter un image")}</span>
                                             <span className='arrowUp'><ArrowUpOutlined /></span>
                                             <input type="file" name='file' onChange={(e) => handleProfileFileUpload(e.target.files[0])} />
                                         </button>
@@ -315,7 +291,7 @@ const UpdatePage = () => {
                                 <div>
                                     <span className="btn btn-primary btn-file">
                                         <button className='deleteBtn'>
-                                            <span>Supprimer</span>
+                                            <span>{t("Supprimer")}</span>
                                             <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
                                         </button>
                                     </span>
@@ -335,7 +311,7 @@ const UpdatePage = () => {
                                 >
                                     <Form.Item
                                         name="type"
-                                        label="Type de page"
+                                        label={t("Type de page")}
                                         requiredMark={"*"}
                                         required
                                         rules={[
@@ -345,7 +321,7 @@ const UpdatePage = () => {
                                             },
                                         ]}
                                     >
-                                        <Select placeholder="Type de page">
+                                        <Select placeholder={t("Type de page")}>
                                             {
                                                 typeArray?.length > 0 && typeArray.map(t => {
                                                     return (
@@ -359,7 +335,7 @@ const UpdatePage = () => {
                                         <Col xs={24} md={12}>
                                             <Form.Item
                                                 name="lastName"
-                                                label="Nom"
+                                                label={t("Nom")}
                                                 hasFeedback
                                                 rules={[
                                                     {
@@ -368,13 +344,13 @@ const UpdatePage = () => {
                                                     },
                                                 ]}
                                             >
-                                                <Input placeholder='Nom' />
+                                                <Input placeholder={t('Nom')} />
                                             </Form.Item>
                                         </Col>
                                         <Col xs={24} md={12}>
                                             <Form.Item
                                                 name="firstName"
-                                                label="Prénom"
+                                                label={t("Prénom")}
                                                 hasFeedback
                                                 rules={[
                                                     {
@@ -383,19 +359,19 @@ const UpdatePage = () => {
                                                     },
                                                 ]}
                                             >
-                                                <Input placeholder='Prénom' />
+                                                <Input placeholder={t('Prénom')} />
                                             </Form.Item>
                                         </Col>
                                     </Row>
-                                    <Form.Item name="gender" label="Gender">
+                                    <Form.Item name="gender" label={t("Gender")}>
                                         <Radio.Group onChange={(e) => setGender(e.target.value)} value={gender}>
-                                            <Radio value="Male">Male</Radio>
-                                            <Radio value="Female">Female</Radio>
+                                            <Radio value="Male">{t("Male")}</Radio>
+                                            <Radio value="Female">{t("Female")}</Radio>
                                         </Radio.Group>
                                     </Form.Item>
                                     <Form.Item
                                         name="phone"
-                                        label="Numéro de Téléphone"
+                                        label={t("Numéro de Téléphone")}
                                         hasFeedback
                                         rules={[
                                             {
@@ -404,37 +380,37 @@ const UpdatePage = () => {
                                             }
                                         ]}
                                     >
-                                        <Input placeholder='Numéro de Téléphone' prefix={"+213"} />
+                                        <Input placeholder={t('Numéro de Téléphone')} prefix={"+213"} />
                                     </Form.Item>
                                     <Form.Item
                                         name="phoneTwo"
-                                        label="Numéro de Téléphone 02 ( Optional )"
+                                        label={t("Numéro de Téléphone 02 ( Optionnel )")}
                                         hasFeedback
                                         rules={[
                                             {
                                                 required: false,
-                                                message: 'Please input your Numéro de Téléphone 02 ( Optional )!',
+                                                message: 'Please input your Numéro de Téléphone 02 ( Optionnel )!',
                                             }
                                         ]}
                                     >
-                                        <Input placeholder='Numéro de Téléphone 02 ( Optional )' prefix={"+213"} />
+                                        <Input placeholder={t('Numéro de Téléphone 02 ( Optionnel )')} prefix={"+213"} />
                                     </Form.Item>
                                     <Form.Item
                                         name="fax"
-                                        label="Numéro de Téléphone Fixe ( Optional )"
+                                        label={t("Numéro de Téléphone Fixe ( Optionnel )")}
                                         hasFeedback
                                         rules={[
                                             {
                                                 required: false,
-                                                message: 'Please input your Numéro de Téléphone Fixe ( Optional )!',
+                                                message: 'Please input your Numéro de Téléphone Fixe ( Optionnel )!',
                                             }
                                         ]}
                                     >
-                                        <Input placeholder='Numéro de Téléphone Fixe ( Optional )' prefix={"+213"} />
+                                        <Input placeholder={t('Numéro de Téléphone Fixe ( Optionnel )')} prefix={"+213"} />
                                     </Form.Item>
                                     <Form.Item
                                         name="email"
-                                        label="E-mail"
+                                        label={t("E-mail")}
                                         required
                                         hasFeedback
                                         rules={[
@@ -448,75 +424,75 @@ const UpdatePage = () => {
                                             },
                                         ]}
                                     >
-                                        <Input placeholder='E-mail' />
+                                        <Input placeholder={t('E-mail')} />
                                     </Form.Item>
                                     <Form.Item
                                         name="facebookLink"
-                                        label="Lien de Facebook  ( Optional )"
+                                        label={t("Lien de Facebook  ( Optionnel )")}
                                         hasFeedback
                                         rules={[
                                             {
                                                 required: false,
-                                                message: 'Please input your Lien de Facebook  ( Optional )!',
+                                                message: 'Please input your Lien de Facebook  ( Optionnel )!',
                                             },
                                         ]}
                                     >
-                                        <Input placeholder='Lien de Facebook  ( Optional )' />
+                                        <Input placeholder={t("Lien de Facebook  ( Optionnel )")} />
                                     </Form.Item>
                                     <Form.Item
                                         name="instagram"
-                                        label="Lien de Instagram  ( Optional )"
+                                        label={t("Lien de Instagram  ( Optionnel )")}
                                         hasFeedback
                                         rules={[
                                             {
                                                 required: false,
-                                                message: 'Please input your Lien de Instagram  ( Optional )!',
+                                                message: 'Please input your Lien de Instagram  ( Optionnel )!',
                                             },
                                         ]}
                                     >
-                                        <Input placeholder='Lien de Instagram  ( Optional )' />
+                                        <Input placeholder={t("Lien de Instagram  ( Optionnel )")} />
                                     </Form.Item>
                                     <Form.Item
                                         name="twitter"
-                                        label="Lien de Twitter  ( Optional )"
+                                        label={t("Lien de Twitter  ( Optionnel )")}
                                         hasFeedback
                                         rules={[
                                             {
                                                 required: false,
-                                                message: 'Please input your Lien de Twitter  ( Optional )!',
+                                                message: 'Please input your Lien de Twitter  ( Optionnel )!',
                                             },
                                         ]}
                                     >
-                                        <Input placeholder='Lien de Twitter  ( Optional )' />
+                                        <Input placeholder={t("Lien de Twitter  ( Optionnel )")} />
                                     </Form.Item>
                                     <Form.Item
                                         name="messenger"
-                                        label="Lien de Messenger  ( Optional )"
+                                        label={t("Lien de Messenger  ( Optionnel )")}
                                         hasFeedback
                                         rules={[
                                             {
                                                 required: false,
-                                                message: 'Please input your Lien de Messenger  ( Optional )!',
+                                                message: 'Please input your Lien de Messenger  ( Optionnel )!',
                                             },
                                         ]}
                                     >
-                                        <Input placeholder='Lien de Messenger  ( Optional )' />
+                                        <Input placeholder={t("Lien de Messenger  ( Optionnel )")} />
                                     </Form.Item>
                                     <Form.Item
                                         name="bio"
-                                        label="Bio ( Optional )"
+                                        label={t("Bio ( Optionnel )")}
                                         rules={[
                                             {
                                                 required: false,
-                                                message: 'Please input Bio ( Optional )',
+                                                message: 'Please input Bio ( Optionnel )',
                                             },
                                         ]}
                                     >
-                                        <Input.TextArea placeholder='Bio' rows={6} showCount maxLength={100} />
+                                        <Input.TextArea placeholder={t("Bio")} rows={6} showCount maxLength={100} />
                                     </Form.Item>
                                     <Form.Item
                                         name="specialisation"
-                                        label="Spécialité"
+                                        label={t("Spécialité")}
                                         rules={[
                                             {
                                                 required: true,
@@ -524,7 +500,7 @@ const UpdatePage = () => {
                                             },
                                         ]}
                                     >
-                                        <Select placeholder="Spécialité">
+                                        <Select placeholder={t("Spécialité")}>
                                             {specialitiesArray.map((spec) => (
                                                 <Option key={spec.fr} value={spec.fr}>{spec.fr}</Option>
                                             ))}
@@ -532,7 +508,7 @@ const UpdatePage = () => {
                                     </Form.Item>
                                     <Form.Item
                                         name="experience"
-                                        label="Experience"
+                                        label={t("Experience")}
                                         required
                                         hasFeedback
                                         rules={[
@@ -542,7 +518,7 @@ const UpdatePage = () => {
                                             },
                                         ]}
                                     >
-                                        <Input placeholder='Experience' />
+                                        <Input placeholder={t("Experience")} />
                                     </Form.Item>
                                     <div className='my-4 md:max-w-[60%]'>
                                         {
@@ -559,7 +535,7 @@ const UpdatePage = () => {
                                                         schedule.map(sch => {
                                                             return (
                                                                 <tr>
-                                                                    <td>{sch?.day}</td>
+                                                                    <td>{t(sch?.day)}</td>
                                                                     <td>{sch?.open}</td>
                                                                     <td>{sch?.close}</td>
                                                                     <td><DeleteFilled onClick={() => setSchedule(schedule.filter(f => f.day !== sch.day))} /></td>
@@ -571,7 +547,7 @@ const UpdatePage = () => {
                                             </table>
                                         }
                                         <label className='flex gap-2 mb-4 items-center'>
-                                            <span>Horaire de travail</span>
+                                            <span>{t("Horaire de travail")}</span>
                                             <span className='text-[#FF6551]'>*</span>
                                             <InfoCircleFilled className="text-[#0094DA]" />
                                         </label>
@@ -584,12 +560,12 @@ const UpdatePage = () => {
                                     </div>
                                     <Form.Item
                                         name="notes"
-                                        label="Les notes ( Optional )"
+                                        label={t("Les notes ( Optionnel )")}
                                         hasFeedback
                                         rules={[
                                             {
                                                 required: false,
-                                                message: 'Please input your Les notes ( Optional )!',
+                                                message: 'Please input your Les notes ( Optionnel )!',
                                             }
                                         ]}
                                     >
@@ -613,14 +589,14 @@ const UpdatePage = () => {
                                     </div>
                                     <Form.Item
                                         name="clinicName"
-                                        label="Nom de la clinique ( Optional )"
+                                        label="Nom de la clinique ( Optionnel )"
                                         hasFeedback
                                     >
                                         <Input placeholder='Nom de la clinique' />
                                     </Form.Item>
                                     <div className='mt-4'>
                                         <label className='flex gap-2 mb-4 items-center'>
-                                            <span className='font-[700] leading-[16px]'>Horaire de travail</span>
+                                            <span className='font-[700] leading-[16px]'>{t("Horaire de travail")}</span>
                                             <span className='text-[#FF6551]'>*</span>
                                             <InfoCircleFilled className="text-[#0094DA]" />
                                         </label>
@@ -650,7 +626,7 @@ const UpdatePage = () => {
                                     </div>
                                     <Form.Item
                                         name="services"
-                                        label="Services"
+                                        label={t("Services")}
                                         className='mt-2'
                                         hasFeedback
                                         rules={[
@@ -680,7 +656,7 @@ const UpdatePage = () => {
                                     </div>
                                     <Form.Item>
                                         <label>
-                                            <span className='font-[700] leading-[16px]'>Horaire de travail</span>
+                                            <span className='font-[700] leading-[16px]'>{t("Horaire de travail")}</span>
                                             <span className='text-[#FF6551] px-1'>*</span>
                                         </label>
                                         <Form.Item name="dragger" valuePropName="fileList" getValueFromEvent={normFile} noStyle>
@@ -690,7 +666,7 @@ const UpdatePage = () => {
                                                 </p>
                                             </Upload.Dragger>
                                         </Form.Item>
-                                        <p className='text-center text-[#65737E] leading-[17px] mt-2'>{"Essayez de télécharger l'image dans ces formats ( PNG, JPEG )"}</p>
+                                        <p className='text-center text-[#65737E] leading-[17px] mt-2'>{t("Essayez de télécharger l'image dans ces formats ( PNG, JPEG )")}</p>
                                     </Form.Item>
                                     <div className='my-4'>
                                         <div className='flex flex-wrap gap-6 mt-8'>
@@ -732,22 +708,22 @@ const UpdatePage = () => {
                                     </div>
                                     <div className='my-6'>
                                         <label className='flex gap-1 mb-4 items-center'>
-                                            <span className='font-[700] leading-[16px]'>Êtes-vous le propriétaire de la clinique?</span>
+                                            <span className='font-[700] leading-[16px]'>{t("Êtes-vous le propriétaire de la clinique?")}</span>
                                             <span className='text-[#FF6551]'>*</span>
                                             <InfoCircleFilled className="text-[#0094DA]" />
                                         </label>
                                         <div className='mt-0 flex items-center gap-4'>
-                                            <Checkbox checked={owner === "Yes"} onChange={(e) => e.target.checked && setOwner("Yes")}>Oui</Checkbox>
-                                            <Checkbox checked={owner === "No"} onChange={(e) => e.target.checked && setOwner("No")}>Non</Checkbox>
+                                            <Checkbox checked={owner === "Yes"} onChange={(e) => e.target.checked && setOwner("Yes")}>{t("Oui")}</Checkbox>
+                                            <Checkbox checked={owner === "No"} onChange={(e) => e.target.checked && setOwner("No")}>{t("Non")}</Checkbox>
                                         </div>
                                     </div>
                                     <Form.Item className='my-5'>
                                         <div className='flex gap-4'>
                                             <button type="submit" className='btn px-12 bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
-                                                Sauvegarder
+                                                {t("Sauvegarder")}
                                             </button>
                                             <button className='btn px-12 bg-[#C0C5CE] rounded-[12px] text-black font-[500] leading-[16px] h-[56px]'>
-                                                Annuler
+                                                {t("Annuler")}
                                             </button>
                                         </div>
                                     </Form.Item>

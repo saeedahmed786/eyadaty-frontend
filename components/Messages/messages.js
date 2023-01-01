@@ -1,5 +1,4 @@
-import { message, Modal } from "antd";
-import { useEffect, useState } from "react";
+import { message } from "antd";
 
 export const SuccessMessage = (messages) => {
     message.success({

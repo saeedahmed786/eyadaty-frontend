@@ -1,15 +1,19 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import icon from '/assets/Icon.png'
 import LeftIcon from '../../components/icons/lefticon'
 import RightIcon from '../../components/icons/righticon'
 import CategoryCard from './categoryCard'
 import { useRouter } from 'next/router'
 import Slider from 'react-slick'
+import { useTranslation } from 'react-i18next'
 
 
 export default function Categories({ categories }) {
   const router = useRouter();
   const slickRef = useRef();
+  // const [language, setLanguage] = useState("fr");
+  const { t, i18n } = useTranslation();
+
 
   var settings = {
     dots: false,
@@ -47,13 +51,26 @@ export default function Categories({ categories }) {
     ]
   };
 
+  // useEffect(() => {
+  //   if (document.getElementsByTagName('html')[0].dir === "ltr") {
+  //     setLanguage("fr");
+  //   } else {
+  //     setLanguage("ar")
+  //   }
+
+  //   return () => {
+
+  //   }
+  // }, [])
+
+
   return (
     <section className="text-gray-600 body-font categoriesComp bg-[url('../assets/Lines-alt.png')] bg-cover bg-no-repeat  ">
       <div className="container py-16 mx-auto ">
         <div className="flex flex-wrap justify-center sm:justify-between px-0 w-full mb-20">
-          <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
-            <p className='text-sitegreen text-center sm:text-left font-medium pl-1'>Explorez tous les</p>
-            <h1 className="bigTitle text-center sm:text-left">Catégories</h1>
+          <div className="w-full rtl:lg:w-auto ltr:lg:w-1/2 mb-6 lg:mb-0">
+            <p className='text-sitegreen rtl:md:text-start text-center sm:text-left font-medium pl-1'>{t("Explorez tous les")}</p>
+            <h1 className="bigTitle text-center sm:text-left">{t("Catégories")}</h1>
           </div>
           <div className='flex flex-row justify-center gap-2 space-x-1'>
             <button onClick={() => slickRef.current?.slickPrev()}>
@@ -85,7 +102,7 @@ export default function Categories({ categories }) {
         </div>
         <div className='w-full flex justify-center mt-8'>
           <div className="flex w-full md:justify-center justify-center items-end ">
-            <button onClick={() => router.push("/categories")} className="text-white text-left bg-siteblue border-0 py-2 px-16 focus:outline-none hover:bg-sitegreen rounded-xl text-lg flex items-center gap-3"><span>Voir tous les categorie </span> <RightIcon /></button>
+            <button onClick={() => router.push("/categories")} className="text-white text-left bg-siteblue border-0 py-2 px-16 focus:outline-none hover:bg-sitegreen rounded-xl text-lg flex items-center gap-3"><span>{t("Voir tous les catégorie")} </span> <RightIcon /></button>
           </div>
         </div>
       </div>

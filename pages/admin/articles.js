@@ -12,9 +12,11 @@ import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages
 import { isAuthenticated } from '../../components/Auth/auth'
 import moment from 'moment'
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 const Articles = () => {
     const router = useRouter();
+    const { t } = useTranslation();
     const [blogs, setBlogs] = useState([]);
     const [userAuth, setUserAuth] = useState({});
     const [current, setCurrent] = useState(1);
@@ -67,7 +69,7 @@ const Articles = () => {
             ),
         },
         {
-            title: 'Catégorie',
+            title: t('Catégorie'),
             dataIndex: 'category',
             key: 'category',
             sorter: (a, b) => a?.category?.localeCompare(b?.category),
@@ -78,7 +80,7 @@ const Articles = () => {
             ),
         },
         {
-            title: 'Titre',
+            title: t('Titre'),
             dataIndex: 'title',
             key: 'title',
             sorter: (a, b) => a?.title?.localeCompare(b?.title),
@@ -89,7 +91,7 @@ const Articles = () => {
             ),
         },
         {
-            title: 'Date',
+            title: t('Date'),
             dataIndex: 'createdAt',
             key: 'createdAt',
             sorter: (a, b) => a.createdAt.length - b.createdAt.length,
@@ -100,7 +102,7 @@ const Articles = () => {
             ),
         },
         {
-            title: 'Auteur',
+            title: t('Auteur'),
             dataIndex: 'author',
             key: 'author',
             sorter: (a, b) => a?.user?.fullName?.localeCompare(b?.user?.fullName),
@@ -111,7 +113,7 @@ const Articles = () => {
             ),
         },
         {
-            title: 'Actions',
+            title: t('Actions'),
             render: (_, blog) => (
                 <>
                     <div className='flex items-center gap-4'>
@@ -131,21 +133,21 @@ const Articles = () => {
                 <div className='md:flex justify-between flex-wrap items-start pb-8'>
                     <div>
                         <div className='flex gap-2 justify-start items-center pb-4'>
-                            <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Articles</button>
+                            <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>`{t("Articles")}`</button>
                         </div>
-                        <h1 className='bigTitle'>Articles</h1>
+                        <h1 className='bigTitle'>{t("Articles")}</h1>
                     </div>
                     <div className='mt-8 md:mt-0'>
                         <button onClick={() => router.push("/admin/create-article")} className='flex items-center justify-center w-full gap-2 bg-[#0094DA] rounded-[12px] text-white h-[48px] px-6'>
                             <PlusIcon />
-                            <span className='text-[16px] font-[500]'>Ajouter un article</span>
+                            <span className='text-[16px] font-[500]'>{t("Ajouter un article")}</span>
                         </button>
                     </div>
                 </div>
                 {/* <div className='mt-10 bg-white'>
                     <Table showSorterTooltip columns={columns} pagination={false} dataSource={blogs} />
                     <div className='adminPagination p-4 flex items-center justify-between my-12'>
-                        <p className='text-[#65737E] text-[12px]'>Affichage de {current * 10} sur {totalBlogs}  entrées</p>
+                        <p className='text-[#65737E] text-[12px]'>{t("Affichage de")} {current * 10} sur {totalBlogs}  entrées</p>
                         <AdminPagination totalLength={totalBlogs} handlePagination={(curr) => { setCurrent(curr); getAllBlogs(curr) }} />
                     </div>
                 </div> */}
@@ -181,7 +183,7 @@ const Articles = () => {
                     }
                 </div>
                 <div className='adminPagination bg-white p-4 flex items-center justify-between flex-wrap rounded-[16px] md:rounded-none my-1 md:my-12'>
-                    <p className='text-[#65737E] text-[12px]'>Affichage de {current * 10} sur {totalBlogs}  entrées</p>
+                    <p className='text-[#65737E] text-[12px]'>{t("Affichage de")} {current * 10} sur {totalBlogs}  entrées</p>
                     <AdminPagination totalLength={totalBlogs} handlePagination={(curr) => { setCurrent(curr); getAllBlogs(curr) }} />
                 </div>
             </div>

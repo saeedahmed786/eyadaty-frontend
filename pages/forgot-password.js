@@ -9,9 +9,11 @@ import Footer from '../components/footer/footer'
 import MainLayout from '../components/Layouts/MainLayout'
 import axios from 'axios'
 import { CustomErrorMessage, CustomSuccessMessage } from '../components/Messages/messages'
+import { useTranslation } from 'react-i18next'
 
 const ForgotPassword = () => {
     const [form] = Form.useForm();
+    const { t } = useTranslation();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
@@ -47,10 +49,10 @@ const ForgotPassword = () => {
                 <Row className='py-0' align="middle">
                     <Col md={12} className="pr-0 md:pr-24">
                         <div className='flex gap-2 items-center py-4'>
-                            <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/forgot-password">Oublié le mot de passe</Link>
+                            <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]' href="/forgot-password">{t("Oublié le mot de passe")}</Link>
                         </div>
-                        <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>Mot de passe oublié?</h1>
-                        <p className='my-4'>Des instructions sur la façon de réinitialiser votre mot de passe seront envoyées à votre adresse e-mail.</p>
+                        <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>{t("Mot de passe oublié?")}</h1>
+                        <p className='my-4'>{t("Des instructions sur la façon de réinitialiser votre mot de passe seront envoyées à votre adresse e-mail.")}</p>
                         <Form
                             form={form}
                             name="ForgotPassword"
@@ -59,7 +61,7 @@ const ForgotPassword = () => {
                         >
                             <Form.Item
                                 name="email"
-                                label="E-mail"
+                                label={t("E-mail")}
                                 hasFeedback
                                 rules={[
                                     {
@@ -72,11 +74,11 @@ const ForgotPassword = () => {
                                     },
                                 ]}
                             >
-                                <Input placeholder='E-mail' />
+                                <Input placeholder={t("E-mail")} />
                             </Form.Item>
                             <Form.Item className='my-5'>
                                 <button type="submit" className='btn w-full bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
-                                    Envoyer
+                                    {t("Envoyer")}
                                 </button>
                             </Form.Item>
                         </Form>

@@ -12,9 +12,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MainLayout from '../components/Layouts/MainLayout';
+import { useTranslation } from 'react-i18next';
 
 
 const AboutUsPage = () => {
+    const { t } = useTranslation();
+
 
     var settings = {
         dots: false,
@@ -22,7 +25,7 @@ const AboutUsPage = () => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        initialSlide: 0
+        initialSlide: 0,
     };
 
     var settings2 = {
@@ -65,20 +68,19 @@ const AboutUsPage = () => {
             <div className='AboutUsPage container px-5 mx-auto pb-24 pt-6'>
                 <div className='text-center'>
                     <div className='flex gap-2 justify-center items-center py-4'>
-                        <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>À propos de nous</button>
+                        <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("À propos de nous")}</button>
                     </div>
-                    <h1 className='bigTitle'>À propos de nous</h1>
+                    <h1 className='bigTitle'>{t("À propos de nous")}</h1>
                 </div>
                 <AboutUs />
                 <section className="text-gray-600 body-font">
                     <div className="container mx-auto flex px-0 sm:py-24 md:flex-row flex-col items-center justify-center ">
                         <div className="lg:flex-grow md:w-1/2 flex flex-col md:items-start md:text-left sm:mb-16 md:mb-0 items-center text-center">
                             <div className='sm:max-w-[80%]'>
-                                <p className="text-sm  text-sitegreen font-bold mb-5 w-full">Notre services</p>
-                                <h1 className="bigTitle">Nous fournissons les meilleurs service?</h1>
+                                <p className="text-sm  text-sitegreen font-bold mb-5 w-full">{t("Notre services")}</p>
+                                <h1 className="bigTitle">{t("Nous fournissons les meilleurs service?")}</h1>
                                 <p className="mb-8 leading-relaxed">
-                                    Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad.
-                                    Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.
+                                    {t("Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad. Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.")}
                                 </p>
                             </div>
                         </div>
@@ -91,7 +93,7 @@ const AboutUsPage = () => {
                     <div className="container mx-auto py-24">
                         <div className="mb-16 md:mb-0 text-center flex justify-center items-center">
                             <div className='max-w-[100%]'>
-                                <p className="text-sm  text-sitegreen font-bold mb-2 w-full">Témoignages</p>
+                                <p className="text-sm  text-sitegreen font-bold mb-2 w-full">{t("Témoignages")}</p>
                                 <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-gray-900">{"Qu'ont-ils"} dit de <br /> nous ?</h1>
                                 <div className='mb-24 flex justify-center p-5 sm:p-0'>
                                     <Slider {...settings} className="w-[100%] sm:max-w-[50%]">
@@ -102,7 +104,7 @@ const AboutUsPage = () => {
                                                 </div>
                                                 <div>
                                                     <p className='text-left text-white text-[16px] font-[400]'>
-                                                        Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad.  Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.
+                                                        {t("Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad.  Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.")}
                                                     </p>
                                                 </div>
                                             </div>
@@ -130,7 +132,7 @@ const AboutUsPage = () => {
                                                 </div>
                                                 <div>
                                                     <p className='text-left text-white text-[16px] font-[400]'>
-                                                        Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad.  Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.
+                                                        {t("Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad.  Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.")}
                                                     </p>
                                                 </div>
                                             </div>
@@ -154,7 +156,7 @@ const AboutUsPage = () => {
                                     </Slider>
                                 </div>
                                 <div>
-                                    <p className="text-sm  text-sitegreen font-bold mb-2 w-full">Notre partenaires</p>
+                                    <p className="text-sm  text-sitegreen font-bold mb-2 w-full">{t("Notre partenaires")}</p>
                                     <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-gray-900">Nos partenaires <br /> de réussite</h1>
                                     <Slider {...settings2}>
                                         <div>

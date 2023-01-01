@@ -9,8 +9,10 @@ import axios from 'axios'
 import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages'
 import { isAuthenticated } from '../../components/Auth/auth'
 import moment from 'moment'
+import { useTranslation } from 'react-i18next'
 
 const Users = () => {
+    const { t } = useTranslation();
     const [users, setUsers] = useState([]);
     const [userAuth, setUserAuth] = useState({});
     const [current, setCurrent] = useState(1);
@@ -68,7 +70,7 @@ const Users = () => {
             ),
         },
         {
-            title: 'Nom & Prénom',
+            title: t('Nom & Prénom'),
             render: (d) => (
                 <>
                     <div>
@@ -80,7 +82,7 @@ const Users = () => {
             sorter: (a, b) => a?.fullName?.localeCompare(b?.fullName),
         },
         {
-            title: 'Date de naissance',
+            title: t('Date de naissance'),
             dataIndex: 'dob',
             key: 'dob',
             render: (_, { dob }) => (
@@ -91,25 +93,25 @@ const Users = () => {
             sorter: (a, b) => a.dob.length - b.dob.length
         },
         {
-            title: 'Wilaya',
+            title: t('Wilaya'),
             dataIndex: 'state',
             key: 'state',
             sorter: (a, b) => a?.state?.localeCompare(b?.state),
         },
         {
-            title: 'Commune',
+            title: t('Commune'),
             dataIndex: 'city',
             key: 'city',
             sorter: (a, b) => a?.city?.localeCompare(b?.city),
         },
         {
-            title: 'Gendre',
+            title: t('Gendre'),
             dataIndex: 'gender',
             key: 'gender',
             sorter: (a, b) => a?.gender?.localeCompare(b?.gender),
         },
         {
-            title: 'Actions',
+            title: t('Actions'),
             render: (_, user) => (
                 <>
                     <div className='flex items-center gap-4'>
@@ -127,14 +129,14 @@ const Users = () => {
             <div className='Users pt-6'>
                 <div className='flex justify-between items-center'>
                     <div className='flex gap-2 justify-center items-center py-4'>
-                        <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Utilisateurs</button>
+                        <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("Utilisateurs")}</button>
                     </div>
                 </div>
-                <h1 className='bigTitle'>Utilisateurs</h1>
+                <h1 className='bigTitle'>{t("Utilisateurs")}</h1>
                 <div className='mt-10 bg-white'>
                     <Table showSorterTooltip columns={columns} pagination={false} dataSource={users} />
                     <div className='adminPagination p-4 flex items-center justify-between my-12'>
-                        <p className='text-[#65737E] text-[12px]'>Affichage de {current * 10} sur {totalUsers} entrées</p>
+                        <p className='text-[#65737E] text-[12px]'>{t("Affichage de")} {current * 10} sur {totalUsers} entrées</p>
                         <AdminPagination totalLength={totalUsers} handlePagination={(curr) => { setCurrent(curr); getAllUsers(userAuth, curr) }} />
                     </div>
                 </div>

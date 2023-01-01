@@ -12,9 +12,11 @@ import MainLayout from '../components/Layouts/MainLayout'
 import RightIcon from '../components/icons/righticon'
 import { ErrorMessage } from '../components/Messages/messages'
 import specialitiesArray from "../assets/specialities.json"
+import { useTranslation } from 'react-i18next'
 
 
 const Blogs = () => {
+    const { t } = useTranslation();
     const router = useRouter();
     const [blogs, setBlogs] = useState([]);
     const [current, setCurrent] = useState(1);
@@ -65,10 +67,10 @@ const Blogs = () => {
 
     const itemRender = (_, type, originalElement) => {
         if (type === 'prev') {
-            return <button className='prevBtn'>Précédent</button>;
+            return <button className='prevBtn'>{t("Précédent")}</button>;
         }
         if (type === 'next') {
-            return <button className='nextBtn'>Suivant</button>;
+            return <button className='nextBtn'>{t("Suivant")}</button>;
         }
         return originalElement;
     };
@@ -78,14 +80,14 @@ const Blogs = () => {
         <MainLayout navbar>
             <div className='blogsPage px-4 sm:px-24 py-8'>
                 <div className='flex gap-2 justify-center items-center py-4'>
-                    <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]' href="/faq">Blog</button>
+                    <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]' href="/faq">{t("Blog")}</button>
                 </div>
                 <h1 className='bigTitle text-center py-3'>Voir notre  < br />dernier blog</h1>
                 <div className='flex flex-wrap justify-between items-center gap-8 mt-8'>
                     <div className='flex flex-wrap gap-8'>
                         <BlogsSearch changeBlogId={(val) => console.log(val)} />
                         <div className='searchBox relative min-w-[200px] w-full'>
-                            <label>Trier par</label>
+                            <label>{t("Trier par")}</label>
                             <br />
                             <select placeholder='Plus recent'>
                                 <option value='1'>1</option>
@@ -96,7 +98,7 @@ const Blogs = () => {
                         </div>
                     </div>
                     <div className='hidden  sm:flex gap-2 items-center filterBtn'>
-                        <span>Affichage</span>
+                        <span>{t("Affichage")}</span>
                         <div>
                             <button className={`btn ${gridCol === 12 && "focused"}`} onClick={() => setGridCol(12)}>
                                 <AppstoreOutlined />
@@ -111,7 +113,7 @@ const Blogs = () => {
                 </div>
                 <Row>
                     <Col md={6}>
-                        <h1 className='bigTitle text-center py-3'>Catégories</h1>
+                        <h1 className='bigTitle text-center py-3'>{t("Catégories")}</h1>
                         <div className='mt-8'>
                             {
                                 specialitiesArray && specialitiesArray?.length > 0 && specialitiesArray.map(cat => {

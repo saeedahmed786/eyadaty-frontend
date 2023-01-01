@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd'
-import React, { Children, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RightIcon from '../../components/icons/righticon'
 import Check from "../../assets/Checkmark.svg"
 import Image from 'next/image'
@@ -30,9 +30,11 @@ import formatStringNumbers from '../../components/FormatNumbers'
 import ReplyCommentCard from '../../components/Cards/ReplyCommentCard'
 import { Loading } from '../../components/Loading/Loading'
 import LocationComp from '../../components/Location'
+import { useTranslation } from 'react-i18next'
 
 
 const IndDoctor = () => {
+    const { t } = useTranslation();
     const [userId, setUserId] = useState("")
     const [clinic, setClinic] = useState({});
     const [comments, setComments] = useState([]);
@@ -245,9 +247,9 @@ const IndDoctor = () => {
                 <div>
                     <div>
                         <div className='flex gap-2 justify-start items-center py-4'>
-                            <span>Accueil</span>
+                            <span>{t("Accueil")}</span>
                             <RightIcon />
-                            <button>Cliniques</button>
+                            <button>{t("Cliniques")}</button>
                             <RightIcon />
                             <button>Cardiologie</button>
                             <RightIcon />
@@ -306,11 +308,11 @@ const IndDoctor = () => {
                                             </span>
                                         </button>
                                         <button className='flex gap-1 items-center text-[#0094DA]'>
-                                            ({clinic?.recommendations?.length + clinic?.notrecommendations?.length} Avis)
+                                            ({clinic?.recommendations?.length + clinic?.notrecommendations?.length} {t("Avis")})
                                         </button>
                                         <a href='#commentSection' className='flex gap-1 items-center w-full sm:w-auto'>
                                             <MessageTwoTone />
-                                            <span>{comments.length} Commantaires</span>
+                                            <span>{comments.length} {t("Commentaires")}</span>
                                         </a>
                                     </div>
                                     <Row gutter={[15, 15]} className='imagesContainer mt-12'>
@@ -343,30 +345,30 @@ const IndDoctor = () => {
                                     </Row>
                                     <div className='likeContantainer'>
                                         <div>
-                                            <p className='normalPara'>{"D'après votre expérience, recommandez-vous de visiter la clinique ?"}</p>
+                                            <p className='normalPara'>{t("D'après votre expérience, recommandez-vous de visiter la clinique ?")}</p>
                                             <div className='flex sm:justify-center flex-wrap mt-4 gap-6 w-full'>
                                                 {
                                                     notRecommended ?
                                                         <button className='flex gap-1 items-center' onClick={removeNotRecommendation}>
                                                             <DislikeFilled />
-                                                            <span>Non</span>
+                                                            <span>{t("Non")}</span>
                                                         </button>
                                                         :
                                                         <button className='flex gap-1 items-center' onClick={() => { notRecommendClinic(); removeRecommendation() }}>
                                                             <DislikeOutlined />
-                                                            <span>Non</span>
+                                                            <span>{t("Non")}</span>
                                                         </button>
                                                 }
                                                 {
                                                     recommended ?
                                                         <button className='flex gap-1 items-center' onClick={notRecommendClinic}>
                                                             <LikeFilled />
-                                                            <span>Oui</span>
+                                                            <span>{t("Oui")}</span>
                                                         </button>
                                                         :
                                                         <button className='flex gap-1 items-center' onClick={() => { recommendClinic(); removeNotRecommendation() }}>
                                                             <LikeOutlined />
-                                                            <span>Oui</span>
+                                                            <span>{t("Oui")}</span>
                                                         </button>
                                                 }
                                             </div>
@@ -375,7 +377,7 @@ const IndDoctor = () => {
                                     <section className='mt-8'>
                                         <div className='header'>
                                             <Image src={cap} alt="cap" />
-                                            <h4>Bio</h4>
+                                            <h4>{t("Bio")}</h4>
                                         </div>
                                         <p className='normalPara px-4'>
                                             {clinic?.bio}
@@ -384,7 +386,7 @@ const IndDoctor = () => {
                                     <section className='mt-8'>
                                         <div className='header'>
                                             <Image src={building} alt="coo" />
-                                            <h4>Coordonnées</h4>
+                                            <h4>{t("Coordonnées")}</h4>
                                         </div>
                                         <Row className='sm:px-4 block sm:flex' gutter={[20, 20]}>
                                             <Col md={12}>
@@ -419,7 +421,7 @@ const IndDoctor = () => {
                                                     </button>
                                                 </div>
                                                 <div className='mt-8'>
-                                                    <p>Réseaux sociaux</p>
+                                                    <p>{t("Réseaux sociaux")}</p>
                                                     <div className='flex gap-3 mt-4 items-center'>
                                                         {
                                                             clinic?.facebookLink &&
@@ -449,26 +451,26 @@ const IndDoctor = () => {
                                                 </div>
                                             </Col>
                                             <Col md={12} className="relative">
-                                                {
+                                                {/* {
                                                     gpsDataLoading ?
                                                         <Loading />
-                                                        :
-                                                        <LocationComp coords={[clinic?.gpsData?.replace(/\s+/g, '').split(",")[0], clinic?.gpsData?.replace(/\s+/g, '').split(",")[1]]} />
-                                                }
+                                                        : */}
+                                                <LocationComp coords={[clinic?.gpsData?.replace(/\s+/g, '').split(",")[0], clinic?.gpsData?.replace(/\s+/g, '').split(",")[1]]} />
+                                                {/* } */}
                                             </Col>
                                         </Row>
                                     </section>
                                     <section className='mt-8'>
                                         <div className='header'>
                                             <Image src={services} alt="services" />
-                                            <h4>Services</h4>
+                                            <h4>{t("Services")}</h4>
                                         </div>
                                         <ul className='px-4'>
                                             {
                                                 clinic?.services && clinic.services?.map((service) => {
                                                     return (
                                                         <li>
-                                                            {service}
+                                                            {t(service)}
                                                         </li>
                                                     )
                                                 })
@@ -479,9 +481,9 @@ const IndDoctor = () => {
                                         <div className='header flex justify-between flex-wrap items-center'>
                                             <div className='flex gap-2'>
                                                 <Image src={timeClock} alt="timeClock" />
-                                                <h4>Horaire de travail</h4>
+                                                <h4>{t("Horaire de travail")}</h4>
                                             </div>
-                                            <div className='text-[#29C773] font-[600]'>Ouvert</div>
+                                            <div className='text-[#29C773] font-[600]'>{t("Ouvert")}</div>
                                         </div>
                                         <div className='px-4 calendar flex gap-10 flex-wrap'>
                                             {
@@ -489,7 +491,7 @@ const IndDoctor = () => {
                                                     return (
                                                         <div className='min-w-[100px]'>
                                                             <Image src={calendar} alt="calendar" />
-                                                            <h5>{sch.day}</h5>
+                                                            <h5>{t(sch.day)}</h5>
                                                             <div className='flex flex-wrap items-center'>
                                                                 <p>{sch.open}  -  {sch.close}</p>
                                                             </div>
@@ -502,14 +504,14 @@ const IndDoctor = () => {
                                     <section className='mt-8'>
                                         <div className='header'>
                                             <Image src={notes} alt="notes" />
-                                            <h4>Notes</h4>
+                                            <h4>{t("Notes")}</h4>
                                         </div>
                                         <ul className='px-4'>
                                             {
                                                 clinic?.notes && clinic.notes?.map((note) => {
                                                     return (
                                                         <li>
-                                                            {note}
+                                                            {t(note)}
                                                         </li>
                                                     )
                                                 })
@@ -519,7 +521,7 @@ const IndDoctor = () => {
                                     <section className='mt-8'>
                                         <div className='header flex items-center'>
                                             <MessageTwoTone style={{ fontSize: "28px" }} />
-                                            <h4>Commantaires</h4>
+                                            <h4>{t("Commentaires")}</h4>
                                             <div className='count'>{comments.length}</div>
                                         </div>
                                         <div className='sm:px-4' id='commentSection'>

@@ -3,11 +3,13 @@ import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react'
 import SearchIcon from "../../assets/search.svg"
 import DownArrow from "../../assets/DownArrow.svg"
+import { useTranslation } from 'react-i18next';
 
 const SelectBoxWidthSearch = ({ label, placeholder, data, handleUpdate, prevValue }) => {
     const [name, setName] = useState('');
     const [defaultValue, setDefaultValue] = useState("");
     const inputRef = useRef(null);
+    const { t } = useTranslation();
 
     const onNameChange = (event) => {
         setName(event.target.value);
@@ -30,13 +32,13 @@ const SelectBoxWidthSearch = ({ label, placeholder, data, handleUpdate, prevValu
                 <br />
                 <Select
                     className='w-full'
-                    placeholder={placeholder}
+                    placeholder={t(`${placeholder}`)}
                     options={data?.filter(f => f?.fr?.toLowerCase().includes(name?.toLowerCase())).map((item) => ({
                         label: item?.fr,
                         value: item?.fr,
                     }))}
                     value={defaultValue}
-                    onChange={(value) => {handleUpdate(value); setDefaultValue(value)}}
+                    onChange={(value) => { handleUpdate(value); setDefaultValue(value) }}
                     suffixIcon={<Image src={DownArrow} alt="Down Arrow" />}
                     dropdownRender={(menu) => (
                         <div className='selectDropdown w-full p-4'>

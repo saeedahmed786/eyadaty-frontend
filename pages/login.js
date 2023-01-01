@@ -13,10 +13,12 @@ import axios from "axios"
 import { Cookies } from 'react-cookie'
 import SocialLogin from '../components/SocialLogin'
 import { isAuthenticated } from '../components/Auth/auth'
+import { useTranslation } from 'react-i18next'
 
 
 const Login = () => {
     const cookies = new Cookies;
+    const { t } = useTranslation();
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -93,14 +95,14 @@ const Login = () => {
                         </div>
                 }
                 <div className='flex gap-2 items-center'>
-                    <span>Accueil</span> <RightIcon />  <button className='text-[#0094DA] border-0' onClick={() => router.push("/signup")}>Connexion</button>
+                    <span>{t("Accueil")}</span> <RightIcon />  <button className='text-[#0094DA] border-0' onClick={() => router.push("/signup")}>{t("Connexion")}</button>
                 </div>
                 <Row className='py-10'>
                     <Col md={12}>
-                        <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>Connectez-vous à votre compte</h1>
+                        <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>{t("Connectez-vous à votre compte")}</h1>
                         <div className='flex gap-2 py-6'>
                             <div>{"Vous n'avez pas de compte ?"}</div>
-                            <button className='text-[#0094DA] border-0' onClick={() => router.push("/signup")}>Créer un compte</button>
+                            <button className='text-[#0094DA] border-0' onClick={() => router.push("/signup")}>{t("Créer un compte")}</button>
                         </div>
                         {
                             loading ?
@@ -114,7 +116,7 @@ const Login = () => {
                                 >
                                     <Form.Item
                                         name="email"
-                                        label="E-mail"
+                                        label={t("E-mail")}
                                         hasFeedback
                                         rules={[
                                             {
@@ -127,12 +129,12 @@ const Login = () => {
                                             },
                                         ]}
                                     >
-                                        <Input placeholder='E-mail' />
+                                        <Input placeholder={t("E-mail")} />
                                     </Form.Item>
 
                                     <Form.Item
                                         name="password"
-                                        label="Mot de passe"
+                                        label={t("Mot de passe")}
                                         rules={[
                                             {
                                                 required: true,
@@ -141,22 +143,22 @@ const Login = () => {
                                         ]}
                                         hasFeedback
                                     >
-                                        <Input.Password placeholder='Mot de passe' iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
+                                        <Input.Password placeholder={t("Mot de passe")} iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
                                     </Form.Item>
                                     <Form.Item className='my-5'>
                                         <div className='flex justify-between'>
                                             <div className='flex items-center gap-2'>
                                                 <Switch onClick={(checked) => setRemember(checked)} className='bg-gray border border-[#A7ADBA] rounded-[12px]' />
-                                                <span>souviens-toi de moi</span>
+                                                <span>{t("souviens-toi de moi")}</span>
                                             </div>
                                             <div>
-                                                <button type='button' className='text-[#0094DA] border-0' onClick={() => router.push("/forgot-password")}>{"j'ai oublie le mot de passe?"}</button>
+                                                <button type='button' className='text-[#0094DA] border-0' onClick={() => router.push("/forgot-password")}>{t("j'ai oublie le mot de passe?")}</button>
                                             </div>
                                         </div>
                                     </Form.Item>
                                     <Form.Item className='my-5'>
                                         <button type="submit" className='btn w-full bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
-                                            Connexion
+                                            {t("Connexion")}
                                         </button>
                                     </Form.Item>
                                 </Form>

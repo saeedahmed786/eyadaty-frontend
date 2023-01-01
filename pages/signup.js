@@ -1,28 +1,24 @@
 import { Checkbox, Col, Divider, Form, Input, Row } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import RightIcon from '../components/icons/righticon'
-import google from "../assets/google.svg"
-import facebook from "../assets/facebook.svg"
-import twitter from "../assets/twitter.svg"
 import illustration from "../assets/signup.svg"
 import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../components/Home/downloadApp'
 import MainLayout from '../components/Layouts/MainLayout'
-import { useRouter } from 'next/router'
-import { CustomErrorMessage, CustomSuccessMessage, ErrorMessage, SuccessMessage } from '../components/Messages/messages'
+import { CustomErrorMessage, CustomSuccessMessage } from '../components/Messages/messages'
 import { Loading } from '../components/Loading/Loading'
 import axios from "axios"
-import GoogleLogin from 'react-google-login'
 import SocialLogin from '../components/SocialLogin'
+import { useTranslation } from 'react-i18next'
 
 const Signup = () => {
+    const { t } = useTranslation();
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
-    const router = useRouter();
 
     const onFinish = async (values) => {
         const { email, password } = values;
@@ -53,14 +49,14 @@ const Signup = () => {
                         </div>
                 }
                 <div className='flex gap-2 items-center'>
-                    <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/signup">{"S'inscrire"}</Link>
+                    <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]' href="/signup">{"S'inscrire"}</Link>
                 </div>
                 <Row className='py-10 block sm:flex' align="middle">
                     <Col md={12}>
                         <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>Créer un<br /> compte</h1>
                         <div className='flex gap-2 py-6'>
                             <div>{"Vous n'avez pas de compte ?"}</div>
-                            <a href='/login' className='text-[#0094DA]'>Connexion</a>
+                            <a href='/login' className='text-[#0094DA]'>{t("Connexion")}</a>
                         </div>
                         {
                             loading ?
@@ -74,7 +70,7 @@ const Signup = () => {
                                 >
                                     <Form.Item
                                         name="email"
-                                        label="E-mail"
+                                        label={t("E-mail")}
                                         hasFeedback
                                         rules={[
                                             {
@@ -87,12 +83,12 @@ const Signup = () => {
                                             },
                                         ]}
                                     >
-                                        <Input placeholder='E-mail' />
+                                        <Input placeholder={t("E-mail")} />
                                     </Form.Item>
 
                                     <Form.Item
                                         name="password"
-                                        label="Mot de passe"
+                                        label={t("Mot de passe")}
                                         rules={[
                                             {
                                                 required: true,
@@ -101,12 +97,12 @@ const Signup = () => {
                                         ]}
                                         hasFeedback
                                     >
-                                        <Input.Password placeholder='Mot de passe' iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
+                                        <Input.Password placeholder={t("Mot de passe")} iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
                                     </Form.Item>
 
                                     <Form.Item
                                         name="confirm"
-                                        label="Confirm Password"
+                                        label={t("Répéter mot de passe")}
                                         dependencies={['password']}
                                         hasFeedback
                                         rules={[
@@ -124,7 +120,7 @@ const Signup = () => {
                                             }),
                                         ]}
                                     >
-                                        <Input.Password placeholder='Répéter mot de passe' iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
+                                        <Input.Password placeholder={t("Répéter mot de passe")} iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
                                     </Form.Item>
                                     <Form.Item
                                         name="agreement"
@@ -137,17 +133,17 @@ const Signup = () => {
                                         ]}
                                     >
                                         <Checkbox>
-                                            {"J'ai lu et j'accepte"} <a className='text-[#0094DA]' href='/policy'>{"la politique de confidentialité"}</a>
+                                            {t("J'ai lu et j'accepte")} <a className='text-[#0094DA]' href='/policy'>{t("la politique de confidentialité")}</a>
                                         </Checkbox>
                                     </Form.Item>
                                     <Form.Item className='my-5'>
                                         <button type="submit" className='btn w-full bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
-                                            Connexion
+                                            {t("Connexion")}
                                         </button>
                                     </Form.Item>
                                 </Form>
                         }
-                        <Divider className='my-4' plain>Ou</Divider>
+                        <Divider className='my-4' plain>{t("Ou")}</Divider>
                         <div className='flex justify-center gap-4'>
                             <SocialLogin />
                         </div>

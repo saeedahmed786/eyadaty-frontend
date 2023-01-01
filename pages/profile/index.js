@@ -14,11 +14,13 @@ import profileIcon from "../../assets/profile.svg"
 import { useForm } from 'antd/lib/form/Form';
 import Image from 'next/image';
 import { uploadFilesFun } from '../../components/UploadFile';
+import { useTranslation } from 'react-i18next';
 
 
 const { Option } = Select;
 
 const Profile = () => {
+    const { t } = useTranslation();
     const cookies = new Cookies;
     const [gender, setGender] = useState("Male");
     const [getFormData] = useForm();
@@ -119,7 +121,7 @@ const Profile = () => {
                     :
                     <div className='Profile sm:px-10 mt-12 sm:mt-0'>
                         <div className='mt-0'>
-                            <div className='pictureUploadContainer'>Image de profile</div>
+                            <div className='pictureUploadContainer'>{t("Image de profile")}</div>
                             <div className='flex flex-wrap gap-4 items-center mt-4'>
                                 {
                                     profileFile && profileFile?.url ?
@@ -131,7 +133,7 @@ const Profile = () => {
                                     <div className='relative'>
                                         <span className="btn btn-primary btn-file">
                                             <button className='uploadBtn flex items-center gap-2'>
-                                                <span>Ajouter un image</span>
+                                                <span>{t("Ajouter un image")}</span>
                                                 <span className='arrowUp'><ArrowUpOutlined /></span>
                                                 <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
                                             </button>
@@ -140,7 +142,7 @@ const Profile = () => {
                                     <div>
                                         <span className="btn btn-primary btn-file">
                                             <button className='deleteBtn'>
-                                                <span>Supprimer</span>
+                                                <span>{t("Supprimer")}</span>
                                                 <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
                                             </button>
                                         </span>
@@ -156,7 +158,7 @@ const Profile = () => {
                             >
                                 <Form.Item
                                     name="name"
-                                    label="Nom & Prénom"
+                                    label={t("Nom & Prénom")}
                                     hasFeedback
                                     rules={[
                                         {
@@ -165,11 +167,11 @@ const Profile = () => {
                                         },
                                     ]}
                                 >
-                                    <Input placeholder='Nom & Prénom' />
+                                    <Input placeholder={t("Nom & Prénom")} />
                                 </Form.Item>
                                 <Form.Item
                                     name="email"
-                                    label="E-mail"
+                                    label={t("E-mail")}
                                     hasFeedback
                                     rules={[
                                         {
@@ -182,15 +184,15 @@ const Profile = () => {
                                         },
                                     ]}
                                 >
-                                    <Input placeholder='E-mail' />
+                                    <Input placeholder={t("E-mail")} />
                                 </Form.Item>
-                                <Form.Item name="gender" label="Gender">
+                                <Form.Item name="gender" label={t("Gender")}>
                                     <Radio.Group onChange={(e) => setGender(e.target.value)} value={gender}>
-                                        <Radio value="Male">Male</Radio>
-                                        <Radio value="Female">Female</Radio>
+                                        <Radio value="Male">{t("Male")}</Radio>
+                                        <Radio value="Female">{t("Female")}</Radio>
                                     </Radio.Group>
                                 </Form.Item>
-                                <Form.Item name="dob" label="Date de naissance" hasFeedback>
+                                <Form.Item name="dob" label={t("Date de naissance")} hasFeedback>
                                     <DatePicker
                                         disabledDate={disabledDate}
                                         placeholder='JJ/MM/AAAA'
@@ -203,20 +205,20 @@ const Profile = () => {
                                 </Form.Item>
                                 <Form.Item
                                     name="phone"
-                                    label="Phone"
+                                    label={t("Numéro de Téléphone")}
                                     hasFeedback
                                     rules={[
                                         {
                                             required: true,
-                                            message: 'Please input your Phone!',
+                                            message: 'Please input your Numéro de Téléphone!',
                                         }
                                     ]}
                                 >
-                                    <Input placeholder='Phone' prefix={"+213"} />
+                                    <Input placeholder={t("Numéro de Téléphone")} prefix={"+213"} />
                                 </Form.Item>
                                 <Form.Item
                                     name="state"
-                                    label="Wilaya"
+                                    label={t("Wilaya")}
                                     rules={[
                                         {
                                             required: true,
@@ -224,7 +226,7 @@ const Profile = () => {
                                         },
                                     ]}
                                 >
-                                    <Select onChange={handleStateSelection} placeholder="Wilaya">
+                                    <Select onChange={handleStateSelection} placeholder={t("Wilaya")}>
                                         {statesArray && statesArray?.length > 0 && statesArray?.map((state) => (
                                             <Option key={state.nom.fr} value={state.nom.fr}>{state.nom.fr}</Option>
                                         ))}
@@ -232,7 +234,7 @@ const Profile = () => {
                                 </Form.Item>
                                 <Form.Item
                                     name="city"
-                                    label="Commune"
+                                    label={t("Commune")}
                                     rules={[
                                         {
                                             required: true,
@@ -240,7 +242,7 @@ const Profile = () => {
                                         },
                                     ]}
                                 >
-                                    <Select placeholder="Commune">
+                                    <Select placeholder={t("Commune")}>
                                         {
                                             selectedState &&
                                             (
@@ -254,10 +256,10 @@ const Profile = () => {
                                 <Form.Item className='my-5'>
                                     <div className='flex gap-4'>
                                         <button type="submit" className='btn px-12 bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
-                                            Sauvegarder
+                                            {t("Sauvegarder")}
                                         </button>
                                         <button type='button' className='btn px-12 bg-[#C0C5CE] rounded-[12px] text-black font-[500] leading-[16px] h-[56px]'>
-                                            Annuler
+                                            {t("Annuler")}
                                         </button>
                                     </div>
                                 </Form.Item>

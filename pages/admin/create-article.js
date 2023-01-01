@@ -12,10 +12,11 @@ import { isAuthenticated } from '../../components/Auth/auth'
 import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages'
 import axios from 'axios'
 import specialitiesArray from "../../assets/specialities.json"
+import { useTranslation } from 'react-i18next'
 const ReactQuill = dynamic(import('react-quill'), { ssr: false })
-const QuillToolbar = dynamic(import('../../components/QuillEditor'), { ssr: false })
 
 const CreateBlog = () => {
+    const { t } = useTranslation();
     const [description, setDescription] = useState("");
     const [userAuth, setUserAuth] = useState();
     const [loading, setLoading] = useState(false);
@@ -95,12 +96,12 @@ const CreateBlog = () => {
             <div className='Pages pt-6 md:max-w-[60vw]'>
                 <div className='flex justify-between items-center'>
                     <div className='flex gap-2 justify-center items-center py-4'>
-                        <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Ajouter un article</button>
+                        <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("Ajouter un article")}</button>
                     </div>
                 </div>
-                <h1 className='bigTitle'>Ajouter un article</h1>
+                <h1 className='bigTitle'>{t("Ajouter un article")}</h1>
                 <form className='mt-10' onSubmit={onFinish}>
-                    <h4 className='subTitle'>Image de l’article</h4>
+                    <h4 className='subTitle'>{t("Image de l’article")}</h4>
                     {
                         uploadedFile && uploadedFile?.url ?
                             <img src={uploadedFile?.url} className="rounded-[16px] h-[280px] w-full md:w-[292px]" width={80} alt="Profile" />
@@ -112,24 +113,24 @@ const CreateBlog = () => {
                     <div className='relative mt-3'>
                         <span className="btn btn-primary btn-file">
                             <button className='uploadBtn flex items-center justify-center gap-2 w-full md:w-[292px]'>
-                                <span>Ajouter un image</span>
+                                <span>{t("Ajouter un image")}</span>
                                 <span className='arrowUp'><ArrowUpOutlined /></span>
                                 <input type="file" accept='image/*' name='file' onChange={(e) => handleFileUpload(e.target.files[0])} />
                             </button>
                         </span>
                     </div>
                     <div className='mt-8'>
-                        <h4 className='subTitle'>Information de l’article</h4>
+                        <h4 className='subTitle'>{t("Information de l’article")}</h4>
                         <div className='mb-3'>
                             <label>Titre</label> <br />
                             <Input placeholder='Titre' onChange={(e) => setTitle(e.target.value)} />
                         </div>
                         <div className='mb-3'>
-                            <label>Catégorie</label> <br />
+                            <label>{t("Catégorie")}</label> <br />
                             <SelectBoxWidthSearch prevValue={specialitiesArray[0]?.fr} data={specialitiesArray} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
                         </div>
                         <div className='mb-3'>
-                            <label>Contenue:</label> <br />
+                            <label>{t("Contenue")}:</label> <br />
                             <ReactQuill
                                 formats={Formats}
                                 modules={{
@@ -155,7 +156,7 @@ const CreateBlog = () => {
                         </div>
                         <div className='mb-3'>
                             <button type='submit' className='bg-[#0094DA] rounded-[12px] text-white h-[48px] w-full md:w-[auto] px-12 text-[16px] font-[500]'>
-                                Ajouter
+                                {t("Ajouter")}
                             </button>
                         </div>
                     </div>

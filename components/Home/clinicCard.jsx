@@ -12,9 +12,11 @@ import { ErrorMessage } from '../../components/Messages/messages'
 import formatStringNumbers from '../FormatNumbers'
 import { isAuthenticated } from '../Auth/auth'
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 export default function ClinicCard({ clinic }) {
   const router = useRouter();
+  const { t } = useTranslation();
   const [favourites, setFavourites] = useState([]);
 
   const getFavourites = async (id) => {
@@ -49,7 +51,7 @@ export default function ClinicCard({ clinic }) {
             {/* <img className="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt=""/> */}
           </Link>
           <div className="p-6">
-            <div className='flex flex-row space-x-2'>
+            <div className='flex flex-row rtl:gap-2 space-x-2'>
               <div>
                 <h5 className="text-gray-900 text-xl font-medium mb-2">{clinic?.firstName} {clinic?.lastName}</h5>
               </div>
@@ -70,21 +72,21 @@ export default function ClinicCard({ clinic }) {
                 </p>
               </div>
             </div>
-            <div className='flex flex-row  p-4 justify-start space-x-3'>
-              <div className='flex flex-row items-center space-x-1 '>
-                <div className='  py-1'>
+            <div className='flex flex-row rtl:gap-4  p-4 justify-start space-x-3'>
+              <div className='flex flex-row items-center rtl:gap-2 space-x-1 '>
+                <div className='py-1'>
                   <ViewIcon />
                 </div>
                 <div>{formatStringNumbers(clinic?.views?.length)}</div>
               </div>
-              <div className='flex flex-row items-center space-x-1'>
+              <div className='flex flex-row items-center rtl:gap-2 space-x-1'>
                 <div className='  py-1'>
                   <HeartIcon />
                 </div>
                 <div>{favourites.length}</div>
               </div>
-              <div className='flex flex-row items-center space-x-1'>
-                <div className='  py-1'>
+              <div className='flex flex-row items-center rtl:gap-2 space-x-1'>
+                <div className='py-1'>
                   <StarIcon />
                 </div>
                 <div>
@@ -95,7 +97,7 @@ export default function ClinicCard({ clinic }) {
               </div>
             </div>
             <div className='flex justify-center'>
-              <button onClick={() => router.push(`/doctor/${clinic?._id}`)} type="button" className="sm:px-16 w-full text-center justify-center py-4 bg-white border-2 border-siteblue  text-siteblue font-medium text-sm leading-tight uppercase rounded-xl shadow-md hover:bg-siteblue hover:text-white hover:shadow-lg focus:bg-siteblue focus:shadow-lg focus:outline-none focus:ring-0 active:bg-siteblue active:shadow-lg transition duration-150 ease-in-out flex items-center gap-3">Voir Plus <RightIcon /></button>
+              <button onClick={() => router.push(`/doctor/${clinic?._id}`)} type="button" className="sm:px-16 w-full text-center justify-center py-4 bg-white border-2 border-siteblue  text-siteblue font-medium text-sm leading-tight uppercase rounded-xl shadow-md hover:bg-siteblue hover:text-white hover:shadow-lg focus:bg-siteblue focus:shadow-lg focus:outline-none focus:ring-0 active:bg-siteblue active:shadow-lg transition duration-150 ease-in-out flex items-center gap-3">{t("Voir Plus")} <RightIcon /></button>
             </div>
           </div>
         </div>

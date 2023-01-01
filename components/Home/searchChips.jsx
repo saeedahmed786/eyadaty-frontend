@@ -3,7 +3,7 @@ import React from 'react'
 export default function SearchChips(props) {
   return (
     <div>
-      <span className="px-4 py-2 rounded-[8px] text-siteblue bg-[#F5F8FB] font-[500] text-sm flex align-center flex-wrap w-max cursor-pointer active:bg-gray-300 transition duration-300 ease">
+      <span className="px-4 py-2 rounded-[8px] text-siteblue bg-[#F5F8FB] font-[500] gap-4 text-sm flex align-center flex-wrap w-max cursor-pointer active:bg-gray-300 transition duration-300 ease">
         <p className=' text-[#65737E]'>
           {props.chiptitle}
         </p>

@@ -10,8 +10,10 @@ import MainLayout from '../../components/Layouts/MainLayout'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { CustomErrorMessage, CustomSuccessMessage } from '../../components/Messages/messages'
+import { useTranslation } from 'react-i18next'
 
 const ResetPassword = () => {
+    const { t } = useTranslation();
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -51,9 +53,9 @@ const ResetPassword = () => {
                 <Row className='py-0' align="middle">
                     <Col md={12} className="pr-0 md:pr-24">
                         <div className='flex gap-2 items-center py-3'>
-                            <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/reset-password">Réinitialisation du mot de passe</Link>
+                            <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]' href="/reset-password">{t("Réinitialisation du mot de passe")}</Link>
                         </div>
-                        <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700] break-words'>Réinitialisation du mot de passe</h1>
+                        <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700] break-words'>{t("Réinitialisation du mot de passe")}</h1>
                         <Form
                             form={form}
                             name="Reset"
@@ -62,7 +64,7 @@ const ResetPassword = () => {
                         >
                             <Form.Item
                                 name="password"
-                                label="Mot de passe"
+                                label={t("Mot de passe")}
                                 rules={[
                                     {
                                         required: true,
@@ -71,12 +73,12 @@ const ResetPassword = () => {
                                 ]}
                                 hasFeedback
                             >
-                                <Input.Password placeholder='Mot de passe' iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
+                                <Input.Password placeholder={t("Mot de passe")} iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
                             </Form.Item>
 
                             <Form.Item
                                 name="confirm"
-                                label="Confirm Password"
+                                label={t("Répéter mot de passe")}
                                 dependencies={['password']}
                                 hasFeedback
                                 rules={[
@@ -94,11 +96,11 @@ const ResetPassword = () => {
                                     }),
                                 ]}
                             >
-                                <Input.Password placeholder='Répéter mot de passe' iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
+                                <Input.Password placeholder={t("Répéter mot de passe")} iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
                             </Form.Item>
                             <Form.Item className='my-5'>
                                 <button type="submit" className='btn w-full bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
-                                    Initialiser
+                                    {t("Initialiser")}
                                 </button>
                             </Form.Item>
                         </Form>

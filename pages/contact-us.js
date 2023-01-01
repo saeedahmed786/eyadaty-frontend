@@ -13,10 +13,12 @@ import MainLayout from '../components/Layouts/MainLayout'
 import axios from 'axios'
 import { SuccessMessage } from '../components/Messages/messages'
 import { Loading } from '../components/Loading/Loading'
+import { useTranslation } from 'react-i18next'
 
 const { TextArea } = Input;
 
 const ContactUs = () => {
+    const { t } = useTranslation();
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false);
 
@@ -41,9 +43,9 @@ const ContactUs = () => {
                 <Row align="middle">
                     <Col md={12} className="pr-0 md:pr-24">
                         <div className='flex gap-2 items-center py-4'>
-                            <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/contact-us">Contactez-nous</Link>
+                            <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]' href="/contact-us">{t("Contactez-nous")}</Link>
                         </div>
-                        <h1 className='text-[64px] leading-[72px] font-[700] pb-6'>Contactez-nous</h1>
+                        <h1 className='text-[64px] leading-[72px] font-[700] pb-6'>{t("Contactez-nous")}</h1>
                         {
                             loading ?
                                 <Loading />
@@ -56,7 +58,7 @@ const ContactUs = () => {
                                 >
                                     <Form.Item
                                         name="fullName"
-                                        label="Nom et prénom"
+                                        label={t("Nom et prénom")}
                                         hasFeedback
                                         rules={[
                                             {
@@ -65,11 +67,11 @@ const ContactUs = () => {
                                             },
                                         ]}
                                     >
-                                        <Input placeholder='Nom et prénom' />
+                                        <Input placeholder={t("Nom et prénom")} />
                                     </Form.Item>
                                     <Form.Item
                                         name="email"
-                                        label="E-mail"
+                                        label={t("E-mail")}
                                         hasFeedback
                                         rules={[
                                             {
@@ -82,11 +84,11 @@ const ContactUs = () => {
                                             },
                                         ]}
                                     >
-                                        <Input placeholder='E-mail' />
+                                        <Input placeholder={t("E-mail")} />
                                     </Form.Item>
                                     <Form.Item
                                         name="message"
-                                        label="Méssage"
+                                        label={t("Méssage")}
                                         hasFeedback
                                         rules={[
                                             {
@@ -95,17 +97,17 @@ const ContactUs = () => {
                                             },
                                         ]}
                                     >
-                                        <TextArea rows={6} placeholder='Méssage' />
+                                        <TextArea rows={6} placeholder={t("Méssage")} />
                                     </Form.Item>
                                     <Form.Item className='my-5'>
                                         <button type="submit" className='btn w-full bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
-                                            Envoyez
+                                            {t("Envoyez")}
                                         </button>
                                     </Form.Item>
                                 </Form>
                         }
                         <div className='text-center pt-8'>
-                            <p className='pb-2'>Suivez-nous sur</p>
+                            <p className='pb-2'>{t("Suivez-nous sur")}</p>
                             <div className='flex justify-center gap-1'>
                                 <Link href="www.facebook.com">
                                     <Image src={facebook} alt="facebook" width="40px" />

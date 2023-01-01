@@ -9,11 +9,13 @@ import DownloadApp from '../Home/downloadApp'
 import TopNavbar from '../topNavbar'
 import Navbar from '../navbar'
 import { isAuthenticated } from '../Auth/auth'
+import { useTranslation } from 'react-i18next'
 
 
 const ProfileLayout = (props) => {
     const router = useRouter();
     const [loading, setLoading] = useState(true);
+    const { t } = useTranslation();
 
 
     useEffect(() => {
@@ -39,28 +41,28 @@ const ProfileLayout = (props) => {
                 <div className='ProfileLayout container px-5 mx-auto pb-24 pt-6'>
                     <div className='text-center'>
                         <div className='flex gap-2 justify-center items-center py-4'>
-                            <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Profile</button>
+                            <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("Profile")}</button>
                         </div>
-                        <h1 className='bigTitle'>Profile</h1>
+                        <h1 className='bigTitle'>{t("Profile")}</h1>
                     </div>
                     {
                         props.sidebar ?
                             <Row className='md:flex mt-12'>
                                 <Col xs={24} md={8}>
-                                    <h1 className='bigTitle'>Mon compte</h1>
+                                    <h1 className='bigTitle'>{t("Mon compte")}</h1>
                                     <div className='mt-8'>
                                         <Link href="/profile">
-                                            <button className={`${router?.pathname === "/profile" ? "hyperlink text-[#0094DA]" : ""}`}>Information personel</button>
+                                            <button className={`${router?.pathname === "/profile" ? "hyperlink text-[#0094DA]" : ""}`}>{t("Information personel")}</button>
                                         </Link>
                                     </div>
                                     <div className='mt-5'>
                                         <Link href="/profile/create-page">
-                                            <button className={`${router?.pathname === "/profile/create-page" ? "hyperlink text-[#0094DA]" : ""}`}>Créer un page</button>
+                                            <button className={`${router?.pathname === "/profile/create-page" ? "hyperlink text-[#0094DA]" : ""}`}>{t("Créer un page")}</button>
                                         </Link>
                                     </div>
                                     <div className='mt-5'>
                                         <Link href="/profile/invite">
-                                            <button className={`${router?.pathname === "/profile/invite" ? "hyperlink text-[#0094DA]" : ""}`}>Inviter des amis</button>
+                                            <button className={`${router?.pathname === "/profile/invite" ? "hyperlink text-[#0094DA]" : ""}`}>{t("Inviter des amis")}</button>
                                         </Link>
                                     </div>
                                 </Col>

@@ -6,10 +6,7 @@ import twitter from "../../assets/Twitter_icon.svg"
 import instagram from "../../assets/Instagram_icon.svg"
 import link from "../../assets/Link_icon.svg"
 import Image from 'next/image'
-import Clinic from "../../assets/clinicimage1.png"
-import SearchIcon from "../../assets/search.svg"
 import SmallBlogCard from '../../components/Cards/SmallBlogCard'
-import Doc from "../../assets/doc.jpg"
 import CommentCard from '../../components/Cards/CommentCard'
 import AddComment from '../../components/Cards/AddComment'
 import DownloadApp from '../../components/Home/downloadApp'
@@ -22,10 +19,12 @@ import { isAuthenticated } from '../../components/Auth/auth'
 import ReplyCommentCard from '../../components/Cards/ReplyCommentCard'
 import Link from 'next/link'
 import BlogsSearch from '../../components/Blogs/BlogsSearch'
+import { useTranslation } from 'react-i18next'
 
 
 const Blog = () => {
     const router = useRouter();
+    const { t } = useTranslation();
     const [blogs, setBlogs] = useState([]);
     const [blog, setBlog] = useState({});
     const [blogId, setBlogId] = useState("");
@@ -90,9 +89,9 @@ const Blog = () => {
                 <Row gutter={[23, 23]}>
                     <Col md={16}>
                         <div className='flex gap-2 justify-start items-center py-4'>
-                            <span>Accueil</span>
+                            <span>{t("Accueil")}</span>
                             <RightIcon />
-                            <button>Blog</button>
+                            <button>{t("Blog")}</button>
                             <RightIcon />
                             <button>Cardiologie</button>
                             <RightIcon />
@@ -102,7 +101,7 @@ const Blog = () => {
                             {blog?.title}
                         </h1>
                         <div className='py-12 socialCon flex gap-3 items-center'>
-                            <div>Partagez cet article</div>
+                            <div>{t("Partagez cet article")}</div>
                             <div><Image src={facebook} alt="Facebook" width={32} /></div>
                             <div><Image src={twitter} alt="twitter" width={32} /></div>
                             <div><Image src={instagram} alt="instagram" width={32} /></div>
@@ -143,7 +142,7 @@ const Blog = () => {
                                 </p>
                             </div> */}
                             <h3>
-                                A propos de lauteur
+                                {t("A propos de lauteur")}
                             </h3>
                             <div className='flex namAndPic gap-4'>
                                 <div>
@@ -156,7 +155,7 @@ const Blog = () => {
                                 </div>
                             </div>
                             <div className='my-12'>
-                                <h3>Commentaires</h3>
+                                <h3>{t("Commentaires")}</h3>
                                 {
                                     comments?.length > 0 && comments.map(comment => {
                                         return (
@@ -189,7 +188,7 @@ const Blog = () => {
                         </div> */}
                         <BlogsSearch changeBlogId={(value) => setBlogId(value)} />
                         <div className='my-12 sm:my-8'>
-                        <h3>Nos articles les plus lus</h3>
+                            <h3>{t("Nos articles les plus lus")}</h3>
                             {
                                 blogs && blogs?.length > 0 && blogs.filter(b => b._id !== blogId).slice(0, 6).map(blog => {
                                     return (
@@ -206,7 +205,7 @@ const Blog = () => {
                         </div>
                         <div className='keywords px-4'>
                             <h3>
-                                Mot clés
+                                {t("Mot clés")}
                             </h3>
                             <div className='flex flex-wrap items-center gap-2 mt-4'>
                                 {

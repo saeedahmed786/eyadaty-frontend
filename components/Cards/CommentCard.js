@@ -3,7 +3,8 @@ import { Col, Row } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react'
-import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages';
+import { useTranslation } from 'react-i18next';
+import { ErrorMessage } from '../../components/Messages/messages';
 import { isAuthenticated } from '../Auth/auth';
 
 const CommentCard = ({ comment, pageId, handleUpdate }) => {
@@ -11,6 +12,7 @@ const CommentCard = ({ comment, pageId, handleUpdate }) => {
     const [text, setText] = useState("");
     const [liked, setLiked] = useState(false);
     const [disLiked, setDisLiked] = useState(false);
+    const { t } = useTranslation();
 
     const addComment = async () => {
         await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/comments/add`, { pageId, text, timeOfSubmit: moment().format('dddd, MMMM Do YYYY, h:mm:ss a'), responseTo: comment._id }, {
@@ -110,10 +112,10 @@ const CommentCard = ({ comment, pageId, handleUpdate }) => {
     return (
         <div className='CommentCard'>
             <Row>
-                <Col xs={4} sm={1} className='commentImg'> 
+                <Col xs={4} sm={1} className='commentImg'>
                     <img src={comment?.commentor?.picture?.url} alt='name' className='rounded-[50%] object-cover w-[48px] h-[48px]' />
                 </Col>
-                <Col xs={20} sm = {23} className="px-3">
+                <Col xs={20} sm={23} className="px-3">
                     <strong>{comment?.commentor?.fullName}</strong>
                     <p className='normalPara my-2'>{comment?.text}</p>
                     <div className='reactionCont flex gap-8'>
@@ -121,29 +123,29 @@ const CommentCard = ({ comment, pageId, handleUpdate }) => {
                             liked ?
                                 <button className='flex gap-2 items-center liked' onClick={() => removeCommentLike(comment._id)}>
                                     <LikeFilled />
-                                    <span>Like</span>
+                                    <span>{t("Like")}</span>
                                 </button>
                                 :
                                 <button className='flex gap-2 items-center' onClick={() => { addCommentLike(comment._id); removeCommentDisLike(comment._id) }}>
                                     <LikeOutlined />
-                                    <span>Like</span>
+                                    <span>{t("Like")}</span>
                                 </button>
                         }
                         {
                             disLiked ?
                                 <button className='flex gap-2 items-center disliked' onClick={() => removeCommentDisLike(comment._id)}>
                                     <DislikeFilled />
-                                    <span>Dislike</span>
+                                    <span>{t("Dislike")}</span>
                                 </button>
                                 :
                                 <button className='flex gap-2 items-center' onClick={() => { addCommentDisLike(comment._id); removeCommentLike(comment._id) }}>
                                     <DislikeOutlined />
-                                    <span>Dislike</span>
+                                    <span>{t("Dislike")}</span>
                                 </button>
                         }
                         <button className='flex gap-2 items-center' onClick={() => setShow(!show)}>
                             <MessageOutlined />
-                            <span>Reply</span>
+                            <span>{t("Reply")}</span>
                         </button>
                     </div>
                     {

@@ -15,12 +15,14 @@ import DistanceCalculator from '../components/DistanceCalculator'
 import citiesArray from "../assets/town_city/communes.json"
 import SearchIcon from "../assets/search.svg"
 import Image from 'next/image'
+import { useTranslation } from 'react-i18next'
 
 const { Option } = Select;
 
 
 
 const Search = () => {
+    const { t } = useTranslation();
     const [gridCol, setGridCol] = useState(24);
     const [current, setCurrent] = useState(1);
     const [userAuth, setUserAuth] = useState();
@@ -39,10 +41,21 @@ const Search = () => {
     const [name, setName] = useState("");
 
     useEffect(() => {
+        setUserAuth(isAuthenticated());
+        if (window.location.search) {
+            axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/search/${current - 1}${window.location.search}`).then((response) => {
+                setClinics(response.data);
+            });
+        } else {
+            getClinics(current);
+        }
         navigator.geolocation.getCurrentPosition((position) => {
             setLngLat([position.coords.longitude, position.coords.latitude]);
         });
     }, []);
+
+
+    console.log(speciality)
 
     const getClinics = async (curr) => {
         await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/limited/${curr - 1}`).then(res => {
@@ -56,12 +69,8 @@ const Search = () => {
         })
     };
 
-    const search = () => {
-        return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/search/${current - 1}?specialisation=${speciality}&state=${selectedState}&city=${city}&available=${avaialble}&gender=${gender}&service=${service}&sortBy=${sortBy}&options=${options}&clinicName=${clinicName}`);
-    }
-
     const handleSearch = () => {
-        search().then((response) => {
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/search/${current - 1}?speciality=${speciality}&state=${selectedState}&city=${city}&available=${avaialble}&gender=${gender}&service=${service}&sortBy=${sortBy}&options=${options}&clinicName=${clinicName}`).then((response) => {
             setClinics(response.data);
         });
     }
@@ -85,30 +94,12 @@ const Search = () => {
     ]
 
 
-    useEffect(() => {
-        getClinics(current);
-        setUserAuth(isAuthenticated());
-        // console.log(query)
-        // if (query) {
-        //     setSpeciality(query.speciality)
-        //     setSelectedState(query.state)
-        //     setCity(query.city)
-        //     setAvailable(query.avaialble)
-        //     setGender(query.gender)
-        // }
-
-        return () => {
-
-        }
-    }, []);
-
-
     const itemRender = (_, type, originalElement) => {
         if (type === 'prev') {
-            return <button className='prevBtn'>Précédent</button>;
+            return <button className='prevBtn'>{t("Précédent")}</button>;
         }
         if (type === 'next') {
-            return <button className='nextBtn'>Suivant</button>;
+            return <button className='nextBtn'>{t("Suivant")}</button>;
         }
         return originalElement;
     };
@@ -117,13 +108,22 @@ const Search = () => {
         setName(event.target.value);
     };
 
+
+    const handleChange = (value) => {
+        if (city === value) {
+            setCity("");
+        } else {
+            setCity(value);
+        }
+    }
+
     return (
         <MainLayout navbar>
             <div className='SearchPage px-4 sm:px-24 py-8'>
                 <div className='flex gap-2 justify-start items-center py-4'>
-                    <span>Accueil</span>
+                    <span>{t("Accueil")}</span>
                     <RightIcon />
-                    <span>Cliniques</span>
+                    <span>{t("Cliniques")}</span>
                     <RightIcon />
                     <button className='text-[#0094DA]' href="/faq">Cardiologie</button>
                 </div>
@@ -132,12 +132,13 @@ const Search = () => {
                     <div className='flex flex-wrap gap-8'>
                         <div className='w-[100%] sm:w-[15vw] overflow-x-auto'>
                             <div className='SelectBox relative bg-transparent'>
-                                <label>Commune</label>
+                                <label>{t("Commune")}</label>
                                 <br />
                                 <Select
                                     className='w-full'
-                                    onChange={(value) => { setCity(value) }}
-                                    placeholder={"Commune"}
+                                    onSelect={(value) => handleChange(value)}
+                                    placeholder={t("Commune")}
+                                    value={city}
                                     dropdownRender={(menu) => (
                                         <div className='selectDropdown w-full p-4'>
                                             <Input
@@ -183,11 +184,11 @@ const Search = () => {
                 <button onClick={handleSearch} className="mt-6 bg-[#0094DA] text-white w-full h-[48px] rounded-[16px]">Search</button>
                 <Row gutter={[23, 23]}>
                     <Col md={14}>
-                        <h2 className='text-[16px] subTitle my-12'>Recherche de <span className='text-[#0094DA]'>{clinicName}</span></h2>
+                        <h2 className='text-[16px] subTitle my-12'>{t("Recherche de")} <span className='text-[#0094DA]'>{clinicName}</span></h2>
                         <div className='flex justify-between items-center my-8'>
-                            <div>Nous avons trouvé <span className='text-[#0094DA]'>{clinics.length} - {totalClinics}</span> résultats</div>
+                            <div>{t("Nous avons trouvé")} <span className='text-[#0094DA]'>{clinics.length} - {totalClinics}</span> résultats</div>
                             <div className='hidden md:flex gap-2 items-center filterBtn'>
-                                <span>Affichage</span>
+                                <span>{t("Affichage")}</span>
                                 <div>
                                     <button className={`btn ${gridCol === 12 && "focused"}`} onClick={() => setGridCol(12)}>
                                         <AppstoreOutlined />
@@ -248,7 +249,7 @@ const Search = () => {
                     </Col>
                 </Row>
             </div>
-        </MainLayout>
+        </MainLayout >
     )
 }
 

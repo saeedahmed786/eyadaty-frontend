@@ -4,6 +4,7 @@ import axios from 'axios'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ErrorMessage } from '../../../components/Messages/messages'
 import { isAuthenticated } from '../../Auth/auth'
 import SearchInputs from '../../Inputs/SearchInputs'
@@ -14,6 +15,7 @@ const AdminNavbar = () => {
     const router = useRouter();
     const [userAuth, setUserAuth] = useState();
     const [notifications, setNotifications] = useState([]);
+    const { t } = useTranslation();
 
 
     const getAllNotifications = async (auth) => {
@@ -80,7 +82,7 @@ const AdminNavbar = () => {
         <div className='AdminNavbar bg-[white] p-2 rounded-[16px]'>
             <div className='flex justify-between items-center'>
                 <div className='w-[50%]'>
-                    <SearchInputs placeholder="Chercher..." />
+                    <SearchInputs placeholder={`${t("Chercher")}...`} />
                 </div>
                 <div className='flex gap-10 items-center'>
                     <Dropdown

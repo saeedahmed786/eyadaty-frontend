@@ -16,9 +16,11 @@ import { isAuthenticated } from '../../components/Auth/auth'
 import specialitiesArray from "../../assets/specialities.json"
 import axios from 'axios'
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 const Pages = () => {
     const router = useRouter();
+    const { t } = useTranslation();
     const [pages, setPages] = useState([]);
     const [userAuth, setUserAuth] = useState({});
     const [categoryId, setCategoryId] = useState("");
@@ -77,7 +79,7 @@ const Pages = () => {
             ),
         },
         {
-            title: 'Page',
+            title: t('Page'),
             dataIndex: 'user',
             key: 'user',
             sorter: (a, b) => a?.firstName?.localeCompare(b?.firstName),
@@ -101,7 +103,7 @@ const Pages = () => {
             ),
         },
         {
-            title: 'Catégorie',
+            title: t('Catégorie'),
             dataIndex: 'category',
             key: 'category',
             sorter: (a, b) => a?.specialisation?.localeCompare(b?.specialisation),
@@ -112,19 +114,19 @@ const Pages = () => {
             ),
         },
         {
-            title: 'Type de page',
+            title: t('Type de page'),
             dataIndex: 'type',
             key: 'type',
             sorter: (a, b) => a?.type?.localeCompare(b?.type),
         },
         {
-            title: 'Propriétaire de la page',
+            title: t('Propriétaire de la page'),
             dataIndex: 'owner',
             key: 'owner',
             sorter: (a, b) => a?.owner?.localeCompare(b?.owner),
         },
         {
-            title: 'Actif',
+            title: t('Actif'),
             dataIndex: 'status',
             key: 'status',
             sorter: (a, b) => a?.status?.localeCompare(b?.status),
@@ -135,7 +137,7 @@ const Pages = () => {
             ),
         },
         {
-            title: 'Actions',
+            title: t('Actions'),
             render: (_, page) => (
                 <>
                     <div className='flex items-center gap-4'>
@@ -171,10 +173,10 @@ const Pages = () => {
                 <div className='md:flex justify-between items-start flex-wrap'>
                     <div>
                         <div className='flex gap-2 justify-start items-center pb-4'>
-                            <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Les pages</button>
+                            <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("Les pages")}</button>
                         </div>
                         <div>
-                            <h1 className='bigTitle'>Les pages</h1>
+                            <h1 className='bigTitle'>{t("Les pages")}</h1>
                             <div className='md:max-w-[40vw]'>
                                 <div className='flex gap-3 mt-12'>
                                     <div className='w-[100%]'>
@@ -182,7 +184,7 @@ const Pages = () => {
                                     </div>
                                     <button onClick={handleNameOnlySearch} className='flex items-center md:w-full justify-center gap-2 bg-[#fff] border border-[#0094DA] rounded-[12px] text-[#0094DA] h-[48px] px-6'>
                                         <FilterOutlined />
-                                        <span className='text-[16px] font-[500]'>Filter</span>
+                                        <span className='text-[16px] font-[500]'>{t("Filter")}</span>
                                     </button>
                                 </div>
                                 <div className='mt-12'>
@@ -190,17 +192,17 @@ const Pages = () => {
                                 </div>
                                 <div className='flex justify-between flex-wrap gap-6 mt-6'>
                                     <div>
-                                        <h5>Type de page</h5>
+                                        <h5>{t("Type de page")}</h5>
                                         <div className='flex justify-between gap-6 sm:gap-0 mt-3'>
-                                            <Checkbox value="Free" checked={paidStatus === "Free"} onChange={(e) => setPaidStatus(e.target.value)}>Freemium</Checkbox>
-                                            <Checkbox value="Premium" checked={paidStatus === "Premium"} onChange={(e) => setPaidStatus(e.target.value)}>Premium</Checkbox>
+                                            <Checkbox value="Free" checked={paidStatus === "Free"} onChange={(e) => setPaidStatus(e.target.value)}>{t("Freemium")}</Checkbox>
+                                            <Checkbox value="Premium" checked={paidStatus === "Premium"} onChange={(e) => setPaidStatus(e.target.value)}>{t("Premium")}</Checkbox>
                                         </div>
                                     </div>
                                     <div>
-                                        <h5>Actif</h5>
+                                        <h5>{t("Actif")}</h5>
                                         <div className='flex justify-between gap-6 sm:gap-0 w-full mt-3'>
-                                            <Checkbox value="Active" checked={status === "Active"} onChange={(e) => setStatus(e.target.value)}>Activé</Checkbox>
-                                            <Checkbox value="Pending" checked={status === "Pending"} onChange={(e) => setStatus(e.target.value)}>En attente</Checkbox>
+                                            <Checkbox value="Active" checked={status === "Active"} onChange={(e) => setStatus(e.target.value)}>{t("Activé")}</Checkbox>
+                                            <Checkbox value="Pending" checked={status === "Pending"} onChange={(e) => setStatus(e.target.value)}>{t("En attente")}</Checkbox>
                                         </div>
                                     </div>
                                 </div>
@@ -213,7 +215,7 @@ const Pages = () => {
                     <div className='mt-8 sm:mt-0'>
                         <button onClick={() => router.push("/admin/create-page")} className='flex items-center justify-center gap-2 bg-[#0094DA] w-full rounded-[12px] text-white h-[48px] px-6'>
                             <PlusIcon />
-                            <span className='text-[16px] font-[500]'>Ajouter un page</span>
+                            <span className='text-[16px] font-[500]'>{t("Ajouter un page")}</span>
                         </button>
                     </div>
                 </div>
@@ -264,7 +266,7 @@ const Pages = () => {
                         }
                     </div>
                     <div className='adminPagination bg-white p-4 flex items-center justify-between flex-wrap rounded-[16px] md:rounded-none my-1 md:my-12'>
-                        <p className='text-[#65737E] text-[12px]'>Affichage de {current * 10} sur {totalPages}  entrées</p>
+                        <p className='text-[#65737E] text-[12px]'>{t("Affichage de")} {current * 10} sur {totalPages}  entrées</p>
                         <AdminPagination totalLength={totalPages} handlePagination={(curr) => { setCurrent(curr); getAllPages(curr) }} />
                     </div>
                 </div>

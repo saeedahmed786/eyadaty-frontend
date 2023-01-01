@@ -6,8 +6,10 @@ import Slider from 'react-slick'
 import moment from 'moment'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next';
 
 export default function BlogList({ blogs }) {
+    const { t } = useTranslation();
     const slickRef = useRef();
     const router = useRouter();
 
@@ -51,11 +53,11 @@ export default function BlogList({ blogs }) {
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-wrap justify-between w-full sm:mb-20">
-                        <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
-                            <p className='text-sitegreen font-medium text-center sm:text-left'>Notre blog</p>
-                            <h1 className="bigTitle text-center sm:text-left">Voir notre dernier blog</h1>
+                        <div className="ltr:lg:w-1/2 rtl:md:w-auto w-full mb-6 lg:mb-0">
+                            <p className='text-sitegreen rtl:md:text-start font-medium text-center sm:text-left'>{t("Notre blog")}</p>
+                            <h1 className="bigTitle text-center sm:text-left">{t("Voir notre dernier blog")}</h1>
                         </div>
-                        <div className='w-full sm:w-[auto] flex justify-center sm:justify-center space-x-2 my-6 sm:my-0'>
+                        <div className='w-full sm:w-[auto] flex justify-center sm:justify-center gap-2 space-x-2 my-6 sm:my-0'>
                             <button onClick={() => slickRef.current?.slickPrev()}>
                                 <div> <LeftIcon /> </div>
                             </button>
@@ -111,7 +113,7 @@ export default function BlogList({ blogs }) {
                     </div>
                     <div className='w-full flex justify-center mt-10'>
                         <div className="flex w-full md:justify-center justify-center items-end ">
-                            <button onClick={() => router.push("/blogs")} className="text-white text-left bg-siteblue border-0 py-2 px-16 focus:outline-none hover:bg-sitegreen rounded-xl text-lg flex items-center gap-3">Voir tous les articles <RightIcon />  </button>
+                            <button onClick={() => router.push("/blogs")} className="text-white text-left bg-siteblue border-0 py-2 px-16 focus:outline-none hover:bg-sitegreen rounded-xl text-lg flex items-center gap-3">{t("Voir tous les articles")} <RightIcon />  </button>
                         </div>
                     </div>
                 </div>

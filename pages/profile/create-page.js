@@ -17,10 +17,12 @@ import { deleteFilesFun, uploadFilesFun } from '../../components/UploadFile';
 import { Loading } from '../../components/Loading/Loading';
 import specialitiesArray from "../../assets/specialities.json"
 import typeArray from "../../assets/type_profile.json"
+import { useTranslation } from 'react-i18next';
 
 const { Option } = Select;
 
 const CreatePage = () => {
+    const { t } = useTranslation();
     const [filesList, setFilesList] = useState([]);
     const [schedule, setSchedule] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -219,8 +221,8 @@ const CreatePage = () => {
                     <Loading />
                     :
                     <div className='CreatePage'>
-                        <div className='mt-12 sm:mt-0'>
-                            <div className='pictureUploadContainer'>Image de profile</div>
+                        <div className='mt-8'>
+                            <div className='pictureUploadContainer'>{t("Image de profile")}</div>
                             <div className='flex flex-wrap gap-4 items-center mt-4'>
                                 {
                                     profileFile && profileFile?.url ?
@@ -228,12 +230,11 @@ const CreatePage = () => {
                                         :
                                         <Image src={ProfileIcon} width={80} alt="Profile" />
                                 }
-                                {/* <Image src={ProfileIcon} width={80} alt="Profile" /> */}
                                 <div className='w-full sm:w-auto flex gap-4'>
                                     <div className='relative'>
                                         <span className="btn btn-primary btn-file">
                                             <button className='uploadBtn flex items-center gap-2'>
-                                                <span>Ajouter un image</span>
+                                                <span>{t("Ajouter un image")}</span>
                                                 <span className='arrowUp'><ArrowUpOutlined /></span>
                                                 <input type="file" name='file' onChange={(e) => handleProfileFileUpload(e.target.files[0])} />
                                             </button>
@@ -242,437 +243,444 @@ const CreatePage = () => {
                                     <div>
                                         <span className="btn btn-primary btn-file">
                                             <button className='deleteBtn'>
-                                                <span>Supprimer</span>
+                                                <span>{t("Supprimer")}</span>
                                                 <input onChange={(e) => handleProfileFileUpload(e.target.files[0])} accept="image/*" name='file' type="file" />
                                             </button>
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <Form
-                                form={getFormData}
-                                name="register"
-                                onFinish={onFinish}
-                                scrollToFirstError
-                                className='mt-10'
-                            >
-                                <Form.Item
-                                    name="type"
-                                    label="Type de page"
-                                    requiredMark={"*"}
-                                    required
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please select Type de page!',
-                                        },
-                                    ]}
-                                >
-                                    <Select placeholder="Type de page">
-                                        {
-                                            typeArray?.length > 0 && typeArray.map(t => {
-                                                return (
-                                                    <Option value={t.name_fr}>{t.name_fr}</Option>
-                                                )
-                                            })
-                                        }
-                                    </Select>
-                                </Form.Item>
-                                <Row gutter={[16, 16]}>
-                                    <Col xs={24} md={12}>
+                            {
+                                loading ?
+                                    <Loading />
+                                    :
+                                    <Form
+                                        form={getFormData}
+                                        name="register"
+                                        onFinish={onFinish}
+                                        scrollToFirstError
+                                        className='mt-10'
+                                    >
                                         <Form.Item
-                                            name="lastName"
-                                            label="Nom"
-                                            hasFeedback
+                                            name="type"
+                                            label={t("Type de page")}
+                                            requiredMark={"*"}
+                                            required
                                             rules={[
                                                 {
                                                     required: true,
-                                                    message: 'Please input your Nom!',
+                                                    message: 'Please select Type de page!',
                                                 },
                                             ]}
                                         >
-                                            <Input placeholder='Nom' />
-                                        </Form.Item>
-                                    </Col>
-                                    <Col xs={24} md={12}>
-                                        <Form.Item
-                                            name="firstName"
-                                            label="Prénom"
-                                            hasFeedback
-                                            rules={[
+                                            <Select placeholder={t("Type de page")}>
                                                 {
-                                                    required: true,
-                                                    message: 'Please input your Prénom!',
-                                                },
-                                            ]}
-                                        >
-                                            <Input placeholder='Prénom' />
-                                        </Form.Item>
-                                    </Col>
-                                </Row>
-                                <Form.Item name="gender" label="Gender">
-                                    <Radio.Group onChange={(e) => setGender(e.target.value)} value={gender}>
-                                        <Radio value="Male">Male</Radio>
-                                        <Radio value="Female">Female</Radio>
-                                    </Radio.Group>
-                                </Form.Item>
-                                <Form.Item
-                                    name="phone"
-                                    label="Numéro de Téléphone"
-                                    hasFeedback
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your Numéro de Téléphone!',
-                                        }
-                                    ]}
-                                >
-                                    <Input placeholder='Numéro de Téléphone' prefix={"+213"} />
-                                </Form.Item>
-                                <Form.Item
-                                    name="phoneTwo"
-                                    label="Numéro de Téléphone 02 ( Optional )"
-                                    hasFeedback
-                                    required={false}
-                                    requiredMark={false}
-                                >
-                                    <Input placeholder='Numéro de Téléphone 02 ( Optional )' prefix={"+213"} />
-                                </Form.Item>
-                                <Form.Item
-                                    name="fax"
-                                    label="Numéro de Téléphone Fixe ( Optional )"
-                                    hasFeedback
-                                    rules={[
-                                        {
-                                            required: false,
-                                            message: 'Please input your Numéro de Téléphone Fixe ( Optional )!',
-                                        }
-                                    ]}
-                                >
-                                    <Input placeholder='Numéro de Téléphone Fixe ( Optional )' prefix={"+213"} />
-                                </Form.Item>
-                                <Form.Item
-                                    name="email"
-                                    label="E-mail"
-                                    required
-                                    hasFeedback
-                                    rules={[
-                                        {
-                                            type: 'email',
-                                            message: "Format d'e-mail incorrect",
-                                        },
-                                        {
-                                            required: true,
-                                            message: 'Please input your E-mail!',
-                                        },
-                                    ]}
-                                >
-                                    <Input placeholder='E-mail' />
-                                </Form.Item>
-                                <Form.Item
-                                    name="facebookLink"
-                                    label="Lien de Facebook  ( Optional )"
-                                    hasFeedback
-                                    rules={[
-                                        {
-                                            required: false,
-                                            message: 'Please input your Lien de Facebook  ( Optional )!',
-                                        },
-                                    ]}
-                                >
-                                    <Input placeholder='Lien de Facebook  ( Optional )' />
-                                </Form.Item>
-                                <Form.Item
-                                    name="instagram"
-                                    label="Lien de Instagram  ( Optional )"
-                                    hasFeedback
-                                    rules={[
-                                        {
-                                            required: false,
-                                            message: 'Please input your Lien de Instagram  ( Optional )!',
-                                        },
-                                    ]}
-                                >
-                                    <Input placeholder='Lien de Instagram  ( Optional )' />
-                                </Form.Item>
-                                <Form.Item
-                                    name="twitter"
-                                    label="Lien de Twitter  ( Optional )"
-                                    hasFeedback
-                                    rules={[
-                                        {
-                                            required: false,
-                                            message: 'Please input your Lien de Twitter  ( Optional )!',
-                                        },
-                                    ]}
-                                >
-                                    <Input placeholder='Lien de Twitter  ( Optional )' />
-                                </Form.Item>
-                                <Form.Item
-                                    name="messenger"
-                                    label="Lien de Messenger  ( Optional )"
-                                    hasFeedback
-                                    rules={[
-                                        {
-                                            required: false,
-                                            message: 'Please input your Lien de Messenger  ( Optional )!',
-                                        },
-                                    ]}
-                                >
-                                    <Input placeholder='Lien de Messenger  ( Optional )' />
-                                </Form.Item>
-                                <Form.Item
-                                    name="bio"
-                                    label="Bio ( Optional )"
-                                    rules={[
-                                        {
-                                            required: false,
-                                            message: 'Please input Bio ( Optional )',
-                                        },
-                                    ]}
-                                >
-                                    <Input.TextArea placeholder='Bio' rows={6} showCount />
-                                </Form.Item>
-                                <Form.Item
-                                    name="specialisation"
-                                    label="Spécialité"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please select Spécialité!',
-                                        },
-                                    ]}
-                                >
-                                    <Select placeholder="Spécialité">
-                                        {specialitiesArray.map((spec) => (
-                                            <Option key={spec.fr} value={spec.fr}>{spec.fr}</Option>
-                                        ))}
-                                        {/* <Option value="Medicine">Medicine</Option>
-                                        <Option value="Surgery">Surgery</Option> */}
-                                    </Select>
-                                </Form.Item>
-                                <Form.Item
-                                    name="experience"
-                                    label="Experience"
-                                    required
-                                    hasFeedback
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your Experience!',
-                                        },
-                                    ]}
-                                >
-                                    <Input placeholder='Experience' />
-                                </Form.Item>
-                                <div className='my-4 sm:max-w-[60%]'>
-                                    {
-                                        schedule && schedule.length > 0 &&
-                                        <table className='w-full text-center my-5 border'>
-                                            <thead className='py-4'>
-                                                <th>Day</th>
-                                                <th>Opening Time</th>
-                                                <th>Closing Time</th>
-                                                <th>Delete</th>
-                                            </thead>
-                                            <tbody>
-                                                {
-                                                    schedule && schedule.length > 0 && schedule.map(sch => {
+                                                    typeArray?.length > 0 && typeArray.map(t => {
                                                         return (
-                                                            <tr>
-                                                                <td>{sch?.day}</td>
-                                                                <td>{sch?.open}</td>
-                                                                <td>{sch?.close}</td>
-                                                                <td><DeleteFilled onClick={() => setSchedule(schedule.filter(f => f.day !== sch.day))} /></td>
-                                                            </tr>
+                                                            <Option value={t.name_fr}>{t.name_fr}</Option>
                                                         )
                                                     })
                                                 }
-                                            </tbody>
-                                        </table>
-                                    }
-                                    <label className='flex gap-2 mb-4 items-center'>
-                                        <span>Horaire de travail</span>
-                                        <span className='text-[#FF6551]'>*</span>
-                                        <InfoCircleFilled className="text-[#0094DA]" />
-                                    </label>
-                                    <ProfileSelectBox label="Samedi" saveItem={handleSchedule} />
-                                    <ProfileSelectBox label="Dimanche" saveItem={handleSchedule} />
-                                    <ProfileSelectBox label="Lundi" saveItem={handleSchedule} />
-                                    <ProfileSelectBox label="Mardi" saveItem={handleSchedule} />
-                                    <ProfileSelectBox label="Mercredi" saveItem={handleSchedule} />
-                                    <ProfileSelectBox label="Jeudi" saveItem={handleSchedule} />
-                                </div>
-                                <Form.Item
-                                    name="notes"
-                                    label="Les notes ( Optional )"
-                                    hasFeedback
-                                    rules={[
-                                        {
-                                            required: false,
-                                            message: 'Please input your Les notes ( Optional )!',
-                                        }
-                                    ]}
-                                >
-                                    <NotesModal updatedItems={selectedNotes} title="Ajouter une note" handleUpdate={(value) => setSelectedNotes(value)} />
-                                </Form.Item>
-                                <div>
-                                    <ul>
-                                        {
-                                            selectedNotes?.length > 0 && selectedNotes.map(note => {
-                                                return (
-                                                    <li className='p-4 bg-[#F5F8FB] mb-4 rounded-[8px] h-[48px] flex justify-between items-center'>
-                                                        <span className='text-[16px] font-[500]'>{note}</span>
-                                                        <span className='pointer' onClick={() => setSelectedNotes(prevItems => prevItems.filter(item => item !== note))}>
-                                                            <Image src={closeIcon} alt="Icon" />
-                                                        </span>
-                                                    </li>
-                                                )
-                                            })
-                                        }
-                                    </ul>
-                                </div>
-                                <Form.Item
-                                    name="clinicName"
-                                    label="Nom de la clinique ( Optional )"
-                                    hasFeedback
-                                >
-                                    <Input placeholder='Nom de la clinique' />
-                                </Form.Item>
-                                <div className='mt-4'>
-                                    <label className='flex gap-2 mb-4 items-center'>
-                                        <span className='font-[700] leading-[16px]'>Horaire de travail</span>
-                                        <span className='text-[#FF6551]'>*</span>
-                                        <InfoCircleFilled className="text-[#0094DA]" />
-                                    </label>
-                                    <label>Code GPS</label>
-                                    <Row align={"center"} gutter={[16, 16]}>
-                                        <Col xs={19}>
-                                            <Form.Item
-                                                name="gpsData"
-                                                required
-                                                hasFeedback
-                                                rules={[
-                                                    {
-                                                        required: true,
-                                                        message: 'Please input your Code GPS!',
-                                                    },
-                                                ]}
-                                            >
-                                                <Input placeholder='Ex : 36.267845, 2.711350' />
+                                            </Select>
+                                        </Form.Item>
+                                        <Row gutter={[16, 16]}>
+                                            <Col xs={24} md={12}>
+                                                <Form.Item
+                                                    name="lastName"
+                                                    label={t("Nom")}
+                                                    hasFeedback
+                                                    rules={[
+                                                        {
+                                                            required: true,
+                                                            message: 'Please input your Nom!',
+                                                        },
+                                                    ]}
+                                                >
+                                                    <Input placeholder={t('Nom')} />
+                                                </Form.Item>
+                                            </Col>
+                                            <Col xs={24} md={12}>
+                                                <Form.Item
+                                                    name="firstName"
+                                                    label={t("Prénom")}
+                                                    hasFeedback
+                                                    rules={[
+                                                        {
+                                                            required: true,
+                                                            message: 'Please input your Prénom!',
+                                                        },
+                                                    ]}
+                                                >
+                                                    <Input placeholder={t('Prénom')} />
+                                                </Form.Item>
+                                            </Col>
+                                        </Row>
+                                        <Form.Item name="gender" label={t("Gender")}>
+                                            <Radio.Group onChange={(e) => setGender(e.target.value)} value={gender}>
+                                                <Radio value="Male">{t("Male")}</Radio>
+                                                <Radio value="Female">{t("Female")}</Radio>
+                                            </Radio.Group>
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="phone"
+                                            label={t("Numéro de Téléphone")}
+                                            hasFeedback
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'Please input your Numéro de Téléphone!',
+                                                }
+                                            ]}
+                                        >
+                                            <Input placeholder={t('Numéro de Téléphone')} prefix={"+213"} />
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="phoneTwo"
+                                            label={t("Numéro de Téléphone 02 ( Optionnel )")}
+                                            hasFeedback
+                                            rules={[
+                                                {
+                                                    required: false,
+                                                    message: 'Please input your Numéro de Téléphone 02 ( Optionnel )!',
+                                                }
+                                            ]}
+                                        >
+                                            <Input placeholder={t('Numéro de Téléphone 02 ( Optionnel )')} prefix={"+213"} />
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="fax"
+                                            label={t("Numéro de Téléphone Fixe ( Optionnel )")}
+                                            hasFeedback
+                                            rules={[
+                                                {
+                                                    required: false,
+                                                    message: 'Please input your Numéro de Téléphone Fixe ( Optionnel )!',
+                                                }
+                                            ]}
+                                        >
+                                            <Input placeholder={t('Numéro de Téléphone Fixe ( Optionnel )')} prefix={"+213"} />
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="email"
+                                            label={t("E-mail")}
+                                            required
+                                            hasFeedback
+                                            rules={[
+                                                {
+                                                    type: 'email',
+                                                    message: "Format d'e-mail incorrect",
+                                                },
+                                                {
+                                                    required: true,
+                                                    message: 'Please input your E-mail!',
+                                                },
+                                            ]}
+                                        >
+                                            <Input placeholder={t('E-mail')} />
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="facebookLink"
+                                            label={t("Lien de Facebook  ( Optionnel )")}
+                                            hasFeedback
+                                            rules={[
+                                                {
+                                                    required: false,
+                                                    message: 'Please input your Lien de Facebook  ( Optionnel )!',
+                                                },
+                                            ]}
+                                        >
+                                            <Input placeholder={t("Lien de Facebook  ( Optionnel )")} />
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="instagram"
+                                            label={t("Lien de Instagram  ( Optionnel )")}
+                                            hasFeedback
+                                            rules={[
+                                                {
+                                                    required: false,
+                                                    message: 'Please input your Lien de Instagram  ( Optionnel )!',
+                                                },
+                                            ]}
+                                        >
+                                            <Input placeholder={t("Lien de Instagram  ( Optionnel )")} />
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="twitter"
+                                            label={t("Lien de Twitter  ( Optionnel )")}
+                                            hasFeedback
+                                            rules={[
+                                                {
+                                                    required: false,
+                                                    message: 'Please input your Lien de Twitter  ( Optionnel )!',
+                                                },
+                                            ]}
+                                        >
+                                            <Input placeholder={t("Lien de Twitter  ( Optionnel )")} />
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="messenger"
+                                            label={t("Lien de Messenger  ( Optionnel )")}
+                                            hasFeedback
+                                            rules={[
+                                                {
+                                                    required: false,
+                                                    message: 'Please input your Lien de Messenger  ( Optionnel )!',
+                                                },
+                                            ]}
+                                        >
+                                            <Input placeholder={t("Lien de Messenger  ( Optionnel )")} />
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="bio"
+                                            label={t("Bio ( Optionnel )")}
+                                            rules={[
+                                                {
+                                                    required: false,
+                                                    message: 'Please input Bio ( Optionnel )',
+                                                },
+                                            ]}
+                                        >
+                                            <Input.TextArea placeholder={t("Bio")} rows={6} showCount maxLength={100} />
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="specialisation"
+                                            label={t("Spécialité")}
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'Please select Spécialité!',
+                                                },
+                                            ]}
+                                        >
+                                            <Select placeholder={t("Spécialité")}>
+                                                {specialitiesArray.map((spec) => (
+                                                    <Option key={spec.fr} value={spec.fr}>{spec.fr}</Option>
+                                                ))}
+                                            </Select>
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="experience"
+                                            label={t("Experience")}
+                                            required
+                                            hasFeedback
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'Please input your Experience!',
+                                                },
+                                            ]}
+                                        >
+                                            <Input placeholder={t("Experience")} />
+                                        </Form.Item>
+                                        <div className='my-4 md:max-w-[60%]'>
+                                            {
+                                                schedule.length > 0 &&
+                                                <table className='w-full text-center my-5 border'>
+                                                    <thead className='py-4'>
+                                                        <th>Day</th>
+                                                        <th>Opening Time</th>
+                                                        <th>Closing Time</th>
+                                                        <th>Delete</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        {
+                                                            schedule.map(sch => {
+                                                                return (
+                                                                    <tr>
+                                                                        <td>{t(sch?.day)}</td>
+                                                                        <td>{sch?.open}</td>
+                                                                        <td>{sch?.close}</td>
+                                                                        <td><DeleteFilled onClick={() => setSchedule(schedule.filter(f => f.day !== sch.day))} /></td>
+                                                                    </tr>
+                                                                )
+                                                            })
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            }
+                                            <label className='flex gap-2 mb-4 items-center'>
+                                                <span>{t("Horaire de travail")}</span>
+                                                <span className='text-[#FF6551]'>*</span>
+                                                <InfoCircleFilled className="text-[#0094DA]" />
+                                            </label>
+                                            <ProfileSelectBox label={t("Samedi")} saveItem={handleSchedule} />
+                                            <ProfileSelectBox label={t("Dimanche")} saveItem={handleSchedule} />
+                                            <ProfileSelectBox label={t("Lundi")} saveItem={handleSchedule} />
+                                            <ProfileSelectBox label={t("Mardi")} saveItem={handleSchedule} />
+                                            <ProfileSelectBox label={t("Mercredi")} saveItem={handleSchedule} />
+                                            <ProfileSelectBox label={t("Jeudi")} saveItem={handleSchedule} />
+                                        </div>
+                                        <Form.Item
+                                            name="notes"
+                                            label={t("Les notes ( Optionnel )")}
+                                            hasFeedback
+                                            rules={[
+                                                {
+                                                    required: false,
+                                                    message: 'Please input your Les notes ( Optionnel )!',
+                                                }
+                                            ]}
+                                        >
+                                            <NotesModal updatedItems={selectedNotes} title="Ajouter une note" handleUpdate={(value) => setSelectedNotes(value)} />
+                                        </Form.Item>
+                                        <div>
+                                            <ul>
+                                                {
+                                                    selectedNotes?.length > 0 && selectedNotes.map(note => {
+                                                        return (
+                                                            <li className='p-4 bg-[#F5F8FB] mb-4 rounded-[8px] h-[48px] flex justify-between items-center'>
+                                                                <span className='text-[16px] font-[500]'>{t(note)}</span>
+                                                                <span className='pointer' onClick={() => setSelectedNotes(prevItems => prevItems.filter(item => item !== note))}>
+                                                                    <Image src={closeIcon} alt="Icon" />
+                                                                </span>
+                                                            </li>
+                                                        )
+                                                    })
+                                                }
+                                            </ul>
+                                        </div>
+                                        <Form.Item
+                                            name="clinicName"
+                                            label={t("Nom de la clinique ( Optionnel )")}
+                                            hasFeedback
+                                        >
+                                            <Input placeholder={t("Nom de la clinique ( Optionnel )")} />
+                                        </Form.Item>
+                                        <div className='mt-4'>
+                                            <label className='flex gap-2 mb-4 items-center'>
+                                                <span className='font-[700] leading-[16px]'>{t("Horaire de travail")}</span>
+                                                <span className='text-[#FF6551]'>*</span>
+                                                <InfoCircleFilled className="text-[#0094DA]" />
+                                            </label>
+                                            <label>{t("Code GPS")}</label>
+                                            <Row align={"center"} gutter={[16, 16]}>
+                                                <Col xs={19}>
+                                                    <Form.Item
+                                                        name="gpsData"
+                                                        required
+                                                        hasFeedback
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: 'Please input your Code GPS!',
+                                                            },
+                                                        ]}
+                                                    >
+                                                        <Input placeholder='Ex : 36.267845, 2.711350' />
+                                                    </Form.Item>
+                                                </Col>
+                                                <Col xs={5}>
+                                                    <button className='bg-[#0094DA] rounded-[12px] w-[48px] h-[48px] flex justify-center items-center'>
+                                                        <EnvironmentOutlined className='text-white' style={{ fontSize: "19px" }} />
+                                                    </button>
+                                                </Col>
+                                            </Row>
+                                        </div>
+                                        <Form.Item
+                                            name="services"
+                                            label={t("Services")}
+                                            className='mt-2'
+                                            hasFeedback
+                                            rules={[
+                                                {
+                                                    required: false,
+                                                    message: 'Please input your Services!',
+                                                }
+                                            ]}
+                                        >
+                                            <ServicesModal updatedItems={selectedServices} handleUpdate={(value) => setSelectedServices(value)} />
+                                        </Form.Item>
+                                        <div>
+                                            <ul>
+                                                {
+                                                    selectedServices?.length > 0 && selectedServices.map(service => {
+                                                        return (
+                                                            <li className='p-4 bg-[#F5F8FB] mb-4 rounded-[8px] h-[48px] flex justify-between items-center'>
+                                                                <span className='text-[16px] font-[500]'>{t(service)}</span>
+                                                                <span className='pointer' onClick={() => setSelectedServices(prevItems => prevItems.filter(item => item !== service))}>
+                                                                    <Image src={closeIcon} alt="Icon" />
+                                                                </span>
+                                                            </li>
+                                                        )
+                                                    })
+                                                }
+                                            </ul>
+                                        </div>
+                                        <Form.Item>
+                                            <label>
+                                                <span className='font-[700] leading-[16px]'>{t("Horaire de travail")}</span>
+                                                <span className='text-[#FF6551] px-1'>*</span>
+                                            </label>
+                                            <Form.Item name="dragger" valuePropName="fileList" getValueFromEvent={normFile} noStyle>
+                                                <Upload.Dragger fileList={filesList} showUploadList={false} onChange={(e) => { handleFilesUpload(e.file.originFileObj); setFilesList(e.fileList); }} height={148}>
+                                                    <p className="mb-0">
+                                                        <Image src={UploadIcon} alt="Upload Icon" />
+                                                    </p>
+                                                </Upload.Dragger>
                                             </Form.Item>
-                                        </Col>
-                                        <Col xs={5}>
-                                            <button className='bg-[#0094DA] rounded-[12px] w-[48px] h-[48px] flex justify-center items-center'>
-                                                <EnvironmentOutlined className='text-white' style={{ fontSize: "19px" }} />
-                                            </button>
-                                        </Col>
-                                    </Row>
-                                </div>
-                                <Form.Item
-                                    name="services"
-                                    label="Services"
-                                    className='mt-2'
-                                    hasFeedback
-                                    rules={[
-                                        {
-                                            required: false,
-                                            message: 'Please input your Services!',
-                                        }
-                                    ]}
-                                >
-                                    <ServicesModal updatedItems={selectedServices} handleUpdate={(value) => setSelectedServices(value)} />
-                                </Form.Item>
-                                <div>
-                                    <ul>
-                                        {
-                                            selectedServices?.length > 0 && selectedServices.map(service => {
-                                                return (
-                                                    <li className='p-4 bg-[#F5F8FB] mb-4 rounded-[8px] h-[48px] flex justify-between items-center'>
-                                                        <span className='text-[16px] font-[500]'>{service}</span>
-                                                        <span className='pointer' onClick={() => setSelectedServices(prevItems => prevItems.filter(item => item !== service))}>
-                                                            <Image src={closeIcon} alt="Icon" />
-                                                        </span>
-                                                    </li>
-                                                )
-                                            })
-                                        }
-                                    </ul>
-                                </div>
-                                <Form.Item>
-                                    <label>
-                                        <span className='font-[700] leading-[16px]'>Horaire de travail</span>
-                                        <span className='text-[#FF6551] px-1'>*</span>
-                                    </label>
-                                    <Form.Item name="dragger" valuePropName="fileList" getValueFromEvent={normFile} noStyle>
-                                        <Upload.Dragger fileList={filesList} showUploadList={false} onChange={(e) => { handleFilesUpload(e.file.originFileObj); setFilesList(e.fileList); }} height={148}>
-                                            <p className="mb-0">
-                                                <Image src={UploadIcon} alt="Upload Icon" />
-                                            </p>
-                                        </Upload.Dragger>
-                                    </Form.Item>
-                                    <p className='text-center text-[#65737E] leading-[17px] mt-2'>{"Essayez de télécharger l'image dans ces formats ( PNG, JPEG )"}</p>
-                                </Form.Item>
-                                <div className='my-4'>
-                                    <div className='flex flex-wrap gap-6 mt-8'>
-                                        {
-                                            uploadedFilesList?.length > 0 ? uploadedFilesList.map(file => {
-                                                return (
-                                                    <div className='imageBox relative sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
-                                                        <img src={file?.url} className="rounded-[12px] border h-[132px] w-[148px]" alt="Gallery Icon" />
-                                                        <DeleteFilled className='absolute top-[-8px] right-0' onClick={() => handleFileRemove(file)} />
-                                                    </div>
-                                                )
-                                            })
-                                                :
-                                                <>
-                                                    <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
-                                                        <Image src={galleryIcon} alt="Gallery Icon" />
-                                                    </div>
-                                                    <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
-                                                        <Image src={galleryIcon} alt="Gallery Icon" />
-                                                    </div>
-                                                    <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
-                                                        <Image src={galleryIcon} alt="Gallery Icon" />
-                                                    </div>
-                                                    <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
-                                                        <Image src={galleryIcon} alt="Gallery Icon" />
-                                                    </div>
-                                                    <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
-                                                        <Image src={galleryIcon} alt="Gallery Icon" />
-                                                    </div>
-                                                    <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
-                                                        <Image src={galleryIcon} alt="Gallery Icon" />
-                                                    </div>
-                                                    <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
-                                                        <Image src={galleryIcon} alt="Gallery Icon" />
-                                                    </div>
-                                                </>
-                                        }
-                                    </div>
-                                </div>
-                                <div className='my-6'>
-                                    <label className='flex gap-1 mb-4 items-center'>
-                                        <span className='font-[700] leading-[16px]'>Êtes-vous le propriétaire de la clinique?</span>
-                                        <span className='text-[#FF6551]'>*</span>
-                                        <InfoCircleFilled className="text-[#0094DA]" />
-                                    </label>
-                                    <div className='mt-0 flex items-center gap-4'>
-                                        <Checkbox checked={owner === "Yes"} onChange={(e) => e.target.checked && setOwner("Yes")}>Oui</Checkbox>
-                                        <Checkbox checked={owner === "No"} onChange={(e) => e.target.checked && setOwner("No")}>Non</Checkbox>
-                                    </div>
-                                </div>
-                                <Form.Item className='my-5'>
-                                    <div className='flex gap-4'>
-                                        <button type="submit" className='btn px-12 bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
-                                            Sauvegarder
-                                        </button>
-                                        <button className='btn px-12 bg-[#C0C5CE] rounded-[12px] text-black font-[500] leading-[16px] h-[56px]'>
-                                            Annuler
-                                        </button>
-                                    </div>
-                                </Form.Item>
-                            </Form>
+                                            <p className='text-center text-[#65737E] leading-[17px] mt-2'>{t("Essayez de télécharger l'image dans ces formats ( PNG, JPEG )")}</p>
+                                        </Form.Item>
+                                        <div className='my-4'>
+                                            <div className='flex flex-wrap gap-6 mt-8'>
+                                                {
+                                                    uploadedFilesList?.length > 0 ? uploadedFilesList.map(file => {
+                                                        return (
+                                                            <div className='imageBox relative w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                                <img src={file?.url} className="rounded-[12px] border h-[132px] w-[148px]" alt="Gallery Icon" />
+                                                                <DeleteFilled className='absolute top-[-8px] right-0' onClick={() => handleFileRemove(file)} />
+                                                            </div>
+                                                        )
+                                                    })
+                                                        :
+                                                        <>
+                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                                <Image src={galleryIcon} alt="Gallery Icon" />
+                                                            </div>
+                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                                <Image src={galleryIcon} alt="Gallery Icon" />
+                                                            </div>
+                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                                <Image src={galleryIcon} alt="Gallery Icon" />
+                                                            </div>
+                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                                <Image src={galleryIcon} alt="Gallery Icon" />
+                                                            </div>
+                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                                <Image src={galleryIcon} alt="Gallery Icon" />
+                                                            </div>
+                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                                <Image src={galleryIcon} alt="Gallery Icon" />
+                                                            </div>
+                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                                <Image src={galleryIcon} alt="Gallery Icon" />
+                                                            </div>
+                                                        </>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div className='my-6'>
+                                            <label className='flex gap-1 mb-4 items-center'>
+                                                <span className='font-[700] leading-[16px]'>{t("Êtes-vous le propriétaire de la clinique?")}</span>
+                                                <span className='text-[#FF6551]'>*</span>
+                                                <InfoCircleFilled className="text-[#0094DA]" />
+                                            </label>
+                                            <div className='mt-0 flex items-center gap-4'>
+                                                <Checkbox checked={owner === "Yes"} onChange={(e) => e.target.checked && setOwner("Yes")}>{t("Oui")}</Checkbox>
+                                                <Checkbox checked={owner === "No"} onChange={(e) => e.target.checked && setOwner("No")}>{t("Non")}</Checkbox>
+                                            </div>
+                                        </div>
+                                        <Form.Item className='my-5'>
+                                            <div className='flex gap-4'>
+                                                <button type="submit" className='btn px-12 bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
+                                                    {t("Sauvegarder")}
+                                                </button>
+                                                <button className='btn px-12 bg-[#C0C5CE] rounded-[12px] text-black font-[500] leading-[16px] h-[56px]'>
+                                                    {t("Annuler")}
+                                                </button>
+                                            </div>
+                                        </Form.Item>
+                                    </Form>
+                            }
                         </div>
                     </div>
             }

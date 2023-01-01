@@ -1,7 +1,5 @@
 import { Col, Pagination, Row } from 'antd'
 import axios from 'axios'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { isAuthenticated } from '../components/Auth/auth'
 import SearchCard from '../components/Cards/SearchCard'
@@ -11,9 +9,10 @@ import SearchInputs from '../components/Inputs/SearchInputs'
 import MainLayout from '../components/Layouts/MainLayout'
 import RightIcon from '../components/icons/righticon'
 import { ErrorMessage, SuccessMessage } from '../components/Messages/messages'
+import { useTranslation } from 'react-i18next'
 
 const Favourites = () => {
-    const router = useRouter();
+    const { t } = useTranslation();
     const [favourites, setFavourites] = useState([]);
     const [current, setCurrent] = useState(1);
     const [totalFavourites, setTotalFavourites] = useState();
@@ -83,10 +82,10 @@ const Favourites = () => {
 
     const itemRender = (_, type, originalElement) => {
         if (type === 'prev') {
-            return <button className='prevBtn'>Précédent</button>;
+            return <button className='prevBtn'>{t("Précédent")}</button>;
         }
         if (type === 'next') {
-            return <button className='nextBtn'>Suivant</button>;
+            return <button className='nextBtn'>{t("Suivant")}</button>;
         }
         return originalElement;
     };
@@ -94,16 +93,16 @@ const Favourites = () => {
         <MainLayout navbar>
             <div className='Favourites px-4 sm:px-24 py-8'>
                 <div className='flex gap-2 justify-center items-center py-4'>
-                    <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Favoris </button>
+                    <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("Favoris")} </button>
                 </div>
-                <h1 className='bigTitle text-center py-3'>Favoris</h1>
+                <h1 className='bigTitle text-center py-3'>{t("Favoris")}</h1>
                 <Row>
                     <Col xs={24} md={6}>
                         <div>
-                            <label>Chercher</label>
+                            <label>{t("Chercher")}</label>
                             <SearchInputs />
                         </div>
-                        <h1 className='bigTitle text-center py-4'>Catégories</h1>
+                        <h1 className='bigTitle text-center py-4'>{t("Catégories")}</h1>
                         <div className='mt-8'>
                             <button className='catCard my-4'>
                                 <div className='name'>Généraliste</div>

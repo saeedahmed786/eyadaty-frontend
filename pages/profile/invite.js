@@ -9,8 +9,10 @@ import Twitter from "../../assets/Twitter_blue.svg"
 import Instagram from "../../assets/Instagram_blue.svg"
 import Linkedin from "../../assets/linkedin.svg"
 import { isAuthenticated } from '../../components/Auth/auth'
+import { useTranslation } from 'react-i18next'
 
 const Invite = () => {
+    const { t } = useTranslation();
     const [copied, setCopied] = useState(false);
     const [user, setUser] = useState({});
 
@@ -25,19 +27,19 @@ const Invite = () => {
 
     return (
         <ProfileLayout sidebar>
-            <div className='Invite px-12'>
+            <div className='Invite md:px-12'>
                 <Image src={Email} alt="Email" />
-                <p className='normalPara my-2'>Invite tes amis</p>
+                <p className='normalPara my-2'>{t("Invite tes amis")}</p>
                 <div className='mt-6'>
-                    <label>Lien</label>
+                    <label>{t("Lien")}</label>
                     <div className='flex items-center gap-4'>
                         <Input value={`www.eyadati.com/invite&${user._id}`} placeholder='Prénom' />
                         <button
                             type="submit"
                             onClick={() => { navigator.clipboard.writeText(`www.eyadati.com/invite&${user._id}`); setCopied(true); }}
-                            className='btn px-12 bg-[#0094DA] flex gap-1 items-center rounded-[12px] text-white h-[48px]'>
+                            className='btn px-4 sm:px-12 bg-[#0094DA] flex gap-1 items-center rounded-[12px] text-white h-[48px]'>
                             <LinkOutlined style={{ fontSize: "21px" }} />
-                            <span>{copied ? "Copied" : "Copier"}</span>
+                            <span>{copied ? "Copied" : t("Copier")}</span>
                         </button>
                     </div>
                     <div className='flex gap-3 mt-6 items-center justify-start iconsContainer' >

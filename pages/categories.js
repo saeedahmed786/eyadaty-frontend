@@ -6,8 +6,10 @@ import MainLayout from '../components/Layouts/MainLayout'
 import { ErrorMessage } from '../components/Messages/messages';
 import axios from 'axios';
 import specialitiesArray from "../assets/specialities.json"
+import { useTranslation } from 'react-i18next';
 
 const Categories = () => {
+    const { t, i18n } = useTranslation();
     const [categories, setCategories] = useState([]);
 
     const getAllCategories = async () => {
@@ -22,6 +24,7 @@ const Categories = () => {
 
     useEffect(() => {
         getAllCategories();
+        console.log(i18n)
 
         return () => {
 
@@ -34,9 +37,9 @@ const Categories = () => {
             <div className='CategoriesPage container px-4 mx-auto pb-24 pt-6'>
                 <div className='text-center'>
                     <div className='flex gap-2 justify-center items-center py-4'>
-                        <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Catégories</button>
+                        <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("Catégories")}</button>
                     </div>
-                    <h1 className='bigTitle'>Catégories</h1>
+                    <h1 className='bigTitle'>{t("Catégories")}</h1>
                 </div>
                 <div className='flex flex-wrap gap-2 sm:gap-6 mt-12'>
                     {

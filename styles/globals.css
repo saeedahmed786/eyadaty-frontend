@@ -3,6 +3,11 @@
 @tailwind utilities;
 @import "react-quill/dist/quill.snow.css";
 
+@font-face {
+    font-family: 'Somar';
+    src: URL('../assets/fonts/TTF/Standard/SomarSans-Regular.ttf') format('truetype');
+}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -11,6 +16,7 @@
     height: 75%;
     width: 100%;
 }
+
 
 body {
     overflow-x: hidden !important;
@@ -1583,4 +1589,42 @@ body {
 #__next {
     width: 100% !important;
     overflow-x: hidden !important;
+}
+
+[dir='rtl'] .slick-slide {
+    float: left !important;
+}
+
+[dir='rtl'] .slick-next {
+    left: auto !important;
+}
+
+html[dir='rtl'] .ant-select-arrow {
+    position: absolute;
+    right: auto !important;
+    left: 10px !important;
+}
+
+html[dir='rtl'] .aboutUsComp,
+html[dir='rtl'] .subscribeComp,
+html[dir='rtl'] .downloadComp {
+    direction: ltr !important;
+}
+
+html[dir='rtl'] .right-icon-ham {
+    transform: rotate(180deg);
+}
+
+
+html[dir="rtl"] body,
+html[dir="rtl"] body h1,
+html[dir="rtl"] body h2,
+html[dir="rtl"] body h3,
+html[dir="rtl"] body h4,
+html[dir="rtl"] body h5,
+html[dir="rtl"] body h6,
+html[dir="rtl"] body p,
+html[dir="rtl"] body span,
+html[dir="rtl"] body div {
+    font-family: "Somar" !important;
 }

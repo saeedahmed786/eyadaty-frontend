@@ -3,12 +3,14 @@ import CloseIcon from "../../assets/closeIcon.svg"
 import { Input, Modal } from 'antd'
 import Image from 'next/image'
 import Tick from "../../assets/Tick-Square.svg"
+import { useTranslation } from 'react-i18next'
 
 const ServicesModal = ({ handleUpdate, updatedItems }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [items, setItems] = useState([]);
     const [itemNote, setItemNote] = useState("");
     const [show, setShow] = useState(false);
+    const { t } = useTranslation();
     const [services, setServices] = useState([
         "Abdomino-pelviene",
         "Acupuncture",
@@ -56,11 +58,11 @@ const ServicesModal = ({ handleUpdate, updatedItems }) => {
 
     return (
         <>
-            <button type='button' onClick={showModal} className='text-[#0094DA] font-[500]'>Ajouter les services</button>
+            <button type='button' onClick={showModal} className='text-[#0094DA] font-[500]'>{t("Ajouter les services")}</button>
             <Modal centered className='notesModal' closeIcon={false} title={false} footer={false} visible={isModalOpen} onCancel={handleCancel}>
                 <div>
                     <div className='flex justify-between items-center closeIcon'>
-                        <h4 className='subTitle'>Services *</h4>
+                        <h4 className='subTitle'>{t("Services")} *</h4>
                         <button onClick={handleCancel}>
                             <Image src={CloseIcon} alt="CloseIcon" />
                         </button>
@@ -70,7 +72,7 @@ const ServicesModal = ({ handleUpdate, updatedItems }) => {
                             services?.map(service => {
                                 return (
                                     <a onClick={() => toggleItem(service)} key={service} className='flex border-b-[1px] py-3 border-[#C0C5CE] items-center justify-between'>
-                                        <div>{service}</div>
+                                        <div>{t(service)}</div>
                                         {
                                             items?.includes(service) &&
                                             <div> <Image src={Tick} alt="Tick" /></div>
@@ -82,14 +84,14 @@ const ServicesModal = ({ handleUpdate, updatedItems }) => {
                     </div>
                     <div className='mt-6'>
                         <div className='text-center'>
-                            <button onClick={() => setShow(!show)} className='text-[#0094DA] font-[500]'>Ajouter les services</button>
+                            <button onClick={() => setShow(!show)} className='text-[#0094DA] font-[500]'>{t("Ajouter les services")}</button>
                         </div>
                         {
                             show &&
                             <Input
                                 type="text"
                                 className='mt-4'
-                                placeholder='Autre service'
+                                placeholder={t('Autre service')}
                                 value={itemNote}
                                 onPressEnter={() => setServices([...services, itemNote])}
                                 onChange={(event) => setItemNote(event.target.value)}
@@ -97,8 +99,8 @@ const ServicesModal = ({ handleUpdate, updatedItems }) => {
                         }
                     </div>
                     <div className='mt-8'>
-                        <button className='w-full bg-[#0094DA] rounded-[12px] h-[48px] text-white mb-4' onClick={() => handleUpdate(items)}>Supprimer</button> <br />
-                        <button className='w-full bg-[#C0C5CE] rounded-[12px] h-[48px] text-black' onClick={handleCancel}>Annuler</button>
+                        <button className='w-full bg-[#0094DA] rounded-[12px] h-[48px] text-white mb-4' onClick={() => handleUpdate(items)}>{t("Supprimer")}</button> <br />
+                        <button className='w-full bg-[#C0C5CE] rounded-[12px] h-[48px] text-black' onClick={handleCancel}>{t("Annuler")}</button>
                     </div>
                 </div>
             </Modal>

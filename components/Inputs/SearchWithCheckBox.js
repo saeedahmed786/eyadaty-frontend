@@ -1,6 +1,7 @@
 import { Checkbox, Input, Select } from 'antd';
 import Image from 'next/image';
 import React, { useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next';
 import SearchIcon from "../../assets/search.svg"
 
 
@@ -11,9 +12,16 @@ const SearchWithCheckBox = ({ data, label, placeholder, handleUpdate }) => {
     const [selectedValue, setSelectedValue] = useState("");
     const inputRef = useRef(null);
     const [name, setName] = useState('');
+    const { t } = useTranslation();
 
     const handleChange = (value) => {
-        setSelectedValue(value)
+        if (selectedValue === value) {
+            setSelectedValue("");
+            handleUpdate("");
+        } else {
+            setSelectedValue(value);
+            handleUpdate(value);
+        }
     }
 
     const onNameChange = (event) => {
@@ -26,8 +34,12 @@ const SearchWithCheckBox = ({ data, label, placeholder, handleUpdate }) => {
             <br />
             <Select
                 className='w-full'
-                onChange={(value) => { handleUpdate(value); handleChange(value) }}
-                placeholder={placeholder}
+                // onChange={(value) => { handleChange(value) }}
+                onSelect={(val) => handleChange(val)}
+                placeholder={t(`${placeholder}`)}
+                clearIcon={true}
+                mode="single"
+                value={selectedValue}
                 dropdownRender={(menu) => (
                     <div className='selectDropdown w-full p-4' style={{ zIndex: "1000" }}>
                         <Input

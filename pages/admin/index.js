@@ -15,9 +15,11 @@ import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages
 import { isAuthenticated } from '../../components/Auth/auth'
 import Link from 'next/link'
 import formatStringNumbers from '../../components/FormatNumbers'
+import { useTranslation } from 'react-i18next'
 
 const Admin = () => {
     const router = useRouter();
+    const { t } = useTranslation();
     const [pages, setPages] = useState([]);
     const [totalPages, setTotalPages] = useState();
     const [userAuth, setUserAuth] = useState({});
@@ -87,7 +89,7 @@ const Admin = () => {
             ),
         },
         {
-            title: 'Page',
+            title: t('Page'),
             dataIndex: 'user',
             key: 'user',
             sorter: (a, b) => a?.firstName?.localeCompare(b?.firstName),
@@ -111,7 +113,7 @@ const Admin = () => {
             ),
         },
         {
-            title: 'Catégorie',
+            title: t('Catégorie'),
             dataIndex: 'category',
             key: 'category',
             sorter: (a, b) => a?.specialisation?.localeCompare(b?.specialisation),
@@ -122,19 +124,19 @@ const Admin = () => {
             ),
         },
         {
-            title: 'Type de page',
+            title: t('Type de page'),
             dataIndex: 'type',
             key: 'type',
             sorter: (a, b) => a?.type?.localeCompare(b?.type),
         },
         {
-            title: 'Propriétaire de la page',
+            title: t('Propriétaire de la page'),
             dataIndex: 'owner',
             key: 'owner',
             sorter: (a, b) => a?.owner?.localeCompare(b?.owner),
         },
         {
-            title: 'Actif',
+            title: t('Actif'),
             dataIndex: 'status',
             key: 'status',
             sorter: (a, b) => a?.status?.localeCompare(b?.status),
@@ -145,7 +147,7 @@ const Admin = () => {
             ),
         },
         {
-            title: 'Actions',
+            title: t('Actions'),
             render: (_, page) => (
                 <>
                     <div className='flex items-center gap-4'>
@@ -169,7 +171,7 @@ const Admin = () => {
                                     <Image src={aboutimg} alt="Doc" height={193} width={174} />
                                 </div>
                                 <div className='w-full'>
-                                    <p className="text-sm  text-sitegreen mb-0 w-full">Témoignages</p>
+                                    <p className="text-sm  text-sitegreen mb-0 w-full">{t("Témoignages")}</p>
                                     <h1 className="text-[32px] sm:text-[56px] mb-0 font-extrabold leading-[64px] text-gray-900">Achref maher.</h1>
                                 </div>
                             </div>
@@ -185,7 +187,7 @@ const Admin = () => {
                                         </div>
                                         <div className='w-full'>
                                             <h1 className="text-[32px] sm:text-[56px] mb-0 font-extrabold leading-[64px] text-gray-900">{formatStringNumbers(totalUsers)}</h1>
-                                            <p className="text-sm text-[#65737E] mb-0 w-full">Utilisateurs</p>
+                                            <p className="text-sm text-[#65737E] mb-0 w-full">{t("Utilisateurs")}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +200,7 @@ const Admin = () => {
                                         </div>
                                         <div className='w-full'>
                                             <h1 className="text-[32px] sm:text-[56px] mb-0 font-extrabold leading-[64px] text-gray-900">{formatStringNumbers(totalPages)}</h1>
-                                            <p className="text-sm text-[#65737E] mb-0 w-full">Les pages</p>
+                                            <p className="text-sm text-[#65737E] mb-0 w-full">{t("Les pages")}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -253,7 +255,7 @@ const Admin = () => {
                         }
                     </div>
                     <div className='adminPagination bg-white p-4 flex items-center justify-between flex-wrap rounded-[16px] md:rounded-none my-1 md:my-12'>
-                        <p className='text-[#65737E] text-[12px]'>Affichage de {current * 10} sur {totalPages}  entrées</p>
+                        <p className='text-[#65737E] text-[12px]'>{t("Affichage de")} {current * 10} sur {totalPages}  entrées</p>
                         <AdminPagination totalLength={totalPages} handlePagination={(curr) => { setCurrent(curr); getAllPages(curr) }} />
                     </div>
                 </div>
