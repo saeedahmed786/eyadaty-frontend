@@ -319,7 +319,8 @@ i18n
           "Nous fournissons les meilleurs service?": "Nous fournissons les meilleurs service?",
           "Avis": "Avis",
           "Oublié le mot de passe": "Oublié le mot de passe",
-          "Envoyez": "Envoyez"
+          "Envoyez": "Envoyez",
+          "Email": "Email"
         }
       },
       ar: {
@@ -623,7 +624,8 @@ i18n
           "Invite tes amis": "قم بدعوة أصدقائك",
           "Nous fournissons les meilleurs service?": "نحن نقدم أفضل الخدمات",
           "Avis": "تقييم",
-          "Envoyez": "إرسال"
+          "Envoyez": "إرسال",
+          "Email": "Email"
         }
       }
     },

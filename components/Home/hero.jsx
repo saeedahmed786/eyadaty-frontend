@@ -26,8 +26,8 @@ export default function HeroPage() {
                             alt="Image of doctor"
                         />
                     </div> */}
-                    <div className="sm:p-3 px-3 sm:px-0 mt-12 sm:mt-0 lg:flex-grow md:w-1/2 ltr:lg:pr-24 ltr:md:pr-16 flex flex-col md:items-start md:text-left sm:mb-16 md:mb-0 items-center text-end rtl:justify-start rtl:text-start ">
-                        <h1 className="bigTitle pl-12 sm:pl-0">{t("Retrouver la belle vie par une bonne santé.")}
+                    <div className="sm:p-3 px-3 sm:px-0 mt-12 sm:mt-0 lg:flex-grow md:w-1/2 ltr:lg:pr-24 ltr:md:pr-16 flex flex-col md:items-start md:text-left sm:mb-16 md:mb-0 items-center text-start sm:text-end rtl:justify-start rtl:text-start">
+                        <h1 className="bigTitle rtl:pl-12">{t("Retrouver la belle vie par une bonne santé.")}
                         </h1>
                         {/* <h1 className="sm:text-4xl lg:text-[72px] leading-[100px] ltr:lg:text-6xl text-4xl mb-4 font-extrabold text-gray-900">{t("Retrouver la belle vie par une bonne santé.")}
                         </h1> */}
