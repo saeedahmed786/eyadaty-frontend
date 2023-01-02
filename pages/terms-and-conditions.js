@@ -18,7 +18,7 @@ const TermsAndConditions = () => {
                 </div>
                 <div className=''>
                     <div className='flex gap-2 items-center py-4'>
-                        <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]'>{t("Termes et conditions")}</Link>
+                        <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]' href="/terms-and-conditions">{t("Termes et conditions")}</Link>
                     </div>
                     <div>
                         <h1 className='bigTitle'>{t("Termes et conditions")}</h1>

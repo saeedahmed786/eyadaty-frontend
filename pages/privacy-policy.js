@@ -19,7 +19,7 @@ const PrivacyPolicy = () => {
                 </div>
                 <div className=''>
                     <div className='flex gap-2 items-center py-4'>
-                        <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]'>{t("Politique de confidentialité")}</Link>
+                        <span>{t("Accueil")}</span> <RightIcon /> <Link href="/privacy-policy" className='text-[#0094DA]'>{t("Politique de confidentialité")}</Link>
                     </div>
                     <div>
                         <h1 className='bigTitle'>{t("Politique de confidentialité")}</h1>

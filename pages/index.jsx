@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { isAuthenticated } from '../components/Auth/auth';
 import LocationComp from '../components/Location';
 import specialitiesArray from "../assets/specialities.json"
-import { CustomErrorMessage, CustomSuccessMessage, ErrorMessage } from '../components/Messages/messages';
+import { ErrorMessage } from '../components/Messages/messages';
 
 const HeroPage = dynamic(() => import('../components/Home/hero'), {
     suspense: true,
