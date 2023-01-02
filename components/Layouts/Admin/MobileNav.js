@@ -21,6 +21,7 @@ import Logout from "../../../assets/Logout.svg"
 import { useTranslation } from 'react-i18next'
 
 const MobileNav = ({ handleMask }) => {
+    const { t } = useTranslation()
     const [show, setShow] = useState(false);
     const router = useRouter();
     const [userAuth, setUserAuth] = useState();

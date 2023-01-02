@@ -95,7 +95,7 @@ const Admin = () => {
             sorter: (a, b) => a?.firstName?.localeCompare(b?.firstName),
             render: (_, user) => (
                 <div className='min-w-[130px]'>
-                    <div className='nameAndPic w-full flex justify-between'>
+                    <div className='nameAndPic w-full'>
                         <div className='flex items-center gap-2'>
                             <div className='profileImg'>
                                 <img src={user?.picture?.url} alt="Doctor" width={32} height={32} className="rounded-[50%]" />

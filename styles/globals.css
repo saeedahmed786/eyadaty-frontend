@@ -1647,6 +1647,17 @@ html[dir='rtl'] .mapOuterContainer {
 }
 
 
+html[dir="rtl"] body .ant-table-thead tr .ant-table-cell:first-of-type {
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 16px !important;
+}
+
+html[dir="rtl"] body .ant-table-thead tr .ant-table-cell:last-of-type {
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 16px !important;
+}
+
+
 html[dir="rtl"] body,
 html[dir="rtl"] body h1,
 html[dir="rtl"] body h2,
