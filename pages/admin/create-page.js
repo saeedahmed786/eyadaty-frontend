@@ -196,7 +196,7 @@ const CreatePage = () => {
                 </div>
                 <div className='md:max-w-[40vw]'>
                     <div className='mt-12'>
-                        <SelectBoxWidthSearch prevValue={categoryId} data={categories} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
+                        <SelectBoxWidthSearch prevValue={categoryId} data={specialitiesArray} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
                     </div>
                     <div className='flex justify-between flex-wrap gap-6 mt-6'>
                         <div>

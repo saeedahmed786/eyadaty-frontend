@@ -21,12 +21,14 @@ import { deleteFilesFun, uploadFilesFun } from '../../../components/UploadFile'
 import specialitiesArray from "../../../assets/specialities.json"
 import typeArray from "../../../assets/type_profile.json"
 import { useTranslation } from 'react-i18next'
+import { useRouter } from 'next/router'
 
 
 const { Option } = Select;
 
 const UpdatePage = () => {
     const { t } = useTranslation();
+    const router = useRouter();
     const [filesList, setFilesList] = useState([]);
     const [pageId, setPageId] = useState("");
     const [loading, setLoading] = useState(false);
@@ -241,7 +243,7 @@ const UpdatePage = () => {
                         <h1 className='bigTitle'>{t("Modifier la page")}</h1>
                     </div>
                     <div className='mt-8 md:mt-0'>
-                        <button className='flex justify-center items-center w-full gap-2 bg-[#0094DA] rounded-[12px] text-white h-[48px] px-6'>
+                        <button onClick={() => router.push("/admin/create-page")} className='flex justify-center items-center w-full gap-2 bg-[#0094DA] rounded-[12px] text-white h-[48px] px-6'>
                             <PlusIcon />
                             <span className='text-[16px] font-[500]'>{t("Ajouter un page")}</span>
                         </button>
@@ -249,7 +251,7 @@ const UpdatePage = () => {
                 </div>
                 <div className='md:max-w-[40vw]'>
                     <div className='mt-12'>
-                        <SelectBoxWidthSearch prevValue={categoryId} data={categories} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
+                        <SelectBoxWidthSearch prevValue={categoryId} data={specialitiesArray} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
                     </div>
                     <div className='flex justify-between flex-wrap gap-6 mt-6'>
                         <div>
