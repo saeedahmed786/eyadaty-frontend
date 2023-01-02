@@ -234,14 +234,14 @@ const Pages = () => {
                                                 <div className='nameAndPic w-full flex justify-between'>
                                                     <div className='flex items-center gap-2'>
                                                         <div className='profileImg'>
-                                                            <img src={page?.picture?.url} alt="Doctor" width={32} height={32} className="rounded-[50%]" />
+                                                            <img src={page?.picture?.url} alt="Doctor" width={32} height={32} className="rounded-[50%] h-[32px] w-[38px]" />
                                                         </div>
                                                         <div className='w-full'>
                                                             <div className='flex gap-2'>
                                                                 <h6>{page?.firstName} {page?.lastName}</h6>
                                                                 <Image src={Check} alt="Checkmark" className='w-[32px] h-[32px]' />
                                                             </div>
-                                                            <p className='mt-0 text-left text-[#65737E] text-[12px]'>{page?.specialisation}</p>
+                                                            <p className='mt-0 rtl:text-start text-left text-[#65737E] text-[12px]'>{page?.specialisation}</p>
                                                         </div>
                                                     </div>
                                                 </div>
