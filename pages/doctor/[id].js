@@ -18,6 +18,7 @@ import Boomark from "../../assets/Bookmark.svg"
 import Link from "../../assets/link.svg"
 import Send from "../../assets/Send.svg"
 import Message from "../../assets/Message.svg"
+import specialitiesArray from "../../assets/specialities.json"
 import CommentCard from '../../components/Cards/CommentCard'
 import AddComment from '../../components/Cards/AddComment'
 import { DislikeFilled, DislikeOutlined, EnvironmentTwoTone, EyeTwoTone, HeartTwoTone, LikeFilled, LikeOutlined, MessageTwoTone, StarTwoTone } from '@ant-design/icons'
@@ -34,7 +35,7 @@ import { useTranslation } from 'react-i18next'
 
 
 const IndDoctor = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [userId, setUserId] = useState("")
     const [clinic, setClinic] = useState({});
     const [comments, setComments] = useState([]);
@@ -239,27 +240,27 @@ const IndDoctor = () => {
     }, [])
 
     let tod = new Intl.DateTimeFormat('fr-FR', { weekday: 'long', timeZone: 'UTC' }).format(new Date());
-    console.log(tod.toLowerCase())
+    const filterFirstSpec = specialitiesArray?.filter(f => f.fr === clinic?.specialisation)[0];
 
     return (
         <MainLayout navbar>
             <div className='DoctorDetails px-4 py-12 sm:px-24'>
                 <div>
                     <div>
-                        <div className='flex gap-2 justify-start items-center py-4'>
-                            <span>{t("Accueil")}</span>
-                            <RightIcon />
-                            <button>{t("Cliniques")}</button>
-                            <RightIcon />
-                            <button>Cardiologie</button>
-                            <RightIcon />
-                            <button className='text-[#0094DA]'>{clinic?.firstName} {clinic?.lastName}</button>
-                        </div>
                         {
                             loading ?
                                 <Loading />
                                 :
                                 <>
+                                    <div className='flex gap-2 justify-start items-center py-4'>
+                                        <span>{t("Accueil")}</span>
+                                        <RightIcon />
+                                        <button>{t("Cliniques")}</button>
+                                        <RightIcon />
+                                        <button>{i18n.language === "fr" ? filterFirstSpec?.fr : filterFirstSpec?.ar}</button>
+                                        <RightIcon />
+                                        <button className='text-[#0094DA]'>{clinic?.firstName} {clinic?.lastName}</button>
+                                    </div>
                                     <div className='flex justify-between flex-wrap'>
                                         <div>
                                             <div className='nameAndPic flex items-center gap-2'>
