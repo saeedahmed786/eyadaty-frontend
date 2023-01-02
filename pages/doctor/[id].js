@@ -262,9 +262,9 @@ const IndDoctor = () => {
                                 <>
                                     <div className='flex justify-between flex-wrap'>
                                         <div>
-                                            <div className='nameAndPic w-full flex items-center gap-2'>
+                                            <div className='nameAndPic flex items-center gap-2'>
                                                 <div className='profileImg'>
-                                                    <Image src={Doc} alt="Doctor" width={32} height={32} className="rounded-[50%]" />
+                                                    <Image src={Doc} alt="Doctor" width={41} height={41} className="rounded-[50%]" />
                                                 </div>
                                                 <div className='w-full'>
                                                     <div className='flex gap-3'>
