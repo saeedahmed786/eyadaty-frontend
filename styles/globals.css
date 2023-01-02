@@ -1699,7 +1699,7 @@ html[dir="rtl"] body .catImg {
     position: relative;
     top: -32px;
     left: 32px !important;
-    right: 0px !important;
+    right: 32px !important;
 }
 
 .ant-select-selection-item {
