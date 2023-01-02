@@ -97,8 +97,8 @@ const Admin = () => {
                 <div className='min-w-[130px]'>
                     <div className='nameAndPic w-full'>
                         <div className='flex items-center gap-2'>
-                            <div className='profileImg'>
-                                <img src={user?.picture?.url} alt="Doctor" width={32} height={32} className="rounded-[50%]" />
+                            <div className='profileImg w-[69px]'>
+                                <img src={user?.picture?.url} alt="Doctor" className="object-cover rounded-[50%] w-[32px] h-[32px]" />
                             </div>
                             <div className='w-full'>
                                 <div className='flex gap-2'>
