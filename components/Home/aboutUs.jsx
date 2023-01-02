@@ -25,7 +25,7 @@ export default function AboutUs() {
                         <button className="w-[100%] sm:w-[auto] text-white bg-siteblue border-0 py-2 px-10 focus:outline-none hover:bg-sitegreen rounded-xl text-lg flex justify-center items-center gap-3"><span>{t("Voir Plus")}</span>  <RightIcon /></button>
                     </div>
                     <div className="flex justify-between items-center overflow-hidden gap-7 mt-10 w-full sm:w-[80%]">
-                        <div className="box sm:space-y-2 align-middle w-[40%] sm:w-[auto]">
+                        <div className="box sm:space-y-2 align-middle w-[34%] sm:w-[auto]">
                             <button className="inline-flex sm:py-3 rounded-lg items-center md:ml-0 md:mt-4 mt-0 lg:mt-0 hover:bg-gray-200 focus:outline-none">
                                 <span className="sm:text-left">
                                     <div className="w-full sm:w-[auto] font-extrabold text-3xl text-black">3600 <span className='text-sitegreen'> + </span></div>
