@@ -1698,8 +1698,8 @@ html[dir="rtl"] body .catImg {
     box-shadow: 0px 10px 20px rgb(0 0 0 / 8%) !important;
     position: relative;
     top: -32px;
-    left: auto;
-    right: 32px;
+    left: 32px !important;
+    right: 0px !important;
 }
 
 .ant-select-selection-item {

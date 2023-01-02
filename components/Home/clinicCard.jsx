@@ -52,7 +52,7 @@ export default function ClinicCard({ clinic }) {
         <div className="rounded-[16px] shadow-lg bg-white max-w-sm">
           <div className='relative'>
             <Link href={"/doctor/" + clinic._id}>
-              <img src={clinic?.picture?.url} alt="clinic image" className='object-cover w-full rounded-t-[16px]' />
+              <img src={clinic?.picture?.url} alt="clinic image" className='object-cover w-full h-[341px] rounded-t-[16px]' />
               {/* <img className="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt=""/> */}
             </Link>
             <div className='catImg'>
