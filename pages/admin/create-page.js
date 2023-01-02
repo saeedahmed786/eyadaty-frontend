@@ -187,12 +187,12 @@ const CreatePage = () => {
                         </div>
                         <h1 className='bigTitle'>{t("Créer un page")}</h1>
                     </div>
-                    <div className='mt-6 md:mt-0'>
+                    {/* <div className='mt-6 md:mt-0'>
                         <button className='flex items-center justify-center w-full gap-2 bg-[#0094DA] rounded-[12px] text-white h-[48px] px-6'>
                             <PlusIcon />
                             <span className='text-[16px] font-[500]'>{t("Ajouter un page")}</span>
                         </button>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='md:max-w-[40vw]'>
                     <div className='mt-12'>
@@ -499,11 +499,11 @@ const CreatePage = () => {
                                             <InfoCircleFilled className="text-[#0094DA]" />
                                         </label>
                                         <ProfileSelectBox label={t("Samedi")} saveItem={handleSchedule} />
-                                        <ProfileSelectBox label="Dimanche" saveItem={handleSchedule} />
-                                        <ProfileSelectBox label="Lundi" saveItem={handleSchedule} />
-                                        <ProfileSelectBox label="Mardi" saveItem={handleSchedule} />
-                                        <ProfileSelectBox label="Mercredi" saveItem={handleSchedule} />
-                                        <ProfileSelectBox label="Jeudi" saveItem={handleSchedule} />
+                                        <ProfileSelectBox label={t("Dimanche")} saveItem={handleSchedule} />
+                                        <ProfileSelectBox label={t("Lundi")} saveItem={handleSchedule} />
+                                        <ProfileSelectBox label={t("Mardi")} saveItem={handleSchedule} />
+                                        <ProfileSelectBox label={t("Mercredi")} saveItem={handleSchedule} />
+                                        <ProfileSelectBox label={t("Jeudi")} saveItem={handleSchedule} />
                                     </div>
                                     <Form.Item
                                         name="notes"
@@ -524,7 +524,7 @@ const CreatePage = () => {
                                                 selectedNotes?.length > 0 && selectedNotes.map(note => {
                                                     return (
                                                         <li className='p-4 bg-[#F5F8FB] mb-4 rounded-[8px] h-[48px] flex justify-between items-center'>
-                                                            <span className='text-[16px] font-[500]'>{note}</span>
+                                                            <span className='text-[16px] font-[500]'>{t(note)}</span>
                                                             <span className='pointer' onClick={() => setSelectedNotes(prevItems => prevItems.filter(item => item !== note))}>
                                                                 <Image src={closeIcon} alt="Icon" />
                                                             </span>
@@ -536,10 +536,10 @@ const CreatePage = () => {
                                     </div>
                                     <Form.Item
                                         name="clinicName"
-                                        label="Nom de la clinique ( Optionnel )"
+                                        label={t("Nom de la clinique ( Optionnel )")}
                                         hasFeedback
                                     >
-                                        <Input placeholder='Nom de la clinique' />
+                                        <Input placeholder={t("Nom de la clinique ( Optionnel )")} />
                                     </Form.Item>
                                     <div className='mt-4'>
                                         <label className='flex gap-2 mb-4 items-center'>
@@ -547,7 +547,7 @@ const CreatePage = () => {
                                             <span className='text-[#FF6551]'>*</span>
                                             <InfoCircleFilled className="text-[#0094DA]" />
                                         </label>
-                                        <label>Code GPS</label>
+                                        <label>{t("Code GPS")}</label>
                                         <Row align={"center"} gutter={[16, 16]}>
                                             <Col xs={19}>
                                                 <Form.Item
@@ -591,7 +591,7 @@ const CreatePage = () => {
                                                 selectedServices?.length > 0 && selectedServices.map(service => {
                                                     return (
                                                         <li className='p-4 bg-[#F5F8FB] mb-4 rounded-[8px] h-[48px] flex justify-between items-center'>
-                                                            <span className='text-[16px] font-[500]'>{service}</span>
+                                                            <span className='text-[16px] font-[500]'>{t(service)}</span>
                                                             <span className='pointer' onClick={() => setSelectedServices(prevItems => prevItems.filter(item => item !== service))}>
                                                                 <Image src={closeIcon} alt="Icon" />
                                                             </span>

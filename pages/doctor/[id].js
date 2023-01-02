@@ -238,8 +238,8 @@ const IndDoctor = () => {
         }
     }, [])
 
-
-    console.log(clinic.facebookLink)
+    let tod = new Intl.DateTimeFormat('fr-FR', { weekday: 'long', timeZone: 'UTC' }).format(new Date());
+    console.log(tod.toLowerCase())
 
     return (
         <MainLayout navbar>
@@ -483,7 +483,7 @@ const IndDoctor = () => {
                                                 <Image src={timeClock} alt="timeClock" />
                                                 <h4>{t("Horaire de travail")}</h4>
                                             </div>
-                                            <div className='text-[#29C773] font-[600]'>{t("Ouvert")}</div>
+                                            <div className='text-[#29C773] font-[600]'>{clinic?.schedule?.filter(f => f.day?.toLowerCase() == tod)[0] && t("Ouvert")}</div>
                                         </div>
                                         <div className='px-4 calendar flex gap-10 flex-wrap'>
                                             {

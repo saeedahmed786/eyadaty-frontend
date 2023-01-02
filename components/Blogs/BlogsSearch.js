@@ -2,10 +2,12 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next';
 import SearchIcon from "../../assets/search.svg"
 
 const BlogsSearch = ({ changeBlogId }) => {
     const router = useRouter();
+    const { t } = useTranslation();
     const [show, setShow] = useState(false);
     const [results, setResults] = useState([]);
 
@@ -23,9 +25,9 @@ const BlogsSearch = ({ changeBlogId }) => {
     return (
         <div className='searchBox relative z-1000' onMouseLeave={() => setShow(false)} >
             <div>
-                <label>Chercher</label>
+                <label>{t("Chercher")}</label>
                 <br />
-                <input placeholder='Chercher...' onClick={() => setShow(true)} onChange={(e) => { handleSearch(e.target.value); setShow(true) }} />
+                <input placeholder={t('Chercher')} onClick={() => setShow(true)} onChange={(e) => { handleSearch(e.target.value); setShow(true) }} />
                 <div className='absolute right-4 top-10'>
                     <Image src={SearchIcon} alt="Search" />
                 </div>

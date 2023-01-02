@@ -31,6 +31,12 @@ export default function Navbar() {
         <a href="/profile">{t("Profile")}</a>
       </Menu.Item>
       <Menu.Item>
+        <Link href="/favourites">{t("Favoris")}</Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link href="/create-page">{t("Créer un page")}</Link>
+      </Menu.Item>
+      <Menu.Item>
         <button onClick={handleLogout}>{t("Déconnexion")}</button>
       </Menu.Item>
     </Menu>
@@ -79,10 +85,10 @@ export default function Navbar() {
               </Dropdown>
               :
               <div className='flex items-center gap-2'>
-                <button onClick={() => router.push("/signup")} className="focus:outline-0 min-w-[100px] w-full border bg-transparent border-[#0094DA] text-[#0094DA] rounded-[12px] p-2">
+                <button onClick={() => router.push("/signup")} className="focus:outline-0 min-w-[130px] w-full border bg-transparent border-[#0094DA] text-[#0094DA] rounded-[12px] p-2">
                   {t("S`inscrire")}
                 </button>
-                <button onClick={() => router.push("/login")} className="focus:outline-0 min-w-[100px] w-full bg-[#0094DA] hover:text-white text-white rounded-[12px] p-2">
+                <button onClick={() => router.push("/login")} className="focus:outline-0 min-w-[130px] w-full bg-[#0094DA] hover:text-white text-white rounded-[12px] p-2">
                   {t("Connexion")}
                 </button>
               </div>
@@ -137,7 +143,7 @@ export default function Navbar() {
                         {t("Connexion")}
                       </button>
                       <button onClick={() => router.push("/signup")} className="mt-3 focus:outline-0 w-[100%] border bg-transparent border-[#0094DA] text-[#0094DA] rounded-[12px] p-2">
-                        {t("S`inscrire")}
+                        {t("S'inscrire")}
                       </button>
                     </div>
                 }

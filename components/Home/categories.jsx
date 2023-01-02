@@ -17,7 +17,7 @@ export default function Categories({ categories }) {
 
   var settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 6,
@@ -68,7 +68,7 @@ export default function Categories({ categories }) {
     <section className="text-gray-600 body-font categoriesComp bg-[url('../assets/Lines-alt.png')] bg-cover bg-no-repeat  ">
       <div className="container py-16 mx-auto ">
         <div className="flex flex-wrap justify-center sm:justify-between px-0 w-full mb-20">
-          <div className="w-full rtl:lg:w-auto ltr:lg:w-1/2 mb-6 lg:mb-0">
+          <div className="w-full lg:w-1/2 rtl:lg:w-auto mb-6 lg:mb-0">
             <p className='text-sitegreen rtl:md:text-start text-center sm:text-left font-medium pl-1'>{t("Explorez tous les")}</p>
             <h1 className="bigTitle text-center sm:text-left">{t("Catégories")}</h1>
           </div>

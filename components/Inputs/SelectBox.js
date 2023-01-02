@@ -9,7 +9,7 @@ const SelectBoxWidthSearch = ({ label, placeholder, data, handleUpdate, prevValu
     const [name, setName] = useState('');
     const [defaultValue, setDefaultValue] = useState("");
     const inputRef = useRef(null);
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const onNameChange = (event) => {
         setName(event.target.value);
@@ -34,7 +34,7 @@ const SelectBoxWidthSearch = ({ label, placeholder, data, handleUpdate, prevValu
                     className='w-full'
                     placeholder={t(`${placeholder}`)}
                     options={data?.filter(f => f?.fr?.toLowerCase().includes(name?.toLowerCase())).map((item) => ({
-                        label: item?.fr,
+                        label: i18n.language === "fr" ? item?.fr : item?.ar,
                         value: item?.fr,
                     }))}
                     value={defaultValue}
@@ -44,7 +44,7 @@ const SelectBoxWidthSearch = ({ label, placeholder, data, handleUpdate, prevValu
                         <div className='selectDropdown w-full p-4'>
                             <Input
                                 suffix={<Image src={SearchIcon} alt="Search" />}
-                                placeholder="Recherche...."
+                                placeholder={t("Recherche....")}
                                 className='w-full'
                                 ref={inputRef}
                                 value={name}

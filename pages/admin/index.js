@@ -19,7 +19,7 @@ import { useTranslation } from 'react-i18next'
 
 const Admin = () => {
     const router = useRouter();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [pages, setPages] = useState([]);
     const [totalPages, setTotalPages] = useState();
     const [userAuth, setUserAuth] = useState({});
@@ -159,6 +159,8 @@ const Admin = () => {
             ),
         },
     ];
+
+    console.log(i18n)
 
     return (
         <AdminLayout sidebar>

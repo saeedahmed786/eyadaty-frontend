@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next'
 
 
 const Blogs = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const router = useRouter();
     const [blogs, setBlogs] = useState([]);
     const [current, setCurrent] = useState(1);
@@ -82,7 +82,11 @@ const Blogs = () => {
                 <div className='flex gap-2 justify-center items-center py-4'>
                     <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]' href="/faq">{t("Blog")}</button>
                 </div>
-                <h1 className='bigTitle text-center py-3'>Voir notre  < br />dernier blog</h1>
+                <div className='flex justify-center'>
+                    <div className='md:w-[40%]'>
+                        <h1 className='bigTitle text-center py-3'>{t("Voir notre dernier blog")}</h1>
+                    </div>
+                </div>
                 <div className='flex flex-wrap justify-between items-center gap-8 mt-8'>
                     <div className='flex flex-wrap gap-8'>
                         <BlogsSearch changeBlogId={(val) => console.log(val)} />
@@ -112,14 +116,14 @@ const Blogs = () => {
                     </div>
                 </div>
                 <Row>
-                    <Col md={6}>
+                    <Col md={6} className="rtl:mt-8">
                         <h1 className='bigTitle text-center py-3'>{t("Catégories")}</h1>
                         <div className='mt-8'>
                             {
                                 specialitiesArray && specialitiesArray?.length > 0 && specialitiesArray.map(cat => {
                                     return (
                                         <button className='catCard text-left my-4' onClick={() => getLimitedBlogsByCategory(0, cat.fr)}>
-                                            <div className='name'>{cat?.fr}</div>
+                                            <div className='name'>{i18n.language === "fr" ? cat?.fr : cat.ar}</div>
                                             <div className='count'>
                                                 <BlogCategory category={cat.fr} />
                                             </div>

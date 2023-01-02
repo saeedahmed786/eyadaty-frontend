@@ -10,15 +10,15 @@ export default function DownloadApp({ noMargin }) {
     <div className="bg-[url('../assets/downloadbanner.png')] bg-cover bg-no-repeat downloadComp">
       <div className={`flex flex-row justify-between flex-wrap min-h-[480px] h-full ${!noMargin && "mb-12"} px-5 container mx-auto`}>
         <div className='rtl:md:max-w-[40vw] flex flex-col justify-center space-y-5 sm:w-3/5 text-center sm:text-left py-5 sm:py-0'>
-          <h1 className="text-end text-5xl font-bold text-[#FFFFFF] ltr:sm:pr-32">
+          <h1 className="rtl:text-end text-5xl font-bold text-[#FFFFFF] ltr:sm:pr-32">
             {t("Téléchargez l'application Eyadaty.")}
           </h1>
           <h3 className="text-1xl font-thin text-[#FFFFFF] rtl:text-end">
             {t("Et prenez bien soin de votre santé.")}
           </h3>
-          <div className='space-x-3 flex gap-4 justify-center rtl:justify-end ltr:sm:justify-start flex-wrap' style={{ width: "100%" }}>
-            <button className="bg-gray-100 inline-flex p-4 rounded-lg items-center hover:bg-gray-200 focus:outline-none w-50 h-[70px]">
-              <span className="flex items-start flex-col leading-none mr-2">
+          <div className='sm:space-x-3 flex gap-4 justify-center rtl:justify-end md:justify-start flex-wrap' style={{ width: "100%" }}>
+            <button className="bg-gray-100 inline-flex p-4 rounded-lg items-center justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-[auto] h-[70px]">
+              <span className="flex items-start flex-col leading-none sm:mr-2">
                 <span className="text-[12px] text-gray-600 mb-1">{t("Téléchargez l'application depuis")}</span>
                 <span className="text-[32px] font-[700]">{t("Apple Store")}</span>
               </span>
@@ -27,8 +27,8 @@ export default function DownloadApp({ noMargin }) {
                 <path d="M212.1 0c-15.76.64-34.67 10.35-45.97 23.58-9.6 11.13-19 29.68-16.52 48.38a2.5 2.5 0 002.29 2.17c1.06.08 2.15.12 3.23.12 15.41 0 32.04-8.52 43.4-22.25 11.94-14.5 17.99-33.1 16.16-49.77A2.52 2.52 0 00212.1 0z"></path>
               </svg>
             </button>
-            <button className="bg-gray-100 inline-flex p-4 rounded-lg items-center hover:bg-gray-200 focus:outline-none w-50 h-[70px]">
-              <span className="flex items-start flex-col leading-none mr-2">
+            <button className="bg-gray-100 inline-flex p-4 rounded-lg items-center gap-2 sm:gap-0 justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-[auto] h-[70px]">
+              <span className="flex items-start flex-col leading-none sm:mr-2">
                 <span className="text-[12px] text-gray-600 mb-1">{t("Téléchargez l'application depuis")}</span>
                 <span className="text-[32px] font-[700]">{t("Google Store")}</span>
               </span>

@@ -59,14 +59,14 @@ const AdminSidebar = () => {
                             </button>
                         </Link>
                     </div>
-                    <div className='mb-6'>
+                    {/* <div className='mb-6'>
                         <Link href="/admin/categories">
                             <button className={`${router.pathname === "/admin/categories" ? "hyperlink text-[#0094DA] flex gap-3 items-center" : "flex gap-3 items-center text-[#65737E]"}`}>
                                 <FiList className='text-[23px]' />
                                 <span>{t("Categories")}</span>
                             </button>
                         </Link>
-                    </div>
+                    </div> */}
                     <div className='mb-6'>
                         <Link href="/admin/create-page">
                             <button className={`${router.pathname === "/admin/create-page" ? "hyperlink text-[#0094DA] flex gap-3 items-center" : "flex gap-3 items-center text-[#65737E]"}`}>

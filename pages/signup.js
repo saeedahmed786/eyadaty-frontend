@@ -49,13 +49,13 @@ const Signup = () => {
                         </div>
                 }
                 <div className='flex gap-2 items-center'>
-                    <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]' href="/signup">{"S'inscrire"}</Link>
+                    <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]' href="/signup">{t("S'inscrire")}</Link>
                 </div>
                 <Row className='py-10 block sm:flex' align="middle">
                     <Col md={12}>
-                        <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>Créer un<br /> compte</h1>
+                        <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>{t("Créer un compte")}</h1>
                         <div className='flex gap-2 py-6'>
-                            <div>{"Vous n'avez pas de compte ?"}</div>
+                            <div>{t("Vous n'avez pas de compte ?")}</div>
                             <a href='/login' className='text-[#0094DA]'>{t("Connexion")}</a>
                         </div>
                         {

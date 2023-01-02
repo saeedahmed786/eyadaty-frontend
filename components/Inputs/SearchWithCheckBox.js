@@ -15,7 +15,7 @@ const SearchWithCheckBox = ({ data, label, placeholder, handleUpdate }) => {
     const { t } = useTranslation();
 
     const handleChange = (value) => {
-        if (selectedValue === value) {
+        if (selectedValue !== null && selectedValue !== undefined && selectedValue === value) {
             setSelectedValue("");
             handleUpdate("");
         } else {
@@ -23,6 +23,8 @@ const SearchWithCheckBox = ({ data, label, placeholder, handleUpdate }) => {
             handleUpdate(value);
         }
     }
+
+    console.log(selectedValue)
 
     const onNameChange = (event) => {
         setName(event.target.value);
@@ -35,7 +37,7 @@ const SearchWithCheckBox = ({ data, label, placeholder, handleUpdate }) => {
             <Select
                 className='w-full'
                 // onChange={(value) => { handleChange(value) }}
-                onSelect={(val) => handleChange(val)}
+                // onSelect={(val) => handleChange(val)}
                 placeholder={t(`${placeholder}`)}
                 clearIcon={true}
                 mode="single"
@@ -56,11 +58,11 @@ const SearchWithCheckBox = ({ data, label, placeholder, handleUpdate }) => {
             >
                 {data?.filter(f => f?.toLowerCase().includes(name?.toLowerCase())).map((option) => (
                     <Option key={option} value={option}>
-                        <Checkbox checked={selectedValue === option}>{option}</Checkbox>
+                        <Checkbox onChange={(e) => e.target.checked ? handleChange(option) : setSelectedValue("")} checked={selectedValue === option}></Checkbox><span className='px-2'>{t(option)}</span>
                     </Option>
                 ))}
             </Select>
-        </div>
+        </div >
     );
 }
 

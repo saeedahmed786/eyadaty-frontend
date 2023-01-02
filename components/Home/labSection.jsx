@@ -12,18 +12,18 @@ export default function LabSection({ clinics }) {
 
   var settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    initialSlide: 0,
+    initialSlide: 1,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          infinite: true,
+          infinite: false,
           dots: true
         }
       },
@@ -32,14 +32,15 @@ export default function LabSection({ clinics }) {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
+          initialSlide: 1
         }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          infinite: true,
         }
       }
     ]
@@ -50,7 +51,7 @@ export default function LabSection({ clinics }) {
       <section className="text-gray-600 body-font mt-24 mb-24">
         <div className="container px-5 sm:py-24 mx-auto">
           <div className="flex flex-wrap justify-between  w-full sm:mb-20">
-            <div className="ltr:lg:w-1/2 rtl:md:w-auto w-full mb-6 lg:mb-0">
+            <div className="lg:w-1/2 rtl:md:w-auto w-full mb-6 lg:mb-0">
               <p className='text-sitegreen rtl:md:text-start font-medium text-center sm:text-left'>{t("Explorez tous les")}</p>
               <h1 className="bigTitle text-center sm:text-left">{t("Laboratoires")}</h1>
             </div>
@@ -63,7 +64,7 @@ export default function LabSection({ clinics }) {
               </button>
             </div>
           </div>
-          <div className="m-4">
+          <div className="sm:m-4">
             <Slider {...settings} ref={slickRef}>
               {
                 clinics && clinics?.length > 0 && clinics.map(clinic => {
@@ -78,10 +79,8 @@ export default function LabSection({ clinics }) {
           </div>
 
         </div>
-        <div className='w-full flex justify-center'>
-          <div className="flex w-full md:justify-center justify-center items-end ">
-            <button className="text-white text-left bg-siteblue border-0 py-2 px-16 focus:outline-none hover:bg-sitegreen rounded-xl text-lg flex items-center gap-3">{t("Voir tous les Laboratoires")} <RightIcon /> </button>
-          </div>
+        <div className='flex justify-center mt-6 sm:mt-0'>
+          <button className="text-white text-left bg-siteblue border-0 py-2 px-5 sm:px-16 focus:outline-none hover:bg-sitegreen rounded-xl text-lg flex items-center gap-3">{t("Voir tous les Laboratoires")} <RightIcon /> </button>
         </div>
       </section>
     </div>

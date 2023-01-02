@@ -25,7 +25,6 @@ const MobileNav = ({ handleMask }) => {
     const router = useRouter();
     const [userAuth, setUserAuth] = useState();
     const [notifications, setNotifications] = useState([]);
-    const { t } = useTranslation();
 
 
     const getAllNotifications = async (auth) => {

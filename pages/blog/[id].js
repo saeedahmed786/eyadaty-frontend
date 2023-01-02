@@ -20,11 +20,12 @@ import ReplyCommentCard from '../../components/Cards/ReplyCommentCard'
 import Link from 'next/link'
 import BlogsSearch from '../../components/Blogs/BlogsSearch'
 import { useTranslation } from 'react-i18next'
+import specialities from "../../assets/specialities.json"
 
 
 const Blog = () => {
     const router = useRouter();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [blogs, setBlogs] = useState([]);
     const [blog, setBlog] = useState({});
     const [blogId, setBlogId] = useState("");
@@ -83,6 +84,8 @@ const Blog = () => {
         return blogs.findIndex((otherObj) => otherObj?.category === obj?.category) === index;
     });
 
+    const filterFirstSpec = specialities?.filter(f => f.fr === blog?.category)[0];
+
     return (
         <MainLayout navbar>
             <div className='Blog px-4 py-12 sm:px-24'>
@@ -93,7 +96,7 @@ const Blog = () => {
                             <RightIcon />
                             <button>{t("Blog")}</button>
                             <RightIcon />
-                            <button>Cardiologie</button>
+                            <button>{i18n.language === "ar" ? filterFirstSpec?.ar : filterFirstSpec?.fr}</button>
                             <RightIcon />
                             <button className='text-[#0094DA]' href="/">{blog?.title}</button>
                         </div>
@@ -142,7 +145,7 @@ const Blog = () => {
                                 </p>
                             </div> */}
                             <h3>
-                                {t("A propos de lauteur")}
+                                {t("A propos de l'auteur")}
                             </h3>
                             <div className='flex namAndPic gap-4'>
                                 <div>
@@ -150,7 +153,7 @@ const Blog = () => {
                                 </div>
                                 <div>
                                     <strong>{blog?.user?.fullName}</strong>
-                                    <p className='normalPara my-2'>{blog?.category}</p>
+                                    <p className='normalPara my-2'>{i18n.language === "ar" ? filterFirstSpec?.ar : filterFirstSpec?.fr}</p>
                                     <p className='normalPara mt-4'>{blog?.user?.bio}</p>
                                 </div>
                             </div>
@@ -210,9 +213,10 @@ const Blog = () => {
                             <div className='flex flex-wrap items-center gap-2 mt-4'>
                                 {
                                     filteredArray && filteredArray?.length > 0 && filteredArray.slice(0, 8).map(blog => {
+                                        const filterSpec = specialities?.filter(f => f.fr === blog?.category)[0];
                                         return (
                                             <Link href={`/blog/${blog._id}`} onClick={() => document.location.reload()}>
-                                                <button>{blog?.category}</button>
+                                                <button>{i18n.language === "ar" ? filterSpec?.ar : filterSpec?.fr}</button>
                                             </Link>
                                         )
                                     })

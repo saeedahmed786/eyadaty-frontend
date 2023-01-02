@@ -73,6 +73,7 @@ i18n
           "souviens-toi de moi": "souviens-toi de moi",
           "j'ai oublie le mot de passe?": "j'ai oublie le mot de passe?",
           "Connexion": "Connexion",
+          "S'inscrire": "S'inscrire",
           "Ou": "Ou",
           "Format d'e-mail incorrect": "Format d'e-mail incorrect",
           "E-mail ou mot de passe incorrect": "E-mail ou mot de passe incorrect",
@@ -148,7 +149,7 @@ i18n
           "Puis-je modifier mon compte ?": "Puis-je modifier mon compte ?",
           "Puis-je modifier la page que j'ai ajoutée ?": "Puis-je modifier la page que j'ai ajoutée ?",
           "Parcourez les questions les plus fréquemment posées.": "Parcourez les questions les plus fréquemment posées.",
-          "Contrairement à la croyance populaire, le Lorem Ipsum n'est pas un texte aléatoire, mais plutôt ses racines dans la littérature latine classique depuis 45 av. J.-C., ce qui lui donne plus de 2 000 ans. Le professeur Richard McClintock, professeur de latin à l'Université de Hampden-Sydney en Virginie, a recherché les origines d'un mot latin obscur dans le texte de Lorem Ipsum, 'consectetur', et, tout en retraçant ce mot dans la littérature latine, a découvert la source indiscutable. Il s'avère que les mots du texte de Lorem Ipsum proviennent des sections 1.10.32 et 1.10.33 du De Finibus Bonorum et Malorum de Cicéron, écrit en 45 av. Ce livre est un traité savant étendu sur la théorie morale, et était très populaire à la Renaissance. La première ligne de Lorem Ipsum 'Lorem ipsum dolor sit amet..' provient d'une ligne de la section 1.20.32 de ce livre.": "Contrairement à la croyance populaire, le Lorem Ipsum n'est pas un texte aléatoire, mais plutôt ses racines dans la littérature latine classique depuis 45 av. J.-C., ce qui lui donne plus de 2 000 ans. Le professeur Richard McClintock, professeur de latin à l'Université de Hampden-Sydney en Virginie, a recherché les origines d'un mot latin obscur dans le texte de Lorem Ipsum, 'consectetur', et, tout en retraçant ce mot dans la littérature latine, a découvert la source indiscutable. Il s'avère que les mots du texte de Lorem Ipsum proviennent des sections 1.10.32 et 1.10.33 du De Finibus Bonorum et Malorum de Cicéron, écrit en 45 av. Ce livre est un traité savant étendu sur la théorie morale, et était très populaire à la Renaissance. La première ligne de Lorem Ipsum 'Lorem ipsum dolor sit amet..' provient d'une ligne de la section 1.20.32 de ce livre.",
+          "faqText": "Contrairement à la croyance populaire, le Lorem Ipsum n'est pas un texte aléatoire, mais plutôt ses racines dans la littérature latine classique depuis 45 av. J.-C., ce qui lui donne plus de 2 000 ans. Le professeur Richard McClintock, professeur de latin à l'Université de Hampden-Sydney en Virginie, a recherché les origines d'un mot latin obscur dans le texte de Lorem Ipsum, 'consectetur', et, tout en retraçant ce mot dans la littérature latine, a découvert la source indiscutable. Il s'avère que les mots du texte de Lorem Ipsum proviennent des sections 1.10.32 et 1.10.33 du De Finibus Bonorum et Malorum de Cicéron, écrit en 45 av. Ce livre est un traité savant étendu sur la théorie morale, et était très populaire à la Renaissance. La première ligne de Lorem Ipsum 'Lorem ipsum dolor sit amet..' provient d'une ligne de la section 1.20.32 de ce livre.",
           "Notre services": "Notre services",
           "Nous fournissons les meilleurs services": "Nous fournissons les meilleurs services",
           "Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad. Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.": "Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad. Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.",
@@ -316,7 +317,9 @@ i18n
           "Ajouter les services": "Ajouter les services",
           "Invite tes amis": "Invite tes amis",
           "Nous fournissons les meilleurs service?": "Nous fournissons les meilleurs service?",
-          "Avis": "Avis"
+          "Avis": "Avis",
+          "Oublié le mot de passe": "Oublié le mot de passe",
+          "Envoyez": "Envoyez"
         }
       },
       ar: {
@@ -381,11 +384,13 @@ i18n
           "Compte Proféssionel ?": "حساب إحترافي؟",
           "Connectez-vous à votre compte": "تسجيل الدخول إلى حسابك",
           "Vous n'avez pas de compte ?": "لا يوجد لديك حساب ؟",
+          "Oublié le mot de passe": "نسيت كلمة المرور",
           "Créer un compte": "أنشىء حساب جديد",
           "Mot de passe": "كلمة المرور",
           "souviens-toi de moi": "تذكرني",
           "j'ai oublie le mot de passe?": "لقد نسيت كلمة المرور؟",
           "Connexion": "تسجيل الدخول",
+          "S'inscrire": "حساب جديد",
           "Ou": "أو",
           "Format d'e-mail incorrect": "صيغة البريد الإلكتروني غير صحيحة",
           "E-mail ou mot de passe incorrect": "البريد الإلكتروني أو كلمة مرور غير صحيحة",
@@ -454,7 +459,7 @@ i18n
           "Puis-je modifier mon compte ?": "هل يمكنني تعديل حسابي؟",
           "Puis-je modifier la page que j'ai ajoutée ?": "هل يمكنني تعديل الصفحة التي أضفتها؟",
           "Parcourez les questions les plus fréquemment posées.": "تصفح الأسئلة الأكثر شيوعًا.",
-          "Contrairement à la croyance populaire, le Lorem Ipsum n'est pas un texte aléatoire, mais plutôt ses racines dans la littérature latine classique depuis 45 av. J.-C., ce qui lui donne plus de 2 000 ans. Le professeur Richard McClintock, professeur de latin à l'Université de Hampden-Sydney en Virginie, a recherché les origines d'un mot latin obscur dans le texte de Lorem Ipsum, 'consectetur', et, tout en retraçant ce mot dans la littérature latine, a découvert la source indiscutable. Il s'avère que les mots du texte de Lorem Ipsum proviennent des sections 1.10.32 et 1.10.33 du De Finibus Bonorum et Malorum de Cicéron, écrit en 45 av. Ce livre est un traité savant étendu sur la théorie morale, et était très populaire à la Renaissance. La première ligne de Lorem Ipsum 'Lorem ipsum dolor sit amet..' provient d'une ligne de la section 1.20.32 de ce livre.": "خلافًا للاعتقاد الشائع ، فإن لوريم إيبسوم ليس نصًا عشوائيًا ، بل له جذوره في الأدب اللاتيني الكلاسيكي منذ عام 45 قبل الميلاد. J.-C ، والتي تمنحها أكثر من 2000 عام. قام البروفيسور ريتشارد مكلينتوك ، أستاذ اللغة اللاتينية بجامعة هامبدن - سيدني في فيرجينيا ، بإجراء بحث عن أصول كلمة لاتينية غامضة في نص لوريم إيبسوم ، 'consectetur' ، وأثناء تتبع هذه الكلمة في الأدب اللاتيني ، اكتشف الكلمة التي لا تقبل الجدل مصدر. اتضح أن كلمات نص لوريم إيبسوم تأتي من الأقسام 1.10.32 و 1.10.33 من كتاب شيشرون De Finibus Bonorum et Malorum ، المكتوب عام 45 قبل الميلاد. هذا الكتاب عبارة عن أطروحة علمية موسعة حول النظرية الأخلاقية ، وكان ذائع الصيت خلال عصر النهضة. السطر الأول من Lorem Ipsum 'Lorem ipsum dolor sit amet ..' يأتي من سطر في القسم 1.20.32 من هذا الكتاب.",
+          "faqText": "خلافًا للاعتقاد الشائع ، فإن لوريم إيبسوم ليس نصًا عشوائيًا ، بل له جذوره في الأدب اللاتيني الكلاسيكي منذ عام 45 قبل الميلاد. J.-C ، والتي تمنحها أكثر من 2000 عام. قام البروفيسور ريتشارد مكلينتوك ، أستاذ اللغة اللاتينية بجامعة هامبدن - سيدني في فيرجينيا ، بإجراء بحث عن أصول كلمة لاتينية غامضة في نص لوريم إيبسوم ، 'consectetur' ، وأثناء تتبع هذه الكلمة في الأدب اللاتيني ، اكتشف الكلمة التي لا تقبل الجدل مصدر. اتضح أن كلمات نص لوريم إيبسوم تأتي من الأقسام 1.10.32 و 1.10.33 من كتاب شيشرون De Finibus Bonorum et Malorum ، المكتوب عام 45 قبل الميلاد. هذا الكتاب عبارة عن أطروحة علمية موسعة حول النظرية الأخلاقية ، وكان ذائع الصيت خلال عصر النهضة. السطر الأول من Lorem Ipsum 'Lorem ipsum dolor sit amet ..' يأتي من سطر في القسم 1.20.32 من هذا الكتاب.",
           "Notre services": "خدماتنا",
           "Nous fournissons les meilleurs services": "نحن نقدم أفضل الخدمات",
           "Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad. Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.": "لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار ",
@@ -617,7 +622,8 @@ i18n
           "Ajouter les services": "إضافة خدمات",
           "Invite tes amis": "قم بدعوة أصدقائك",
           "Nous fournissons les meilleurs service?": "نحن نقدم أفضل الخدمات",
-          "Avis": "تقييم"
+          "Avis": "تقييم",
+          "Envoyez": "إرسال"
         }
       }
     },

@@ -27,7 +27,7 @@ const TermsAndConditions = () => {
                         </p>
                     </div>
                     <div>
-                        <h2 className='subTitle'>{("Consent")}</h2>
+                        <h2 className='subTitle'>{t("Consent")}</h2>
                         <p className='my-5 normalPara'>
                             {t("By using our website, you hereby consent to our Privacy Policy and agree to its terms.")}
                         </p>

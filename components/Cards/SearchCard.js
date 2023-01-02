@@ -13,6 +13,7 @@ import axios from 'axios'
 import { ErrorMessage } from '../../components/Messages/messages'
 import { isAuthenticated } from '../Auth/auth'
 import { useRouter } from 'next/router';
+import { Col, Row } from 'antd';
 
 const SearchCard = ({ gridCol, favourite, page, removeFavourite }) => {
     const router = useRouter()
@@ -95,9 +96,9 @@ const SearchCard = ({ gridCol, favourite, page, removeFavourite }) => {
                         </div>
                     </div>
                 </div>
-                <div className='inner mt-4' style={gridCol === 12 ? { paddingLeft: "0px", width: "100%" } : { paddingLeft: "15px", width: "70%" }}>
-                    <div className='nameAndPic w-full flex justify-between pr-6'>
-                        <button onClick={() => router.push(`/doctor/${page._id}`)}>
+                <div className='inner mt-4 rtl:pr-12' style={gridCol === 12 ? { paddingLeft: "0px", width: "100%" } : { paddingLeft: "15px", width: "70%" }}>
+                    <div className='nameAndPic w-full flex justify-between rtl:pl-6 rtl:pr-0 pr-6'>
+                        <button className='w-[80%]' onClick={() => router.push(`/doctor/${page._id}`)}>
                             <div className='flex items-center gap-2'>
                                 <div className='profileImg'>
                                     <img src={page?.picture?.url} alt="Doctor" className="rounded-[50%] object-cover h-[32px] w-[36px]" />
@@ -107,7 +108,7 @@ const SearchCard = ({ gridCol, favourite, page, removeFavourite }) => {
                                         <h6>{page?.firstName}{page?.lastName}</h6>
                                         <Image src={Check} alt="Checkmark" />
                                     </div>
-                                    <p className='mt-2 text-left'>{page?.specialisation}</p>
+                                    <p className='mt-2 rtl:text-start text-left'>{page?.specialisation}</p>
                                 </div>
                             </div>
                         </button>
@@ -120,7 +121,7 @@ const SearchCard = ({ gridCol, favourite, page, removeFavourite }) => {
                     </div>
                     <div className='flex mt-8 gap-1'>
                         <EnvironmentTwoTone />
-                        <p className='w-full text-left'>{page?.user?.city}, {page?.user?.state}</p>
+                        <p className='w-full rtl:text-start text-left'>{page?.user?.city}, {page?.user?.state}</p>
                     </div>
                     <div className='flex gap-2 mt-8 items-end'>
                         <button className='flex gap-1 items-center'>

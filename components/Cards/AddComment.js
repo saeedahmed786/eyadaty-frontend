@@ -10,19 +10,23 @@ const AddComment = ({ pageId, handleUpdate }) => {
     const { t } = useTranslation();
 
     const addComment = async () => {
-        await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/comments/add`, { pageId, text, timeOfSubmit: moment().format('dddd, MMMM Do YYYY, h:mm:ss a') }, {
-            headers: {
-                "authorization": "Bearer " + isAuthenticated()?.token
-            }
-        }).then(res => {
-            if (res.statusText === "OK") {
-                handleUpdate(res.data.comment)
-                SuccessMessage(res.data.successMessage);
-            }
-            else {
-                ErrorMessage(res.data.errorMessage);
-            }
-        })
+        if (isAuthenticated()) {
+            await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/comments/add`, { pageId, text, timeOfSubmit: moment().format('dddd, MMMM Do YYYY, h:mm:ss a') }, {
+                headers: {
+                    "authorization": "Bearer " + isAuthenticated()?.token
+                }
+            }).then(res => {
+                if (res.statusText === "OK") {
+                    handleUpdate(res.data.comment)
+                    SuccessMessage(res.data.successMessage);
+                }
+                else {
+                    ErrorMessage(res.data.errorMessage);
+                }
+            })
+        } else {
+            ErrorMessage("Please login to leave a comment")
+        }
     };
 
     return (

@@ -13,6 +13,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MainLayout from '../components/Layouts/MainLayout';
 import { useTranslation } from 'react-i18next';
+import { Col, Row } from 'antd';
 
 
 const AboutUsPage = () => {
@@ -73,13 +74,13 @@ const AboutUsPage = () => {
                     <h1 className='bigTitle'>{t("À propos de nous")}</h1>
                 </div>
                 <AboutUs />
-                <section className="text-gray-600 body-font">
+                <section className="text-gray-600 body-font girlSection">
                     <div className="container mx-auto flex px-0 sm:py-24 md:flex-row flex-col items-center justify-center ">
                         <div className="lg:flex-grow md:w-1/2 flex flex-col md:items-start md:text-left sm:mb-16 md:mb-0 items-center text-center">
                             <div className='sm:max-w-[80%]'>
-                                <p className="text-sm  text-sitegreen font-bold mb-5 w-full">{t("Notre services")}</p>
+                                <p className="text-sm rtl:md:text-end  text-sitegreen font-bold mb-0 w-full">{t("Notre services")}</p>
                                 <h1 className="bigTitle">{t("Nous fournissons les meilleurs service?")}</h1>
-                                <p className="mb-8 leading-relaxed">
+                                <p className="mb-8 rtl:md:text-end rtl:mt-4 leading-relaxed">
                                     {t("Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad. Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.")}
                                 </p>
                             </div>
@@ -93,21 +94,25 @@ const AboutUsPage = () => {
                     <div className="container mx-auto py-24">
                         <div className="mb-16 md:mb-0 text-center flex justify-center items-center">
                             <div className='max-w-[100%]'>
-                                <p className="text-sm  text-sitegreen font-bold mb-2 w-full">{t("Témoignages")}</p>
-                                <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-gray-900">{"Qu'ont-ils"} dit de <br /> nous ?</h1>
+                                <div className='md:flex justify-center'>
+                                    <div className='md:w-[40%]'>
+                                        <p className="text-sm  text-sitegreen font-bold mb-0 w-full">{t("Témoignages")}</p>
+                                        <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-gray-900">{t("Qu'ont-ils dit de nous ?")}</h1>
+                                    </div>
+                                </div>
                                 <div className='mb-24 flex justify-center p-5 sm:p-0'>
                                     <Slider {...settings} className="w-[100%] sm:max-w-[50%]">
                                         <div className='px-4'>
-                                            <div className='flex items-center flex-wrap gap-4 bg-[#93C01F] rounded-[24px] py-6 px-6'>
-                                                <div className='qoutes-white'>
+                                            <Row align="middle" className='bg-[#93C01F] rounded-[24px] py-6 px-6'>
+                                                <Col xs={24} sm={4} className='qoutes-white text-left sm:text-auto'>
                                                     <Image src={qoutesWhite} style={{ width: "100px" }} alt="White Qoutes Sign" />
-                                                </div>
-                                                <div>
+                                                </Col>
+                                                <Col xs={24} sm={20}>
                                                     <p className='text-left text-white text-[16px] font-[400]'>
-                                                        {t("Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad.  Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.")}
+                                                        {t("Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad. Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.")}
                                                     </p>
-                                                </div>
-                                            </div>
+                                                </Col>
+                                            </Row>
                                             <div className='my-4'>
                                                 <Image src={union} alt="Union" />
                                             </div>
@@ -126,16 +131,16 @@ const AboutUsPage = () => {
                                             </div>
                                         </div>
                                         <div className='px-4'>
-                                            <div className='flex flex-wrap items-center gap-4 bg-[#93C01F] rounded-[24px] py-6 px-6'>
-                                                <div className='qoutes-white'>
+                                            <Row align="middle" className='bg-[#93C01F] rounded-[24px] py-6 px-6'>
+                                                <Col xs={24} sm={4} className='qoutes-white text-left sm:text-auto'>
                                                     <Image src={qoutesWhite} style={{ width: "100px" }} alt="White Qoutes Sign" />
-                                                </div>
-                                                <div>
+                                                </Col>
+                                                <Col xs={24} sm={20}>
                                                     <p className='text-left text-white text-[16px] font-[400]'>
-                                                        {t("Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad.  Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.")}
+                                                        {t("Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad. Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.")}
                                                     </p>
-                                                </div>
-                                            </div>
+                                                </Col>
+                                            </Row>
                                             <div className='my-4'>
                                                 <Image src={union} alt="Union" />
                                             </div>
@@ -156,8 +161,12 @@ const AboutUsPage = () => {
                                     </Slider>
                                 </div>
                                 <div>
-                                    <p className="text-sm  text-sitegreen font-bold mb-2 w-full">{t("Notre partenaires")}</p>
-                                    <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-gray-900">Nos partenaires <br /> de réussite</h1>
+                                    <div className='md:flex justify-center'>
+                                        <div className='md:w-[40%]'>
+                                            <p className="text-sm  text-sitegreen font-bold mb-2 w-full">{t("Notre partenaires")}</p>
+                                            <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-gray-900">{t("Nos partenaires de réussite")}</h1>
+                                        </div>
+                                    </div>
                                     <Slider {...settings2}>
                                         <div>
                                             <Image src={icon1} alt="Image of doctor" />

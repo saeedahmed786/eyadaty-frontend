@@ -101,7 +101,7 @@ const Login = () => {
                     <Col md={12}>
                         <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>{t("Connectez-vous à votre compte")}</h1>
                         <div className='flex gap-2 py-6'>
-                            <div>{"Vous n'avez pas de compte ?"}</div>
+                            <div>{t("Vous n'avez pas de compte ?")}</div>
                             <button className='text-[#0094DA] border-0' onClick={() => router.push("/signup")}>{t("Créer un compte")}</button>
                         </div>
                         {
@@ -163,7 +163,7 @@ const Login = () => {
                                     </Form.Item>
                                 </Form>
                         }
-                        <Divider className='my-4' plain>Ou</Divider>
+                        <Divider className='my-4' plain>{t("Ou")}</Divider>
                         <div className='flex justify-center gap-4'>
                             <SocialLogin />
                         </div>

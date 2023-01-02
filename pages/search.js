@@ -14,6 +14,7 @@ import SearchWithCheckBox from '../components/Inputs/SearchWithCheckBox'
 import DistanceCalculator from '../components/DistanceCalculator'
 import citiesArray from "../assets/town_city/communes.json"
 import SearchIcon from "../assets/search.svg"
+import specialitiesArray from "../assets/specialities.json"
 import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
 
@@ -39,6 +40,8 @@ const Search = () => {
     const [totalClinics, setTotalClinics] = useState([]);
     const [lngLat, setLngLat] = useState(null);
     const [name, setName] = useState("");
+    const days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+
 
     useEffect(() => {
         setUserAuth(isAuthenticated());
@@ -55,8 +58,6 @@ const Search = () => {
     }, []);
 
 
-    console.log(speciality)
-
     const getClinics = async (curr) => {
         await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/limited/${curr - 1}`).then(res => {
             if (res.statusText === "OK") {
@@ -72,6 +73,7 @@ const Search = () => {
     const handleSearch = () => {
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/search/${current - 1}?speciality=${speciality}&state=${selectedState}&city=${city}&available=${avaialble}&gender=${gender}&service=${service}&sortBy=${sortBy}&options=${options}&clinicName=${clinicName}`).then((response) => {
             setClinics(response.data);
+            localStorage.setItem("searchedItems", JSON.stringify(response.data));
         });
     }
 
@@ -116,6 +118,13 @@ const Search = () => {
             setCity(value);
         }
     }
+
+
+    // const handleAvailability = (val) => {
+    //     const d = new Date();
+    //     const dayName = days[d.getDay()];
+    //     setAvailable(dayName);
+    // }
 
     return (
         <MainLayout navbar>
@@ -163,7 +172,7 @@ const Search = () => {
                             {/* <SearchWithCheckBox handleUpdate={(value) => setCity(value)} prevValue={city} data={citiesArray} label="Commune" placeholder="Commune" /> */}
                         </div>
                         <div className='w-[100%] sm:w-[15vw]'>
-                            <SearchWithCheckBox handleUpdate={(value) => setService(value)} data={services} label="Services" placeholder="Services" />
+                            <SearchWithCheckBox handleUpdate={(value) => setService(value)} data={services} label={t("Services")} placeholder={t("Services")} />
                             {
                                 sortBy === "closest"
                                 &&
@@ -171,17 +180,17 @@ const Search = () => {
                             }
                         </div>
                         <div className='w-[100%] sm:w-[15vw]'>
-                            <SearchWithCheckBox handleUpdate={(value) => value === "Plus de recommandation" ? setSortBy("recommendations") : value === "Le plus regardé" ? setSortBy("views") : setSortBy("closest")} data={["Plus de recommandation", "Le plus regardé", "La plus proche"]} label="Trier par" placeholder="Trier par" />
+                            <SearchWithCheckBox handleUpdate={(value) => value === "Plus de recommandation" ? setSortBy("recommendations") : value === "Le plus regardé" ? setSortBy("views") : setSortBy("closest")} data={["Plus de recommandation", "Le plus regardé", "La plus proche"]} label={t("Trier par")} placeholder={t("Trier par")} />
                         </div>
                         <div className='w-[100%] sm:w-[15vw]'>
-                            <SearchWithCheckBox handleUpdate={(value) => setGender(value)} prevValue={gender} data={["Male", "Female"]} label="Le genre" placeholder="Le genre" />
+                            <SearchWithCheckBox handleUpdate={(value) => setGender(value)} prevValue={gender} data={["Male", "Female"]} label={t("Le genre")} placeholder={t("Le genre")} />
                         </div>
                         <div className='w-[100%] sm:w-[15vw]'>
-                            <SearchWithCheckBox handleUpdate={(value) => setOptions(value)} data={["GPS", "Email", "Facebook", "Instagram", "+5 Recommandations", "Ouvert"]} label="Options" placeholder="Options" />
+                            <SearchWithCheckBox handleUpdate={(value) => setOptions(value)} data={["GPS", "Email", "Facebook", "Instagram", "+5 Recommandations", "Ouvert"]} label={t("Options")} placeholder={t("Options")} />
                         </div>
                     </div>
                 </div>
-                <button onClick={handleSearch} className="mt-6 bg-[#0094DA] text-white w-full h-[48px] rounded-[16px]">Search</button>
+                <button onClick={handleSearch} className="mt-6 bg-[#0094DA] text-white w-full h-[48px] rounded-[16px]">{t("Chercher")}</button>
                 <Row gutter={[23, 23]}>
                     <Col md={14}>
                         <h2 className='text-[16px] subTitle my-12'>{t("Recherche de")} <span className='text-[#0094DA]'>{clinicName}</span></h2>
@@ -242,8 +251,8 @@ const Search = () => {
                             <Pagination total={totalClinics} itemRender={itemRender} showSizeChanger={false} onChange={(curr) => { setCurrent(curr); getClinics(curr) }} />
                         </div>
                     </Col>
-                    <Col md={10} className="pl-0 pt-8 relative">
-                        <div style={{ height: "100%", marginLeft: "100px", marginRight: "-21vw" }}>
+                    <Col md={10} className="pl-0 pt-8">
+                        <div className='mapOuterContainer' style={{ height: "100%" }}>
                             <LocationComp coords={lngLat} />
                         </div>
                     </Col>

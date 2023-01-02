@@ -13,10 +13,12 @@ import formatStringNumbers from '../FormatNumbers'
 import { isAuthenticated } from '../Auth/auth'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
+import specialitiesArray from "../../assets/specialities.json"
+
 
 export default function ClinicCard({ clinic }) {
   const router = useRouter();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [favourites, setFavourites] = useState([]);
 
   const getFavourites = async (id) => {
@@ -42,14 +44,21 @@ export default function ClinicCard({ clinic }) {
     }
   }, []);
 
+  const filterFirstSpec = specialitiesArray?.filter(f => f.fr === clinic?.specialisation)[0];
+
   return (
     <div className="p-4">
       <div className="">
-        <div className="rounded-lg shadow-lg bg-white max-w-sm">
-          <Link href={"/doctor/" + clinic._id}>
-            <img src={clinic?.picture?.url} alt="clinic image" className='object-cover w-full rounded-t-lg' />
-            {/* <img className="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt=""/> */}
-          </Link>
+        <div className="rounded-[16px] shadow-lg bg-white max-w-sm">
+          <div className='relative'>
+            <Link href={"/doctor/" + clinic._id}>
+              <img src={clinic?.picture?.url} alt="clinic image" className='object-cover w-full rounded-t-[16px]' />
+              {/* <img className="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt=""/> */}
+            </Link>
+            <div className='catImg'>
+              <img src={i18n.language === "fr" ? filterFirstSpec?.img_f : filterFirstSpec?.img_h} alt="Category" />
+            </div>
+          </div>
           <div className="p-6">
             <div className='flex flex-row rtl:gap-2 space-x-2'>
               <div>
@@ -60,7 +69,7 @@ export default function ClinicCard({ clinic }) {
               </div>
             </div>
             <p className="text-gray-700 text-base mb-4">
-              {clinic?.specialisation}
+              {i18n.language === "fr" ? filterFirstSpec?.fr : filterFirstSpec?.ar}
             </p>
             <div className='flex flex-row '>
               <div className=' py-3 px-2'>

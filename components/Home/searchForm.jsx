@@ -1,5 +1,5 @@
 import { Checkbox, Input, Select } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchChips from './searchChips'
 import specialitiesArray from "../../assets/specialities.json"
 import statesArray from "../../assets/town_city/wilaya.json"
@@ -8,13 +8,14 @@ import Image from 'next/image'
 import DownArrow from "../../assets/DownArrow.svg"
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
+import moment from 'moment'
 
 
 const { Option } = Select;
 
 export default function SearchForm() {
     const router = useRouter();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [selectedState, setSelectedState] = useState('');
     const [speciality, setSpeciality] = useState('');
     const [city, setCity] = useState('');
@@ -22,6 +23,9 @@ export default function SearchForm() {
     const [avaialble, setAvailable] = useState('');
     const [show, setShow] = useState(false);
     const [gender, setGender] = useState("Male");
+    const [searchedItems, setSearchedItems] = useState([]);
+    const days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+
 
 
     const handleStateSelection = (value) => {
@@ -36,7 +40,21 @@ export default function SearchForm() {
         });
     };
 
+    useEffect(() => {
+        setSearchedItems(JSON.parse(localStorage.getItem("searchedItems")))
 
+        return () => {
+
+        }
+    }, [])
+
+    const handleAvailability = (val) => {
+        const d = new Date();
+        const dayName = days[d.getDay()];
+        setAvailable(dayName);
+    }
+
+    console.log(avaialble);
     return (
         <div className='flex justify-center searchForm'>
             {/* max-w-md */}
@@ -45,9 +63,16 @@ export default function SearchForm() {
                     <form onSubmit={(e) => e.preventDefault()}>
                         <div className="block md:flex justify-around  gap-4 mb-6">
                             <div className="w-full md:w-1/4 form-group mb-4 md:mb-0">
-                                <Select onChange={(val) => setSpeciality(val)} suffixIcon={<Image src={DownArrow} alt="Down Arrow" />} placeholder={t("Spécialité")} className='w-full'>
+                                <Select onChange={(val) => setSpeciality(val)} suffixIcon={<Image src={DownArrow} alt="Down Arrow" />} placeholder={t("Spécialité")} className='w-full searchFormSelect'>
                                     {specialitiesArray.map((spec) => (
-                                        <Option key={spec.fr} value={spec.fr}>{spec.fr}</Option>
+                                        <Option key={spec.fr} value={spec.fr}>
+                                            <div className='flex gap-2 items-center'>
+                                                <div className='catImgSmall bg-white p-1 rounded-[50%]'>
+                                                    <img src={i18n.language === "fr" ? spec?.img_f : spec?.img_h} className="w-[17px]" alt="Category" />
+                                                </div>
+                                                <div>{i18n.language === "fr" ? spec.fr : spec.ar}</div>
+                                            </div>
+                                        </Option>
                                     ))}
                                 </Select>
                             </div>
@@ -72,7 +97,7 @@ export default function SearchForm() {
                             </div>
                             <div className="w-full md:w-1/4 form-group">
                                 <button onClick={handleClick} className="
-                                // block
+                                homeSearchBtn
                         px-8
                         py-1.5
                         text-base 
@@ -121,14 +146,14 @@ export default function SearchForm() {
                                                 <div className=''>
                                                     <h5 className=''>{t("Le genre")}</h5>
                                                     <div className='flex justify-between mt-2 sm:mt-3'>
-                                                        <Checkbox value="Male" onChange={(e) => e.target.checked && setGender(e.target.value)}>{t("Male")}</Checkbox>
-                                                        <Checkbox value="Female" onChange={(e) => e.target.checked && setGender(e.target.value)}>{t("Female")}</Checkbox>
+                                                        <Checkbox value="Male" onChange={(e) => e.target.checked ? setGender(e.target.value) : setGender("")}>{t("Male")}</Checkbox>
+                                                        <Checkbox value="Female" onChange={(e) => e.target.checked ? setGender(e.target.value) : setGender("")}>{t("Female")}</Checkbox>
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <h5>{t("Disponible")}</h5>
                                                     <div className='flex justify-between mt-2 sm:mt-3'>
-                                                        <Checkbox value="Avaialble" onChange={(e) => e.target.checked && setAvailable(e.target.value)}>{t("Ouvert")}</Checkbox>
+                                                        <Checkbox value={moment().locale("Fr").format("dddd")} onChange={(e) => e.target.checked ? handleAvailability(e.target.value) : setAvailable("")}>{t("Ouvert")}</Checkbox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -145,12 +170,21 @@ export default function SearchForm() {
                         </div>
                         <div className="flex items-center flex-wrap gap-4">
                             {/*flex flex-wrap justify-start space-x-3 space-y-3*/}
-                            <SearchChips chiptitle="Generaliste Oran" />
-                            <SearchChips chiptitle="Cardiologie Medea" />
-                            <SearchChips chiptitle="Medicine Interne Alger" />
-                            <SearchChips chiptitle="Pediatre Alger Borj Elkifane" />
-                            <SearchChips chiptitle="Urologie Alger" />
+                            {
+                                searchedItems && searchedItems.length > 0 ? searchedItems?.slice(0, 10)?.map(search => {
+                                    return (
+                                        <SearchChips chiptitle={`${search.specialisation} ${search.state}`} />
+                                    )
+                                })
+                                    :
+                                    <>
+                                        <SearchChips chiptitle="Cardiologie Medea" />
+                                        <SearchChips chiptitle="Medicine Interne Alger" />
+                                    </>
+                            }
 
+                            {/* <SearchChips chiptitle="Pediatre Alger Borj Elkifane" />
+                            <SearchChips chiptitle="Urologie Alger" /> */}
                         </div>
                     </form>
                 </div >

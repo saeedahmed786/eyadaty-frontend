@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import france from "/assets/france.png"
 import arabic from "/assets/Arabic.svg"
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
+import { Cookies } from 'react-cookie';
 
 export default function TopNavbar() {
+  const cookies = new Cookies;
   const [lang, setLang] = useState("fr");
   const [show, setShow] = useState(false);
   const router = useRouter()
@@ -17,11 +19,25 @@ export default function TopNavbar() {
     i18n.changeLanguage(lng);
     // setLanguage(lng)
     if (lng === "ar") {
+      cookies.set('language', "ar");
       document.getElementsByTagName('html')[0].setAttribute("dir", "rtl");
     } else {
+      cookies.set('language', "fr");
       document.getElementsByTagName('html')[0].setAttribute("dir", "ltr");
     }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      changeLanguage(cookies.get("language"));
+      setLang(cookies.get("language"))
+    }, 1000);
+
+    return () => {
+
+    }
+  }, [])
+
 
 
   return (
@@ -44,7 +60,7 @@ export default function TopNavbar() {
           <div className='relative'>
             <div onClick={() => setShow(!show)} className='rounded-[32px] cursor-pointer relative border border-white p-0 flex items-center gap-1'>
               <Image className={"cursor-pointer"} width={23} height={23} src={france} alt={"France"} />
-              <span className={"text-sm text-white p-1"}>{lang}</span>
+              <span className={"text-sm text-white p-1"}>{lang || "fr"}</span>
             </div>
             {
               show &&

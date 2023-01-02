@@ -208,7 +208,7 @@ const Pages = () => {
                                 </div>
                             </div>
                             <button onClick={handleFilter} className='bg-[#0094DA] mt-6 rounded-[12px] text-white h-[48px] w-full md:w-[auto] px-12 text-[16px] font-[500]'>
-                                Filtrez
+                                {t("Filtrez")}
                             </button>
                         </div>
                     </div>
