@@ -252,13 +252,4 @@ const Search = () => {
         </MainLayout >
     )
 }
-
-export async function getServerSideProps(context) {
-    return {
-        props: {
-            query: context.query,
-        },
-    };
-}
-
 export default Search
