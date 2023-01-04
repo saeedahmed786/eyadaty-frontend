@@ -25,7 +25,7 @@ export default function Doctor() {
                         </button>
                     </div>
                 </div>
-                <div className='sm:w-2/5 sm:block flex items-center mt-10 sm:mt-0 rightDoc md:text-end'>
+                <div className='sm:w-2/5 hidden sm:flex items-center mt-10 sm:mt-0 rightDoc md:text-end'>
                     {
                         i18n.language === "fr"
                             ?
