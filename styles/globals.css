@@ -105,9 +105,25 @@ a:hover {
     display: inline !important;
 }
 
-@media screen and (min-width: 1399px) {
+@media screen and (min-width: 2300px) {
     .container {
-        width: 1320px !important;
+        width: 2300px !important;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 86% !important;
+        min-width: 1536px;
+        /* padding-left: 100px;
+        padding-right: 100px; */
+        /* padding-left: 4% !important;
+        padding-right: 4% !important; */
+    }
+
+    .doctorComp {
+        /* padding-left: 4%;
+        padding-right: 4%; */
     }
 }
 
@@ -365,6 +381,13 @@ a:hover {
 
 .categoriesComp .categoryCard {
     text-align: center;
+}
+
+.categoriesComp .categoryCard>div {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .homepage .searchForm .ant-select .ant-select-selector {
@@ -1721,4 +1744,33 @@ html[dir="rtl"] body .catImg {
 
 .ant-select-item-option {
     padding: 12px !important;
+}
+
+@media (min-width: 2000px) {
+    .searchForm {
+        margin-top: 3%;
+    }
+}
+
+@media (min-width: 2300px) {
+
+    #__next,
+    body {
+        width: 2300px !important;
+        margin: 0px auto !important;
+    }
+}
+
+.blogInner,
+.slick-slide,
+.slick-slide>div>div {
+    border-radius: 16px !important;
+}
+
+@media (min-width: 1850px) {
+
+    /* .doctorComp .leftText,
+    .doctorComp .rightDoc {
+        width: auto !important;
+    } */
 }

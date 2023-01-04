@@ -86,7 +86,7 @@ export default function Navbar() {
               :
               <div className='flex items-center gap-2'>
                 <button onClick={() => router.push("/signup")} className="focus:outline-0 min-w-[130px] w-full border bg-transparent border-[#0094DA] text-[#0094DA] rounded-[12px] p-2">
-                  {t("S`inscrire")}
+                  {t("S'inscrire")}
                 </button>
                 <button onClick={() => router.push("/login")} className="focus:outline-0 min-w-[130px] w-full bg-[#0094DA] hover:text-white text-white rounded-[12px] p-2">
                   {t("Connexion")}

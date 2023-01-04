@@ -10,9 +10,9 @@ export default function Doctor() {
     const { t, i18n } = useTranslation();
 
     return (
-        <div className="bg-gray-700 w-full py-1 mt-8 sm:mt-0">
+        <div className="bg-gray-700 w-full py-1 mt-8 sm:mt-0 doctorComp">
             <div className="flex flex-row p-4 sm:p-0 flex-wrap justify-between mt-12 px-5 container mx-auto mb-12 bg-center bg-opacity-5 bg-cover bg-no-repeat">
-                <div className='flex flex-col rtl:text-start ltr:text-center sm:text-left justify-center sm:pr-10 space-y-5 w-full sm:w-3/5'>
+                <div className='flex flex-col rtl:text-start text-center sm:text-left justify-center sm:pr-10 space-y-5 w-full sm:w-3/5 leftText'>
                     <h1 className="text-5xl font-bold text-white dark:text-white ltr:sm:pr-32">
                         {t("Se sentir mieux pour trouver des soins de santé")}
                     </h1>
@@ -25,7 +25,7 @@ export default function Doctor() {
                         </button>
                     </div>
                 </div>
-                <div className='sm:w-2/5 hidden sm:block flex items-center mt-10 sm:mt-0'>
+                <div className='sm:w-2/5 sm:block flex items-center mt-10 sm:mt-0 rightDoc md:text-end'>
                     {
                         i18n.language === "fr"
                             ?

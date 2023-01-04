@@ -31,7 +31,7 @@ i18n
           "Voir Plus": "Voir Plus",
           "Cliniques": "Cliniques",
           "Laboratoires": "Laboratoires",
-          "Voir tous les Cliniques": "Voir tous les Cliniquesversity",
+          "Voir tous les Cliniques": "Voir tous les Cliniques",
           "Voir tous les catégorie": "Voir tous les catégorie",
           "Se sentir mieux pour trouver des soins de santé": "Se sentir mieux pour trouver des soins de santé",
           "Nous éliminons les conjectures pour trouver les bons médecins, hôpitaux et soins pour vous et votre famille.": "Nous éliminons les conjectures pour trouver les bons médecins, hôpitaux et soins pour vous et votre famille.",

@@ -19,10 +19,19 @@ export default function BlogList({ blogs }) {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        initialSlide: 0,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        initialSlide: 1,
         responsive: [
+            {
+                breakpoint: 1500,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: false,
+                    dots: true
+                }
+            },
             {
                 breakpoint: 1024,
                 settings: {
@@ -87,8 +96,8 @@ export default function BlogList({ blogs }) {
                                 blogs && blogs?.length > 0 && blogs.map(blog => {
                                     return (
                                         <Link href={`blog/${blog._id}`} className="rounded-[16px]">
-                                            <div style={{ backgroundImage: `url(${blog?.picture?.url})`, borderRadius: "16px" }} className={`bg-no-repeat h-[480px] bg-cover rounded-[16px] overflow-hidden backdrop-opacity-25`}>
-                                                <div className={'h-[480px] px-4 py-5 rounded-lg'} style={{ background: 'rgba(0, 0, 0, 0.5)'}}>
+                                            <div style={{ backgroundImage: `url(${blog?.picture?.url})` }} className={`bg-no-repeat h-[480px] blogInner bg-cover overflow-hidden backdrop-opacity-25`}>
+                                                <div className={'h-[480px] px-4 py-5 rounded-lg'} style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
                                                     <div className="flex flex-col justify-between h-full">
                                                         <div className={"bg-white text-dark__color text-sm  w-fit px-5 h-[30px] rounded-[8px] flex items-center"}>
                                                             {blog?.category}

@@ -13,7 +13,7 @@ const FooterTop = () => {
     return (
         <>
             <div className={" border-b border-gray__color mb-10 pb-10 gap-8 grid p-4 md:grid-cols-footer__columns md__custom:grid-cols-footer__columns__lg sm__custom:text-center sm__custom:grid-cols-footer__columns__sm"}>
-                <div className={"flex flex-col items-start gap-5 sm:items-center"}>
+                <div className={"flex flex-col items-start gap-5 "}>
                     <Image src={Logo} alt="Logo Image" className={" object-contain"} />
                     <p className={"text-light__gray__color text-sm"}>
                         {t("Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon.")}
@@ -98,7 +98,7 @@ const FooterTop = () => {
                 <div>
                     <h2 className={"text-white font-bold"}>{t("Abonnez-nous")}</h2>
                     <div className={"flex flex-col gap-2 mt-4"}>
-                        <input type="email" placeholder={t("Email")} className="text-sm focus:outline-0 text-dark__color w-full bg-transparent p-4 rounded-[12px] border border-light__gray__color" />
+                        <input type="email" placeholder={t("E-mail")} className="text-sm focus:outline-0 text-dark__color w-full bg-transparent p-4 rounded-[12px] border border-light__gray__color" />
                         <button type="button" className="focus:outline-0 bg-[#0094DA] text-white rounded-[12px] p-3">{t("Abonnez")}</button>
                     </div>
                 </div>

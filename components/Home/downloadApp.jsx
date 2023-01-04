@@ -8,8 +8,8 @@ export default function DownloadApp({ noMargin }) {
 
   return (
     <div className="bg-[url('../assets/downloadbanner.png')] bg-cover bg-no-repeat downloadComp">
-      <div className={`flex flex-row justify-between flex-wrap min-h-[480px] h-full ${!noMargin && "mb-12"} px-5 container mx-auto`}>
-        <div className='rtl:md:max-w-[40vw] flex flex-col justify-center space-y-5 sm:w-3/5 text-center sm:text-left py-5 sm:py-0'>
+      <div className={`flex flex-row justify-between flex-wrap md:flex-nowrap min-h-[480px] h-full ${!noMargin && "mb-12"} px-5 container mx-auto`}>
+        <div className='rtl:md:max-w-[40vw] flex flex-col justify-center space-y-5 text-center sm:text-left py-5 sm:py-0'>
           <h1 className="rtl:text-end text-5xl font-bold text-[#FFFFFF] ltr:sm:pr-32">
             {t("Téléchargez l'application Eyadaty.")}
           </h1>
@@ -38,7 +38,7 @@ export default function DownloadApp({ noMargin }) {
             </button>
           </div>
         </div>
-        <div className='sm:w-2/5 hidden sm:flex items-end mt-12 sm:mt-0'>
+        <div className='hidden sm:flex items-end mt-12 sm:mt-0'>
           <Image src={apphand} alt="Appholding hand" height={400} width={400} />
         </div>
       </div>

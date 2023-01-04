@@ -14,10 +14,19 @@ export default function ClinicsSection({ clinics }) {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     initialSlide: 1,
     responsive: [
+      {
+        breakpoint: 1500,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: false,
+          dots: true
+        }
+      },
       {
         breakpoint: 1024,
         settings: {
@@ -42,7 +51,7 @@ export default function ClinicsSection({ clinics }) {
           slidesToScroll: 1,
           infinite: true,
         }
-      }
+      },
     ]
   };
 

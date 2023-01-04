@@ -9,6 +9,9 @@ import { isAuthenticated } from '../components/Auth/auth';
 import LocationComp from '../components/Location';
 import specialitiesArray from "../assets/specialities.json"
 import { ErrorMessage } from '../components/Messages/messages';
+import { ParseBson } from '../parseIt';
+
+
 
 const HeroPage = dynamic(() => import('../components/Home/hero'), {
     suspense: true,
@@ -93,12 +96,14 @@ export default function Home() {
     }, [])
 
 
+
     return (
         <MainLayout navbar>
             <Suspense fallback={<PageLoader />}>
                 <div className='homepage'>
                     {/* <CustomSuccessMessage />
                     <CustomErrorMessage /> */}
+                    {/* <ParseBson /> */}
                     <LocationComp />
                     <HeroPage />
                     <SearchForm />
