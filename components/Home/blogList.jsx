@@ -28,7 +28,7 @@ export default function BlogList({ blogs }) {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                     infinite: false,
-                    dots: true
+                    dots: false
                 }
             },
             {
@@ -37,7 +37,7 @@ export default function BlogList({ blogs }) {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     infinite: false,
-                    dots: true
+                    dots: false
                 }
             },
             {
