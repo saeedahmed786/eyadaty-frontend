@@ -320,7 +320,8 @@ i18n
           "Avis": "Avis",
           "Oublié le mot de passe": "Oublié le mot de passe",
           "Envoyez": "Envoyez",
-          "Email": "Email"
+          "Email": "Email",
+          "Bienvenu": "Bienvenu",
         }
       },
       ar: {
@@ -625,7 +626,7 @@ i18n
           "Nous fournissons les meilleurs service?": "نحن نقدم أفضل الخدمات",
           "Avis": "تقييم",
           "Envoyez": "إرسال",
-          "Email": "Email"
+          "Bienvenu": "مرحبا",
         }
       }
     },

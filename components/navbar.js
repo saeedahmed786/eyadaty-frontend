@@ -34,7 +34,7 @@ export default function Navbar() {
         <div className='flex gap-[8px] items-center'>
           <img src={userAuth?.picture?.url} width={40} className="rounded-[50%] object-cover h-[40px]" alt="Profile" />
           <div>
-            <div className='text-[#65737E] text-[12px] font-[400] tracking-wide'>Bienvenu</div>
+            <div className='text-[#65737E] text-[12px] font-[400] tracking-wide rtl:text-start'>{t("Bienvenu")}</div>
             <div className='text-[16px] font-[700] text-[#1C2126]'>{userAuth?.fullName}</div>
           </div>
         </div>
