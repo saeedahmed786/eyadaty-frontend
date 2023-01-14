@@ -360,25 +360,25 @@ const IndDoctor = () => {
                                                 {
                                                     notRecommended ?
                                                         <button className='flex gap-1 items-center' onClick={removeNotRecommendation}>
-                                                            <DislikeIcon />
+                                                            <DislikeFilled />
                                                             <span>{t("Non")}</span>
                                                         </button>
                                                         :
                                                         <button className='flex gap-1 items-center' onClick={() => { notRecommendClinic(); removeRecommendation() }}>
-                                                            {/* <DislikeOutlined /> */}
-                                                            <DislikeIcon />
+                                                            <DislikeOutlined />
+                                                            {/* <DislikeIcon /> */}
                                                             <span>{t("Non")}</span>
                                                         </button>
                                                 }
                                                 {
                                                     recommended ?
-                                                        <button className='flex gap-[7px] items-center' onClick={notRecommendClinic}>
-                                                            <LikeIcon />
+                                                        <button className='flex gap-[7px] items-center' onClick={removeRecommendation}>
+                                                            <LikeFilled />
                                                             <span className='text-[16px] font-[500] text-white'>{t("Oui")}</span>
                                                         </button>
                                                         :
                                                         <button className='flex gap-[7px] items-center' onClick={() => { recommendClinic(); removeNotRecommendation() }}>
-                                                            <LikeIcon />
+                                                            <LikeOutlined />
                                                             <span className='text-[16px] font-[500] text-white'>{t("Oui")}</span>
                                                         </button>
                                                 }
