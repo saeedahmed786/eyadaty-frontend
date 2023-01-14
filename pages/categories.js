@@ -36,12 +36,12 @@ const Categories = () => {
         <MainLayout navbar>
             <div className='CategoriesPage container px-4 mx-auto pb-24 pt-6'>
                 <div className='text-center'>
-                    <div className='flex gap-2 justify-center items-center py-4'>
+                    <div className='flex gap-2 justify-center items-center pt-4'>
                         <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("Catégories")}</button>
                     </div>
-                    <h1 className='bigTitle'>{t("Catégories")}</h1>
+                    <h1 className='bigTitle mt-[32px]'>{t("Catégories")}</h1>
                 </div>
-                <div className='flex flex-wrap gap-2 sm:gap-6 mt-12'>
+                <div className='flex flex-wrap gap-2 sm:gap-6 mt-[64px]'>
                     {
                         specialitiesArray && specialitiesArray?.map(cat => {
                             return (

@@ -47,66 +47,66 @@ export default function ClinicCard({ clinic }) {
   const filterFirstSpec = specialitiesArray?.filter(f => f.fr === clinic?.specialisation)[0];
 
   return (
-    <div className="p-4">
+    <div className="">
       <div className="">
-        <div className="rounded-[16px] shadow-lg bg-white max-w-sm">
+        <div className="rounded-[16px] bg-white max-w-sm">
           <div className='relative'>
             <Link href={"/doctor/" + clinic._id}>
-              <img src={clinic?.picture?.url} alt="clinic image" className='object-cover w-full h-[341px] rounded-t-[16px]' />
+              <img src={clinic?.picture?.url} alt="clinic image" className='object-cover w-full h-[144px] rounded-t-[16px]' />
               {/* <img className="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt=""/> */}
             </Link>
             <div className='catImg'>
               <img src={i18n.language === "fr" ? filterFirstSpec?.img_f : filterFirstSpec?.img_h} alt="Category" />
             </div>
           </div>
-          <div className="p-6">
+          <div className="px-6 mt-[-10px]">
             <div className='flex flex-row rtl:gap-2 space-x-2'>
               <div>
-                <h5 className="text-gray-900 text-xl font-medium mb-2">{clinic?.firstName} {clinic?.lastName}</h5>
+                <h5 className="text-[#333B42] text-[16px] font-[700]">{clinic?.firstName} {clinic?.lastName}</h5>
               </div>
-              <div className='py-1'>
+              <div className='pt-1'>
                 <Image src={checkmark} alt="checkmark" />
               </div>
             </div>
-            <p className="text-gray-700 text-base mb-4">
+            <p className="text-[#65737E] text-[12px] font-[400]">
               {i18n.language === "fr" ? filterFirstSpec?.fr : filterFirstSpec?.ar}
             </p>
-            <div className='flex flex-row '>
-              <div className=' py-3 px-2'>
+            <div className='flex items-center gap-[5px] flex-row mt-[24px] mb-[16px]'>
+              <div className=''>
                 <LocationIcon />
               </div>
-              <div className=' p-2'>
-                <p className="text-gray-700 text-base mb-4">
+              <div>
+                <p className="text-[#65737E] text-[12px] font-[400]">
                   {clinic?.user?.city}, {clinic?.user?.state}
                 </p>
               </div>
             </div>
-            <div className='flex flex-row rtl:gap-4  p-4 justify-start space-x-3'>
+            <div className='flex flex-row rtl:gap-4 justify-start space-x-3'>
               <div className='flex flex-row items-center rtl:gap-2 space-x-1 '>
                 <div className='py-1'>
                   <ViewIcon />
                 </div>
-                <div>{formatStringNumbers(clinic?.views?.length)}</div>
+                <div className='text-[#65737E] text-[12px] font-[400]'>{formatStringNumbers(clinic?.views?.length)}</div>
               </div>
               <div className='flex flex-row items-center rtl:gap-2 space-x-1'>
-                <div className='  py-1'>
+                <div className='py-1'>
                   <HeartIcon />
                 </div>
-                <div>{favourites.length}</div>
+                <div className='text-[#65737E] text-[12px] font-[400]'>{favourites.length}</div>
               </div>
               <div className='flex flex-row items-center rtl:gap-2 space-x-1'>
                 <div className='py-1'>
                   <StarIcon />
                 </div>
-                <div>
+                <div className='text-[#65737E] text-[12px] font-[400]'>
                   {
                     clinic?.recommendations?.length > 0 ? clinic?.recommendations?.length * 5 : 5 / clinic?.notrecommendations?.length > 0 ? clinic?.notrecommendations?.length : 1
                   }
                 </div>
               </div>
             </div>
-            <div className='flex justify-center'>
-              <button onClick={() => router.push(`/doctor/${clinic?._id}`)} type="button" className="sm:px-16 w-full text-center justify-center py-4 bg-white border-2 border-siteblue  text-siteblue font-medium text-sm leading-tight uppercase rounded-xl shadow-md hover:bg-siteblue hover:text-white hover:shadow-lg focus:bg-siteblue focus:shadow-lg focus:outline-none focus:ring-0 active:bg-siteblue active:shadow-lg transition duration-150 ease-in-out flex items-center gap-3">{t("Voir Plus")} <RightIcon /></button>
+            <div className='flex justify-center mt-[32px]'>
+              <button onClick={() => router.push(`/doctor/${clinic?._id}`)} type="button" className="mb-[24px] w-full text-center justify-center h-[48px] bg-white border border-[#0094DA]  text-[#0094DA] text-[16px] font-[500] rounded-[12px] hover:bg-siteblue hover:text-white focus:bg-siteblue focus:shadow-lg focus:outline-none focus:ring-0 active:bg-siteblue active:shadow-lg transition duration-150 ease-in-out flex items-center gap-[11px]">{t("Voir Plus")} <RightIcon /></button>
             </div>
           </div>
         </div>

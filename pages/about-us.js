@@ -78,7 +78,7 @@ const AboutUsPage = () => {
                     <div className="container mx-auto flex px-0 sm:py-24 md:flex-row flex-col items-center justify-center ">
                         <div className="lg:flex-grow md:w-1/2 flex flex-col md:items-start md:text-left sm:mb-16 md:mb-0 items-center text-center">
                             <div className='sm:max-w-[80%]'>
-                                <p className="text-sm rtl:md:text-end  text-sitegreen font-bold mb-0 w-full">{t("Notre services")}</p>
+                                <p className="text-sm rtl:md:text-end  text-[#93C01F] font-bold mb-0 w-full">{t("Notre services")}</p>
                                 <h1 className="bigTitle">{t("Nous fournissons les meilleurs service?")}</h1>
                                 <p className="mb-8 rtl:md:text-end rtl:mt-4 leading-relaxed">
                                     {t("Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad. Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.")}
@@ -96,8 +96,8 @@ const AboutUsPage = () => {
                             <div className='max-w-[100%]'>
                                 <div className='md:flex justify-center'>
                                     <div className='md:w-[40%]'>
-                                        <p className="text-sm  text-sitegreen font-bold mb-0 w-full">{t("Témoignages")}</p>
-                                        <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-gray-900">{t("Qu'ont-ils dit de nous ?")}</h1>
+                                        <p className="text-sm  text-[#93C01F] font-bold mb-0 w-full">{t("Témoignages")}</p>
+                                        <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-[#333B42]">{t("Qu'ont-ils dit de nous ?")}</h1>
                                     </div>
                                 </div>
                                 <div className='mb-24 flex justify-center p-5 sm:p-0'>
@@ -163,8 +163,8 @@ const AboutUsPage = () => {
                                 <div>
                                     <div className='md:flex justify-center'>
                                         <div className='md:w-[40%]'>
-                                            <p className="text-sm  text-sitegreen font-bold mb-2 w-full">{t("Notre partenaires")}</p>
-                                            <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-gray-900">{t("Nos partenaires de réussite")}</h1>
+                                            <p className="text-sm  text-[#93C01F] font-bold mb-2 w-full">{t("Notre partenaires")}</p>
+                                            <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-[#333B42]">{t("Nos partenaires de réussite")}</h1>
                                         </div>
                                     </div>
                                     <Slider {...settings2}>

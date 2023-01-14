@@ -149,10 +149,10 @@ const Login = () => {
                                         <div className='flex justify-between'>
                                             <div className='flex items-center gap-2'>
                                                 <Switch onClick={(checked) => setRemember(checked)} className='bg-gray border border-[#A7ADBA] rounded-[12px]' />
-                                                <span>{t("souviens-toi de moi")}</span>
+                                                <span className='text-[14px] font-[500]'>{t("souviens-toi de moi")}</span>
                                             </div>
                                             <div>
-                                                <button type='button' className='text-[#0094DA] border-0' onClick={() => router.push("/forgot-password")}>{t("j'ai oublie le mot de passe?")}</button>
+                                                <button type='button' className='text-[#0094DA] text-[14px] font-[500] border-0 text-end' onClick={() => router.push("/forgot-password")}>{t("j'ai oublie le mot de passe?")}</button>
                                             </div>
                                         </div>
                                     </Form.Item>

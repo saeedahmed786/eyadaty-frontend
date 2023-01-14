@@ -9,7 +9,6 @@ import { isAuthenticated } from '../components/Auth/auth';
 import LocationComp from '../components/Location';
 import specialitiesArray from "../assets/specialities.json"
 import { ErrorMessage } from '../components/Messages/messages';
-import { ParseBson } from '../parseIt';
 
 
 
@@ -110,11 +109,13 @@ export default function Home() {
                     <AboutUs />
                     <Categories categories={specialitiesArray} />
                     <DownloadApp />
-                    <ClinicsSection clinics={clinics.filter(c => c.type === "Clinique")} />
-                    <LabSection clinics={clinics.filter(c => c.type?.includes("Laboratoire"))} />
-                    <Doctor clinics={clinics.filter(c => c.type?.includes("Laboratoire"))} />
-                    <BlogList blogs={blogs} />
-                    <Subscribe />
+                    <div className='bg-[#F5F8FB]'>
+                        <ClinicsSection clinics={clinics.filter(c => c.type === "Clinique")} />
+                        <LabSection clinics={clinics.filter(c => c.type?.includes("Laboratoire"))} />
+                        <Doctor clinics={clinics.filter(c => c.type?.includes("Laboratoire"))} />
+                        <BlogList blogs={blogs} />
+                        <Subscribe />
+                    </div>
                 </div>
             </Suspense>
         </MainLayout>

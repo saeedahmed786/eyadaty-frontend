@@ -65,12 +65,12 @@ export default function Categories({ categories }) {
 
 
   return (
-    <section className="text-gray-600 body-font categoriesComp bg-[url('../assets/Lines-alt.png')] bg-cover bg-no-repeat  ">
-      <div className="container py-16 mx-auto ">
+    <section className="text-[#1C2126] body-font categoriesComp bg-[url('../assets/Lines-alt.png')] bg-cover bg-no-repeat  ">
+      <div className="container py-[160px] pb-[80px] md:py-[125px] mx-auto ">
         <div className="flex flex-wrap justify-center sm:justify-between px-0 w-full mb-20">
           <div className="w-full lg:w-1/2 rtl:lg:w-auto mb-6 lg:mb-0">
-            <p className='text-sitegreen rtl:md:text-start text-center sm:text-left font-medium pl-1'>{t("Explorez tous les")}</p>
-            <h1 className="bigTitle text-center sm:text-left">{t("Catégories")}</h1>
+            <p className='rtl:md:text-start text-center sm:text-left pl-1 text-[16px]  text-[#93C01F] font-[500]'>{t("Explorez tous les")}</p>
+            <h1 className="text-[46px] sm:text-[56px] mb-[24px] leading-[45px] font-[700] text-[#1C2126] mt-2 text-center sm:text-left">{t("Catégories")}</h1>
           </div>
           <div className='flex flex-row justify-center gap-2 space-x-1'>
             <button onClick={() => slickRef.current?.slickPrev()}>
@@ -100,9 +100,9 @@ export default function Categories({ categories }) {
           <CategoryCard imagevar={icon4} cattitle="Cardiolgie" />
           <CategoryCard imagevar={icon5} cattitle="Chirugie Esthetique" /> */}
         </div>
-        <div className='w-full flex justify-center mt-8'>
+        <div className='w-full flex justify-center mt-[48px]'>
           <div className="flex w-full md:justify-center justify-center items-end ">
-            <button onClick={() => router.push("/categories")} className="text-white text-left bg-siteblue border-0 py-2 px-16 focus:outline-none hover:bg-sitegreen rounded-xl text-lg flex items-center gap-3"><span>{t("Voir tous les catégorie")} </span> <RightIcon /></button>
+            <button onClick={() => router.push("/categories")} className="text-white text-left bg-siteblue border-0 py-2 px-[20px] focus:outline-none hover:bg-sitegreen rounded-xl text-[16px] font-[500] flex items-center gap-3"><span>{t("Voir tous les catégorie")} </span> <RightIcon /></button>
           </div>
         </div>
       </div>

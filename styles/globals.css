@@ -9,6 +9,7 @@
 }
 
 
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .custom-img {
@@ -193,6 +194,30 @@ a:hover {
     border: 1px solid #C0C5CE;
     border-radius: 12px;
     height: 48px;
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    line-height: 16px;
+    letter-spacing: 0.02em !important;
+    color: #A7ADBA !important;
+}
+
+.ant-checkbox-inner {
+    border-radius: 4px !important;
+    border: 1px solid #C0C5CE !important;
+}
+
+.ant-checkbox+span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px !important;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #1C2126;
+    padding-left: 10px;
 }
 
 .ant-input-affix-wrapper .ant-input {
@@ -237,9 +262,9 @@ a:hover {
 }
 
 .bigTitle {
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif !important;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 64px;
     line-height: 72px;
     letter-spacing: -0.02em;
@@ -247,8 +272,12 @@ a:hover {
     margin-bottom: 0px;
 }
 
+p {
+    font-family: 'Poppins', sans-serif !important;
+}
+
 .subTitle {
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif !important;
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
@@ -268,7 +297,14 @@ a:hover {
 
 .right-icon-ham {
     font-size: 43px !important;
-    height: 12px !important;
+    height: 14px !important;
+    width: 15.5px !important;
+}
+
+.ant-dropdown-menu-item,
+.ant-dropdown-menu-submenu-title {
+    padding: 4px 16px !important;
+    line-height: 16px !important;
 }
 
 .FAQ .ant-collapse-header {
@@ -367,16 +403,41 @@ a:hover {
     width: 100% !important;
 }
 
+.ant-select-selection-placeholder {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px !important;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #A7ADBA;
+}
 
 /**************************** Home Page *************************/
 .homepage .slick-arrow {
     display: none !important;
 }
 
-.homepage .slick-slide {
-    padding: 0px 10px;
-    display: flex;
-    justify-content: center;
+.homepage .clinicsSection .slick-slide {
+    max-width: 264px;
+}
+
+
+.homepage .blogList .slick-slide,
+.homepage .clinicsSection .slick-slide {
+    /* margin: 0px 30px; */
+    margin-right: 30px;
+    padding: 0px !important;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.homepage .blogList .slick-slide {
+    max-width: 362px !important;
+}
+
+.homepage .blogList .slick-slider {
+    max-height: 480px !important;
 }
 
 .categoriesComp .categoryCard {
@@ -385,14 +446,46 @@ a:hover {
 
 .categoriesComp .categoryCard>div {
     height: 200px;
+    width: 178px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.categoriesComp .categoryCard>div img {
+    width: 64px !important;
+    height: 64px !important;
+}
+
+.categoriesComp .categoryCard>div p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    margin-top: 16px;
+    color: #1C2126;
+}
+
+.categoriesComp .categoryCard>div:hover {
+    border: 2px solid #0094DA;
+    border-radius: 24px;
+}
+
+.homepage .searchForm>div {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
 .homepage .searchForm .ant-select .ant-select-selector {
     border-radius: 12px !important;
     height: 48px !important;
+    padding: 0px 16px !important;
+}
+
+.homepage .searchForm .ant-select-arrow {
+    padding-right: 4px !important;
 }
 
 .homepage .searchForm .ant-input,
@@ -409,6 +502,16 @@ a:hover {
     text-align: center;
 }
 
+.CategoriesPage .categoryCard>div {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CategoriesPage .categoryCard>div:hover {
+    border: 2px solid #0094DA;
+}
 
 
 
@@ -909,6 +1012,22 @@ a:hover {
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
+.DoctorDetails .lowerSection span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* text-align: center; */
+    color: #333B42;
+}
+
+.DoctorDetails .icons svg {
+    color: #0094DA;
+    width: 20px;
+    height: 19px;
+}
+
 .DoctorDetails .iconsContainter {
     display: flex;
     gap: 10px;
@@ -1005,7 +1124,7 @@ a:hover {
 .DoctorDetails section ul li::before {
     content: "\2022";
     color: #93C01F;
-    font-size: 23px;
+    font-size: 32px;
     vertical-align: middle;
     font-weight: bold;
     display: inline-block;
@@ -1521,8 +1640,8 @@ a:hover {
 
 @media (max-width:600px) {
     .bigTitle {
-        font-size: 32px !important;
-        line-height: 32px !important;
+        font-size: 48px !important;
+        line-height: 56px !important;
     }
 
     .DoctorDetails .likeContantainer button {
@@ -1698,15 +1817,20 @@ html[dir="rtl"] body div {
     background: #FFFFFF !important;
     padding: 10px;
     border-radius: 50%;
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0px 10px 20px rgb(0 0 0 / 8%) !important;
     position: relative;
-    top: -32px;
-    left: 32px;
+    top: -24px;
+    left: 24px;
+}
+
+.catImg img {
+    width: 32px;
+    height: 32px;
 }
 
 html[dir="rtl"] body .catImg {

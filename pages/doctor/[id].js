@@ -32,6 +32,11 @@ import ReplyCommentCard from '../../components/Cards/ReplyCommentCard'
 import { Loading } from '../../components/Loading/Loading'
 import LocationComp from '../../components/Location'
 import { useTranslation } from 'react-i18next'
+import StarIcon from '../../components/icons/staricon'
+import EyeIcon from '../../components/icons/EyeIcon'
+import CommentIcon from '../../components/icons/CommentIcon'
+import DislikeIcon from '../../components/icons/DislikeIcon'
+import LikeIcon from '../../components/icons/LikeIcon'
 
 
 const IndDoctor = () => {
@@ -244,7 +249,7 @@ const IndDoctor = () => {
 
     return (
         <MainLayout navbar>
-            <div className='DoctorDetails px-4 py-12 sm:px-24'>
+            <div className='DoctorDetails px-4 py-12 pt-[80px] sm:px-24'>
                 <div>
                     <div>
                         {
@@ -252,7 +257,7 @@ const IndDoctor = () => {
                                 <Loading />
                                 :
                                 <>
-                                    <div className='flex gap-2 justify-start items-center py-4'>
+                                    <div className='flex gap-2 justify-start items-center pb-[40px]'>
                                         <span>{t("Accueil")}</span>
                                         <RightIcon />
                                         <button>{t("Cliniques")}</button>
@@ -292,33 +297,37 @@ const IndDoctor = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='flex flex-wrap gap-6 mt-4 items-end'>
-                                        <button className='flex gap-1 items-center'>
-                                            <EyeTwoTone />
+                                    <div className='icons flex flex-wrap gap-[26px] mt-[24px] items-center'>
+                                        <button className='flex gap-[5px] items-center'>
+                                            <EyeIcon />
                                             <span>{formatStringNumbers(clinic?.views?.length)}</span>
                                         </button>
-                                        <button className='flex gap-1 items-center'>
-                                            <HeartTwoTone />
+                                        <button className='flex gap-[5px] items-center'>
+                                            <svg width="15" height="13" viewBox="0 0 15 13" fill="#0094DA" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.65656 0.692669C8.74056 0.00733582 10.1806 -0.181998 11.4246 0.216669C14.1306 1.08934 14.9706 4.03934 14.2192 6.38667C13.0599 10.0733 8.10856 12.8233 7.89856 12.9387C7.82389 12.98 7.74122 13.0007 7.65856 13.0007C7.57589 13.0007 7.49389 12.9807 7.41922 12.94C7.21056 12.826 2.29522 10.1167 1.09722 6.38734C1.09656 6.38734 1.09656 6.38667 1.09656 6.38667C0.344556 4.03867 1.18189 1.088 3.88522 0.216669C5.15456 -0.193998 6.53789 -0.0133309 7.65656 0.692669ZM4.19189 1.16867C2.00456 1.874 1.45522 4.22667 2.04922 6.082C2.98389 8.99 6.67656 11.3413 7.65789 11.9233C8.64256 11.3353 12.3619 8.958 13.2666 6.08467C13.8606 4.22734 13.3092 1.87467 11.1186 1.16867C10.0572 0.828002 8.81922 1.03534 7.96456 1.69667C7.78589 1.834 7.53789 1.83667 7.35789 1.70067C6.45256 1.02 5.26989 0.820669 4.19189 1.16867ZM10.4786 2.4926C11.3872 2.7866 12.0239 3.59127 12.1019 4.5426C12.1239 4.81794 11.9192 5.05927 11.6439 5.08127C11.6299 5.0826 11.6166 5.08327 11.6026 5.08327C11.3446 5.08327 11.1259 4.88527 11.1046 4.62394C11.0606 4.07594 10.6939 3.61327 10.1719 3.4446C9.90856 3.35927 9.76456 3.07727 9.84922 2.81527C9.93522 2.5526 10.2146 2.40994 10.4786 2.4926Z" fill="#0094DA" />
+                                            </svg>
                                             <span>{favourites?.length}</span>
                                         </button>
-                                        <button className='flex gap-1 items-center'>
-                                            <StarTwoTone />
-                                            <span>{
-                                                clinic?.recommendations?.length > 0 ? clinic?.recommendations?.length * 5 : 5 / clinic?.notrecommendations?.length > 0 ? clinic?.notrecommendations?.length : 1
-                                            }
-                                            </span>
-                                        </button>
-                                        <button className='flex gap-1 items-center text-[#0094DA]'>
-                                            ({clinic?.recommendations?.length + clinic?.notrecommendations?.length} {t("Avis")})
-                                        </button>
-                                        <a href='#commentSection' className='flex gap-1 items-center w-full sm:w-auto'>
-                                            <MessageTwoTone />
+                                        <div className='flex gap-[8px] items-center'>
+                                            <button className='flex gap-[5px] items-center'>
+                                                <span className='text-[#0094DA]'><StarIcon /></span>
+                                                <span>{
+                                                    clinic?.recommendations?.length > 0 ? clinic?.recommendations?.length * 5 : 5 / clinic?.notrecommendations?.length > 0 ? clinic?.notrecommendations?.length : 1
+                                                }
+                                                </span>
+                                            </button>
+                                            <button className='flex gap-[5px] items-center text-[#0094DA]'>
+                                                ({clinic?.recommendations?.length + clinic?.notrecommendations?.length} {t("Avis")})
+                                            </button>
+                                        </div>
+                                        <a href='#commentSection' className='flex gap-[5px] items-center w-full sm:w-auto'>
+                                            <CommentIcon />
                                             <span>{comments.length} {t("Commentaires")}</span>
                                         </a>
                                     </div>
                                     <Row gutter={[15, 15]} className='imagesContainer mt-12'>
                                         <Col md={10} className='mainImg'>
-                                            <img src={clinic?.pictures && clinic?.pictures[0]?.url} alt="Doctor" />
+                                            <img src={clinic?.pictures && clinic?.pictures[0]?.url} alt="Doctor" className='max-h-[524px] w-full object-cover' />
                                         </Col>
                                         <Col md={14} className='smallImages flex flex-wrap items-start gap-4'>
                                             <Row wrap gutter={[15, 15]}>
@@ -351,201 +360,204 @@ const IndDoctor = () => {
                                                 {
                                                     notRecommended ?
                                                         <button className='flex gap-1 items-center' onClick={removeNotRecommendation}>
-                                                            <DislikeFilled />
+                                                            <DislikeIcon />
                                                             <span>{t("Non")}</span>
                                                         </button>
                                                         :
                                                         <button className='flex gap-1 items-center' onClick={() => { notRecommendClinic(); removeRecommendation() }}>
-                                                            <DislikeOutlined />
+                                                            {/* <DislikeOutlined /> */}
+                                                            <DislikeIcon />
                                                             <span>{t("Non")}</span>
                                                         </button>
                                                 }
                                                 {
                                                     recommended ?
-                                                        <button className='flex gap-1 items-center' onClick={notRecommendClinic}>
-                                                            <LikeFilled />
-                                                            <span>{t("Oui")}</span>
+                                                        <button className='flex gap-[7px] items-center' onClick={notRecommendClinic}>
+                                                            <LikeIcon />
+                                                            <span className='text-[16px] font-[500] text-white'>{t("Oui")}</span>
                                                         </button>
                                                         :
-                                                        <button className='flex gap-1 items-center' onClick={() => { recommendClinic(); removeNotRecommendation() }}>
-                                                            <LikeOutlined />
-                                                            <span>{t("Oui")}</span>
+                                                        <button className='flex gap-[7px] items-center' onClick={() => { recommendClinic(); removeNotRecommendation() }}>
+                                                            <LikeIcon />
+                                                            <span className='text-[16px] font-[500] text-white'>{t("Oui")}</span>
                                                         </button>
                                                 }
                                             </div>
                                         </div>
                                     </div>
-                                    <section className='mt-8'>
-                                        <div className='header'>
-                                            <Image src={cap} alt="cap" />
-                                            <h4>{t("Bio")}</h4>
-                                        </div>
-                                        <p className='normalPara px-4'>
-                                            {clinic?.bio}
-                                        </p>
-                                    </section>
-                                    <section className='mt-8'>
-                                        <div className='header'>
-                                            <Image src={building} alt="coo" />
-                                            <h4>{t("Coordonnées")}</h4>
-                                        </div>
-                                        <Row className='sm:px-4 block sm:flex' gutter={[20, 20]}>
-                                            <Col md={12}>
-                                                <div className='mt-8'>
-                                                    <button className='flex justify-between items-center w-full'>
-                                                        <div className='flex gap-2 items-center w-[80%] text-left'>
-                                                            <EnvironmentTwoTone style={{ fontSize: "21px" }} />
-                                                            <span>{clinic?.user?.city}, {clinic?.user?.state}</span>
-                                                        </div>
-                                                        <div>
-                                                            <Image src={Send} alt="Send" />
-                                                        </div>
-                                                    </button>
-                                                </div>
-                                                <div className='mt-8'>
-                                                    <a href={`tel:${clinic?.phone}`} className='flex justify-between items-center w-full'>
-                                                        <div className='flex gap-2 items-center w-[100%] text-left'>
-                                                            <div className='text-[#0094DA]'>
+                                    <div className='lowerSection'>
+                                        <section className='mt-[40px]'>
+                                            <div className='header'>
+                                                <Image src={cap} alt="cap" />
+                                                <h4>{t("Bio")}</h4>
+                                            </div>
+                                            <p className='normalPara px-4'>
+                                                {clinic?.bio}
+                                            </p>
+                                        </section>
+                                        <section className="mt-[40px]">
+                                            <div className='header'>
+                                                <Image src={building} alt="coo" />
+                                                <h4>{t("Coordonnées")}</h4>
+                                            </div>
+                                            <Row className='sm:px-4 block sm:flex' gutter={[20, 20]}>
+                                                <Col md={12}>
+                                                    <div className='mt-8'>
+                                                        <button className='flex justify-between items-center w-full'>
+                                                            <div className='flex gap-2 items-center w-[80%] text-left'>
+                                                                <EnvironmentTwoTone style={{ fontSize: "21px" }} />
+                                                                <span>{clinic?.user?.city}, {clinic?.user?.state}</span>
+                                                            </div>
+                                                            <div>
+                                                                <Image src={Send} alt="Send" />
+                                                            </div>
+                                                        </button>
+                                                    </div>
+                                                    <div className='mt-8'>
+                                                        <a href={`tel:${clinic?.phone}`} className='flex justify-between items-center w-full'>
+                                                            <div className='flex gap-2 items-center w-[100%] text-left'>
+                                                                <div className='text-[#0094DA]'>
+                                                                    <Phone />
+                                                                </div>
+                                                                <span>{clinic?.phone}</span>
+                                                            </div>
+                                                            <div className='text-[#93C01F]'>
                                                                 <Phone />
                                                             </div>
-                                                            <span>{clinic?.phone}</span>
-                                                        </div>
-                                                        <div className='text-[#93C01F]'>
-                                                            <Phone />
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div className='mt-8'>
-                                                    <button className='flex gap-2 items-center'>
-                                                        <Image src={Message} alt="Message" className='text-[#fff]' />
-                                                        <span>{clinic?.email}</span>
-                                                    </button>
-                                                </div>
-                                                <div className='mt-8'>
-                                                    <p>{t("Réseaux sociaux")}</p>
-                                                    <div className='flex gap-3 mt-4 items-center'>
-                                                        {
-                                                            clinic?.facebookLink &&
-                                                            <a href={clinic?.facebookLink} target="_blank">
-                                                                <Image src={Facebook} alt="Facebook" className='text-red' style={{ color: "red" }} />
-                                                            </a>
-                                                        }
-                                                        {
-                                                            clinic?.twitter &&
-                                                            <a href={clinic?.twitter} target="_blank">
-                                                                <Image src={Twitter} alt="Twitter" />
-                                                            </a>
-                                                        }
-                                                        {
-                                                            clinic?.instagram &&
-                                                            <a href={clinic?.instagram} target="_blank">
-                                                                <Image src={Instagram} alt="Instagram" />
-                                                            </a>
-                                                        }
-                                                        {
-                                                            clinic?.messenger &&
-                                                            <a href={clinic?.messenger} target="_blank">
-                                                                <Image src={Messenger} alt="Messenger" />
-                                                            </a>
-                                                        }
+                                                        </a>
                                                     </div>
-                                                </div>
-                                            </Col>
-                                            <Col md={12} className="relative">
-                                                {/* {
+                                                    <div className='mt-8'>
+                                                        <button className='flex gap-2 items-center'>
+                                                            <Image src={Message} alt="Message" className='text-[#fff]' />
+                                                            <span>{clinic?.email}</span>
+                                                        </button>
+                                                    </div>
+                                                    <div className='mt-8'>
+                                                        <p>{t("Réseaux sociaux")}</p>
+                                                        <div className='flex gap-3 mt-4 items-center'>
+                                                            {
+                                                                clinic?.facebookLink &&
+                                                                <a href={clinic?.facebookLink} target="_blank">
+                                                                    <Image src={Facebook} alt="Facebook" className='text-red' style={{ color: "red" }} />
+                                                                </a>
+                                                            }
+                                                            {
+                                                                clinic?.twitter &&
+                                                                <a href={clinic?.twitter} target="_blank">
+                                                                    <Image src={Twitter} alt="Twitter" />
+                                                                </a>
+                                                            }
+                                                            {
+                                                                clinic?.instagram &&
+                                                                <a href={clinic?.instagram} target="_blank">
+                                                                    <Image src={Instagram} alt="Instagram" />
+                                                                </a>
+                                                            }
+                                                            {
+                                                                clinic?.messenger &&
+                                                                <a href={clinic?.messenger} target="_blank">
+                                                                    <Image src={Messenger} alt="Messenger" />
+                                                                </a>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </Col>
+                                                <Col md={12} className="relative">
+                                                    {/* {
                                                     gpsDataLoading ?
                                                         <Loading />
                                                         : */}
-                                                <LocationComp coords={[clinic?.gpsData?.replace(/\s+/g, '').split(",")[0], clinic?.gpsData?.replace(/\s+/g, '').split(",")[1]]} />
-                                                {/* } */}
-                                            </Col>
-                                        </Row>
-                                    </section>
-                                    <section className='mt-8'>
-                                        <div className='header'>
-                                            <Image src={services} alt="services" />
-                                            <h4>{t("Services")}</h4>
-                                        </div>
-                                        <ul className='px-4'>
-                                            {
-                                                clinic?.services && clinic.services?.map((service) => {
-                                                    return (
-                                                        <li>
-                                                            {t(service)}
-                                                        </li>
-                                                    )
-                                                })
-                                            }
-                                        </ul>
-                                    </section>
-                                    <section className='mt-8'>
-                                        <div className='header flex justify-between flex-wrap items-center'>
-                                            <div className='flex gap-2'>
-                                                <Image src={timeClock} alt="timeClock" />
-                                                <h4>{t("Horaire de travail")}</h4>
+                                                    <LocationComp coords={[clinic?.gpsData?.replace(/\s+/g, '').split(",")[0], clinic?.gpsData?.replace(/\s+/g, '').split(",")[1]]} />
+                                                    {/* } */}
+                                                </Col>
+                                            </Row>
+                                        </section>
+                                        <section className="mt-[40px]">
+                                            <div className='header'>
+                                                <Image src={services} alt="services" />
+                                                <h4>{t("Services")}</h4>
                                             </div>
-                                            <div className='text-[#29C773] font-[600]'>{clinic?.schedule?.filter(f => f.day?.toLowerCase() == tod)[0] && t("Ouvert")}</div>
-                                        </div>
-                                        <div className='px-4 calendar flex gap-10 flex-wrap'>
-                                            {
-                                                clinic?.schedule && clinic.schedule?.map((sch) => {
-                                                    return (
-                                                        <div className='min-w-[100px]'>
-                                                            <Image src={calendar} alt="calendar" />
-                                                            <h5>{t(sch.day)}</h5>
-                                                            <div className='flex flex-wrap items-center'>
-                                                                <p>{sch.open}  -  {sch.close}</p>
-                                                            </div>
-                                                        </div>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                    </section>
-                                    <section className='mt-8'>
-                                        <div className='header'>
-                                            <Image src={notes} alt="notes" />
-                                            <h4>{t("Notes")}</h4>
-                                        </div>
-                                        <ul className='px-4'>
-                                            {
-                                                clinic?.notes && clinic.notes?.map((note) => {
-                                                    return (
-                                                        <li>
-                                                            {t(note)}
-                                                        </li>
-                                                    )
-                                                })
-                                            }
-                                        </ul>
-                                    </section>
-                                    <section className='mt-8'>
-                                        <div className='header flex items-center'>
-                                            <MessageTwoTone style={{ fontSize: "28px" }} />
-                                            <h4>{t("Commentaires")}</h4>
-                                            <div className='count'>{comments.length}</div>
-                                        </div>
-                                        <div className='sm:px-4' id='commentSection'>
-                                            {
-                                                comments?.length > 0 && comments.map(comment => {
-                                                    return (
-                                                        <>
-                                                            {
-                                                                !comment.responseTo &&
-                                                                <div className='my-8'>
-                                                                    <CommentCard pageId={pageId} comment={comment} handleUpdate={() => getAllComments(pageId)} />
-                                                                    <ReplyCommentCard pageId={pageId} parentId={comment?._id} comments={comments} handleUpdate={() => getAllComments(pageId)} />
+                                            <ul className='px-4'>
+                                                {
+                                                    clinic?.services && clinic.services?.map((service) => {
+                                                        return (
+                                                            <li>
+                                                                {t(service)}
+                                                            </li>
+                                                        )
+                                                    })
+                                                }
+                                            </ul>
+                                        </section>
+                                        <section className="mt-[40px]">
+                                            <div className='header flex justify-between flex-wrap items-center'>
+                                                <div className='flex gap-2'>
+                                                    <Image src={timeClock} alt="timeClock" />
+                                                    <h4>{t("Horaire de travail")}</h4>
+                                                </div>
+                                                <div className='text-[#29C773] font-[600]'>{clinic?.schedule?.filter(f => f.day?.toLowerCase() == tod)[0] && t("Ouvert")}</div>
+                                            </div>
+                                            <div className='px-4 calendar flex gap-10 flex-wrap'>
+                                                {
+                                                    clinic?.schedule && clinic.schedule?.map((sch) => {
+                                                        return (
+                                                            <div className='min-w-[100px]'>
+                                                                <Image src={calendar} alt="calendar" />
+                                                                <h5>{t(sch.day)}</h5>
+                                                                <div className='flex flex-wrap items-center'>
+                                                                    <p>{sch.open}  -  {sch.close}</p>
                                                                 </div>
-                                                            }
-                                                        </>
-                                                    )
-                                                })
-                                            }
-                                            <div className='my-12'>
-                                                <AddComment pageId={pageId} handleUpdate={() => getAllComments(pageId)} />
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
                                             </div>
-                                        </div>
-                                    </section>
+                                        </section>
+                                        <section className="mt-[40px]">
+                                            <div className='header'>
+                                                <Image src={notes} alt="notes" />
+                                                <h4>{t("Notes")}</h4>
+                                            </div>
+                                            <ul className='px-4'>
+                                                {
+                                                    clinic?.notes && clinic.notes?.map((note) => {
+                                                        return (
+                                                            <li>
+                                                                {t(note)}
+                                                            </li>
+                                                        )
+                                                    })
+                                                }
+                                            </ul>
+                                        </section>
+                                        <section className="mt-[40px]">
+                                            <div className='header flex items-center'>
+                                                <MessageTwoTone style={{ fontSize: "28px" }} />
+                                                <h4>{t("Commentaires")}</h4>
+                                                <div className='count'>{comments.length}</div>
+                                            </div>
+                                            <div className='sm:px-4' id='commentSection'>
+                                                {
+                                                    comments?.length > 0 && comments.map(comment => {
+                                                        return (
+                                                            <>
+                                                                {
+                                                                    !comment.responseTo &&
+                                                                    <div className='my-[32px]'>
+                                                                        <CommentCard pageId={pageId} comment={comment} handleUpdate={() => getAllComments(pageId)} />
+                                                                        <ReplyCommentCard pageId={pageId} parentId={comment?._id} comments={comments} handleUpdate={() => getAllComments(pageId)} />
+                                                                    </div>
+                                                                }
+                                                            </>
+                                                        )
+                                                    })
+                                                }
+                                                <div className='my-12'>
+                                                    <AddComment pageId={pageId} handleUpdate={() => getAllComments(pageId)} />
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
                                 </>
                         }
                     </div>

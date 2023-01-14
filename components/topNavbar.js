@@ -9,7 +9,7 @@ import { Cookies } from 'react-cookie';
 
 export default function TopNavbar() {
   const cookies = new Cookies;
-  const [lang, setLang] = useState("fr");
+  const [lang, setLang] = useState("Fr");
   const [show, setShow] = useState(false);
   const router = useRouter()
   const { t, i18n } = useTranslation();
@@ -42,16 +42,16 @@ export default function TopNavbar() {
 
   return (
     // <header className="hidden container mx-auto lg:flex flex-wrap py-6 flex-col md:flex-row items-center">
-    <header className="text-gray-600 py-4 px-5 md:px-0 bg-sitegreen body-font">
+    <header className="text-gray-600 py-4 px-[16px] md:px-0 bg-[#93C01F] body-font">
       <div className="container mx-auto flex flex-wrap justify-between w-full md:flex-row lg:items-center">
         <div>
           <button onClick={() => router.push("/")} className="flex justify-start title-font text-[14px] font-[500] lg:items-center text-white mb-4 md:mb-0">
             {t("Rozaliss")}
           </button>
         </div>
-        <div className='w-full sm:w-auto flex items-center gap-4 justify-between'>
-          <div className='bg-white rounded-[8px] px-4 p-2 flex items-center justify-center'>
-            <p className={"text-[14px] tracking-wide font-[500] text-dark__color"}>
+        <div className='w-full sm:w-auto flex items-center gap-[40px] justify-between'>
+          <div className='bg-white rounded-[8px] h-[32px] px-[12px] flex items-center justify-center'>
+            <p className={"text-[12px] tracking-wide font-[500] text-[#1C2126] "}>
               {t("Compte Proféssionel ?")}
             </p>
           </div>
@@ -59,20 +59,20 @@ export default function TopNavbar() {
             <Link href="/blogs">{t("Blog")}</Link>
           </div>
           <div className='relative'>
-            <div onClick={() => setShow(!show)} className='rounded-[32px] cursor-pointer relative border border-white p-0 flex items-center gap-1'>
+            <div onClick={() => setShow(!show)} className='rounded-[32px] cursor-pointer relative border border-white p-[2px] flex items-center gap-1'>
               <Image className={"cursor-pointer"} width={23} height={23} src={france} alt={"France"} />
-              <span className={"text-sm text-white p-1"}>{lang || "fr"}</span>
+              <span className={"text-sm text-white p-1"} style={{ textTransform: "capitalize" }}>{lang || "Fr"}</span>
             </div>
             {
               show &&
               <div className='border p-1 py-2 bg-sitegreen absolute w-full min-w-[62px] top-10'>
                 <div onClick={() => { setLang("Fr"); setShow(!show); changeLanguage("fr") }} className='border-white p-2 flex cursor-pointer items-center gap-2'>
                   <Image className={"cursor-pointer"} width={40} height={40} src={france} alt={"France"} />
-                  <span className={"text-sm text-white"}>Fr</span>
+                  <span className={"text-sm text-white"} style={{ textTransform: "capitalize" }}>Fr</span>
                 </div>
                 <div onClick={() => { setLang("Ar"); setShow(!show); changeLanguage("ar") }} className='mt-2 border-white p-2 cursor-pointer flex items-center gap-2'>
                   <Image className={"cursor-pointer"} width={1000} height={1000} src={arabic} alt={"France"} />
-                  <span className={"text-sm text-white"}>Ar</span>
+                  <span className={"text-sm text-white"} style={{ textTransform: "capitalize" }}>Ar</span>
                 </div>
               </div>
             }

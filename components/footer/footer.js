@@ -5,7 +5,7 @@ import FooterBottom from "./footerBottom";
 const Footer = () => {
     return (
         <>
-            <section className={"py-10 bg-[#1C2126]"}>
+            <section className={"py-[40px] bg-[#1C2126]"}>
                 <div className={"mx-auto container "}>
                     <FooterTop />
                     <FooterBottom />

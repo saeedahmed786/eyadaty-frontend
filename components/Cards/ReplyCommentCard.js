@@ -7,7 +7,7 @@ const ReplyCommentCard = ({ comments, pageId, handleUpdate, parentId }) => {
         comments?.map(comment => {
             return (
                 comment.responseTo === parentId &&
-                <div className='ml-12 my-8'>
+                <div className='ml-12 my-[32px]'>
                     <CommentCard pageId={pageId} comment={comment} handleUpdate={handleUpdate} />
                     <ReplyCommentCard pageId={pageId} parentId={comment._id} comments={comments} handleUpdate={handleUpdate} />
                 </div>

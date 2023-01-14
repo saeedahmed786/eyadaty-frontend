@@ -173,8 +173,8 @@ const Admin = () => {
                                     <Image src={aboutimg} alt="Doc" height={193} width={174} />
                                 </div>
                                 <div className='w-full'>
-                                    <p className="text-sm  text-sitegreen mb-0 w-full">{t("Témoignages")}</p>
-                                    <h1 className="text-[32px] sm:text-[56px] mb-0 font-extrabold leading-[64px] text-gray-900">Achref maher.</h1>
+                                    <p className="text-sm  text-[#93C01F] mb-0 w-full">{t("Témoignages")}</p>
+                                    <h1 className="text-[32px] sm:text-[56px] mb-0 font-extrabold leading-[64px] text-[#333B42]">Achref maher.</h1>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +188,7 @@ const Admin = () => {
                                             <UserIcon />
                                         </div>
                                         <div className='w-full'>
-                                            <h1 className="text-[32px] sm:text-[56px] mb-0 font-extrabold leading-[64px] text-gray-900">{formatStringNumbers(totalUsers)}</h1>
+                                            <h1 className="text-[32px] sm:text-[56px] mb-0 font-extrabold leading-[64px] text-[#333B42]">{formatStringNumbers(totalUsers)}</h1>
                                             <p className="text-sm text-[#65737E] mb-0 w-full">{t("Utilisateurs")}</p>
                                         </div>
                                     </div>
@@ -201,7 +201,7 @@ const Admin = () => {
                                             <DocumentIcon />
                                         </div>
                                         <div className='w-full'>
-                                            <h1 className="text-[32px] sm:text-[56px] mb-0 font-extrabold leading-[64px] text-gray-900">{formatStringNumbers(totalPages)}</h1>
+                                            <h1 className="text-[32px] sm:text-[56px] mb-0 font-extrabold leading-[64px] text-[#333B42]">{formatStringNumbers(totalPages)}</h1>
                                             <p className="text-sm text-[#65737E] mb-0 w-full">{t("Les pages")}</p>
                                         </div>
                                     </div>

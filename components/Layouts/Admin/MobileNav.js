@@ -95,7 +95,7 @@ const MobileNav = ({ handleMask }) => {
                         <BurgerMenuIcon />
                     </button>
                 </div>
-                <a className="flex title-font font-medium items-center  text-gray-900 mb-4 md:mb-0">
+                <a className="flex title-font font-medium items-center  text-[#333B42] mb-4 md:mb-0">
                     <EyedatyLogo />
                 </a>
             </div>

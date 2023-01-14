@@ -51,7 +51,7 @@ export default function LabCard({ clinic }) {
                     <div className="p-6">
                         <div className='flex flex-row space-x-2'>
                             <div>
-                                <h5 className="text-gray-900 text-[16px] font-[700] mb-2">{clinic?.title}</h5>
+                                <h5 className="text-[#333B42] text-[16px] font-[700] mb-2">{clinic?.title}</h5>
                             </div>
                             <div className='py-1'>
                                 <Image src={checkmark} alt="checkmark" />
@@ -65,7 +65,7 @@ export default function LabCard({ clinic }) {
                                 <LocationIcon />
                             </div>
                             <div className=' p-2'>
-                                <p className="text-gray-700 text-base mb-4">
+                                <p className="text-[#65737E] text-base mb-4">
                                     {clinic?.user?.city}, {clinic?.user?.state}
                                 </p>
                             </div>
@@ -95,7 +95,7 @@ export default function LabCard({ clinic }) {
                             </div>
                         </div>
                         <div className='flex justify-center'>
-                            <button onClick={() => router.push(`/doctor/${clinic?._id}`)} type="button" className="px-16 py-4 bg-white border-2 border-siteblue  text-siteblue font-medium text-sm leading-tight uppercase rounded-xl shadow-md hover:bg-siteblue hover:text-white hover:shadow-lg focus:bg-siteblue focus:shadow-lg focus:outline-none focus:ring-0 active:bg-siteblue active:shadow-lg transition duration-150 ease-in-out flex items-center gap-3">Voir Plus <RightIcon /> </button>
+                            <button onClick={() => router.push(`/doctor/${clinic?._id}`)} type="button" className="px-16 py-4 bg-white border-2 border-[#0094DA]   text-[#0094DA] font-medium text-sm leading-tight uppercase rounded-xl shadow-md hover:bg-siteblue hover:text-white hover:shadow-lg focus:bg-siteblue focus:shadow-lg focus:outline-none focus:ring-0 active:bg-siteblue active:shadow-lg transition duration-150 ease-in-out flex items-center gap-3">Voir Plus <RightIcon /> </button>
                         </div>
                     </div>
                 </div>
