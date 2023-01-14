@@ -10,7 +10,7 @@ export default function DownloadApp({ noMargin }) {
     <div className="bg-[url('../assets/downloadbanner.png')] bg-cover bg-no-repeat downloadComp">
       <div className={`flex flex-row justify-between flex-wrap md:flex-nowrap min-h-[480px] h-full ${!noMargin && "0"} px-5 container mx-auto`}>
         <div className='rtl:md:max-w-[40vw] flex flex-col justify-center space-y-[24px] text-center sm:text-left py-5 sm:py-0'>
-          <h1 className="rtl:text-end text-[48px] max-w-[640px] leading-[56px] tracking-tight	 font-[700] text-[#FFFFFF] ltr:sm:pr-32">
+          <h1 className="rtl:text-end rtl:max-w-[500px] text-[48px] max-w-[640px] leading-[56px] tracking-tight	 font-[700] text-[#FFFFFF] ltr:sm:pr-32">
             {t("Téléchargez l'application Eyadaty.")}
           </h1>
           <h3 className="text-[16px] font-[400] text-[#FFFFFF] rtl:text-end">

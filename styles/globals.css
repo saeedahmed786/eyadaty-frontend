@@ -1779,6 +1779,10 @@ html[dir='rtl'] .homeSearchBtn {
     direction: ltr !important;
 }
 
+html[dir='rtl'] .downloadComp button {
+    direction: rtl !important;
+}
+
 html[dir='rtl'] .right-icon-ham {
     transform: rotate(180deg) !important;
 }
