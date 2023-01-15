@@ -2,9 +2,9 @@ import Image from 'next/image'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-export default function CategoryCard({ cat, language }) {
+export default function CategoryCard({ cat }) {
   const { i18n } = useTranslation();
-  console.log(i18n)
+
   return (
     <div className="w-full categoryCard text-center">
       <div className=" bg-[#F5F8FB] rounded-[24px]">

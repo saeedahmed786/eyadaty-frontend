@@ -21,7 +21,6 @@ export default function Categories({ categories }) {
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 6,
-    centerPadding: '60px',
     initialSlide: 0,
     responsive: [
       {
@@ -64,7 +63,7 @@ export default function Categories({ categories }) {
 
 
   return (
-    <section className="text-[#1C2126] body-font categoriesComp bg-[url('../assets/Lines-alt.png')] bg-cover bg-no-repeat  ">
+    <section className="text-[#1C2126] body-font categoriesComp bg-[url('../assets/Lines-alt.png')] bg-cover bg-no-repeat categoriesSection">
       <div className="lg:container py-[160px] px-5 pb-[80px] md:py-[125px] mx-auto ">
         <div className="flex flex-wrap justify-center sm:justify-between px-0 w-full mb-20">
           <div className="w-full sm:w-auto lg:w-1/2 rtl:lg:w-auto mb-6 lg:mb-0">

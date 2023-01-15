@@ -1930,3 +1930,31 @@ html[dir="rtl"] body .catImg {
         width: auto !important;
     } */
 }
+
+.mainMobileNav {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.mainMobileNav a {
+    /* font-family: 'Poppins'; */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+    text-align: center;
+
+    /* Colors / Gray / Gray-Dark */
+
+    color: #333B42;
+}
+
+.categoriesSection .slick-list {
+    height: 200px !important;
+}
+
+.categoriesSection .slick-slide {
+    width: 178px !important;
+    margin-left: 16px;
+}

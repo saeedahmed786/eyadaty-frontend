@@ -76,8 +76,8 @@ export default function Navbar() {
 
   return (
     <header className="text-gray-600 body-font">
-      <div className="hidden lg:container mx-auto lg:flex flex-wrap py-6 flex-col md:flex-row items-center">
-        <a className="flex title-font font-medium items-center text-[#333B42] mb-4 md:mb-0">
+      <div className="hidden lg:container mx-auto lg:flex flex-wrap py-[16px] flex-col md:flex-row items-center">
+        <a className="flex title-font font-medium items-center text-[#333B42] mb-0 md:mb-0">
           <EyedatyLogo />
         </a>
         <nav className="hidden ltr:md:mr-auto rtl:md:ml-auto rtl:gap-10 rtl:md:mr-10 gap-4 md:ml-4 md:py-1 md:pl-4 md:border-gray-400	md:flex flex-wrap items-center text-base justify-center">
@@ -119,47 +119,48 @@ export default function Navbar() {
         </div>
       </div>
       {/* phonenav */}
-      <div>
-        <div className="w-full px-[16px] py-2 flex justify-between lg:hidden">
+      <div className='mainMobileNav'>
+        <div className="w-full px-[16px] py-[16px] flex justify-between lg:hidden">
           <div className='w-1/2 py-3'>
             <button onClick={() => setShow(!show)} >
               <BurgerMenuIcon />
             </button>
           </div>
-          <a className="flex title-font font-medium items-center  text-[#333B42] mb-4 md:mb-0">
+          <a className="flex title-font font-medium items-center  text-[#333B42] mb-0 md:mb-0">
             <EyedatyLogo />
           </a>
         </div>
         <div className='relative'>
           {
             show &&
-            <div className='pb-6 absolute w-full bg-white z-[1000]'>
+            <div className='pb-[16px] absolute w-full bg-white z-[1000] pt-[36px]'>
               <nav className="px-[28px] md:border-l md:border-gray-400	text-base justify-center">
                 <div>
-                  <Link href="/" className="mr-5 mt-[24px] text-[16px] font-[500] hover:text-[#0094DA]">{t("Accueil")}</Link>
+                  <Link href="/" className="mr-5 text-[16px] font-[500] hover:text-[#0094DA]">{t("Accueil")}</Link>
                 </div>
-                <div className='mt-4'>
-                  <Link href="/about-us" className="mr-5 mt-[24px] hover:text-[#0094DA]">{t("À propos de nous")}</Link>
+                <div className='mt-[24px]'>
+                  <Link href="/about-us" className="mr-5 hover:text-[#0094DA]">{t("À propos de nous")}</Link>
                 </div>
-                <div className='mt-4'>
-                  <Link href="/contact-us" className="mr-5 mt-[24px] hover:text-[#0094DA]">{t("Contactez-nous")}</Link>
+                <div className='mt-[24px]'>
+                  <Link href="/contact-us" className="mr-5 hover:text-[#0094DA]">{t("Contactez-nous")}</Link>
                 </div>
-              </nav>
-              <div className='mt-6 px-4'>
+                {/* <div className='mt-6 px-[28px]'> */}
                 {
                   userAuth ?
-                    <Dropdown overlay={menu}>
-                      <button className='flex items-center gap-2'>
-                        <Image src={DownArrow} alt="DownArrow" />
-                        <div>{userAuth?.fullName}</div>
-                        {
-                          userAuth?.picture ?
-                            <img src={userAuth?.picture?.url} width={43} className="rounded-[50%] object-cover h-[43px]" alt="Profile" />
-                            :
-                            <Image src={Doc} alt="Doc" width={43} height={43} className="rounded-[50%]" />
-                        }
-                      </button>
-                    </Dropdown>
+                    <div>
+                      <div className='mt-[24px]'>
+                        <a href="/profile" className='text-[#333B42] text-[14px] font-[500]'>{t("Profile")}</a>
+                      </div>
+                      <div className='mt-[24px]'>
+                        <Link href="/favourites" className='text-[#333B42] text-[14px] font-[500]'>{t("Favoris")}</Link>
+                      </div>
+                      <div className='mt-[24px]'>
+                        <Link href="/profile/create-page" className='text-[#333B42] text-[14px] font-[500]'>{t("Créer un page")}</Link>
+                      </div>
+                      <div className='mt-[32px]'>
+                        <button className='h-[32px] w-full mt-4 px-[16px] py-[8px] rounded-[8px] border border-[#FF6551] text-[14px] text-[#FF6551] font-[500] flex justify-center items-center ' onClick={handleLogout}>{t("Déconnexion")}</button>
+                      </div>
+                    </div>
                     :
                     <div>
                       <button onClick={() => router.push("/login")} className="focus:outline-0 w-full text-[#0094DA] border border-[#0094DA] text-[14px] font-[500] rounded-[8px] h-[32px]">
@@ -170,7 +171,8 @@ export default function Navbar() {
                       </button>
                     </div>
                 }
-              </div>
+                {/* </div> */}
+              </nav>
             </div>
           }
         </div>
