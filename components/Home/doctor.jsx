@@ -12,9 +12,9 @@ export default function Doctor() {
 
     return (
         <div className="bg-gray-700 w-full py-1 mt-[80px] sm:mt-[180px] doctorComp">
-            <div className="flex flex-row p-4 sm:p-0 flex-wrap justify-between my-[14px] px-5 container mx-auto bg-center bg-opacity-5 bg-cover bg-no-repeat">
-                <div className='flex flex-col rtl:text-start text-center sm:text-left justify-center sm:pr-10 space-y-[24px] w-full sm:w-3/5 leftText'>
-                    <h1 className="text-[56px] leading-[64px] font-[700] text-white dark:text-white ltr:sm:pr-32">
+            <div className="flex flex-row p-4 lg:p-0 flex-wrap justify-between my-[14px] px-5 lg:container mx-auto bg-center bg-opacity-5 bg-cover bg-no-repeat">
+                <div className='flex flex-col rtl:text-start text-center sm:text-left justify-center lg:pr-10 space-y-[24px] w-full md:w-3/5 leftText'>
+                    <h1 className="text-[56px] leading-[64px] font-[700] text-white dark:text-white ltr:lg:pr-32">
                         {t("Se sentir mieux pour trouver des soins de santé")}
                     </h1>
                     <h3 className="text-[16px] font-[400] text-white dark:text-white sm:w-[60%]">
@@ -26,7 +26,7 @@ export default function Doctor() {
                         </button>
                     </div>
                 </div>
-                <div className='sm:w-2/5 hidden sm:flex items-center mt-10 sm:mt-0 rightDoc md:text-end'>
+                <div className='sm:w-2/5 hidden md:flex items-center mt-10 sm:mt-0 rightDoc md:text-end'>
                     {
                         i18n.language === "fr"
                             ?

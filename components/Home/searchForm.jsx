@@ -58,7 +58,7 @@ export default function SearchForm() {
     return (
         <div className='flex justify-center searchForm mx-[16px] sm:mx-0'>
             {/* max-w-md */}
-            <div className="bg-white p-[28px] rounded-[20px] sm:mx-0 sm:w-[86%]  mt-[-11%]" style={{ zIndex: "1000" }}>
+            <div className="bg-white p-[28px] rounded-[20px] sm:mx-0 sm:w-[86%] mt-[-6%] md:mt-[-11%]" style={{ zIndex: "1000" }}>
                 <div className='mx-auto'>
                     <form onSubmit={(e) => e.preventDefault()}>
                         <div className="block md:flex justify-around gap-[24px] mb-[24px]">

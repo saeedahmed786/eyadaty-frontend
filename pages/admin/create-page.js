@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../components/Layouts/Admin/AdminLayout'
 import { ArrowUpOutlined, DeleteFilled, EnvironmentOutlined, InfoCircleFilled } from '@ant-design/icons'
 import RightIcon from '../../components/icons/righticon'
-import PlusIcon from '../../components/icons/plusIcon'
 import SelectBoxWidthSearch from '../../components/Inputs/SelectBox'
 import ProfileSelectBox from '../../components/Profile/ProfileSelectBox'
 import ProfileIcon from '../../assets/gallery.svg';

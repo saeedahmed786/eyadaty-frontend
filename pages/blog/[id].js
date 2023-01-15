@@ -88,9 +88,9 @@ const Blog = () => {
 
     return (
         <MainLayout navbar>
-            <div className='Blog px-4 py-12 sm:px-24'>
+            <div className='Blog px-4 py-12 xl:px-24'>
                 <Row gutter={[23, 23]}>
-                    <Col md={16}>
+                    <Col xs={24} lg={16}>
                         <div className='flex gap-2 justify-start items-center py-4'>
                             <span>{t("Accueil")}</span>
                             <RightIcon />
@@ -180,7 +180,7 @@ const Blog = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col md={8}>
+                    <Col xs={24} lg={8}>
                         {/* <div className='searchBox relative'>
                             <span>Chercher</span>
                             <br />
@@ -206,7 +206,7 @@ const Blog = () => {
                             {/* <SmallBlogCard />
                             <SmallBlogCard /> */}
                         </div>
-                        <div className='keywords px-4'>
+                        <div className='keywords lg:px-4'>
                             <h3>
                                 {t("Mot clés")}
                             </h3>

@@ -13,7 +13,7 @@ const FooterTop = () => {
 
     return (
         <>
-            <div className={" border-b border-[#333B42] mb-[44px] pb-[40px] gap-8 grid px-4 md:grid-cols-footer__columns md__custom:grid-cols-footer__columns__lg sm__custom:text-center sm__custom:grid-cols-footer__columns__sm"}>
+            <div className={" border-b border-[#333B42] mb-[44px] pb-[40px] gap-8 grid px-4 lg:grid-cols-footer__columns md__custom:grid-cols-footer__columns__lg sm__custom:text-center sm__custom:grid-cols-footer__columns__sm"}>
                 <div className={"flex flex-col items-start gap-5 "}>
                     <Image src={Logo} alt="Logo Image" className={" object-contain"} />
                     <p className={"text-[#A7ADBA]  text-[12px] font-[400] tracking-wide"}>
@@ -33,7 +33,7 @@ const FooterTop = () => {
                         })}
                     </div>
                 </div>
-                <div className="hidden sm:block">
+                <div className="hidden lg:block">
                     <h2 className={"text-white font-[700] text-[16px] leading-[24px]"}>{t("Liens")}</h2>
                     <ul className={"flex flex-col gap-3 mt-[16px]"}>
                         {/* {['Accueil', 'À propos de nous', 'Rozaliss', 'Termes et conditions', 'Politique de confidentialité'].map(text => {
@@ -56,7 +56,7 @@ const FooterTop = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="hidden sm:block">
+                <div className="hidden lg:block">
                     <h2 className={"opacity-0 pointer-events-none"}>Liens</h2>
                     <ul className={"flex flex-col gap-3 mt-[16px]"}>
                         <li className={"text-[#A7ADBA]  text-[12px] font-[400] tracking-wide"}>
@@ -73,7 +73,7 @@ const FooterTop = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="flex justify-between mt-[30px]">
+                <div className="flex text-start justify-between mt-[30px]">
                     <div>
                         <h2 className={"text-white font-[700] text-[16px] leading-[24px]"}>{t("Liens")}</h2>
                         <ul className={"flex flex-col gap-3 mt-[16px]"}>
@@ -112,9 +112,9 @@ const FooterTop = () => {
                         </ul>
                     </div>
                 </div>
-                <div>
+                <div className="text-start">
                     <h2 className={"text-white font-[700] text-[16px] leading-[24px]"}>{t("Contactez-nous")}</h2>
-                    <div className={"flex flex-col gap-3 mt-[16px] sm__custom:items-center"}>
+                    <div className={"text-start flex flex-col gap-3 mt-[16px] md__custom:items-center"}>
                         {[{ Icon: BsEnvelope, text: 'Eyadaty@email.com' }, { Icon: FiPhoneCall, text: '+213540070124' }, { Icon: IoLocationOutline, text: 'Algiers, Algeria' }, { Icon: BsWhatsapp, text: '+213540070124' }].map(el => {
                             return (
                                 <Fragment key={el.text}>

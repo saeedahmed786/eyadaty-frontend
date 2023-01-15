@@ -42,8 +42,8 @@ export default function TopNavbar() {
 
   return (
     // <header className="hidden container mx-auto lg:flex flex-wrap py-6 flex-col md:flex-row items-center">
-    <header className="text-gray-600 py-4 px-[16px] md:px-0 bg-[#93C01F] body-font">
-      <div className="container mx-auto flex flex-wrap justify-between w-full md:flex-row lg:items-center">
+    <header className="text-gray-600 py-4 px-[16px] lg:px-0 bg-[#93C01F] body-font mainTopNavbar">
+      <div className="lg:container mx-auto flex px-0 sm:px-4 flex-wrap justify-between w-full md:flex-row lg:items-center">
         <div>
           <button onClick={() => router.push("/")} className="flex justify-start title-font text-[14px] font-[500] lg:items-center text-white mb-4 md:mb-0">
             {t("Rozaliss")}
@@ -60,7 +60,12 @@ export default function TopNavbar() {
           </div>
           <div className='relative'>
             <div onClick={() => setShow(!show)} className='rounded-[32px] cursor-pointer relative border border-white p-[2px] flex items-center gap-1'>
-              <Image className={"cursor-pointer"} width={23} height={23} src={france} alt={"France"} />
+              {
+                lang === "Fr" ?
+                  <Image className={"cursor-pointer"} width={23} height={23} src={france} alt={"France"} />
+                  :
+                  <Image className={"cursor-pointer"} width={23} height={23} src={arabic} alt={"France"} />
+              }
               <span className={"text-sm text-white p-1"} style={{ textTransform: "capitalize" }}>{lang || "Fr"}</span>
             </div>
             {

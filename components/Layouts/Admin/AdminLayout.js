@@ -57,15 +57,15 @@ const AdminLayout = (props) => {
                     {
                         props.sidebar ?
                             <Row className='block md:flex mt-0'>
-                                <Col md={4} className="hidden md:block bg-white">
+                                <Col xs={24} lg={4} className="hidden lg:block bg-white">
                                     <AdminSidebar />
                                 </Col>
-                                <Col md={20} className="md:bg-[#F5F8FB]">
+                                <Col xs={24} lg={20} className="md:bg-[#F5F8FB]">
                                     <div className='md:p-5'>
-                                        <div className='hidden md:block'>
+                                        <div className='hidden lg:block'>
                                             <AdminNavbar />
                                         </div>
-                                        <div className='block md:hidden bg-white' style={{ zIndex: "1000" }}>
+                                        <div className='block lg:hidden bg-white' style={{ zIndex: "1000" }}>
                                             <MobileNav handleMask={(val) => setMask(val)} />
                                         </div>
                                         <div className={`mx-2`}>

@@ -43,7 +43,7 @@ const AboutUsPage = () => {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                     infinite: true,
-                    dots: true
+                    dots: false
                 }
             },
             {
@@ -51,14 +51,16 @@ const AboutUsPage = () => {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
-                    initialSlide: 2
+                    initialSlide: 2,
+                    dots: false
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    dots: false
                 }
             }
         ]
@@ -66,7 +68,7 @@ const AboutUsPage = () => {
 
     return (
         <MainLayout navbar>
-            <div className='AboutUsPage container px-5 mx-auto pb-24 pt-6'>
+            <div className='AboutUsPage lg:container px-5 mx-auto pb-24 pt-6'>
                 <div className='text-center'>
                     <div className='flex gap-2 justify-center items-center py-4'>
                         <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("À propos de nous")}</button>
@@ -75,8 +77,8 @@ const AboutUsPage = () => {
                 </div>
                 <AboutUs />
                 <section className="text-gray-600 body-font girlSection">
-                    <div className="container mx-auto flex px-0 sm:py-24 md:flex-row flex-col items-center justify-center ">
-                        <div className="lg:flex-grow md:w-1/2 flex flex-col md:items-start md:text-left sm:mb-16 md:mb-0 items-center text-center">
+                    <div className="container mx-auto flex px-0 sm:py-24 md:flex-row flex-col items-center flex-wrap justify-center ">
+                        <div className="lg:flex-grow lg:w-1/2 flex flex-col md:items-start md:text-left sm:mb-16 md:mb-0 items-center text-center">
                             <div className='sm:max-w-[80%]'>
                                 <p className="text-sm rtl:md:text-end  text-[#93C01F] font-bold mb-0 w-full">{t("Notre services")}</p>
                                 <h1 className="bigTitle">{t("Nous fournissons les meilleurs service?")}</h1>
@@ -85,25 +87,25 @@ const AboutUsPage = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="hidden md:block lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                        <div className="hidden md:block lg:max-w-lg lg:w-full md:w-1/2 w-full">
                             <Image src={aboutimg} alt="Image of doctor" width={420} height={428.03} />
                         </div>
                     </div>
                 </section >
-                <section className="text-gray-600 body-font">
-                    <div className="container mx-auto py-24">
+                <section className="text-gray-600 px-5 lg:px-0 body-font">
+                    <div className="lg:container mx-auto py-24">
                         <div className="mb-16 md:mb-0 text-center flex justify-center items-center">
                             <div className='max-w-[100%]'>
                                 <div className='md:flex justify-center'>
-                                    <div className='md:w-[40%]'>
+                                    <div className='lg:w-[40%]'>
                                         <p className="text-sm  text-[#93C01F] font-bold mb-0 w-full">{t("Témoignages")}</p>
                                         <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-[#333B42]">{t("Qu'ont-ils dit de nous ?")}</h1>
                                     </div>
                                 </div>
                                 <div className='mb-24 flex justify-center p-5 sm:p-0'>
-                                    <Slider {...settings} className="w-[100%] sm:max-w-[50%]">
+                                    <Slider {...settings} className="w-[100%] lg:max-w-[50%]">
                                         <div className='px-4'>
-                                            <Row align="middle" className='bg-[#93C01F] rounded-[24px] py-6 px-6'>
+                                            <Row align="middle" gutter={[12, 12]} className='bg-[#93C01F] rounded-[24px] py-6 px-6'>
                                                 <Col xs={24} sm={4} className='qoutes-white text-left sm:text-auto'>
                                                     <Image src={qoutesWhite} style={{ width: "100px" }} alt="White Qoutes Sign" />
                                                 </Col>
@@ -161,8 +163,8 @@ const AboutUsPage = () => {
                                     </Slider>
                                 </div>
                                 <div>
-                                    <div className='md:flex justify-center'>
-                                        <div className='md:w-[40%]'>
+                                    <div className='lg:flex justify-center'>
+                                        <div className='lg:w-[40%]'>
                                             <p className="text-sm  text-[#93C01F] font-bold mb-2 w-full">{t("Notre partenaires")}</p>
                                             <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-[#333B42]">{t("Nos partenaires de réussite")}</h1>
                                         </div>

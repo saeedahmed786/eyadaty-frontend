@@ -27,7 +27,7 @@ const BlogsSearch = ({ changeBlogId }) => {
             <div>
                 <label>{t("Chercher")}</label>
                 <br />
-                <input placeholder={t('Chercher')} onClick={() => setShow(true)} onChange={(e) => { handleSearch(e.target.value); setShow(true) }} />
+                <input placeholder={t('Chercher')} className="w-full" onClick={() => setShow(true)} onChange={(e) => { handleSearch(e.target.value); setShow(true) }} />
                 <div className='absolute right-4 top-10'>
                     <Image src={SearchIcon} alt="Search" />
                 </div>

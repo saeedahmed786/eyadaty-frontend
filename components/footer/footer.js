@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <>
             <section className={"py-[40px] bg-[#1C2126]"}>
-                <div className={"mx-auto container "}>
+                <div className={"mx-auto lg:container "}>
                     <FooterTop />
                     <FooterBottom />
                 </div>

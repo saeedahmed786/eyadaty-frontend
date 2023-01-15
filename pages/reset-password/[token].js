@@ -38,7 +38,7 @@ const ResetPassword = () => {
 
     return (
         <MainLayout navbar>
-            <div className='container px-5 mx-auto py-8'>
+            <div className='lg:container px-5 mx-auto py-8'>
                 {
                     success ?
                         <div className='my-5'>
@@ -50,8 +50,8 @@ const ResetPassword = () => {
                             <CustomErrorMessage messages="Les deux mots de passe ne sont pas identiques" handleClose={() => setError(false)} />
                         </div>
                 }
-                <Row className='py-0' align="middle">
-                    <Col md={12} className="pr-0 md:pr-24">
+                <Row className='py-0 block lg:flex' align="middle">
+                    <Col lg={12} className="pr-0 lg:pr-24">
                         <div className='flex gap-2 items-center py-3'>
                             <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]' href="/reset-password">{t("Réinitialisation du mot de passe")}</Link>
                         </div>
@@ -105,7 +105,7 @@ const ResetPassword = () => {
                             </Form.Item>
                         </Form>
                     </Col>
-                    <Col md={12} className="hidden sm:block">
+                    <Col lg={12} className="hidden lg:block">
                         <Image src={illustration} className="mt-4 w-full min-w-max h-full" alt="illustration" />
                     </Col>
                 </Row>

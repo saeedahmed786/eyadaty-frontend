@@ -36,7 +36,7 @@ const Signup = () => {
 
     return (
         <MainLayout navbar>
-            <div className='container px-5 mx-auto py-8'>
+            <div className='lg:container px-5 mx-auto py-8'>
                 {
                     success ?
                         <div className='my-5'>
@@ -51,8 +51,8 @@ const Signup = () => {
                 <div className='flex gap-2 items-center'>
                     <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]' href="/signup">{t("S'inscrire")}</Link>
                 </div>
-                <Row className='py-10 block sm:flex' align="middle">
-                    <Col md={12}>
+                <Row className='py-10 block lg:flex' align="middle">
+                    <Col lg={12}>
                         <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>{t("Créer un compte")}</h1>
                         <div className='flex gap-2 py-6'>
                             <div>{t("Vous n'avez pas de compte ?")}</div>
@@ -148,7 +148,7 @@ const Signup = () => {
                             <SocialLogin />
                         </div>
                     </Col>
-                    <Col md={12} className="hidden sm:block">
+                    <Col lg={12} className="hidden lg:block">
                         <Image src={illustration} className="w-full min-w-max h-full" alt="illustration" />
                     </Col>
                 </Row>

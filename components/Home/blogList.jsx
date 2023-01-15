@@ -154,13 +154,13 @@ export default function BlogList({ blogs }) {
     return (
         <div>
             <section className="text-gray-600 body-font blogList">
-                <div className="container px-5 py-[80px] mx-auto">
+                <div className="lg:container px-5 py-[80px] mx-auto">
                     <div className="flex flex-wrap justify-between w-full sm:mb-[48px]">
-                        <div className="lg:w-[80%] rtl:md:w-auto w-full mb-6 lg:mb-0">
+                        <div className="lg:w-[80%] rtl:md:w-auto w-full sm:w-auto mb-6 lg:mb-0">
                             <p className='text-[16px]  text-[#93C01F] font-[500]  text-center rtl:md:text-start sm:text-left'>{t("Notre blog")}</p>
                             <h1 className="bigTitle text-center sm:text-left">{t("Voir notre dernier blog")}</h1>
                         </div>
-                        <div className='w-full sm:w-[auto] flex justify-center sm:justify-center gap-[17px] my-6 sm:my-0'>
+                        <div className='w-full flex justify-center sm:justify-center gap-[17px] my-6 sm:my-0'>
                             <button onClick={() => slickRef.current?.slickPrev()}>
                                 <div> <LeftIcon /> </div>
                             </button>

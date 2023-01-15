@@ -12,7 +12,7 @@ const TermsAndConditions = () => {
 
     return (
         <MainLayout navbar>
-            <div className='container px-5 mx-auto pb-24 pt-6'>
+            <div className='lg:container px-5 mx-auto pb-24 pt-6'>
                 <div className='hidden md:flex justify-center align-middle text-center'>
                     <Image src={illustration} alt="illustration" className='w-full' />
                 </div>

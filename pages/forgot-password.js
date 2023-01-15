@@ -34,7 +34,7 @@ const ForgotPassword = () => {
 
     return (
         <MainLayout navbar>
-            <div className='container px-5 mx-auto py-8'>
+            <div className='lg:container px-5 mx-auto py-8'>
                 {
                     success ?
                         <div className='my-5'>
@@ -47,7 +47,7 @@ const ForgotPassword = () => {
                         </div>
                 }
                 <Row className='py-0' align="middle">
-                    <Col md={12} className="pr-0 md:pr-24">
+                    <Col lg={12} className="pr-0 ">lg:pr-24
                         <div className='flex gap-2 items-center py-4'>
                             <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]' href="/forgot-password">{t("Oublié le mot de passe")}</Link>
                         </div>
@@ -83,7 +83,7 @@ const ForgotPassword = () => {
                             </Form.Item>
                         </Form>
                     </Col>
-                    <Col md={12} className="hidden md:block">
+                    <Col lg={12} className="hidden lg:block">
                         <Image src={illustration} alt="illustration" />
                     </Col>
                 </Row>

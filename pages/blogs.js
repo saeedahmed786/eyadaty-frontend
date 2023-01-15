@@ -78,12 +78,12 @@ const Blogs = () => {
 
     return (
         <MainLayout navbar>
-            <div className='blogsPage px-4 sm:px-24 py-8'>
+            <div className='blogsPage px-4 xl:px-24 py-8'>
                 <div className='flex gap-2 justify-center items-center py-4'>
                     <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]' href="/faq">{t("Blog")}</button>
                 </div>
                 <div className='flex justify-center'>
-                    <div className='md:w-[40%]'>
+                    <div className='lg:w-[40%]'>
                         <h1 className='bigTitle text-center py-3'>{t("Voir notre dernier blog")}</h1>
                     </div>
                 </div>
@@ -116,7 +116,7 @@ const Blogs = () => {
                     </div>
                 </div>
                 <Row>
-                    <Col md={6} className="rtl:mt-8">
+                    <Col lg={6} className="rtl:mt-8">
                         <h1 className='bigTitle text-center py-3'>{t("Catégories")}</h1>
                         <div className='mt-8'>
                             {
@@ -133,7 +133,7 @@ const Blogs = () => {
                             }
                         </div>
                     </Col>
-                    <Col md={18} className="sm:pl-12 pt-8">
+                    <Col lg={18} className="lg:pl-12 pt-8">
                         <Row gutter={[23, 32]}>
                             {
                                 blogs && blogs?.length > 0 && blogs.map(blog => {

@@ -25,50 +25,49 @@ export default function Categories({ categories }) {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1400,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 5,
+          slidesToScroll: 5,
           infinite: true,
-          dots: true
+          dots: false
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 770,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          initialSlide: 2,
+          dots: false
         }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2
+          slidesToScroll: 2,
+          dots: false
         }
       }
     ]
   };
 
-  // useEffect(() => {
-  //   if (document.getElementsByTagName('html')[0].dir === "ltr") {
-  //     setLanguage("fr");
-  //   } else {
-  //     setLanguage("ar")
-  //   }
-
-  //   return () => {
-
-  //   }
-  // }, [])
-
 
   return (
     <section className="text-[#1C2126] body-font categoriesComp bg-[url('../assets/Lines-alt.png')] bg-cover bg-no-repeat  ">
-      <div className="container py-[160px] pb-[80px] md:py-[125px] mx-auto ">
+      <div className="lg:container py-[160px] px-5 pb-[80px] md:py-[125px] mx-auto ">
         <div className="flex flex-wrap justify-center sm:justify-between px-0 w-full mb-20">
-          <div className="w-full lg:w-1/2 rtl:lg:w-auto mb-6 lg:mb-0">
+          <div className="w-full sm:w-auto lg:w-1/2 rtl:lg:w-auto mb-6 lg:mb-0">
             <p className='rtl:md:text-start text-center sm:text-left pl-1 text-[16px]  text-[#93C01F] font-[500]'>{t("Explorez tous les")}</p>
             <h1 className="text-[46px] sm:text-[56px] mb-[24px] leading-[45px] font-[700] text-[#1C2126] mt-2 text-center sm:text-left">{t("Catégories")}</h1>
           </div>

@@ -13,7 +13,7 @@ const NotFoundPage = () => {
 
     return (
         <MainLayout navbar>
-            <div className='container px-5 mx-auto pb-24 pt-6'>
+            <div className='md:container px-5 mx-auto pb-24 pt-6'>
                 <div className='flex justify-center align-middle text-center'>
                     <div>
                         <Image src={illustration} alt="illustration" className='w-full' />

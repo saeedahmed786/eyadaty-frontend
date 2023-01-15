@@ -82,7 +82,7 @@ const Login = () => {
 
     return (
         <MainLayout navbar>
-            <div className='container px-5 mx-auto py-8'>
+            <div className='lg:container px-5 mx-auto py-8'>
                 {
                     success ?
                         <div className='my-5'>
@@ -97,8 +97,8 @@ const Login = () => {
                 <div className='flex gap-2 items-center'>
                     <span>{t("Accueil")}</span> <RightIcon />  <button className='text-[#0094DA] border-0' onClick={() => router.push("/signup")}>{t("Connexion")}</button>
                 </div>
-                <Row className='py-10'>
-                    <Col md={12}>
+                <Row className='py-10' align={"middle"}>
+                    <Col lg={12}>
                         <h1 className='text-[48px] leading-[56px] sm:text-[64px] sm:leading-[72px] font-[700]'>{t("Connectez-vous à votre compte")}</h1>
                         <div className='flex gap-2 py-6'>
                             <div>{t("Vous n'avez pas de compte ?")}</div>
@@ -168,7 +168,7 @@ const Login = () => {
                             <SocialLogin />
                         </div>
                     </Col>
-                    <Col md={12} className="hidden sm:block">
+                    <Col lg={12} className="hidden lg:block">
                         <Image src={illustration} alt="illustration" />
                     </Col>
                 </Row>

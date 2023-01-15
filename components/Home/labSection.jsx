@@ -58,9 +58,9 @@ export default function LabSection({ clinics }) {
   return (
     <div>
       <section className="body-font mt-[172px] clinicsSection">
-        <div className="container px-5 sm:py-[48px] mx-auto">
+        <div className="lg:container px-5 sm:py-[48px] mx-auto">
           <div className="flex flex-wrap justify-between w-full mb-[48px]">
-            <div className="lg:w-1/2 rtl:md:w-auto w-full mb-6 lg:mb-0">
+            <div className="lg:w-1/2 rtl:md:w-auto w-full sm:w-auto mb-6 lg:mb-0">
               <p className='text-[16px]  text-[#93C01F] font-[500]  text-center rtl:md:text-start sm:text-left'>{t("Explorez tous les")}</p>
               <h1 className="bigTitle text-center sm:text-left">{t("Laboratoires")}</h1>
             </div>

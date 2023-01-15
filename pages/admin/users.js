@@ -1,7 +1,7 @@
 import { Table } from 'antd'
 import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../components/Layouts/Admin/AdminLayout'
-import { DeleteOutlined, EyeOutlined } from '@ant-design/icons'
+import { DeleteOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons'
 import AdminPagination from '../../components/Admin/Pagination'
 import RightIcon from '../../components/icons/righticon'
 import DeleteModal from '../../components/DeleteModal'
@@ -10,6 +10,7 @@ import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages
 import { isAuthenticated } from '../../components/Auth/auth'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
+import Link from 'next/link'
 
 const Users = () => {
     const { t } = useTranslation();
@@ -68,6 +69,7 @@ const Users = () => {
                     <div className='text-[#0094DA] text-[12px] font-[500]'>{_id}</div>
                 </>
             ),
+            responsive: ['md'],
         },
         {
             title: t('Nom & Prénom'),
@@ -80,6 +82,7 @@ const Users = () => {
                 </>
             ),
             sorter: (a, b) => a?.fullName?.localeCompare(b?.fullName),
+            responsive: ['md'],
         },
         {
             title: t('Date de naissance'),
@@ -90,7 +93,8 @@ const Users = () => {
                     <div className='text-[#0094DA] text-[12px] font-[500]'>{moment(dob).format('DD/MM/YYYY')}</div>
                 </>
             ),
-            sorter: (a, b) => a.dob.length - b.dob.length
+            sorter: (a, b) => a.dob.length - b.dob.length,
+            responsive: ['md'],
         },
         {
             title: t('Wilaya'),
@@ -133,8 +137,40 @@ const Users = () => {
                     </div>
                 </div>
                 <h1 className='bigTitle'>{t("Utilisateurs")}</h1>
-                <div className='mt-10 bg-white'>
-                    <Table showSorterTooltip columns={columns} pagination={false} dataSource={users} />
+                <div className='mt-10'>
+                    <div className='hidden md:block bg-white'>
+                        <Table showSorterTooltip columns={columns} pagination={false} dataSource={users} />
+                    </div>
+                    <div className='block md:hidden'>
+                        {
+                            users && users.length > 0 && users.map(user => {
+                                return (
+                                    <div className='my-1'>
+                                        <div className='flex justify-between items-start p-3 bg-white mt-1 rounded-[16px]'>
+                                            <div>
+                                                <div className='text-[#0094DA] text-[12px] font-[500]'>#{user._id}</div>
+                                                <h2 className='textElipsisTwoLines font-[500] mt-5'>
+                                                    {user?.fullName}
+                                                </h2>
+                                                <p className='mt-5 text-[12px]'>
+                                                    {moment(user?.dob).format("DD/MM/YYYY")}
+                                                </p>
+                                                <div className='mt-5 text-[12px]'>{user?.city}</div>
+                                                <div className='mt-5 text-[12px]'>{user?.state}</div>
+                                            </div>
+                                            <div className='flex justify-end text-end'>
+                                                <div className='flex items-center gap-4'>
+                                                    <Link href={"/page/" + user._id}><EyeOutlined /></Link>
+                                                    <EditOutlined onClick={() => router.push(`/admin/update-article/${user._id}`)} />
+                                                    <DeleteModal id={user?._id} deleteFun={deleteHandler} deleteBtn={<DeleteOutlined style={{ verticalAlign: "middle" }} />} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                     <div className='adminPagination p-4 flex items-center justify-between my-12'>
                         <p className='text-[#65737E] text-[12px]'>{t("Affichage de")} {current * 10} sur {totalUsers} entrées</p>
                         <AdminPagination totalLength={totalUsers} handlePagination={(curr) => { setCurrent(curr); getAllUsers(userAuth, curr) }} />

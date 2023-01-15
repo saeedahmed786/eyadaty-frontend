@@ -54,7 +54,7 @@ export default function Navbar() {
       <Menu.Item key={3} className="mt-[20px]">
         <div className='flex gap-[10px] items-center'>
           <Image src={createPage} alt="Create Page Icon" />
-          <Link href="/create-page" className='text-[#333B42] text-[14px] font-[500]'>{t("Créer un page")}</Link>
+          <Link href="/profile/create-page" className='text-[#333B42] text-[14px] font-[500]'>{t("Créer un page")}</Link>
         </div>
       </Menu.Item>
       <Menu.Item key={4} className="mt-[21px]">
@@ -76,7 +76,7 @@ export default function Navbar() {
 
   return (
     <header className="text-gray-600 body-font">
-      <div className="hidden container mx-auto lg:flex flex-wrap py-6 flex-col md:flex-row items-center">
+      <div className="hidden lg:container mx-auto lg:flex flex-wrap py-6 flex-col md:flex-row items-center">
         <a className="flex title-font font-medium items-center text-[#333B42] mb-4 md:mb-0">
           <EyedatyLogo />
         </a>
@@ -108,10 +108,10 @@ export default function Navbar() {
               </Dropdown>
               :
               <div className='flex items-center gap-2'>
-                <button onClick={() => router.push("/signup")} className="focus:outline-0 w-[108px] border bg-transparent border-[#0094DA] text-[#0094DA] text-[14px] font-[500] rounded-[12px] py-[8px]">
+                <button onClick={() => router.push("/login")} className="focus:outline-0 w-[108px] border bg-transparent border-[#0094DA] text-[#0094DA] text-[14px] font-[500] rounded-[12px] py-[8px]">
                   {t("Connexion")}
                 </button>
-                <button onClick={() => router.push("/login")} className="focus:outline-0 w-[108px] bg-[#0094DA] hover:text-white text-white text-[14px] font-[500] rounded-[12px] py-[8px]">
+                <button onClick={() => router.push("/signup")} className="focus:outline-0 w-[108px] bg-[#0094DA] hover:text-white text-white text-[14px] font-[500] rounded-[12px] py-[8px]">
                   {t("S'inscrire")}
                 </button>
               </div>

@@ -88,8 +88,8 @@ const MobileNav = ({ handleMask }) => {
     )
 
     return (
-        <div className='pb-6'>
-            <div className="w-full px-2 py-2 flex justify-between lg:hidden">
+        <div className='pb-6 adminMobileNav'>
+            <div className="w-full px-2 py-2 flex justify-between lg:hidden" style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.08)" }}>
                 <div className='w-1/2 py-3'>
                     <button onClick={() => { setShow(!show); handleMask(!show) }} >
                         <BurgerMenuIcon />
@@ -100,7 +100,7 @@ const MobileNav = ({ handleMask }) => {
                 </a>
             </div>
             <div>
-                <div className='relative'>
+                <div className='relative mt-[16px]'>
                     {
                         show &&
                         <div className='px-2 relative w-full bg-white z-[1000]'>
@@ -189,7 +189,7 @@ const MobileNav = ({ handleMask }) => {
                         </div>
                     </div>
                 </div>
-                <div className='w-[100%] mt-4 px-2'>
+                <div className='w-[100%] mt-[21px] px-2'>
                     <SearchInputs placeholder="Chercher..." />
                 </div>
             </div >

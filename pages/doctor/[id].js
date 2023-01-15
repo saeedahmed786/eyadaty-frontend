@@ -249,7 +249,7 @@ const IndDoctor = () => {
 
     return (
         <MainLayout navbar>
-            <div className='DoctorDetails px-4 py-12 pt-[80px] sm:px-24'>
+            <div className='DoctorDetails px-4 py-12 pt-[80px] xl:px-24'>
                 <div>
                     <div>
                         {

@@ -58,9 +58,9 @@ export default function ClinicsSection({ clinics }) {
   return (
     <div>
       <section className="text-gray-600 body-font clinicsSection">
-        <div className="container px-5 pt-[80px] sm:pb-[48px] mx-auto">
+        <div className="lg:container px-5 pt-[80px] sm:pb-[48px] mx-auto">
           <div className="flex flex-wrap justify-between w-full mb-[48px]">
-            <div className="lg:w-1/2 rtl:md:w-auto w-full mb-6 lg:mb-0">
+            <div className="lg:w-1/2 rtl:md:w-auto w-full sm:w-auto mb-6 lg:mb-0">
               <p className='text-[16px]  text-[#93C01F] font-[500]  text-center rtl:md:text-start sm:text-left'>{t("Explorez tous les")}</p>
               <h1 className="bigTitle text-center sm:text-left">{t("Cliniques")}</h1>
             </div>

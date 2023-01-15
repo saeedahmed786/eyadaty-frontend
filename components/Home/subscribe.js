@@ -10,8 +10,8 @@ export default function Subscribe() {
     return (
         <div className='subscribeComp'>
             <section className="text-gray-600 body-font bg-[url('../assets/Background.svg')] bg-no-repeat bg-cover min-h-[600px] h-full w-full">
-                <div className="container px-5 mx-auto py-[90px]">
-                    <div className={"text-center sm:text-left w-full sm:w-[50%]"}>
+                <div className="lg:container px-5 mx-auto py-[90px]">
+                    <div className={"text-center sm:text-left w-full lg:w-[50%]"}>
                         <Image src={Logo} alt={"Logo"} width={166} height={168} />
                         <h1 className={"text-[32px] leading-[40px] sm:text-[48px] sm:leading-[56px] font-[700] text-[#1C2126] pt-[44px]"}>
                             {t("Abonnez-vous pour toute mise à jour")}

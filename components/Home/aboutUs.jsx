@@ -8,17 +8,17 @@ export default function AboutUs() {
     const { t } = useTranslation();
     return (
         <section className="text-gray-600 sm:bg-[url('../assets/Lines.png')] bg-cover bg-no-repeat  body-font aboutUsComp">
-            <div className="container mx-auto flex px-3 sm:px-5 pt-[80px] md:py-[122px] md:flex-row flex-col items-center justify-center ">
-                <div className="hidden sm:block lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+            <div className="lg:container mx-auto flex-wrap lg:flex-nowrap flex px-3 sm:px-5 pt-[80px] md:py-[122px] md:flex-row flex-col items-center justify-center ">
+                <div className="hidden sm:block lg:max-w-lg mb-10 lg:mb-0 md:w-full lg:w-1/2 w-5/6">
                     <Image src={aboutimg} alt="Image of doctor" width={420} height={428.03} />
                     {/* <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600"> */}
                 </div>
-                <div className="inner lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start justify-start text-end md:text-left md:mb-0 items-center">
+                <div className="inner lg:flex-grow md:w-full lg:pl-16 flex flex-col md:items-start justify-start text-end md:text-left md:mb-0 items-center">
                     <p className="text-center md:text-start rtl:md:text-start text-[16px]  text-[#93C01F] font-[500] mb-2 w-full">{t("À propos de nous")}</p>
-                    <div className='text-center rtl:md:ml-auto rtl:md:mb-6 '>
+                    <div className='text-left rtl:md:ml-auto rtl:md:mb-6 '>
                         <h1 className="text-[46px] sm:text-[56px] mb-[24px] leading-[45px] font-[700] text-[#1C2126]">{t("Qui sommes nous?")}</h1>
                     </div>
-                    <p className="mb-8 text-center rtl:md:text-start leading-relaxed">
+                    <p className="mb-8 text-left rtl:md:text-start leading-relaxed">
                         {t("Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad. Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.")}
                     </p>
                     <div className="flex w-full justify-center text-center md:justify-start items-end">

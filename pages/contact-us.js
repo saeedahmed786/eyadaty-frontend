@@ -39,9 +39,9 @@ const ContactUs = () => {
 
     return (
         <MainLayout navbar>
-            <div className='container px-5 mx-auto py-8'>
+            <div className='lg:container px-5 mx-auto py-8'>
                 <Row align="middle">
-                    <Col md={12} className="pr-0 md:pr-24">
+                    <Col xs={24} lg={12} className="pr-0 lg:pr-24">
                         <div className='flex gap-2 items-center py-4'>
                             <span>{t("Accueil")}</span> <RightIcon /> <Link className='text-[#0094DA]' href="/contact-us">{t("Contactez-nous")}</Link>
                         </div>
@@ -124,7 +124,7 @@ const ContactUs = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col md={12} className="hidden md:block">
+                    <Col lg={12} className="hidden lg:block">
                         <Image src={illustration} alt="illustration" />
                     </Col>
                 </Row >

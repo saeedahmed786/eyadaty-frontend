@@ -165,8 +165,8 @@ const Admin = () => {
     return (
         <AdminLayout sidebar>
             <div className='Admin pt-6'>
-                <Row gutter={[0, 0]}>
-                    <Col md={14} className="hidden md:block pr-6">
+                <Row gutter={[0, 0]} className="px-3 md:px-0">
+                    <Col xs={24} md={14} className="hidden md:block pr-6">
                         <div className="bg-white p-6 py-10 shadow-[0px 2px 4px rgba(0, 0, 0, 0.08)] rounded-[16px]">
                             <div className='flex items-center justify-between gap-6'>
                                 <div>
@@ -179,9 +179,9 @@ const Admin = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col md={10}>
-                        <Row>
-                            <Col xs={24} md={12} className="pr-6">
+                    <Col xs={24} md={10}>
+                        <Row gutter={[12, 12]}>
+                            <Col xs={24} sm={12} className="pr-6">
                                 <div className="bg-white p-6 py-10 pt-6 shadow-[0px 2px 4px rgba(0, 0, 0, 0.08)] rounded-[16px]">
                                     <div className=''>
                                         <div className='bg-[#C9E681] w-[48px] h-[48px] rounded-[50%] flex justify-center items-center'>
@@ -194,7 +194,7 @@ const Admin = () => {
                                     </div>
                                 </div>
                             </Col>
-                            <Col xs={24} md={12} className="pr-6 mt-4 sm:mt-0">
+                            <Col xs={24} sm={12} className="pr-6 mt-4 sm:mt-0">
                                 <div className="bg-white p-6 py-10 pt-6 shadow-[0px 2px 4px rgba(0, 0, 0, 0.08)] rounded-[16px]">
                                     <div className=''>
                                         <div className='bg-[#4DC5FF] w-[48px] h-[48px] rounded-[50%] flex justify-center items-center'>

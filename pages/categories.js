@@ -41,7 +41,7 @@ const Categories = () => {
                     </div>
                     <h1 className='bigTitle mt-[32px]'>{t("Catégories")}</h1>
                 </div>
-                <div className='flex flex-wrap gap-2 sm:gap-6 mt-[64px]'>
+                <div className='flex justify-center flex-wrap gap-2 sm:gap-6 mt-[64px]'>
                     {
                         specialitiesArray && specialitiesArray?.map(cat => {
                             return (

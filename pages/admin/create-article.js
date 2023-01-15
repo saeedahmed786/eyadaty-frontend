@@ -21,7 +21,7 @@ const CreateBlog = () => {
     const [userAuth, setUserAuth] = useState();
     const [loading, setLoading] = useState(false);
     const [uploadedFile, setUploadedFile] = useState({});
-    const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
     const [categoryId, setCategoryId] = useState("");
     const [title, setTitle] = useState("");
 
@@ -46,15 +46,15 @@ const CreateBlog = () => {
         "code-block"
     ];
 
-    const getAllCategories = async () => {
-        await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/categories/get`).then(res => {
-            if (res.statusText === "OK") {
-                setCategories(res.data);
-            } else {
-                ErrorMessage(res.data.errorMessage);
-            }
-        })
-    }
+    // const getAllCategories = async () => {
+    //     await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/categories/get`).then(res => {
+    //         if (res.statusText === "OK") {
+    //             setCategories(res.data);
+    //         } else {
+    //             ErrorMessage(res.data.errorMessage);
+    //         }
+    //     })
+    // }
 
     const handleFileUpload = (f) => {
         uploadFilesFun(f, userAuth?.token).then(res => {
@@ -64,7 +64,7 @@ const CreateBlog = () => {
 
     useEffect(() => {
         setUserAuth(isAuthenticated());
-        getAllCategories()
+        // getAllCategories()
 
         return () => {
 

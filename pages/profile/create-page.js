@@ -625,7 +625,7 @@ const CreatePage = () => {
                                                 {
                                                     uploadedFilesList?.length > 0 ? uploadedFilesList.map(file => {
                                                         return (
-                                                            <div className='imageBox relative w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                            <div className='imageBox relative sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                                 <img src={file?.url} className="rounded-[12px] border h-[132px] w-[148px]" alt="Gallery Icon" />
                                                                 <DeleteFilled className='absolute top-[-8px] right-0' onClick={() => handleFileRemove(file)} />
                                                             </div>
@@ -633,25 +633,25 @@ const CreatePage = () => {
                                                     })
                                                         :
                                                         <>
-                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                            <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                                 <Image src={galleryIcon} alt="Gallery Icon" />
                                                             </div>
-                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                            <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                                 <Image src={galleryIcon} alt="Gallery Icon" />
                                                             </div>
-                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                            <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                                 <Image src={galleryIcon} alt="Gallery Icon" />
                                                             </div>
-                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                            <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                                 <Image src={galleryIcon} alt="Gallery Icon" />
                                                             </div>
-                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                            <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                                 <Image src={galleryIcon} alt="Gallery Icon" />
                                                             </div>
-                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                            <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                                 <Image src={galleryIcon} alt="Gallery Icon" />
                                                             </div>
-                                                            <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                            <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                                 <Image src={galleryIcon} alt="Gallery Icon" />
                                                             </div>
                                                         </>

@@ -8,7 +8,7 @@ export default function DownloadApp({ noMargin }) {
 
   return (
     <div className="bg-[url('../assets/downloadbanner.png')] bg-cover bg-no-repeat downloadComp">
-      <div className={`flex flex-row justify-between flex-wrap md:flex-nowrap min-h-[480px] h-full ${!noMargin && "0"} px-5 container mx-auto`}>
+      <div className={`flex flex-row justify-between flex-wrap md:flex-nowrap min-h-[480px] h-full ${!noMargin && "0"} px-5 lg:container mx-auto`}>
         <div className='rtl:md:max-w-[40vw] flex flex-col justify-center space-y-[24px] text-center sm:text-left py-5 sm:py-0'>
           <h1 className="rtl:text-end rtl:max-w-[500px] text-[48px] max-w-[640px] leading-[56px] tracking-tight	 font-[700] text-[#FFFFFF] ltr:sm:pr-32">
             {t("Téléchargez l'application Eyadaty.")}
@@ -16,8 +16,8 @@ export default function DownloadApp({ noMargin }) {
           <h3 className="text-[16px] font-[400] text-[#FFFFFF] rtl:text-end">
             {t("Et prenez bien soin de votre santé.")}
           </h3>
-          <div className='sm:space-x-3 flex gap-4 justify-center rtl:justify-end md:justify-start flex-wrap' style={{ width: "100%" }}>
-            <button className="bg-[#FFFFFF] inline-flex p-4 rounded-lg items-center justify-center gap-[17px] hover:bg-gray-200 focus:outline-none w-full sm:w-[auto] h-[70px]">
+          <div className='lg:space-x-3 flex gap-4 justify-center md:justify-start flex-wrap' style={{ width: "100%" }}>
+            <button className="bg-[#FFFFFF] inline-flex rtl:sm:min-w-[223px] p-4 rounded-lg items-center rtl:justify-between md:justify-center gap-[17px] hover:bg-gray-200 focus:outline-none rtl:w-[253px] sm:w-[auto] h-[70px]">
               <span className="flex items-start flex-col leading-none sm:mr-2">
                 <span className="text-[12px] text-[#333B42] font-[400] mb-1 tracking-wide">{t("Téléchargez l'application depuis")}</span>
                 <span className="text-[32px] font-[700] tracking-tight mt-[4px]">{t("Apple Store")}</span>
@@ -27,7 +27,7 @@ export default function DownloadApp({ noMargin }) {
                 <path d="M212.1 0c-15.76.64-34.67 10.35-45.97 23.58-9.6 11.13-19 29.68-16.52 48.38a2.5 2.5 0 002.29 2.17c1.06.08 2.15.12 3.23.12 15.41 0 32.04-8.52 43.4-22.25 11.94-14.5 17.99-33.1 16.16-49.77A2.52 2.52 0 00212.1 0z"></path>
               </svg>
             </button>
-            <button className="bg-[#FFFFFF] inline-flex p-4 rounded-lg items-center gap-[10px] sm:gap-[17px] justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-[auto] h-[70px]">
+            <button className="bg-[#FFFFFF] inline-flex rtl:sm:min-w-[223px] p-4 rounded-lg items-center gap-[10px] sm:gap-[17px] rtl:justify-between md:justify-center hover:bg-gray-200 focus:outline-none rtl:w-[253px] sm:w-[auto] h-[70px]">
               <span className="flex items-start flex-col leading-none sm:mr-2">
                 <span className="text-[12px] text-[#333B42] font-[400] mb-1 tracking-wide">{t("Téléchargez l'application depuis")}</span>
                 <span className="text-[32px] font-[700] tracking-tight mt-[4px]">{t("Google Store")}</span>
@@ -38,7 +38,7 @@ export default function DownloadApp({ noMargin }) {
             </button>
           </div>
         </div>
-        <div className='hidden sm:flex items-end mt-12 sm:mt-0 mr-[-92px]'>
+        <div className='hidden md:flex items-end mt-12 sm:mt-0 mr-[-92px]'>
           <Image src={apphand} alt="Appholding hand" height={476} width={467} />
         </div>
       </div>
