@@ -322,6 +322,7 @@ i18n
           "Envoyez": "Envoyez",
           "Email": "Email",
           "Bienvenu": "Bienvenu",
+          "Patients Heurex": "Patients Heurex"
         }
       },
       ar: {
@@ -333,7 +334,7 @@ i18n
           "À propos de nous": "نبذة عنا",
           "Qui sommes nous?": "من نحن؟",
           "Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad. ": "لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار ",
-          "Patients heureux.": "موعد عبر أونلاين",
+          "Patients Heurex": "موعد عبر أونلاين",
           "Rendez-vous en ligne": "مرضى سعداء",
           "Des années d'expérience": "الأطباء والعيادات",
           "Médecins et Cliniques": "سنوات من الخبرة",

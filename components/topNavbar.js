@@ -64,7 +64,7 @@ export default function TopNavbar() {
                 lang === "Fr" ?
                   <Image className={"cursor-pointer"} width={23} height={23} src={france} alt={"France"} />
                   :
-                  <Image className={"cursor-pointer"} width={23} height={23} src={arabic} alt={"France"} />
+                  <Image className={"cursor-pointer"} width={23} height={23} src={arabic} alt={"Arabic"} />
               }
               <span className={"text-sm text-white p-1"} style={{ textTransform: "capitalize" }}>{lang || "Fr"}</span>
             </div>
