@@ -16,7 +16,7 @@ export default function DownloadApp({ noMargin }) {
           <h3 className="text-[16px] font-[400] text-[#FFFFFF] rtl:text-end">
             {t("Et prenez bien soin de votre santé.")}
           </h3>
-          <div className='lg:space-x-3 flex gap-4 justify-center md:justify-start flex-wrap' style={{ width: "100%" }}>
+          <div className='lg:space-x-3 flex gap-4 justify-center md:justify-start rtl:md:justify-end flex-wrap' style={{ width: "100%" }}>
             <button className="bg-[#FFFFFF] inline-flex rtl:sm:min-w-[223px] p-4 rounded-lg items-center rtl:justify-between md:justify-center gap-[17px] hover:bg-gray-200 focus:outline-none rtl:w-[253px] sm:w-[auto] h-[70px]">
               <span className="flex items-start flex-col leading-none sm:mr-2">
                 <span className="text-[12px] text-[#333B42] font-[400] mb-1 tracking-wide">{t("Téléchargez l'application depuis")}</span>
