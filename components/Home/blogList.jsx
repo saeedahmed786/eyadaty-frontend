@@ -160,7 +160,7 @@ export default function BlogList({ blogs }) {
                             <p className='text-[16px]  text-[#93C01F] font-[500]  text-center rtl:md:text-start sm:text-left'>{t("Notre blog")}</p>
                             <h1 className="bigTitle text-center sm:text-left">{t("Voir notre dernier blog")}</h1>
                         </div>
-                        <div className='w-full flex justify-center sm:justify-center gap-[17px] my-6 sm:my-0'>
+                        <div className='w-full md:w-auto flex justify-center sm:justify-center gap-[17px] my-6 sm:my-0'>
                             <button onClick={() => slickRef.current?.slickPrev()}>
                                 <div> <LeftIcon /> </div>
                             </button>

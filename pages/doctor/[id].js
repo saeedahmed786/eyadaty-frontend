@@ -545,7 +545,9 @@ const IndDoctor = () => {
                                                                     !comment.responseTo &&
                                                                     <div className='my-[32px]'>
                                                                         <CommentCard pageId={pageId} comment={comment} handleUpdate={() => getAllComments(pageId)} />
-                                                                        <ReplyCommentCard pageId={pageId} parentId={comment?._id} comments={comments} handleUpdate={() => getAllComments(pageId)} />
+                                                                        <div className='ml-12'>
+                                                                            <ReplyCommentCard pageId={pageId} parentId={comment?._id} comments={comments} handleUpdate={() => getAllComments(pageId)} />
+                                                                        </div>
                                                                     </div>
                                                                 }
                                                             </>

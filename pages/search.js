@@ -128,7 +128,7 @@ const Search = () => {
 
     return (
         <MainLayout navbar>
-            <div className='SearchPage px-4 sm:px-24 py-8'>
+            <div className='SearchPage px-4 xl:px-24 py-8'>
                 <div className='flex gap-2 justify-start items-center py-4'>
                     <span>{t("Accueil")}</span>
                     <RightIcon />
@@ -199,12 +199,12 @@ const Search = () => {
                             <div className='hidden md:flex gap-2 items-center filterBtn'>
                                 <span>{t("Affichage")}</span>
                                 <div>
-                                    <button className={`btn ${gridCol === 12 && "focused"}`} onClick={() => setGridCol(12)}>
+                                    <button className={`btn ${gridCol === 24 && "focused"}`} onClick={() => setGridCol(24)}>
                                         <AppstoreOutlined />
                                     </button>
                                 </div>
                                 <div>
-                                    <button className={`btn ${gridCol === 24 && "focused"}`} onClick={() => setGridCol(24)}>
+                                    <button className={`btn ${gridCol === 12 && "focused"}`} onClick={() => setGridCol(12)}>
                                         <UnorderedListOutlined />
                                     </button>
                                 </div>

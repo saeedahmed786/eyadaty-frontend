@@ -167,7 +167,9 @@ const Blog = () => {
                                                     !comment.responseTo &&
                                                     <div className='my-8'>
                                                         <CommentCard pageId={blogId} comment={comment} handleUpdate={() => getAllComments(blogId)} />
-                                                        <ReplyCommentCard pageId={blogId} parentId={comment?._id} comments={comments} handleUpdate={() => getAllComments(blogId)} />
+                                                        <div className='ml-12'>
+                                                            <ReplyCommentCard pageId={blogId} parentId={comment?._id} comments={comments} handleUpdate={() => getAllComments(blogId)} />
+                                                        </div>
                                                     </div>
                                                 }
                                             </>

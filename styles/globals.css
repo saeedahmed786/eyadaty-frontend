@@ -1162,6 +1162,12 @@ p {
     min-width: fit-content !important;
 }
 
+.Favourites .ant-select-selector {
+    border: 1px solid #C0C5CE !important;
+    border-radius: 12px !important;
+    background-color: transparent !important;
+}
+
 .Favourites select {
     padding-right: 17px !important;
 }
@@ -1863,6 +1869,10 @@ html[dir="rtl"] body div {
 
 html[dir="rtl"] .mainTopNavbar {
     direction: ltr !important;
+}
+
+html[dir="rtl"] .subscribeComp>div>div {
+    direction: rtl !important;
 }
 
 html[dir="rtl"] body .catImg {

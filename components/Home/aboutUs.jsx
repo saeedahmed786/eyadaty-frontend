@@ -25,9 +25,9 @@ export default function AboutUs() {
                         <button className="w-[100%] sm:w-[auto] text-white bg-siteblue border-0 h-[48px] px-10 focus:outline-none hover:bg-sitegreen rounded-[12px] text-[16px] font-[500] flex justify-center items-center gap-3"><span>{t("Voir Plus")}</span>  <RightIcon /></button>
                     </div>
                     <div className="flex justify-between flex-wrap items-center overflow-hidden gap-7 mt-10 w-full sm:w-[80%]">
-                        <div className="box sm:space-y-2 align-middle w-[34%] sm:w-[auto]">
+                        <div className="box sm:space-y-2 align-middle ltr:w-[34%]  sm:w-[auto]">
                             <button className="inline-flex sm:py-3 rounded-lg items-center md:ml-0 md:mt-4 mt-0 lg:mt-0 hover:bg-gray-200 focus:outline-none">
-                                <span className="sm:text-left">
+                                <span className="sm:text-start">
                                     <div className="w-full sm:w-[auto] font-[700] text-[32px] text-[#1C2126]">3600 <span className='text-[#93C01F]'> + </span></div>
                                     <div className="text-[#65737E] text-[14px] sm:text-[16px] font-[400] mt-[8px]">{t("Patients Heurex")}</div>
                                 </span>
@@ -35,7 +35,7 @@ export default function AboutUs() {
                         </div>
                         <div className="box space-y-2 place-items-center">
                             <button className="inline-flex py-3 rounded-lg items-center md:ml-0 md:mt-4 mt-0 lg:mt-0 hover:bg-gray-200 focus:outline-none">
-                                <span className="sm:text-left">
+                                <span className="sm:text-start">
                                     <div className="w-full sm:w-[auto] font-[700] text-[32px] text-[#1C2126]">1200 <span className='text-[#93C01F]'> + </span></div>
                                     <div className="text-[#65737E] text-[14px] sm:text-[16px] font-[400] mt-[8px]">{t("Rendez-vous en ligne")}</div>
                                 </span>
@@ -45,7 +45,7 @@ export default function AboutUs() {
                     <div className="flex justify-between items-center overflow-hidden gap-7 sm:mt-[40px] w-full sm:w-[80%]">
                         <div className="box space-y-2">
                             <button className="inline-flex py-3 rounded-lg items-center md:ml-0 md:mt-4 mt-0 lg:mt-0 hover:bg-gray-200 focus:outline-none">
-                                <span className="sm:text-left">
+                                <span className="sm:text-start">
                                     {/* <div className='flex justify-center w-full'> */}
                                     <div className="w-full sm:w-[auto] font-[700] text-[32px] text-[#1C2126]">20 <span className='text-[#93C01F]'> + </span></div>
                                     {/* </div> */}
@@ -55,7 +55,7 @@ export default function AboutUs() {
                         </div>
                         <div className="box space-y-2">
                             <button className="inline-flex py-3 rounded-lg items-center md:ml-0 md:mt-4 mt-0 lg:mt-0 hover:bg-gray-200 focus:outline-none">
-                                <span className="sm:text-left">
+                                <span className="sm:text-start">
                                     <div className="w-full sm:w-[auto]  font-[700] text-[32px] text-[#1C2126]">200 <span className='text-[#93C01F]'> + </span></div>
                                     <div className="text-[#65737E] text-[14px] sm:text-[16px] font-[400] mt-[8px]">{t("Médecins et Cliniques")}</div>
                                 </span>

@@ -1,4 +1,4 @@
-import { Col, Pagination, Row } from 'antd'
+import { Col, Pagination, Row, Select } from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { isAuthenticated } from '../components/Auth/auth'
@@ -8,12 +8,20 @@ import Subscribe from '../components/Home/subscribe'
 import SearchInputs from '../components/Inputs/SearchInputs'
 import MainLayout from '../components/Layouts/MainLayout'
 import RightIcon from '../components/icons/righticon'
+import specialitiesArray from '../assets/specialities.json'
 import { ErrorMessage, SuccessMessage } from '../components/Messages/messages'
 import { useTranslation } from 'react-i18next'
+import DownArrow from "../assets/DownArrow.svg"
+import Image from 'next/image'
+
+
+const { Option } = Select;
 
 const Favourites = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [favourites, setFavourites] = useState([]);
+    const [filteredFavourites, setFilteredFavourites] = useState([]);
+    const [filterText, setFilterText] = useState("");
     const [current, setCurrent] = useState(1);
     const [totalFavourites, setTotalFavourites] = useState();
     const [categories, setCategories] = useState([]);
@@ -37,6 +45,7 @@ const Favourites = () => {
         }).then(res => {
             if (res.statusText === "OK") {
                 setFavourites(res.data.favourites);
+                console.log(res.data.favourites)
                 setTotalFavourites(res.data.count);
             } else {
                 ErrorMessage(res.data.errorMessage);
@@ -89,64 +98,71 @@ const Favourites = () => {
         }
         return originalElement;
     };
+
+    const filterFavourites = (val) => {
+        let filterData = favourites.filter(f => f?.page?.specialisation === val)
+        setFilteredFavourites(filterData);
+        console.log(filterData)
+    }
+
+
     return (
         <MainLayout navbar>
-            <div className='Favourites px-4 sm:px-24 py-8'>
-                <div className='flex gap-2 justify-center items-center py-4'>
+            <div className='Favourites px-4 xl:px-24 py-8'>
+                <div className='flex gap-2 justify-start xl:justify-center items-center'>
                     <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("Favoris")} </button>
                 </div>
-                <h1 className='bigTitle text-center py-3'>{t("Favoris")}</h1>
+                <h1 className='bigTitle xl:text-center pt-[32px] pb-[32px]'>{t("Favoris")}</h1>
                 <Row>
-                    <Col xs={24} md={6}>
+                    <Col xs={24} lg={6}>
                         <div>
                             <label>{t("Chercher")}</label>
                             <SearchInputs />
                         </div>
-                        <h1 className='bigTitle text-center py-4'>{t("Catégories")}</h1>
-                        <div className='mt-8'>
-                            <button className='catCard my-4'>
-                                <div className='name'>Généraliste</div>
-                                <div className='count'>100</div>
-                            </button>
-                            <button className='catCard my-4'>
-                                <div className='name'>Chirurgie dentaire</div>
-                                <div className='count'>100</div>
-                            </button>
-                            <button className='catCard my-4'>
-                                <div className='name'>Chirurgie dentaire</div>
-                                <div className='count'>100</div>
-                            </button>
-                            <button className='catCard my-4'>
-                                <div className='name'>Chirurgie dentaire</div>
-                                <div className='count'>100</div>
-                            </button>
-                            <button className='catCard my-4'>
-                                <div className='name'>Chirurgie dentaire</div>
-                                <div className='count'>100</div>
-                            </button>
-                            <button className='catCard my-4'>
-                                <div className='name'>Chirurgie dentaire</div>
-                                <div className='count'>100</div>
-                            </button>
-                            <button className='catCard my-4'>
-                                <div className='name'>Chirurgie dentaire</div>
-                                <div className='count'>100</div>
-                            </button>
-                            <button className='catCard my-4'>
-                                <div className='name'>Chirurgie dentaire</div>
-                                <div className='count'>100</div>
-                            </button>
+                        <h1 className='bigTitle hidden lg:block text-center py-4'>{t("Catégories")}</h1>
+                        <div className='mt-[24px]'>
+                            <div className="w-full form-group block lg:hidden">
+                                <label>{t("Catégories")}</label>
+                                <Select onChange={(value) => setFilterText(value)} suffixIcon={<Image src={DownArrow} alt="Down Arrow" width={12} height={7} />} placeholder={t("Spécialité")} className='w-full searchFormSelect'>
+                                    {specialitiesArray.map((spec) => (
+                                        <Option key={spec.fr} value={spec.fr}>
+                                            <div className='flex gap-2 items-center'>
+                                                <div className='catImgSmall bg-white p-1 rounded-[50%]'>
+                                                    <img src={i18n.language === "fr" ? spec?.img_f : spec?.img_h} className="w-[17px]" alt="Category" />
+                                                </div>
+                                                <div>{i18n.language === "fr" ? spec.fr : spec.ar}</div>
+                                            </div>
+                                        </Option>
+                                    ))}
+                                </Select>
+                            </div>
+                            <div className='hidden lg:block'>
+                                {specialitiesArray.map((spec) => (
+                                    <button className='catCard text-left my-4' onClick={() => setFilterText(spec.fr)}>
+                                        <div className='name'>{i18n.language === "fr" ? spec.fr : spec.ar}</div>
+                                        <div className='count'>{favourites.filter(f => f?.page?.specialisation === spec.fr).length}</div>
+                                    </button>
+                                ))
+                                }
+                            </div>
                         </div>
                     </Col>
-                    <Col xs={24} md={18} className="sm:pl-12 pt-8">
+                    <Col xs={24} lg={18} className="xl:pl-12 pt-[48px]">
                         <Row gutter={[23, 32]}>
                             {
-                                favourites?.length > 0 && favourites.map(fav => {
+                                // filteredFavourites && filteredFavourites.length > 0 ?
+                                //     filteredFavourites?.length > 0 && filteredFavourites?.map(fav => {
+                                //         return (
+                                //             <Col md={24}>
+                                //                 <SearchCard removeFavourite={removeFavourite} page={fav.page} favourite={true} />
+                                //             </Col>
+                                //         )
+                                //     })
+                                //     :
+                                favourites?.length > 0 && favourites?.filter(f => f?.page?.specialisation?.includes(filterText))?.map(fav => {
                                     return (
                                         <Col md={24}>
-                                            {/* <button onClick={() => router.push(`/doctor/${fav?.page?._id}`)}> */}
                                             <SearchCard removeFavourite={removeFavourite} page={fav.page} favourite={true} />
-                                            {/* </button> */}
                                         </Col>
                                     )
                                 })
@@ -169,7 +185,7 @@ const Favourites = () => {
             </div>
             <DownloadApp noMargin={true} />
             <Subscribe noMargin={true} />
-        </MainLayout>
+        </MainLayout >
     )
 }
 
