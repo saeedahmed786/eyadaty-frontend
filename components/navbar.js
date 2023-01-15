@@ -162,11 +162,11 @@ export default function Navbar() {
                       </div>
                     </div>
                     :
-                    <div>
+                    <div className='mt-[32px]'>
                       <button onClick={() => router.push("/login")} className="focus:outline-0 w-full text-[#0094DA] border border-[#0094DA] text-[14px] font-[500] rounded-[8px] h-[32px]">
                         {t("Connexion")}
                       </button>
-                      <button onClick={() => router.push("/signup")} className="mt-[10px] focus:outline-0 w-[100%] border bg-[#0094DA] text-[#fff] text-[14px] font-[500] rounded-[8px] h-[32px]">
+                      <button onClick={() => router.push("/signup")} className="mt-[10px] focus:outline-0 w-[100%] border border-[#0094DA] bg-[#0094DA] text-[#fff] text-[14px] font-[500] rounded-[8px] h-[32px]">
                         {t("S'inscrire")}
                       </button>
                     </div>
