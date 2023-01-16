@@ -447,7 +447,7 @@ p {
 }
 
 .homepage .blogList .slick-slide {
-    max-width: 362px !important;
+    width: 362px !important;
 }
 
 .homepage .blogList .slick-slider {
