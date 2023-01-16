@@ -61,7 +61,7 @@ export default function TopNavbar() {
           <div className='relative'>
             <div onClick={() => setShow(!show)} className='rounded-[32px] w-[56px] cursor-pointer relative border border-white p-[2px] flex items-center gap-1'>
               {
-                lang == "fr" ?
+                lang == "fr" || lang == "Fr" ?
                   <Image className={"cursor-pointer"} width={23} height={23} src={france} alt={"France"} />
                   :
                   <Image className={"cursor-pointer"} width={23} height={23} src={arabic} alt={"Arabic"} />
