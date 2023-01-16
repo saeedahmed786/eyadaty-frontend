@@ -448,10 +448,12 @@ p {
 
 .homepage .blogList .slick-slide {
     width: 362px !important;
+    height: 480px !important;
 }
 
-.homepage .blogList .slick-slider {
-    max-height: 480px !important;
+.homepage .blogList .slick-slider,
+.homepage .blogList .slick-track {
+    height: 480px !important;
 }
 
 .categoriesComp .categoryCard {
