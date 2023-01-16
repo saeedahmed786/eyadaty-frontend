@@ -14,8 +14,8 @@ export default function AboutUs() {
                     {/* <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600"> */}
                 </div>
                 <div className="inner lg:flex-grow md:w-full lg:pl-16 flex flex-col md:items-start justify-start text-end md:text-left md:mb-0 items-center">
-                    <p className="text-start rtl:text-center md:text-start rtl:md:text-start text-[16px]  text-[#93C01F] font-[500] mb-2 w-full">{t("À propos de nous")}</p>
-                    <div className='text-left rtl:md:ml-auto rtl:md:mb-6 '>
+                    <p className="text-center rtl:text-center md:text-start rtl:md:text-start text-[16px]  text-[#93C01F] font-[500] mb-2 w-full">{t("À propos de nous")}</p>
+                    <div className='text-center rtl:md:ml-auto rtl:md:mb-6 '>
                         <h1 className="text-[46px] sm:text-[56px] mb-[24px] leading-[45px] font-[700] text-[#1C2126]">{t("Qui sommes nous?")}</h1>
                     </div>
                     <p className="mb-8 text-left rtl:md:text-start leading-relaxed">
