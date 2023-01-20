@@ -18,6 +18,7 @@
     width: 100%;
 }
 
+
 body {
     overflow-x: hidden !important;
     width: 100% !important;
@@ -376,8 +377,22 @@ p {
     border: 1px solid #C0C5CE;
     border-radius: 12px;
     height: 48px;
-    min-width: 28vw;
     padding-left: 17px;
+}
+
+.blogsPage .searchBox input,
+.blogsPage .searchBox select {
+    border: 1px solid #C0C5CE;
+    border-radius: 12px;
+    height: 48px;
+    padding-left: 17px;
+    min-width: 28vw !important;
+}
+
+.blogsPage .ant-select .ant-select-selector {
+    background-color: transparent !important;
+    border: 1px solid #C0C5CE !important;
+    border-radius: 12px !important;
 }
 
 .SelectBox select {
@@ -1969,4 +1984,54 @@ html[dir="rtl"] body .catImg {
 .categoriesSection .slick-slide {
     width: 178px !important;
     margin-left: 16px;
+}
+
+
+.ant-tooltip {
+    width: 100%;
+    max-width: 479px;
+    /* background: #0094DA; */
+    border-radius: 16px;
+}
+
+.ant-tooltip-inner {
+    background: #0094DA;
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.ant-tooltip-arrow-content {
+    --antd-arrow-background-color: #0094DA !important;
+}
+
+.ant-tooltip-inner {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: start !important;
+    color: #FFFFFF;
+}
+
+.ant-tooltip-inner ul {
+    margin-top: 16px;
+    /* font-family: 'Poppins'; */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: start !important;
+    color: #FFFFFF;
+    list-style: disc;
+    margin-left: 19px !important;
+}
+
+.ant-tooltip-inner ul li {
+    margin-top: 8px;
+    text-align: start !important;
+}
+
+.gpsTooltip ul {
+    list-style: none !important;
 }

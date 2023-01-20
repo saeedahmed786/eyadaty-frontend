@@ -13,13 +13,36 @@ import { useRouter } from 'next/router'
 import { Dropdown, Menu } from 'antd'
 import { isAuthenticated, logout } from './Auth/auth'
 import { useTranslation } from 'react-i18next'
+import axios from 'axios'
 
 
 export default function Navbar() {
   const router = useRouter();
   const [userAuth, setUserAuth] = useState({});
   const [show, setShow] = useState(false);
+  const [resultsShow, setResultsShow] = useState(false);
   const { t } = useTranslation();
+  const [results, setResults] = useState([]);
+  const [clinicResults, setClinicResults] = useState([]);
+
+
+  const searchClinics = (searchTerm) => {
+    return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/search/1}?clinicName=${searchTerm}`);
+  }
+
+  const searchBlogs = (searchTerm) => {
+    return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/search?term=${searchTerm}`);
+  }
+
+
+  const handleSearch = (value) => {
+    searchBlogs(value).then((response) => {
+      setResults(response.data);
+    });
+    value && searchClinics(value).then((response) => {
+      setClinicResults(response.data);
+    });
+  }
 
   const handleLogout = () => {
     logout();
@@ -86,11 +109,54 @@ export default function Navbar() {
           <Link href="/contact-us" className="mr-5 hover:text-[#0094DA]">{t("Contactez-nous")}</Link>
         </nav>
         <div className='w-1/2 flex flex-row gap-20 justify-end'>
-          <div className='hidden md:block w-2/5 relative'>
-            <input className=" placeholder:text-slate-400 block text-left w-full rounded-[12px] bg-[#F5F8FB] p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder={t("Chercher")} type="text" name="search" />
+          <div className='hidden md:block w-2/5 relative' onMouseLeave={() => setResultsShow(false)}>
+            <input onClick={() => setResultsShow(true)} onChange={(e) => handleSearch(e.target.value)} className=" placeholder:text-slate-400 block text-left w-full rounded-[12px] bg-[#F5F8FB] p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder={t("Chercher")} type="text" name="search" />
             <div className='absolute top-4 right-2 text-black'>
               <Image className='absolute' src={SearchIcon} alt="Search" width={32} />
             </div>
+            {
+              resultsShow &&
+              <div className='results absolute w-full p-4 px-2 shadow-sm rounded-[12px] bg-[#F5F8FB]' style={{ zIndex: "1000" }}>
+                {
+                  results && results.length > 0 &&
+                  <div>
+                    <h4 className='text-[23px] border p-2 rounded-[12px]'>Blogs</h4>
+                    {
+                      results?.length > 0 ? results.map(res => {
+                        return (
+                          <div className='my-4 px-2'>
+                            <button onClick={() => { router.push(`/blog/${res._id}`) }} className='text-[16px]'>
+                              {res.title}
+                            </button>
+                          </div>
+                        )
+                      })
+                        :
+                        <div className=''>No Blogs Found!</div>
+                    }
+                  </div>
+                }
+                {
+                  clinicResults && clinicResults.length > 0 &&
+                  <div>
+                    <h4 className='text-[23px] border p-2 rounded-[12px]'>Clinics</h4>
+                    {
+                      clinicResults?.length > 0 ? clinicResults.map(res => {
+                        return (
+                          <div className='my-4 px-2'>
+                            <button onClick={() => { router.push(`/doctor/${res._id}`) }} className='text-[16px]'>
+                              {res.clinicName}
+                            </button>
+                          </div>
+                        )
+                      })
+                        :
+                        <div className=''>No Clinics Found!</div>
+                    }
+                  </div>
+                }
+              </div>
+            }
           </div>
           {
             userAuth ?

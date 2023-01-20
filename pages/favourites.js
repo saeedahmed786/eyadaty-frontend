@@ -108,7 +108,7 @@ const Favourites = () => {
 
     return (
         <MainLayout navbar>
-            <div className='Favourites px-4 xl:px-24 py-8'>
+            <div className='lg:container mx-auto Favourites px-4 lg:px-0 py-8'>
                 <div className='flex gap-2 justify-start xl:justify-center items-center'>
                     <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("Favoris")} </button>
                 </div>
@@ -119,7 +119,7 @@ const Favourites = () => {
                             <label>{t("Chercher")}</label>
                             <SearchInputs />
                         </div>
-                        <h1 className='bigTitle hidden lg:block text-center py-4'>{t("Catégories")}</h1>
+                        <h1 className='bigTitle hidden text-start lg:block py-4'>{t("Catégories")}</h1>
                         <div className='mt-[24px]'>
                             <div className="w-full form-group block lg:hidden">
                                 <label>{t("Catégories")}</label>

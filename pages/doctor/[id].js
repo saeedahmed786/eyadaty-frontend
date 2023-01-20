@@ -37,11 +37,14 @@ import EyeIcon from '../../components/icons/EyeIcon'
 import CommentIcon from '../../components/icons/CommentIcon'
 import DislikeIcon from '../../components/icons/DislikeIcon'
 import LikeIcon from '../../components/icons/LikeIcon'
+import { useRouter } from 'next/router'
 
 
 const IndDoctor = () => {
+    const router = useRouter();
     const { t, i18n } = useTranslation();
     const [userId, setUserId] = useState("")
+    const [url, setUrl] = useState("");
     const [clinic, setClinic] = useState({});
     const [comments, setComments] = useState([]);
     const [pageId, setPageId] = useState("");
@@ -49,8 +52,16 @@ const IndDoctor = () => {
     const [favourites, setFavourites] = useState([]);
     const [recommended, setRecommended] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [copied, setCopied] = useState(false);
     const [gpsDataLoading, setgpsDataLoading] = useState(true);
     const [notRecommended, setNotRecommended] = useState(false);
+    const [bookmark, setBookmark] = useState(false);
+
+    const handleBookmark = () => {
+        const currentUrl = window.location.href;
+        window.localStorage.setItem("bookmark", currentUrl);
+        setBookmark(currentUrl);
+    };
 
     const getClinic = async (id) => {
         await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/get/${id}`).then(res => {
@@ -122,6 +133,8 @@ const IndDoctor = () => {
         setRecommended(clinic?.recommendations?.includes(isAuthenticated()._id))
         setNotRecommended(clinic?.notrecommendations?.includes(isAuthenticated()._id))
         getFavourites(window.location.pathname.split("doctor/")[1])
+        console.log(window.location.href)
+        setUrl(window.location.href)
 
         return () => {
 
@@ -249,7 +262,7 @@ const IndDoctor = () => {
 
     return (
         <MainLayout navbar>
-            <div className='DoctorDetails px-4 py-12 pt-[80px] xl:px-24'>
+            <div className='lg:container mx-auto DoctorDetails px-4 py-12 pt-[80px] xl:px-0'>
                 <div>
                     <div>
                         {
@@ -290,10 +303,27 @@ const IndDoctor = () => {
                                                 </button>
                                             </div>
                                             <div>
-                                                <Image src={Boomark} width="20px" alt="Bookmart" />
+                                                {
+                                                    bookmark ?
+                                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect width="48" height="48" rx="12" fill="#0094DA" />
+                                                            <path d="M27.07 14C29.78 14 31.97 15.07 32 17.79V32.97C32 33.14 31.96 33.31 31.88 33.46C31.75 33.7 31.53 33.88 31.26 33.96C31 34.04 30.71 34 30.47 33.86L23.99 30.62L17.5 33.86C17.351 33.939 17.18 33.99 17.01 33.99C16.45 33.99 16 33.53 16 32.97V17.79C16 15.07 18.2 14 20.9 14H27.07ZM27.75 20.04H20.22C19.79 20.04 19.44 20.39 19.44 20.83C19.44 21.269 19.79 21.62 20.22 21.62H27.75C28.18 21.62 28.53 21.269 28.53 20.83C28.53 20.39 28.18 20.04 27.75 20.04Z" fill="white" />
+                                                        </svg>
+                                                        :
+                                                        <Image onClick={handleBookmark} src={Boomark} width="20px" alt="Bookmart" />
+                                                }
                                             </div>
                                             <div>
-                                                <Image src={Link} width="20px" alt="link" />
+                                                {
+                                                    copied ?
+                                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="0.5" y="0.5" width="47" height="47" rx="11.5" fill="#fff" fill-opacity="0.25" />
+                                                            <path d="M23.6458 26.8285L24.7984 25.6608C23.9095 25.5855 23.2691 25.2917 22.8096 24.8321C21.5364 23.559 21.5364 21.7585 22.802 20.5004L25.3032 17.9917C26.5763 16.7261 28.3693 16.7186 29.6424 17.9917C30.9231 19.2724 30.9081 21.0654 29.65 22.331L28.3693 23.6042C28.6104 24.1617 28.6932 24.8397 28.5576 25.4273L30.7122 23.2802C32.5654 21.4345 32.573 18.7978 30.7047 16.9295C28.8288 15.0537 26.2072 15.0687 24.3539 16.922L21.7323 19.5436C19.879 21.3969 19.8715 24.0261 21.7398 25.8944C22.1768 26.3388 22.7794 26.6703 23.6458 26.8285ZM24.3464 20.4627L23.1938 21.6304C24.0827 21.7133 24.7231 21.9995 25.1826 22.4591C26.4633 23.7322 26.4558 25.5328 25.1902 26.7984L22.689 29.2995C21.4159 30.5726 19.6229 30.5726 18.3573 29.2995C17.0766 28.0188 17.0841 26.2334 18.3497 24.9677L19.6229 23.687C19.3818 23.1371 19.3065 22.4591 19.4346 21.8639L17.28 24.0185C15.4268 25.8642 15.4192 28.4934 17.2875 30.3617C19.1634 32.2375 21.785 32.2225 23.6383 30.3768L26.2599 27.7476C28.1131 25.8944 28.1207 23.2652 26.2524 21.3969C25.8154 20.9599 25.2203 20.6285 24.3464 20.4627Z" fill="#0094DA" />
+                                                            <rect x="0.5" y="0.5" width="47" height="47" rx="11.5" stroke="#0094DA" />
+                                                        </svg>
+                                                        :
+                                                        <Image onClick={() => { navigator.clipboard.writeText(url); setCopied(true); }} src={Link} width="20px" alt="link" />
+                                                }
                                             </div>
                                         </div>
                                     </div>

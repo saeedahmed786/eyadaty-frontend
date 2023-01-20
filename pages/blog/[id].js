@@ -88,7 +88,7 @@ const Blog = () => {
 
     return (
         <MainLayout navbar>
-            <div className='Blog px-4 py-12 xl:px-24'>
+            <div className='lg:container mx-auto Blog px-4 py-12 xl:px-0'>
                 <Row gutter={[23, 23]}>
                     <Col xs={24} lg={16}>
                         <div className='flex gap-2 justify-start items-center py-4'>

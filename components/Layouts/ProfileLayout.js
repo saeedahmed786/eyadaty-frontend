@@ -38,7 +38,7 @@ const ProfileLayout = (props) => {
             <>
                 <TopNavbar />
                 <Navbar />
-                <div className='ProfileLayout container px-5 mx-auto pb-24 pt-6'>
+                <div className='lg:container ProfileLayout px-5 mx-auto pb-24 pt-6'>
                     <div className='text-center'>
                         <div className='flex gap-2 justify-center items-center py-4'>
                             <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]'>{t("Profile")}</button>

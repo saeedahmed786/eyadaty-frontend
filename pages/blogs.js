@@ -13,6 +13,7 @@ import RightIcon from '../components/icons/righticon'
 import { ErrorMessage } from '../components/Messages/messages'
 import specialitiesArray from "../assets/specialities.json"
 import { useTranslation } from 'react-i18next'
+import SelectBoxWidthSearch from '../components/Inputs/SelectBox'
 
 
 const Blogs = () => {
@@ -78,7 +79,7 @@ const Blogs = () => {
 
     return (
         <MainLayout navbar>
-            <div className='blogsPage px-4 xl:px-24 py-8'>
+            <div className='lg:container mx-auto blogsPage px-4 xl:px-0 py-8'>
                 <div className='flex gap-2 justify-center items-center py-4'>
                     <span>{t("Accueil")}</span> <RightIcon /> <button className='text-[#0094DA]' href="/faq">{t("Blog")}</button>
                 </div>
@@ -87,8 +88,8 @@ const Blogs = () => {
                         <h1 className='bigTitle text-center py-3'>{t("Voir notre dernier blog")}</h1>
                     </div>
                 </div>
-                <div className='flex flex-wrap justify-between items-center gap-8 mt-8'>
-                    <div className='flex flex-wrap gap-8'>
+                <div className='flex flex-nowrap justify-between items-center gap-8 mt-8'>
+                    <div className='flex flex-wrap xl:flex-nowrap gap-8'>
                         <BlogsSearch changeBlogId={(val) => console.log(val)} />
                         <div className='searchBox relative min-w-[200px] w-full'>
                             <label>{t("Trier par")}</label>
@@ -101,7 +102,7 @@ const Blogs = () => {
                             </select>
                         </div>
                     </div>
-                    <div className='hidden  sm:flex gap-2 items-center filterBtn'>
+                    <div className='hidden sm:flex gap-2 items-center filterBtn'>
                         <span>{t("Affichage")}</span>
                         <div>
                             <button className={`btn ${gridCol === 12 && "focused"}`} onClick={() => setGridCol(12)}>
@@ -116,24 +117,29 @@ const Blogs = () => {
                     </div>
                 </div>
                 <Row>
-                    <Col lg={6} className="rtl:mt-8">
-                        <h1 className='bigTitle text-center py-3'>{t("Catégories")}</h1>
-                        <div className='mt-8'>
-                            {
-                                specialitiesArray && specialitiesArray?.length > 0 && specialitiesArray.map(cat => {
-                                    return (
-                                        <button className='catCard text-left my-4' onClick={() => getLimitedBlogsByCategory(0, cat.fr)}>
-                                            <div className='name'>{i18n.language === "fr" ? cat?.fr : cat.ar}</div>
-                                            <div className='count'>
-                                                <BlogCategory category={cat.fr} />
-                                            </div>
-                                        </button>
-                                    )
-                                })
-                            }
+                    <Col xs={24} lg={6} className="rtl:mt-8">
+                        <div className='block lg:hidden'>
+                            <SelectBoxWidthSearch data={specialitiesArray} prevValue={specialitiesArray[0].fr} handleUpdate={(value) => getLimitedBlogsByCategory(0, value)} placeholder="Catégorie" />
+                        </div>
+                        <div className='hidden lg:block'>
+                            <h1 className='bigTitle text-start py-3'>{t("Catégories")}</h1>
+                            <div className='mt-8 lg'>
+                                {
+                                    specialitiesArray && specialitiesArray?.length > 0 && specialitiesArray.map(cat => {
+                                        return (
+                                            <button className='catCard text-left my-4' onClick={() => getLimitedBlogsByCategory(0, cat.fr)}>
+                                                <div className='name'>{i18n.language === "fr" ? cat?.fr : cat.ar}</div>
+                                                <div className='count'>
+                                                    <BlogCategory category={cat.fr} />
+                                                </div>
+                                            </button>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                     </Col>
-                    <Col lg={18} className="lg:pl-12 pt-8">
+                    <Col xs={24} lg={18} className="lg:pl-12 pt-8">
                         <Row gutter={[23, 32]}>
                             {
                                 blogs && blogs?.length > 0 && blogs.map(blog => {

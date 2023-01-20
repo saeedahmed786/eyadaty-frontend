@@ -1,4 +1,4 @@
-import { Checkbox, Col, Form, Input, Radio, Row, Select, Upload } from 'antd'
+import { Checkbox, Col, Form, Input, Radio, Row, Select, Tooltip, Upload } from 'antd'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../components/Layouts/Admin/AdminLayout'
@@ -20,11 +20,13 @@ import closeIcon from "../../assets/closeIcon.svg"
 import { Loading } from '../../components/Loading/Loading'
 import { ErrorMessage, SuccessMessage } from '../../components/Messages/messages'
 import { useTranslation } from 'react-i18next'
+import statesArray from "../../assets/town_city/wilaya.json"
+import citiesArray from "../../assets/town_city/communes.json"
 
 const { Option } = Select;
 
 const CreatePage = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [filesList, setFilesList] = useState([]);
     const [file, setFile] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -41,6 +43,14 @@ const CreatePage = () => {
     const [userAuth, setUserAuth] = useState({});
     const [status, setStatus] = useState("Pending");
     const [paidStatus, setPaidStatus] = useState("Free");
+    const [selectedState, setSelectedState] = useState('');
+    const [selectedCity, setSelectedCity] = useState('');
+
+    // Handle state selection
+    const handleStateSelection = (value) => {
+        setSelectedState(value);
+        setSelectedCity('');
+    }
 
 
     useEffect(() => {
@@ -72,7 +82,10 @@ const CreatePage = () => {
             experience,
             clinicName,
             gpsData,
-            gender
+            gender,
+            state,
+            city,
+            fullAddress
         } = values;
 
         setLoading(true);
@@ -103,8 +116,9 @@ const CreatePage = () => {
             category: categoryId,
             status,
             paidStatus,
-            state: isAuthenticated().state,
-            city: isAuthenticated().city,
+            state,
+            city,
+            fullAddress
         }, {
             headers: {
                 "authorization": "Bearer " + userAuth?.token
@@ -175,6 +189,59 @@ const CreatePage = () => {
             setSchedule(prevItems => [...prevItems, { day: label, open: opening, close: closing }]);
         }
     }
+
+    const customTooltipFrance = `
+    <div>
+    <p>Veuillez prendre en considération les remarques suivantes :</p>
+    <ul>
+    <li>Veuillez sélectionner le premier jour normal de la semaine.</li>
+    <li>Déterminer la nature du travail, qu'il s'agisse d'un travail continu ou d'une période de repos.</li>
+    <li>Déterminez les périodes du matin et du soir.</li>
+    <li>Lorsque le premier jour normal est terminé. Veuillez cliquer sur le reste des jours et les horaires de travail seront copiés.</li>
+    <li>Cliquez sur les jours exceptionnels et ajustez les horaires de travail.</li>
+    </ul>
+    </div>`
+
+    const customTooltipArabic = `
+    <div>
+    <p>يرجى النظر في الملاحظات التالية:</p>
+    <ul>
+    <li>الرجاء تحديد اليوم العادي الأول من الأسبوع.</li>
+    <li>تحديد طبيعة العمل سواء كان عمل مستمر أو فترة راحة.</li>
+    <li>تحديد فترات الصباح والمساء.</li>
+    <li>عندما ينتهي اليوم الأول العادي. الرجاء الضغط على باقي الأيام وسيتم نسخ ساعات العمل.</li>
+    <li>انقر فوق أيام استثنائية وضبط ساعات العمل.</li>
+    </ul>
+    </div>`
+
+    const gpsCustomTooltip = `
+    <div>
+    <p>Veuillez suivre les quatre étapes suivantes :</p>
+    <ul>
+    <li>1 - Activez la fonction de localisation sur Google Map.</li>
+    <li>2 - Déterminez un point de repère en cliquant quelques secondes sur l'emplacement de votre clinique sur la carte.</li>
+    <li>3 - Copiez les données GPS affichées dans les informations de localisation.</li>
+    <li>4 - Collez les données dans le champ spécifié.</li>
+    </ul>
+    </div>`
+    const gpsCustomTooltipArabic = `
+    <div>
+    <p>برجاء اتباع الخطوات الأربع التالية:</p>
+    <ul>
+    <li>1 - تفعيل وظيفة الموقع على خريطة جوجل.</li>
+    <li>1 - تفعيل وظيفة الموقع على خريطة جوجل.</li>
+    <li>3 - انسخ بيانات GPS المعروضة في معلومات الموقع.</li>
+    <li>4 - الصق البيانات في الحقل المحدد.</li>
+    </ul>
+    </div>`
+    const notesToolip = `
+    <div>
+    <p>Veuillez inclure des notes sur le fonctionnement de votre clinique, telles que : consultation sur rendez-vous seulement ou consultation par rôle.</p>
+    </div>`
+    const notesToolipArabic = `
+    <div>
+    <p>يرجى تضمين ملاحظات حول كيفية عمل عيادتك ، مثل: الاستشارة عن طريق التعيين فقط أو الاستشارة حسب الدور.</p>
+    </div>`
 
     return (
         <AdminLayout sidebar>
@@ -495,7 +562,7 @@ const CreatePage = () => {
                                         <label className='flex gap-2 mb-4 items-center'>
                                             <span>{t("Horaire de travail")}</span>
                                             <span className='text-[#FF6551]'>*</span>
-                                            <InfoCircleFilled className="text-[#0094DA]" />
+                                            <Tooltip title={<div dangerouslySetInnerHTML={{ __html: i18n.language === "fr" ? customTooltipFrance : customTooltipArabic }}></div>}> <InfoCircleFilled className="text-[#0094DA]" /></Tooltip>
                                         </label>
                                         <ProfileSelectBox label={t("Samedi")} saveItem={handleSchedule} />
                                         <ProfileSelectBox label={t("Dimanche")} saveItem={handleSchedule} />
@@ -504,9 +571,14 @@ const CreatePage = () => {
                                         <ProfileSelectBox label={t("Mercredi")} saveItem={handleSchedule} />
                                         <ProfileSelectBox label={t("Jeudi")} saveItem={handleSchedule} />
                                     </div>
+                                    <label className='flex gap-2 mb-4 items-center'>
+                                        <h4 style={{ fontWeight: "700", fontSize: "16px" }}>{t("Les notes ( Optionnel )")}</h4>
+                                        <span className='text-[#FF6551]'>*</span>
+                                        <Tooltip title={<div dangerouslySetInnerHTML={{ __html: i18n.language === "fr" ? notesToolip : notesToolipArabic }}></div>}> <InfoCircleFilled className="text-[#0094DA]" /></Tooltip>
+                                    </label>
                                     <Form.Item
                                         name="notes"
-                                        label={t("Les notes ( Optionnel )")}
+                                        // label={t("Les notes ( Optionnel )")}
                                         hasFeedback
                                         rules={[
                                             {
@@ -540,11 +612,76 @@ const CreatePage = () => {
                                     >
                                         <Input placeholder={t("Nom de la clinique ( Optionnel )")} />
                                     </Form.Item>
+                                    <Row gutter={[23, 10]}>
+                                        <Col xs={24}>
+                                            <label className='flex gap-2 mb-0 items-center'>
+                                                <span className='font-[700] leading-[16px]'>{t("Adresse de la clinique")}</span>
+                                                <span className='text-[#FF6551]'>*</span>
+                                            </label>
+                                        </Col>
+                                        <Col xs={24} md={12}>
+                                            <Form.Item
+                                                name="state"
+                                                label={t("Wilaya")}
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'Please select wilaya!',
+                                                    },
+                                                ]}
+                                            >
+                                                <Select onChange={handleStateSelection} placeholder={t("Wilaya")}>
+                                                    {statesArray && statesArray?.length > 0 && statesArray?.map((state) => (
+                                                        <Option key={state.nom.fr} value={state.nom.fr}>{state.nom.fr}</Option>
+                                                    ))}
+                                                </Select>
+                                            </Form.Item>
+                                        </Col>
+                                        <Col xs={24} md={12}>
+                                            <Form.Item
+                                                name="city"
+                                                label={t("Commune")}
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'Please select Commune!',
+                                                    },
+                                                ]}
+                                            >
+                                                <Select placeholder={t("Commune")}>
+                                                    {
+                                                        selectedState &&
+                                                        (
+                                                            citiesArray && citiesArray?.length > 0 && citiesArray?.filter(c => c.wilaya_id === selectedState)?.map((city) => (
+                                                                <Option key={city.nom.fr} value={city.nom.fr}>{city.nom.fr}</Option>
+                                                            ))
+                                                        )
+                                                    }
+                                                </Select>
+                                            </Form.Item>
+                                        </Col>
+                                        <Col xs={24}>
+                                            <Form.Item
+                                                label={t("Adresse de la clinique")}
+                                                name="fullAddress"
+                                                required
+                                                hasFeedback
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'Please input your address!',
+                                                    },
+                                                ]}
+                                            >
+                                                <Input placeholder='Adresse de la clinique' />
+                                            </Form.Item>
+                                        </Col>
+                                    </Row>
                                     <div className='mt-4'>
                                         <label className='flex gap-2 mb-4 items-center'>
-                                            <span className='font-[700] leading-[16px]'>{t("Horaire de travail")}</span>
+                                            <span className='font-[700] leading-[16px]'>{t("Les données de GPS")}</span>
                                             <span className='text-[#FF6551]'>*</span>
-                                            <InfoCircleFilled className="text-[#0094DA]" />
+                                            <Tooltip overlayClassName='gpsTooltip' title={<div dangerouslySetInnerHTML={{ __html: i18n.language === "fr" ? gpsCustomTooltip : gpsCustomTooltipArabic }}></div>}> <InfoCircleFilled className="text-[#0094DA]" /></Tooltip>
                                         </label>
                                         <label>{t("Code GPS")}</label>
                                         <Row align={"center"} gutter={[16, 16]}>
@@ -570,20 +707,25 @@ const CreatePage = () => {
                                             </Col>
                                         </Row>
                                     </div>
-                                    <Form.Item
-                                        name="services"
-                                        label={t("Services")}
-                                        className='mt-2'
-                                        hasFeedback
-                                        rules={[
-                                            {
-                                                required: false,
-                                                message: 'Please input your Services!',
-                                            }
-                                        ]}
-                                    >
-                                        <ServicesModal updatedItems={selectedServices} handleUpdate={(value) => setSelectedServices(value)} />
-                                    </Form.Item>
+                                    <div>
+                                        <span className='font-[700] leading-[16px]'>{t("Services")}</span>
+                                        <Form.Item
+                                            name="services"
+                                            // label={t("Services")}
+                                            className='mt-2'
+                                            hasFeedback
+                                            requiredMark
+                                            required
+                                            rules={[
+                                                {
+                                                    required: false,
+                                                    message: 'Please input your Services!',
+                                                }
+                                            ]}
+                                        >
+                                            <ServicesModal updatedItems={selectedServices} handleUpdate={(value) => setSelectedServices(value)} />
+                                        </Form.Item>
+                                    </div>
                                     <div>
                                         <ul>
                                             {
@@ -601,12 +743,12 @@ const CreatePage = () => {
                                         </ul>
                                     </div>
                                     <Form.Item>
-                                        <label>
-                                            <span className='font-[700] leading-[16px]'>{t("Horaire de travail")}</span>
+                                        <label className='pb-5'>
+                                            <span className='font-[700] leading-[16px]'>{t("Image de clinique")}</span>
                                             <span className='text-[#FF6551] px-1'>*</span>
                                         </label>
                                         <Form.Item name="dragger" valuePropName="fileList" getValueFromEvent={normFile} noStyle>
-                                            <Upload.Dragger fileList={filesList} showUploadList={false} onChange={(e) => { handleFilesUpload(e.file.originFileObj); setFilesList(e.fileList); }} height={148}>
+                                            <Upload.Dragger style={{ marginTop: "16px" }} fileList={filesList} showUploadList={false} onChange={(e) => { handleFilesUpload(e.file.originFileObj); setFilesList(e.fileList); }} height={148}>
                                                 <p className="mb-0">
                                                     <Image src={UploadIcon} alt="Upload Icon" />
                                                 </p>
@@ -619,7 +761,7 @@ const CreatePage = () => {
                                             {
                                                 uploadedFilesList?.length > 0 ? uploadedFilesList.map(file => {
                                                     return (
-                                                        <div className='imageBox relative w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                        <div className='imageBox relative sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                             <img src={file?.url} className="rounded-[12px] border h-[132px] w-[148px]" alt="Gallery Icon" />
                                                             <DeleteFilled className='absolute top-[-8px] right-0' onClick={() => handleFileRemove(file)} />
                                                         </div>
@@ -627,25 +769,25 @@ const CreatePage = () => {
                                                 })
                                                     :
                                                     <>
-                                                        <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                        <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                             <Image src={galleryIcon} alt="Gallery Icon" />
                                                         </div>
-                                                        <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                        <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                             <Image src={galleryIcon} alt="Gallery Icon" />
                                                         </div>
-                                                        <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                        <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                             <Image src={galleryIcon} alt="Gallery Icon" />
                                                         </div>
-                                                        <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                        <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                             <Image src={galleryIcon} alt="Gallery Icon" />
                                                         </div>
-                                                        <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                        <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                             <Image src={galleryIcon} alt="Gallery Icon" />
                                                         </div>
-                                                        <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                        <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                             <Image src={galleryIcon} alt="Gallery Icon" />
                                                         </div>
-                                                        <div className='imageBox w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
+                                                        <div className='imageBox sm:w-[166px] h-[148px] rounded-[12px] border flex justify-center items-center'>
                                                             <Image src={galleryIcon} alt="Gallery Icon" />
                                                         </div>
                                                     </>

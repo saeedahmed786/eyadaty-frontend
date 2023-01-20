@@ -53,7 +53,7 @@ const AdminLayout = (props) => {
             <Loading />
             :
             <>
-                <div className={`AdminLayout bg-[#F5F8FB] pb-24 ${mask && "blackMask"}`}>
+                <div className={`lg:container mx-auto AdminLayout bg-[#F5F8FB] pb-24 ${mask && "blackMask"}`}>
                     {
                         props.sidebar ?
                             <Row className='block md:flex mt-0'>

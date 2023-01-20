@@ -121,7 +121,7 @@ const SearchCard = ({ gridCol, favourite, page, removeFavourite }) => {
                     </div>
                     <div className='flex mt-8 gap-1'>
                         <EnvironmentTwoTone />
-                        <p className='w-full rtl:text-start text-left'>{page?.user?.city}, {page?.user?.state}</p>
+                        <p className='w-full rtl:text-start text-left'>{page?.fullAddress}, {page?.city}, {page?.state}</p>
                     </div>
                     <div className='flex gap-2 mt-8 items-end'>
                         <button className='flex gap-1 items-center'>

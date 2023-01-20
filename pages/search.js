@@ -128,7 +128,7 @@ const Search = () => {
 
     return (
         <MainLayout navbar>
-            <div className='SearchPage px-4 xl:px-24 py-8'>
+            <div className='lg:container lg:mx-auto  SearchPage px-4 xl:px-0 py-8'>
                 <div className='flex gap-2 justify-start items-center py-4'>
                     <span>{t("Accueil")}</span>
                     <RightIcon />
