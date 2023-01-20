@@ -2035,3 +2035,7 @@ html[dir="rtl"] body .catImg {
 .gpsTooltip ul {
     list-style: none !important;
 }
+
+.blogList .slick-cloned {
+    display: none !important;
+}

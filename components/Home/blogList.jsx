@@ -16,18 +16,16 @@ export default function BlogList({ blogs }) {
     const router = useRouter();
     var settings = {
         dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 1,
+        // speed: 500,
+        // slidesToShow: 1,
+        // slidesToScroll: 1,
+        // initialSlide: 1,
         responsive: [
             {
                 breakpoint: 1500,
                 settings: {
                     slidesToShow: 4,
                     slidesToScroll: 4,
-                    infinite: true,
                     dots: false
                 }
             },
@@ -36,7 +34,6 @@ export default function BlogList({ blogs }) {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
-                    infinite: true,
                     dots: false
                 }
             },
@@ -54,7 +51,6 @@ export default function BlogList({ blogs }) {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    infinite: true,
                 }
             },
         ]
