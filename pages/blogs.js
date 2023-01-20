@@ -88,8 +88,8 @@ const Blogs = () => {
                         <h1 className='bigTitle text-center py-3'>{t("Voir notre dernier blog")}</h1>
                     </div>
                 </div>
-                <div className='flex flex-nowrap justify-between items-center gap-8 mt-8'>
-                    <div className='flex flex-wrap xl:flex-nowrap gap-8'>
+                <div className='flex-nowrap justify-between items-center gap-8 mt-8'>
+                    <div className='flex flex-wrap md:flex-nowrap gap-8'>
                         <BlogsSearch changeBlogId={(val) => console.log(val)} />
                         <div className='searchBox relative min-w-[200px] w-full'>
                             <label>{t("Trier par")}</label>
@@ -102,7 +102,7 @@ const Blogs = () => {
                             </select>
                         </div>
                     </div>
-                    <div className='hidden sm:flex gap-2 items-center filterBtn'>
+                    <div className='hidden xl:flex gap-2 items-center filterBtn'>
                         <span>{t("Affichage")}</span>
                         <div>
                             <button className={`btn ${gridCol === 12 && "focused"}`} onClick={() => setGridCol(12)}>

@@ -1,4 +1,4 @@
-import { Checkbox, Col, Form, Input, Radio, Row, Select, Upload } from 'antd'
+import { Checkbox, Col, Form, Input, Radio, Row, Select, Tooltip, Upload } from 'antd'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../../components/Layouts/Admin/AdminLayout'
@@ -22,14 +22,14 @@ import specialitiesArray from "../../../assets/specialities.json"
 import typeArray from "../../../assets/type_profile.json"
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
-import statesArray from "../../assets/town_city/wilaya.json"
-import citiesArray from "../../assets/town_city/communes.json"
+import statesArray from "../../../assets/town_city/wilaya.json"
+import citiesArray from "../../../assets/town_city/communes.json"
 
 
 const { Option } = Select;
 
 const UpdatePage = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const router = useRouter();
     const [filesList, setFilesList] = useState([]);
     const [pageId, setPageId] = useState("");
@@ -379,7 +379,7 @@ const UpdatePage = () => {
                                         <Loading />
                                         :
                                         <Form
-                                            form={getFormData}
+                                            form={form}
                                             name="register"
                                             onFinish={onFinish}
                                             scrollToFirstError
